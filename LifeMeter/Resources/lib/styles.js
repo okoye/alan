@@ -23,6 +23,7 @@ exports = {
 			backgroundColor: 'blue',
 			height: 98,
 			backgroundImage: 'images/iphone/bottom_nav_bg.png',
+			layout: 'absolute',
 		};
 	},
 	tutorial_scrollview : function(properties) {
@@ -51,10 +52,10 @@ exports = {
 		return centerview;
 	},
 	tutorial_continuebutton : {
-		backgroundColor: '#64c1e6',
-		width: 100,
-		height: 45,
-		title: 'Start',
-		borderRadius: 10,
+		backgroundImage: 'images/iphone/continue_btn.png',
+		width: 172,
+		height: 41,
+		borderRadius: 5,
+		top: 6,
 	}
 };
