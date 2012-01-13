@@ -5,7 +5,7 @@ reporting an issue to help us understand your environment, build settings
 and aid in debugging. Please attach this log to any issue that you report.
 ================================================================================
 
-Starting build at 01/13/12 00:14
+Starting build at 01/13/12 01:27
 
 Build details:
 
@@ -23,7 +23,7 @@ Script arguments:
    LifeMeter
    universal
    iphone
-   192.168.1.123:52218
+   192.168.1.123:52634
 
 Building from: /Users/chuka/Library/Application Support/Titanium/mobilesdk/osx/1.7.5/iphone
 Platform: Darwin Kernel Version 11.2.0: Tue Aug  9 20:54:00 PDT 2011; root:xnu-1699.24.8~1/RELEASE_X86_64
@@ -108,15 +108,15 @@ ProcessInfoPlistFile build/Debug-iphonesimulator/LifeMeter.app/Info.plist Info.p
     setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     builtin-infoPlistUtility Info.plist -genpkginfo /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app/Info.plist
 
-CopyPlistFile build/Debug-iphonesimulator/LifeMeter.app/stylesheet.plist Resources/stylesheet.plist
-    cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
-    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-    builtin-copyPlist --convert binary1 --outdir /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app -- Resources/stylesheet.plist
-
 CopyPlistFile build/Debug-iphonesimulator/LifeMeter.app/debugger.plist Resources/debugger.plist
     cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
     setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     builtin-copyPlist --convert binary1 --outdir /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app -- Resources/debugger.plist
+
+CopyPlistFile build/Debug-iphonesimulator/LifeMeter.app/stylesheet.plist Resources/stylesheet.plist
+    cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
+    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    builtin-copyPlist --convert binary1 --outdir /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app -- Resources/stylesheet.plist
 
 PhaseScriptExecution Pre-Compile build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/Script-DABB369F12E8CB280026A6EA.sh
     cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
@@ -442,6 +442,11 @@ PhaseScriptExecution Pre-Compile build/LifeMeter.build/Debug-iphonesimulator/Lif
 [INFO] iPhone SDK version: 5.0
 [DEBUG] copy resources from /Users/chuka/Desktop/titanium/LifeMeter/Resources/iphone to /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app
 [INFO] Skipping JS compile, running from simulator
+
+GenerateDSYMFile build/Debug-iphonesimulator/LifeMeter.app.dSYM build/Debug-iphonesimulator/LifeMeter.app/LifeMeter
+    cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
+    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    /Developer/usr/bin/dsymutil /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app/LifeMeter -o /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app.dSYM
 
 PhaseScriptExecution Post-Compile build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/Script-DABB37B812E8CB280026A6EA.sh
     cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone

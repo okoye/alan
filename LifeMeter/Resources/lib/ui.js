@@ -67,7 +67,7 @@ local.GettingStarted = function(args) {
 	return base_win;
 };
 
-local.You = function(args) {
+local.Alan = function(args) {
 	log.info('Creating you window');
 	return Ti.UI.createWindow({backgroundColor: 'white'});
 };
@@ -104,7 +104,7 @@ local.CreateAccount = function(args) {
 			if (response.status == "success"){
 				acc.saveCredentials();
 				Ti.App.Properties.setBool('instantiated', true);
-				local.You();
+				local.Alan();
 			}else{
 				log.debug(JSON.stringify(response));
 				alert(response.message);
