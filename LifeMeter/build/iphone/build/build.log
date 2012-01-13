@@ -5,7 +5,7 @@ reporting an issue to help us understand your environment, build settings
 and aid in debugging. Please attach this log to any issue that you report.
 ================================================================================
 
-Starting build at 01/10/12 19:27
+Starting build at 01/12/12 16:21
 
 Build details:
 
@@ -23,7 +23,7 @@ Script arguments:
    LifeMeter
    universal
    iphone
-   192.168.1.123:54749
+   192.168.1.123:64368
 
 Building from: /Users/chuka/Library/Application Support/Titanium/mobilesdk/osx/1.7.5/iphone
 Platform: Darwin Kernel Version 11.2.0: Tue Aug  9 20:54:00 PDT 2011; root:xnu-1699.24.8~1/RELEASE_X86_64

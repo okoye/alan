@@ -12,23 +12,27 @@ log.info('Platform width is '+platformWidth);
 log.info('Platform height is '+platformHeight);
 
 exports = {
-	tutorial_window : {
-		backgroundColor: 'purple',
-		layout: 'vertical',
-		barImage: 'images/iphone/top_nav.png',
-		title: 'Getting Started'
+	nav_window : function(properties) {
+		var navproperty = {};
+		
+		navproperty.backButtonTitle = 'Back';
+		navproperty.layout = 'vertical';
+		for (property in properties)
+			navproperty[property] = properties[property];	
+		navproperty.backgroundColor = 'purple';
+		navproperty.barImage = 'images/iphone/top_nav.png';
+		return navproperty;
 	},
-	tutorial_bottomview : function(referenceHeight) {
+	nav_bottomview : function(referenceHeight) {
 		return {
 			backgroundColor: 'blue',
-			height: 98,
+			height: 60,
 			backgroundImage: 'images/iphone/bottom_nav_bg.png',
 			layout: 'absolute',
 		};
 	},
 	tutorial_scrollview : function(properties) {
 		var scrollproperty = {};
-		//scrollproperty.pagingControlHeight = 10;
 		for (property in properties){
 			scrollproperty[property] = properties[property];
 		}
@@ -41,21 +45,41 @@ exports = {
 	},
 	tutorial_centerview : function(properties){
 		var centerview = {};
-		//properties that can be overwritten
 		centerview.backgroundColor = 'pink';
 		for (property in properties){
 			centerview[property] = properties[property];
 		}
-		//properties that should not be overwritten
 		centerview.height = 350;
 		centerview.width = 250;
 		return centerview;
 	},
-	tutorial_continuebutton : {
-		backgroundImage: 'images/iphone/continue_btn.png',
-		width: 172,
-		height: 41,
-		borderRadius: 5,
-		top: 6,
+	continue_button : function(properties) {
+		var button = {};
+		button.backgroundImage = 'images/iphone/continue_btn.png';
+		for (property in properties)
+			button[property] = properties[property];
+			
+		button.width = 172;
+		button.height = 41
+		button.borderRadius = 5;
+		button.top = 6;
+		return button;
+	},
+	nav_centerview : function(properties){
+		var centerview = {};
+		for (property in properties)
+			centerview[property] = properties[property];
+		centerview.height = 368;
+		centerview.backgroundImage = 'images/iphone/center_view_bg.png';
+		return centerview;
+	},
+	text_field : function(properties){
+		var textfield = {};
+		textfield.autocapitalization = Ti.UI.TEXT_AUTOCAPITALIZATION_NONE;
+		textfield.height = 35;
+		textfield.width = 200;
+		for (property in properties)
+			textfield[property] = properties[property];
+		return textfield;
 	}
 };
