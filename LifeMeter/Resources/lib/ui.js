@@ -5,7 +5,7 @@
 //Requires
 var styling = require("lib/styles");
 var log = require("lib/logger");
-var accounts = require("lib/account");
+var account = require("lib/account");
 
 //Module state variables
 var local = {};
@@ -81,18 +81,18 @@ local.CreateAccount = function(args) {
 	var center_view = Ti.UI.createView(styling.nav_centerview({layout: 'vertical'}));
 	var footer_view = Ti.UI.createView(styling.nav_bottomview());
 	var continue_button = Ti.UI.createButton(styling.continue_button());
-	var email_textfield = Ti.UI.createTextField(styling.text_field({
-		top: 100,
+	var email = Ti.UI.createTextField(styling.text_field({
+		top: 60,
 		hintText: 'Email',
 		backgroundColor: 'grey'
 	}));
-	var passd_textfield = Ti.UI.createTextField(styling.text_field({
-		top: 100,
+	var password = Ti.UI.createTextField(styling.text_field({
+		top: 70,
 		passwordMask: true,
 		hintText: 'Password',
 	}));
-	center_view.add(email_textfield);
-	center_view.add(passd_textfield);
+	center_view.add(email);
+	center_view.add(password);
 	footer_view.add(continue_button);
 	create_account_window.add(center_view);
 	create_account_window.add(footer_view);
@@ -100,7 +100,10 @@ local.CreateAccount = function(args) {
 	
 	continue_button.addEventListener('click', function(evt){
 		log.info('Submitting account credentials for new account');
-		
+		 var acc = new account.Account(email.value, password.value, function(response){
+			//TODO: check for success or failure and do appropriate thing.
+			log.debug(JSON.stringify(response));
+		});
 	});
 };
 
