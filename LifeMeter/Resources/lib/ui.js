@@ -5,6 +5,7 @@
 //Requires
 var styling = require("lib/styles");
 var log = require("lib/logger");
+var accounts = require("lib/account");
 
 //Module state variables
 var local = {};
@@ -59,7 +60,7 @@ local.GettingStarted = function(args) {
 					log.info('Choice dialog is executing default action (cancel)');
 					break;
 			}
-		})
+		});
 		choice_dialog.show();
 	});
 	local.nav_control = nav;
@@ -80,19 +81,27 @@ local.CreateAccount = function(args) {
 	var center_view = Ti.UI.createView(styling.nav_centerview({layout: 'vertical'}));
 	var footer_view = Ti.UI.createView(styling.nav_bottomview());
 	var continue_button = Ti.UI.createButton(styling.continue_button());
-	var email_textfield = Titanium.UI.createTextField(styling.text_field({
-		top: 67,
-		left: 67,
-		borderRadius: 3,
-		borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	var email_textfield = Ti.UI.createTextField(styling.text_field({
+		top: 100,
 		hintText: 'Email',
-		width: 300,
+		backgroundColor: 'grey'
+	}));
+	var passd_textfield = Ti.UI.createTextField(styling.text_field({
+		top: 100,
+		passwordMask: true,
+		hintText: 'Password',
 	}));
 	center_view.add(email_textfield);
+	center_view.add(passd_textfield);
 	footer_view.add(continue_button);
 	create_account_window.add(center_view);
 	create_account_window.add(footer_view);
 	local.nav_control.open(create_account_window, {animated:true});
+	
+	continue_button.addEventListener('click', function(evt){
+		log.info('Submitting account credentials for new account');
+		
+	});
 };
 
 local.Login = function(args) {

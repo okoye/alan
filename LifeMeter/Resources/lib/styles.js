@@ -49,8 +49,8 @@ exports = {
 		for (property in properties){
 			centerview[property] = properties[property];
 		}
-		centerview.height = 350;
-		centerview.width = 250;
+		centerview.height = 352;
+		centerview.width = 244;
 		return centerview;
 	},
 	continue_button : function(properties) {
@@ -76,8 +76,11 @@ exports = {
 	text_field : function(properties){
 		var textfield = {};
 		textfield.autocapitalization = Ti.UI.TEXT_AUTOCAPITALIZATION_NONE;
+		textfield.borderStyle = Ti.UI.INPUT_BORDERSTYLE_ROUNDED;
 		textfield.height = 35;
-		textfield.width = 200;
+		textfield.width = 240;
+		textfield.left = 40;
+		textfield.borderRadius = 5;
 		for (property in properties)
 			textfield[property] = properties[property];
 		return textfield;
