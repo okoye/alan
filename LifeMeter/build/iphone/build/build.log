@@ -5,7 +5,7 @@ reporting an issue to help us understand your environment, build settings
 and aid in debugging. Please attach this log to any issue that you report.
 ================================================================================
 
-Starting build at 01/12/12 16:21
+Starting build at 01/12/12 16:34
 
 Build details:
 
@@ -23,7 +23,7 @@ Script arguments:
    LifeMeter
    universal
    iphone
-   192.168.1.123:64368
+   192.168.1.123:64442
 
 Building from: /Users/chuka/Library/Application Support/Titanium/mobilesdk/osx/1.7.5/iphone
 Platform: Darwin Kernel Version 11.2.0: Tue Aug  9 20:54:00 PDT 2011; root:xnu-1699.24.8~1/RELEASE_X86_64
@@ -108,15 +108,15 @@ ProcessInfoPlistFile build/Debug-iphonesimulator/LifeMeter.app/Info.plist Info.p
     setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     builtin-infoPlistUtility Info.plist -genpkginfo /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app/Info.plist
 
-CopyPlistFile build/Debug-iphonesimulator/LifeMeter.app/stylesheet.plist Resources/stylesheet.plist
-    cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
-    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-    builtin-copyPlist --convert binary1 --outdir /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app -- Resources/stylesheet.plist
-
 CopyPlistFile build/Debug-iphonesimulator/LifeMeter.app/debugger.plist Resources/debugger.plist
     cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
     setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     builtin-copyPlist --convert binary1 --outdir /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app -- Resources/debugger.plist
+
+CopyPlistFile build/Debug-iphonesimulator/LifeMeter.app/stylesheet.plist Resources/stylesheet.plist
+    cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
+    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    builtin-copyPlist --convert binary1 --outdir /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app -- Resources/stylesheet.plist
 
 PhaseScriptExecution Pre-Compile build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/Script-DABB369F12E8CB280026A6EA.sh
     cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
@@ -442,6 +442,25 @@ PhaseScriptExecution Pre-Compile build/LifeMeter.build/Debug-iphonesimulator/Lif
 [INFO] iPhone SDK version: 5.0
 [DEBUG] copy resources from /Users/chuka/Desktop/titanium/LifeMeter/Resources/iphone to /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app
 [INFO] Skipping JS compile, running from simulator
+
+CompileC build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/Objects-normal/i386/main.o main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
+    setenv LANG en_US.US-ASCII
+    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-return-type -Wno-parentheses -Wswitch -Wunused-function -Wno-unused-parameter -Wno-unused-variable -Wno-unused-value -Wno-shorten-64-to-32 -D__LOG__ID__=72942991-aab5-4677-8bdf-b82c4b33abb3 -DDEPLOYTYPE=development -DTI_DEVELOPMENT=1 -DDEBUG=1 -DTI_VERSION=1.7.5 -DDEBUGGER_ENABLED=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30100 -iquote /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/LifeMeter-generated-files.hmap -I/Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/LifeMeter-own-target-headers.hmap -I/Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/LifeMeter-all-target-headers.hmap -iquote /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/LifeMeter-project-headers.hmap -I/Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/include -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include/libxml2 -Iheaders -I/Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/DerivedSources/i386 -I/Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/DerivedSources -F/Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator -DIPAD -DTI_POST_1_2 -DDEBUG -include /var/folders/n0/95_3yvpd393cbg6hq7bjrx7h0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/LifeMeter_Prefix-fqaqrprtwtpdwxbpfiqktsbpwwqs/LifeMeter_Prefix.pch -MMD -MT dependencies -MF /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/Objects-normal/i386/main.d -c /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/main.m -o /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/Objects-normal/i386/main.o
+
+Ld build/Debug-iphonesimulator/LifeMeter.app/LifeMeter normal i386
+    cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
+    setenv MACOSX_DEPLOYMENT_TARGET 10.6
+    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang++ -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -L/Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator -L/Users/chuka/Desktop/titanium/LifeMeter/build/iphone/lib -L/Users/chuka/Desktop/titanium/LifeMeter/build/iphone/../../../../tmp/staticlib/build/Debug-iphonesimulator -L/Users/chuka/Desktop/titanium/LifeMeter/build/iphone/../../../tijs/TiCore/TiCore/build/Release-iphonesimulator -F/Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator -filelist /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/Objects-normal/i386/LifeMeter.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -ObjC -weak-lSystem -weak_framework iAd -Xlinker -no_implicit_dylibs -D__IPHONE_OS_VERSION_MIN_REQUIRED=30100 -framework Foundation -weak_framework UIKit -framework CoreGraphics -framework AddressBook -framework AddressBookUI -framework CFNetwork -framework CoreLocation -framework MapKit -framework MessageUI -framework MobileCoreServices -framework OpenGLES -framework QuartzCore -framework SystemConfiguration -lsqlite3 -lz -framework AudioToolbox -weak_framework MediaPlayer -framework AVFoundation -lxml2 -framework StoreKit -lTiCore -ltiverify -lti_ios_debugger -o /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app/LifeMeter
+ld: warning: directory not found for option '-L/Users/chuka/Desktop/titanium/LifeMeter/build/iphone/../../../../tmp/staticlib/build/Debug-iphonesimulator'
+ld: warning: directory not found for option '-L/Users/chuka/Desktop/titanium/LifeMeter/build/iphone/../../../tijs/TiCore/TiCore/build/Release-iphonesimulator'
+
+GenerateDSYMFile build/Debug-iphonesimulator/LifeMeter.app.dSYM build/Debug-iphonesimulator/LifeMeter.app/LifeMeter
+    cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
+    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    /Developer/usr/bin/dsymutil /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app/LifeMeter -o /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app.dSYM
 
 PhaseScriptExecution Post-Compile build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/Script-DABB37B812E8CB280026A6EA.sh
     cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone

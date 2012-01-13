@@ -23,9 +23,9 @@ local.GettingStarted = function(args) {
 	base_win.add(nav);
 		
 	var center_height = Ti.Platform.displayCaps.platformHeight - nav.getHeight();
-	var center_view0 = Ti.UI.createView(styling.tutorial_centerview());
-	var center_view1 = Ti.UI.createView(styling.tutorial_centerview());
-	var center_view2 = Ti.UI.createView(styling.tutorial_centerview());
+	var center_view0 = Ti.UI.createImageView(styling.tutorial_centerview({image:'images/iphone/step1.png'}));
+	var center_view1 = Ti.UI.createImageView(styling.tutorial_centerview({image:'images/iphone/step2.png'}));
+	var center_view2 = Ti.UI.createImageView(styling.tutorial_centerview({image:'images/iphone/step3.png'}));
 	var bottom_view = Ti.UI.createView(styling.nav_bottomview());
 	var center_scrollview = Ti.UI.createScrollableView(styling.tutorial_scrollview({
 		views: [center_view0, center_view1, center_view2],
@@ -80,13 +80,15 @@ local.CreateAccount = function(args) {
 	var center_view = Ti.UI.createView(styling.nav_centerview({layout: 'vertical'}));
 	var footer_view = Ti.UI.createView(styling.nav_bottomview());
 	var continue_button = Ti.UI.createButton(styling.continue_button());
-	var tf = Titanium.UI.createTextField(styling.text_field({
+	var email_textfield = Titanium.UI.createTextField(styling.text_field({
 		top: 67,
 		left: 67,
 		borderRadius: 3,
-		borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+		borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+		hintText: 'Email',
+		width: 300,
 	}));
-	center_view.add(tf);
+	center_view.add(email_textfield);
 	footer_view.add(continue_button);
 	create_account_window.add(center_view);
 	create_account_window.add(footer_view);
