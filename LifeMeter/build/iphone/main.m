@@ -8,13 +8,13 @@
 #define STRING(x) _QUOTEME(x)
 
 NSString * const TI_APPLICATION_DEPLOYTYPE = @"development";
-NSString * const TI_APPLICATION_ID = @"com.lightcurve.lifemeter";
-NSString * const TI_APPLICATION_PUBLISHER = @"chuka";
-NSString * const TI_APPLICATION_URL = @"http://www.lifemet.er";
+NSString * const TI_APPLICATION_ID = @"me.puppet.alan";
+NSString * const TI_APPLICATION_PUBLISHER = @"Puppet Inc.";
+NSString * const TI_APPLICATION_URL = @"http://www.alanmobileapp.com";
 NSString * const TI_APPLICATION_NAME = @"LifeMeter";
 NSString * const TI_APPLICATION_VERSION = @"1.0";
-NSString * const TI_APPLICATION_DESCRIPTION = @"Life Meter chart.";
-NSString * const TI_APPLICATION_COPYRIGHT = @"2012, LightCurve Inc.";
+NSString * const TI_APPLICATION_DESCRIPTION = @"Alan mobile application.";
+NSString * const TI_APPLICATION_COPYRIGHT = @"2012, Puppet Inc.";
 NSString * const TI_APPLICATION_GUID = @"72942991-aab5-4677-8bdf-b82c4b33abb3";
 BOOL const TI_APPLICATION_ANALYTICS = true;
 

@@ -101,8 +101,14 @@ local.CreateAccount = function(args) {
 	continue_button.addEventListener('click', function(evt){
 		log.info('Submitting account credentials for new account');
 		 var acc = new account.Account(email.value, password.value, function(response){
-			//TODO: check for success or failure and do appropriate thing.
-			log.debug(JSON.stringify(response));
+			if (response.status == "success"){
+				acc.saveCredentials();
+				Ti.App.Properties.setBool('instantiated', true);
+				local.You();
+			}else{
+				log.debug(JSON.stringify(response));
+				alert(response.message);
+			}
 		});
 	});
 };

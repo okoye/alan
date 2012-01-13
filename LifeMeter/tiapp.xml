@@ -7,13 +7,13 @@
         <target device="android">true</target>
         <target device="blackberry">false</target>
     </deployment-targets>
-    <id>com.lightcurve.lifemeter</id>
+    <id>me.puppet.alan</id>
     <name>LifeMeter</name>
     <version>1.0</version>
-    <publisher>chuka</publisher>
-    <url>http://www.lifemet.er</url>
-    <description>Life Meter chart.</description>
-    <copyright>2012, LightCurve Inc.</copyright>
+    <publisher>Puppet Inc.</publisher>
+    <url>http://www.alanmobileapp.com</url>
+    <description>Alan mobile application.</description>
+    <copyright>2012, Puppet Inc.</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>

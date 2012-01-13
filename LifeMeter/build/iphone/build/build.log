@@ -5,7 +5,7 @@ reporting an issue to help us understand your environment, build settings
 and aid in debugging. Please attach this log to any issue that you report.
 ================================================================================
 
-Starting build at 01/12/12 19:18
+Starting build at 01/13/12 00:14
 
 Build details:
 
@@ -19,11 +19,11 @@ Script arguments:
    simulator
    5.0
    /Users/chuka/Desktop/titanium/LifeMeter
-   com.lightcurve.lifemeter
+   me.puppet.alan
    LifeMeter
    universal
    iphone
-   192.168.1.123:50517
+   192.168.1.123:52218
 
 Building from: /Users/chuka/Library/Application Support/Titanium/mobilesdk/osx/1.7.5/iphone
 Platform: Darwin Kernel Version 11.2.0: Tue Aug  9 20:54:00 PDT 2011; root:xnu-1699.24.8~1/RELEASE_X86_64
@@ -36,7 +36,7 @@ writing contents of /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/project
 
 TI_VERSION=1.7.5
 TI_SDK_DIR=/Users/chuka/Library/Application Support/Titanium/mobilesdk/osx/$(TI_VERSION)/iphone
-TI_APPID=com.lightcurve.lifemeter
+TI_APPID=me.puppet.alan
 OTHER_LDFLAGS[sdk=iphoneos*]=$(inherited) -weak_framework iAd
 OTHER_LDFLAGS[sdk=iphonesimulator*]=$(inherited) -weak_framework iAd
 #include "module"
@@ -90,7 +90,7 @@ Starting Xcode compile with the following arguments:
     TARGETED_DEVICE_FAMILY=1,2
     VALID_ARCHS=armv6 armv7 i386
 
-app_id = com.lightcurve.lifemeter
+app_id = me.puppet.alan
 
 
 Build settings from command line:
@@ -108,15 +108,15 @@ ProcessInfoPlistFile build/Debug-iphonesimulator/LifeMeter.app/Info.plist Info.p
     setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     builtin-infoPlistUtility Info.plist -genpkginfo /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app/Info.plist
 
-CopyPlistFile build/Debug-iphonesimulator/LifeMeter.app/debugger.plist Resources/debugger.plist
-    cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
-    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-    builtin-copyPlist --convert binary1 --outdir /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app -- Resources/debugger.plist
-
 CopyPlistFile build/Debug-iphonesimulator/LifeMeter.app/stylesheet.plist Resources/stylesheet.plist
     cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
     setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     builtin-copyPlist --convert binary1 --outdir /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app -- Resources/stylesheet.plist
+
+CopyPlistFile build/Debug-iphonesimulator/LifeMeter.app/debugger.plist Resources/debugger.plist
+    cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
+    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    builtin-copyPlist --convert binary1 --outdir /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/Debug-iphonesimulator/LifeMeter.app -- Resources/debugger.plist
 
 PhaseScriptExecution Pre-Compile build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build/Script-DABB369F12E8CB280026A6EA.sh
     cd /Users/chuka/Desktop/titanium/LifeMeter/build/iphone
@@ -405,7 +405,7 @@ PhaseScriptExecution Pre-Compile build/LifeMeter.build/Debug-iphonesimulator/Lif
     setenv TEMP_FILE_DIR /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build
     setenv TEMP_ROOT /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build
     setenv TEST_AFTER_BUILD YES
-    setenv TI_APPID com.lightcurve.lifemeter
+    setenv TI_APPID me.puppet.alan
     setenv TI_SDK_DIR "/Users/chuka/Library/Application Support/Titanium/mobilesdk/osx/1.7.5/iphone"
     setenv TI_VERSION 1.7.5
     setenv UID 501
@@ -730,7 +730,7 @@ PhaseScriptExecution Post-Compile build/LifeMeter.build/Debug-iphonesimulator/Li
     setenv TEMP_FILE_DIR /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build/LifeMeter.build/Debug-iphonesimulator/LifeMeter-universal.build
     setenv TEMP_ROOT /Users/chuka/Desktop/titanium/LifeMeter/build/iphone/build
     setenv TEST_AFTER_BUILD YES
-    setenv TI_APPID com.lightcurve.lifemeter
+    setenv TI_APPID me.puppet.alan
     setenv TI_SDK_DIR "/Users/chuka/Library/Application Support/Titanium/mobilesdk/osx/1.7.5/iphone"
     setenv TI_VERSION 1.7.5
     setenv UID 501
