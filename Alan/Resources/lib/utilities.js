@@ -9,4 +9,4 @@ exports.percentages = function(percent, relative) {
 	var percentInt = percent.replace("%", "");
 	percentInt = parseInt(percentInt);
 	return Math.round(percentInt * (relative/100));
-}
+};
