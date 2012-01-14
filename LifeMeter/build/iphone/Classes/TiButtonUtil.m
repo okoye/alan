@@ -16,23 +16,23 @@
 {
 	switch (type)
 	{
-		case UILifeMeterNativeItemInfoLight:
+		case UIAlanNativeItemInfoLight:
 		{
 			return [UIButton buttonWithType:UIButtonTypeInfoLight];
 		}
-		case UILifeMeterNativeItemInfoDark:
+		case UIAlanNativeItemInfoDark:
 		{
 			return [UIButton buttonWithType:UIButtonTypeInfoDark];
 		}
-		case UILifeMeterNativeItemDisclosure:
+		case UIAlanNativeItemDisclosure:
 		{
 			return [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 		}
-		case UILifeMeterNativeItemContactAdd:
+		case UIAlanNativeItemContactAdd:
 		{
 			return [UIButton buttonWithType:UIButtonTypeContactAdd];
 		}
-		case UILifeMeterNativeItemSpinner:
+		case UIAlanNativeItemSpinner:
 		{
 			UIActivityIndicatorView *button = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
 			[button startAnimating];

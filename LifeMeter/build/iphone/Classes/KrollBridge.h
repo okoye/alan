@@ -16,7 +16,7 @@
 #import "KrollObject.h"
 #import "TiModule.h"
 
-@interface LifeMeterObject : KrollObject {
+@interface AlanObject : KrollObject {
 @private
 	NSMutableDictionary *modules;
 	TiHost *host;
@@ -37,7 +37,7 @@
 	KrollContext *context;
 	NSDictionary *preload;
 	NSMutableDictionary *modules;
-	LifeMeterObject *_lifemeter;
+	AlanObject *_alan;
 	BOOL shutdown;
     BOOL evaluationError;
 	NSMutableArray *proxies;

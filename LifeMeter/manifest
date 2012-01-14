@@ -1,8 +1,8 @@
-#appname:LifeMeter
-#publisher:Puppet Inc.
+#appname:Alan
+#publisher:LightCurves, Inc.
 #url:http://www.alanmobileapp.com
 #image:appicon.png
-#appid:me.puppet.alan
+#appid:me.lightcurves.alan
 #desc:Alan mobile application.
 #type:ipad
 #guid:72942991-aab5-4677-8bdf-b82c4b33abb3

@@ -22,7 +22,7 @@
 #import "Base64Transcoder.h"
 
 extern NSString * const TI_APPLICATION_ID;
-static NSString * const kLifeMeterJavascript = @"Ti.App={};Ti.API={};Ti.App._listeners={};Ti.App._listener_id=1;Ti.App.id=Ti.appId;Ti.App._xhr=XMLHttpRequest;"
+static NSString * const kAlanJavascript = @"Ti.App={};Ti.API={};Ti.App._listeners={};Ti.App._listener_id=1;Ti.App.id=Ti.appId;Ti.App._xhr=XMLHttpRequest;"
 		"Ti._broker=function(module,method,data){try{var url='app://'+Ti.appId+'/_TiA0_'+Ti.pageToken+'/'+module+'/'+method+'?'+Ti.App._JSON(data,1);"
 			"var xhr=new Ti.App._xhr();xhr.open('GET',url,false);xhr.send()}catch(X){}};"
 		"Ti._hexish=function(a){var r='';var e=a.length;var c=0;var h;while(c<e){h=a.charCodeAt(c++).toString(16);r+='\\\\u';var l=4-h.length;while(l-->0){r+='0'};r+=h}return r};"
@@ -170,13 +170,13 @@ static NSString * const kLifeMeterJavascript = @"Ti.App={};Ti.API={};Ti.App._lis
 	return [NSURL URLWithString:[[NSString stringWithFormat:@"app://%@/%@",TI_APPLICATION_ID,path] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
--(NSString*)_lifemeterInjection
+-(NSString*)_alanInjection
 {
 	NSMutableString *html = [[[NSMutableString alloc] init] autorelease];
 	[html appendString:@"<script id='__ti_injection'>"];
 	NSString *ti = [NSString stringWithFormat:@"%@%s",@"Ti","tanium"];
 	[html appendFormat:@"window.%@={};window.Ti=%@;Ti.pageToken=%@;Ti.appId='%@';",ti,ti,pageToken,TI_APPLICATION_ID];
-	[html appendString:kLifeMeterJavascript];
+	[html appendString:kAlanJavascript];
 	[html appendString:@"</script>"];
 	return html;
 }
@@ -196,7 +196,7 @@ static NSString * const kLifeMeterJavascript = @"Ti.App={};Ti.API={};Ti.App._lis
 	   mimeType:(NSString*)mimeType
 	   baseURL:(NSURL*)baseURL
 {
-	// attempt to make well-formed HTML and inject in our LifeMeter bridge code
+	// attempt to make well-formed HTML and inject in our Alan bridge code
 	// However, we only do this if the content looks like HTML
 	NSRange range = [content rangeOfString:@"<html"];
 	if (range.location==NSNotFound)
@@ -216,13 +216,13 @@ static NSString * const kLifeMeterJavascript = @"Ti.App={};Ti.API={};Ti.App._lis
 		if (nextRange.location!=NSNotFound)
 		{
 			[html appendString:[content substringToIndex:nextRange.location+1]];
-			[html appendString:[self _lifemeterInjection]];
+			[html appendString:[self _alanInjection]];
 			[html appendString:[content substringFromIndex:nextRange.location+1]];
 		}
 		else
 		{
 			// oh well, just jack it in
-			[html appendString:[self _lifemeterInjection]];
+			[html appendString:[self _alanInjection]];
 			[html appendString:content];
 		}
 		
@@ -494,7 +494,7 @@ static NSString * const kLifeMeterJavascript = @"Ti.App={};Ti.API={};Ti.App._lis
 				}
 				else 
 				{
-					NSLog(@"[WARN] I have no idea what the appropriate text encoding is for: %@. Please report this to LifeMeter support.",url);
+					NSLog(@"[WARN] I have no idea what the appropriate text encoding is for: %@. Please report this to Alan support.",url);
 				}
 			}
 			if ((error!=nil && [error code]==261) || [mimeType isEqualToString:(NSString*)svgMimeType])

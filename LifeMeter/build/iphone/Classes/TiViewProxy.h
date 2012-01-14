@@ -12,7 +12,7 @@
 
 @protocol TiKeyboardFocusableView
 
-#pragma mark Public LifeMeter APIs.
+#pragma mark Public Alan APIs.
 - (void)focus:(id)args;
 - (void)blur:(id)args;
 

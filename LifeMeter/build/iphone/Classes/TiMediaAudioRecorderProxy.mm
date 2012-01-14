@@ -206,13 +206,13 @@
         NSLog(@"[WARN] Invalid mode for audio recorder... setting to default.");
         newMode = kAudioSessionCategory_RecordAudio;
     }
-	NSLog(@"[WARN] 'LifeMeter.Media.AudioRecorder.audioSessionMode' is deprecated; use 'LifeMeter.Media.audioSessionMode'");
+	NSLog(@"[WARN] 'Alan.Media.AudioRecorder.audioSessionMode' is deprecated; use 'Alan.Media.audioSessionMode'");
 	[[TiMediaAudioSession sharedSession] setSessionMode:newMode];
 }
 
 -(NSNumber*)audioSessionMode
 {
-	NSLog(@"[WARN] 'LifeMeter.Media.AudioRecorder.audioSessionMode' is deprecated; use 'LifeMeter.Media.audioSessionMode'");	
+	NSLog(@"[WARN] 'Alan.Media.AudioRecorder.audioSessionMode' is deprecated; use 'Alan.Media.audioSessionMode'");	
     return [NSNumber numberWithUnsignedInt:[[TiMediaAudioSession sharedSession] sessionMode]];
 }
 

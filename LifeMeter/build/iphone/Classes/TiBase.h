@@ -52,7 +52,7 @@ extern "C" {
 	#define KMETHOD_DEBUG MEMORY_DEBUG
 #endif
 
-// in simulator we redefine to format for LifeMeter Developer console
+// in simulator we redefine to format for Alan Developer console
 
 
 #define TI_INLINE static __inline__
@@ -286,7 +286,7 @@ if ((__x<__minX) || (__x>__maxX)) \
 #define DEFINE_EXCEPTIONS \
 - (void) throwException:(NSString *) reason subreason:(NSString*)subreason location:(NSString *)location\
 {\
-	NSString * exceptionName = [@"org.lifemeter." stringByAppendingString:NSStringFromClass([self class])];\
+	NSString * exceptionName = [@"org.alan." stringByAppendingString:NSStringFromClass([self class])];\
 	NSString * message = [NSString stringWithFormat:@"%@. %@ %@",reason,(subreason!=nil?subreason:@""),(location!=nil?location:@"")];\
 	NSLog(@"[ERROR] %@",message);\
 	if ([NSThread isMainThread]==NO) {\
@@ -296,7 +296,7 @@ if ((__x<__minX) || (__x>__maxX)) \
 \
 + (void) throwException:(NSString *) reason subreason:(NSString*)subreason location:(NSString *)location\
 {\
-	NSString * exceptionName = @"org.lifemeter";\
+	NSString * exceptionName = @"org.alan";\
 	NSString * message = [NSString stringWithFormat:@"%@. %@ %@",reason,(subreason!=nil?subreason:@""),(location!=nil?location:@"")];\
 	NSLog(@"[ERROR] %@",message);\
 	if ([NSThread isMainThread]==NO) {\
@@ -370,28 +370,28 @@ return map;\
 
  //MUST BE NEGATIVE, as it inhabits the same space as UIBarButtonSystemItem
 enum {
-	UILifeMeterNativeItemNone = -1, 
-	UILifeMeterNativeItemSpinner = -2,
-	UILifeMeterNativeItemProgressBar = -3,
+	UIAlanNativeItemNone = -1, 
+	UIAlanNativeItemSpinner = -2,
+	UIAlanNativeItemProgressBar = -3,
 	
-	UILifeMeterNativeItemSlider = -4,
-	UILifeMeterNativeItemSwitch = -5,
-	UILifeMeterNativeItemMultiButton = -6,
-	UILifeMeterNativeItemSegmented = -7,
+	UIAlanNativeItemSlider = -4,
+	UIAlanNativeItemSwitch = -5,
+	UIAlanNativeItemMultiButton = -6,
+	UIAlanNativeItemSegmented = -7,
 	
-	UILifeMeterNativeItemTextView = -8,
-	UILifeMeterNativeItemTextField = -9,
-	UILifeMeterNativeItemSearchBar = -10,
+	UIAlanNativeItemTextView = -8,
+	UIAlanNativeItemTextField = -9,
+	UIAlanNativeItemSearchBar = -10,
 	
-	UILifeMeterNativeItemPicker = -11,
-	UILifeMeterNativeItemDatePicker = -12,
+	UIAlanNativeItemPicker = -11,
+	UIAlanNativeItemDatePicker = -12,
 	
-	UILifeMeterNativeItemInfoLight = -13,
-	UILifeMeterNativeItemInfoDark = -14,
+	UIAlanNativeItemInfoLight = -13,
+	UIAlanNativeItemInfoDark = -14,
 	
-	UILifeMeterNativeItemDisclosure = -15,
+	UIAlanNativeItemDisclosure = -15,
 	
-	UILifeMeterNativeItemContactAdd = -16
+	UIAlanNativeItemContactAdd = -16
 };
 
 

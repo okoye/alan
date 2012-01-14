@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
+    <sdk-version>1.7.5</sdk-version>
     <deployment-targets>
         <target device="mobileweb">false</target>
         <target device="iphone">true</target>
@@ -7,13 +8,13 @@
         <target device="android">true</target>
         <target device="blackberry">false</target>
     </deployment-targets>
-    <id>me.puppet.alan</id>
-    <name>LifeMeter</name>
+    <id>me.lightcurves.alan</id>
+    <name>Alan</name>
     <version>1.0</version>
-    <publisher>Puppet Inc.</publisher>
+    <publisher>LightCurves, Inc.</publisher>
     <url>http://www.alanmobileapp.com</url>
     <description>Alan mobile application.</description>
-    <copyright>2012, Puppet Inc.</copyright>
+    <copyright>2012, LightCurves Inc.</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>

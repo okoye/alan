@@ -540,10 +540,10 @@ bool KrollSetProperty(TiContextRef jsContext, TiObjectRef object, TiStringRef pr
 
 // forward declare these
 
-//@interface LifeMeterObject : NSObject
+//@interface AlanObject : NSObject
 //@end
 
-@interface LifeMeterObject (Private)
+@interface AlanObject (Private)
 -(NSDictionary*)modules;
 @end
 
@@ -561,9 +561,9 @@ void KrollPropertyNames(TiContextRef ctx, TiObjectRef object, TiPropertyNameAccu
 	{
 		id target = [o target];
 		
-		if ([o isKindOfClass:[LifeMeterObject class]])
+		if ([o isKindOfClass:[AlanObject class]])
 		{
-			for (NSString *key in [[(LifeMeterObject*)o modules] allKeys])
+			for (NSString *key in [[(AlanObject*)o modules] allKeys])
 			{
 				TiStringRef value = TiStringCreateWithUTF8CString([key UTF8String]);
 				TiPropertyNameAccumulatorAddName(propertyNames,value);

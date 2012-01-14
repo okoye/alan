@@ -267,13 +267,13 @@ MAKE_SYSTEM_PROP(STATE_PAUSED,AS_PAUSED);
         NSLog(@"[WARN] Invalid mode for audio player... setting to default.");
         newMode = kAudioSessionCategory_SoloAmbientSound;
     }
-	NSLog(@"[WARN] 'LifeMeter.Media.AudioPlayer.audioSessionMode' is deprecated; use 'LifeMeter.Media.audioSessionMode'");
+	NSLog(@"[WARN] 'Alan.Media.AudioPlayer.audioSessionMode' is deprecated; use 'Alan.Media.audioSessionMode'");
 	[[TiMediaAudioSession sharedSession] setSessionMode:newMode];
 }
 
 -(NSNumber*)audioSessionMode
 {
-	NSLog(@"[WARN] 'LifeMeter.Media.AudioPlayer.audioSessionMode' is deprecated; use 'LifeMeter.Media.audioSessionMode'");	
+	NSLog(@"[WARN] 'Alan.Media.AudioPlayer.audioSessionMode' is deprecated; use 'Alan.Media.audioSessionMode'");	
     return [NSNumber numberWithUnsignedInteger:[[TiMediaAudioSession sharedSession] sessionMode]];
 }
 

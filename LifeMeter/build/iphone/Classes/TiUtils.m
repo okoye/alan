@@ -46,7 +46,7 @@ extern NSString * const TI_APPLICATION_RESOURCE_DIR;
 static NSDictionary* encodingMap = nil;
 static NSDictionary* typeMap = nil;
 static NSDictionary* sizeMap = nil;
-static NSString* kDeviceUUIDString = @"com.lifemeter.uuid"; // don't obfuscate
+static NSString* kDeviceUUIDString = @"com.alan.uuid"; // don't obfuscate
 	
 #if 0
 static void getAddrInternal(char* macAddress, const char* ifName) {
