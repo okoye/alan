@@ -10,7 +10,7 @@ var account = require("lib/account");
 //Module state variables
 var local = {};
 local.nav_control = {};
-var resourceDir = Titanium.Filesystem.resourcesDirectory + Titanium.Filesystem.separator;
+var resourceDir = Titanium.Filesystem.resourcesDirectory;
 
 
 //Internal functions
@@ -24,16 +24,16 @@ local.GettingStarted = function(args) {
 	base_win.add(nav);
 		
 	var center_height = Ti.Platform.displayCaps.platformHeight - nav.getHeight();
-	var center_view0 = Ti.UI.createImageView(styling.tutorial_centerview({image: resourceDir + '/images/iphone/step1.png'}));
-	var center_view1 = Ti.UI.createImageView(styling.tutorial_centerview({image: resourceDir + '/images/iphone/step2.png'}));
-	var center_view2 = Ti.UI.createImageView(styling.tutorial_centerview({image: resourceDir + '/images/iphone/step3.png'}));
+	var center_view0 = Ti.UI.createImageView(styling.tutorial_centerview({image: 'images/step1.png'}));
+	var center_view1 = Ti.UI.createImageView(styling.tutorial_centerview({image: 'step2.png'}));
+	var center_view2 = Ti.UI.createImageView(styling.tutorial_centerview({image: 'step3.png'}));
 	var bottom_view = Ti.UI.createView(styling.nav_bottomview());
 	var center_scrollview = Ti.UI.createScrollableView(styling.tutorial_scrollview({
 		views: [center_view0, center_view1, center_view2],
 		showPagingControl: true,
 		height: center_height,
 	}));
-	var continue_button = Ti.UI.createButton(styling.continue_button({backgroundImage: resourceDir + '/images/iphone/continue_btn.png'}));
+	var continue_button = Ti.UI.createButton(styling.continue_button({backgroundImage: resourceDir + 'images/iphone/continue_btn.png'}));
 	nav_root_win.add(center_scrollview);
 	nav_root_win.add(bottom_view);
 	bottom_view.add(continue_button);
