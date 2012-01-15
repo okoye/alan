@@ -8,8 +8,6 @@ var log = require('lib/logger');
 var platformWidth = Titanium.Platform.displayCaps.platformWidth;
 var platformHeight = Titanium.Platform.displayCaps.platformHeight;
 
-var resourceDir = Titanium.Filesystem.resourcesDirectory + Titanium.Filesystem.separator;
-
 log.info('Platform width is '+platformWidth);
 log.info('Platform height is '+platformHeight);
 
@@ -22,14 +20,14 @@ exports = {
 		for (property in properties)
 			navproperty[property] = properties[property];	
 		navproperty.backgroundColor = 'white';
-		navproperty.barImage =  resourceDir + '/images/iphone/top_nav.png';
+		navproperty.barImage =  'images/top_nav.png';
 		return navproperty;
 	},
 	nav_bottomview : function(referenceHeight) {
 		return {
 			backgroundColor: 'white',
 			height: 60,
-			backgroundImage: resourceDir + '/images/iphone/bottom_nav_bg.png',
+			backgroundImage: 'images/bottom_nav_bg.png',
 			layout: 'absolute',
 		};
 	},
@@ -42,7 +40,7 @@ exports = {
 		scrollproperty.pagingControlColor = 'transparent';
 		scrollproperty.pagingControlOpacity = 1;
 		scrollproperty.pagingControlHeight = 43;
-		scrollproperty.backgroundImage = resourceDir + '/images/iphone/center_view_bg.png';
+		scrollproperty.backgroundImage = 'images/center_view_bg.png';
 		return scrollproperty;
 	},
 	tutorial_centerview : function(properties){
@@ -57,14 +55,14 @@ exports = {
 	},
 	continue_button : function(properties) {
 		var button = {};
-		button.backgroundImage = resourceDir + '/images/iphone/continue_btn.png';
+		button.backgroundImage = 'images/continue_btn.png';
 		for (property in properties)
 			button[property] = properties[property];
 			
 		button.width = 172;
 		button.height = 41;
 		button.borderRadius = 5;
-		button.top = 6;
+		button.top = 4.5;
 		return button;
 	},
 	nav_centerview : function(properties){
@@ -72,7 +70,7 @@ exports = {
 		for (property in properties)
 			centerview[property] = properties[property];
 		centerview.height = 368;
-		centerview.backgroundImage = resourceDir + '/images/iphone/center_view_bg.png';
+		centerview.backgroundImage = 'images/center_view_bg.png';
 		return centerview;
 	},
 	text_field : function(properties){
