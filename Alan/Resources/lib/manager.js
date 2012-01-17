@@ -4,19 +4,25 @@
  * Responsible for managing data collection and processing elements.
  */
 
-var collections = require("lib/collector.js");
-var processing = require("lib/processor.js");
-var classifier = require("lib/classifier.js");
+var collections = require("lib/collector");
+var processing = require("lib/processor");
+var trainer = require("lib/trainer");
 var log = require('lib/logger');
 
+var collector = {};
+var processor = {};
+var debug = {};
+
 exports.initialize = function(){
-	//poll collector movement every n-seconds, then send data to processor.
-	var collector = collector.Collector({
-		context_period: 360000,
-		movement_period: 6000,
-		proximity_period: 60000,
+	log.debug('Initializing collector routine');
+	collector = new collections.Collector({
+		context_period: 1800000, //30 mins
+		movement_period: 60000, //60 secs
+		proximity_period: 3600000, //1 hr
 	});
-	var processor = processing.Processor({
+	log.debug('Collector status: '+collector.status());
+	log.debug('Initalizing processor routine');
+	processor = new processing.Processor({
 		success: function(data){
 			log.info('Sucessful classification'); //TODO: store feedback
 		},
@@ -24,10 +30,17 @@ exports.initialize = function(){
 			log.info('Failed classification'); //TODO: store feedback
 		},
 	});
-	//setInterval(collector.getMovement)
-	collector.getReadings(function(data){
-		log.debug('Returned sensor data: '+JSON.stringify(data));
-	});
-}
+	foreground();
+	//TODO: start trainer.
+	setInterval(foreground, 30000); //TODO: Support background and foreground services.
+	return collector.status();
+};
+
+var foreground = function(){
+	log.debug('Firing foreground service.');
+	var data = collector.getReadings();
+	log.debug('Collected data '+JSON.stringify(data));
+	processor.process(data);
+};
 
 

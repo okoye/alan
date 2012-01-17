@@ -6,6 +6,7 @@
 var styling = require("lib/styles");
 var log = require("lib/logger");
 var account = require("lib/account");
+var manager = require("lib/manager");
 
 //Module state variables
 var local = {};
@@ -127,6 +128,8 @@ exports.AppWindow = function(args){
 
 exports.TrainWindow = function(args){
 	log.info('Creating train window');
+	var done = "Close the application and go about normal. It will work in the background learning what walking, running, sitting, etc...is";
+	var thanks = "Thank you again\n -Alan";
 	var train_window = Ti.UI.createWindow({
 		backgroundColor: 'white',
 		backgroundImage: 'images/center_view_bg.png',
@@ -140,13 +143,19 @@ exports.TrainWindow = function(args){
 		width: 92
 	});
 	
+	var text0 = Ti.UI.createLabel({
+		font: {fontSize: 14, fontFamily: 'DroidSans'},
+		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	});
+	
 	var text1 = Ti.UI.createLabel({
 		//opacity: 0,
 		text: 'Thank you for coming this far. We are glad you can take part in the development process of an amazing app, Alan.',
 		top: 19,
 		height: 55,
 		width: 275,
-		font: {fontSize: 14, fontFamily: 'DroidSans'},
+		font: {fontSize: 14, fontFamily: 'Arial'},
+		color: '#777',
 		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 	});
 	
@@ -155,20 +164,46 @@ exports.TrainWindow = function(args){
 		top: 10,
 		height: 55,
 		width: 275,
-		font: {fontSize: 14, fontFamily: 'DroidSans'},
+		font: {fontSize: 14, fontFamily: 'Arial'},
+		color: '#777',
 		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 	});
 	
-	var bottom_container = Ti.UI.createView(styling.nav_bottomview({
-		top: 180
-	}));
-	bottom_container.add(Ti.UI.createButton(styling.continue_button({
-		backgroundImage: 'images/start_btn.png',
-	})));
-	train_window.add(logo);
-	train_window.add(text1);
-	train_window.add(text2);
+	var bottom_container = Ti.UI.createView(styling.nav_bottomview());
+	var body_container = Ti.UI.createView({
+		backgroundImage: 'images/center_view_bg.png',
+		height: 410,
+		layout: 'vertical',
+	})
+	var start_button = Ti.UI.createButton(styling.continue_button({backgroundImage: 'images/start_btn.png'}));
+	var close_button = Ti.UI.createButton(styling.continue_button({backgroundImage: 'images/close_btn.png'}));
+	bottom_container.add(start_button);
+	body_container.add(logo);
+	body_container.add(text0);
+	body_container.add(text1);
+	body_container.add(text2);
+	train_window.add(body_container);
 	train_window.add(bottom_container);
 	
+	//Event handler routines.
+	start_button.addEventListener('click', function(evt){
+		if(manager.initialize())
+		{
+			text0.top = 19;
+			text0.height = 10;
+			text0.width = 92;
+			text0.color = '#777';
+			text0.text = "DONE!";
+			text1.text = done;
+			text2.text = thanks;
+			bottom_container.remove(start_button);
+			bottom_container.add(close_button);
+		}
+	});
+	close_button.addEventListener('click', function(evt){
+		Ti.Platform.openURL('http://www.alanapp.com');
+	})
+	
 	train_window.open();
+	
 };

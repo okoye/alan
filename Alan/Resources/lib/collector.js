@@ -15,15 +15,19 @@ var gps = {};
 var wifi = false;
 var proximity = "";
 var ready = false;
-var movement_callback = {};
+var accelerometer = [];
 
 function Collector(properties){
+	
+	log.info('Collector class properties being set')
 	this.context_period = (properties.context_period) ? properties.context_period:360000;
 	this.movement_period = (properties.movement_period) ? properties.movement_period:3000;
 	this.proximity_period = (properties.proximity_period) ? properties.proximity_period:60000;
 	this.last_gps_update = 0;
 	this.last_wifi_update = 0;
 	this.last_movement_update = 0;
+	
+	log.info('Collector class properties set succesfully. '+JSON.stringify(this));
 	
 	
 	//setup some iphone specific settings.
@@ -56,7 +60,12 @@ Collector.prototype.start = function(){
 		setInterval(this.sampleWifi, this.context_period);
 		setInterval(this.sampleProximity, this.proximity_period);
 		setInterval(this.sampleGPS, this.context_period);
+		this.sampleAccelerometer();
 	}
+	return ready;
+};
+
+Collector.prototype.status = function(){
 	return ready;
 };
 
@@ -66,7 +75,8 @@ Collector.prototype.gpsCallback = function(e){
 		log.info('GPSCallback could not retrieve information '+JSON.stringify(e.error));
 		return;
 	}
-	this._gpsHandler(e);
+	gpsHandler(e);
+	this.last_gps_update = (new Date).getTime();
 }
 
 Collector.prototype.sampleWifi = function(){
@@ -83,6 +93,7 @@ Collector.prototype.sampleGPS = function(){
 	var timestamp = (new Date).getTime();
 	if ((timestamp - this.last_gps_update) < (this.context_period - 1000)){
 		//we took a gps reading very recently, dont take another.
+
 	} else{
 		//read gps position again.
 		Ti.Geolocation.getCurrentPosition( function(e){
@@ -90,7 +101,8 @@ Collector.prototype.sampleGPS = function(){
 				log.info('Could not retreive location '+JSON.stringify(e.error));
 				return;
 			}
-			this._gpsHandler(e);
+			gpsHandler(e);
+			this.last_gps_update = (new Date).getTime();
 		});
 	}
 };
@@ -99,26 +111,35 @@ Collector.prototype.sampleProximity = function(){
 	//Check proximity sensor reading.
 };
 
-Collector.prototype.getReadings = function(callback){
-	//get accelerometer data.
-	var accelerometer = [];
-	var reference = Ti.Accelerometer.addEventListener('update', function(e){
-		log.debug('Accelerometer fired '+JSON.stringify(e));
-		accelerometer.push(e);
+Collector.prototype.sampleAccelerometer = function(){
+	accelerometer = [];
+	var accCallback = function(e){
+		if (accelerometer.length <= 1000){
+			accelerometer.push({x: e.x, y: e.y, z: e.z, timestamp: e.timestamp});
+		}
+		else{
+			Ti.App.fireEvent('alan:finishedAccelerometerSampling', {length: accelerometer.length});
+		}
+	};
+	var ref = Ti.Accelerometer.addEventListener('update', accCallback);
+	
+	Ti.App.addEventListener('alan:finishedAccelerometerSampling', function(e){
+		Ti.Accelerometer.removeEventListener('update', accCallback);
 	});
-	setTimeout(function(){
-		Ti.Accelerometer.removeEventListener('update', reference);
-		callback({
-			movement: accelerometer,
-			gps: gps,
-			wifi: wifi,
-			proximity: proximity
-		});
-	}, 500);
 	
 };
 
-Collector.prototype._gpsHandler = function(e){
+Collector.prototype.getReadings = function(callback){
+	var temp_buffer = accelerometer;
+	this.sampleAccelerometer();
+	return {
+		accelerometer: temp_buffer,
+		gps: gps,
+		wifi: wifi,
+	};
+};
+
+var gpsHandler = function(e){
 	
 	log.debug('_gpsHandler called.');
 	gps.longitude = e.coords.longitude;
@@ -131,5 +152,6 @@ Collector.prototype._gpsHandler = function(e){
 	gps.altitude_accuracy = e.coords.altitude_accuracy;
 	
 	log.info('Sampled GPS '+JSON.stringify(gps));
-	this.last_gps_update = (new Date).getTime();
 }
+
+exports.Collector =  Collector;
