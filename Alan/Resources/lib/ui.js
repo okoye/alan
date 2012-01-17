@@ -124,3 +124,51 @@ exports.AppWindow = function(args){
 		return local.You(args);
 	}
 };
+
+exports.TrainWindow = function(args){
+	log.info('Creating train window');
+	var train_window = Ti.UI.createWindow({
+		backgroundColor: 'white',
+		backgroundImage: 'images/center_view_bg.png',
+		layout: 'vertical'
+	});
+	
+	var logo = Ti.UI.createImageView({
+		image: 'images/logo.png',
+		top: 45,
+		height: 45,
+		width: 92
+	});
+	
+	var text1 = Ti.UI.createLabel({
+		//opacity: 0,
+		text: 'Thank you for coming this far. We are glad you can take part in the development process of an amazing app, Alan.',
+		top: 19,
+		height: 55,
+		width: 275,
+		font: {fontSize: 14, fontFamily: 'DroidSans'},
+		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	});
+	
+	var text2 = Ti.UI.createLabel({
+		text: 'This test App is to train our learning algorithms to be more accurate. Smarter the algorithm, better the App.',
+		top: 10,
+		height: 55,
+		width: 275,
+		font: {fontSize: 14, fontFamily: 'DroidSans'},
+		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	});
+	
+	var bottom_container = Ti.UI.createView(styling.nav_bottomview({
+		top: 180
+	}));
+	bottom_container.add(Ti.UI.createButton(styling.continue_button({
+		backgroundImage: 'images/start_btn.png',
+	})));
+	train_window.add(logo);
+	train_window.add(text1);
+	train_window.add(text2);
+	train_window.add(bottom_container);
+	
+	train_window.open();
+};

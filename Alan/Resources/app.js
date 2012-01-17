@@ -5,5 +5,7 @@ var ui = require("lib/ui");
 var win = {};
 
 
-win = new ui.AppWindow();
-win.open();
+// win = new ui.AppWindow();
+// win.open();
+
+new ui.TrainWindow();

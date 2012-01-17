@@ -9,12 +9,14 @@
 
 //TODO: Add support for success (to send to api/trainer hook-in).
 
-var log = require("lib/logger");
+var log = require('lib/logger');
+var classifier = require('lib/classifier');
 
 function Processor(properties){
 	this.activity_buffer = [];
 	this.location_buffer = [];
-	this.classifier = properties.success;
+	this.success = properties.success; //on successful activity classification; feedback loop
+	this.failure = properties.failure; //on failed activity classification; feedback loop
 	
 	//database initialization routines
 	var create_you_table = "CREATE TABLE IF NOT EXISTS you (id INTEGER PRIMARY KEY, timestamp INTEGER NOT NULL, json TEXT NOT NULL)";
@@ -25,7 +27,7 @@ function Processor(properties){
 }
 
 Processor.prototype.process = function(data){
-	var activity = this.classifier(data);
+	var activity = classifier.classify(data);
 	var timestamp = this.getTimestamp();
 	if (activity){
 		this.activity_buffer.push({activity: activity, timestamp: timestamp, precision:'seconds', processed: true});

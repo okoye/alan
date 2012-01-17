@@ -23,13 +23,15 @@ exports = {
 		navproperty.barImage =  'images/top_nav.png';
 		return navproperty;
 	},
-	nav_bottomview : function(referenceHeight) {
-		return {
-			backgroundColor: 'white',
-			height: 60,
-			backgroundImage: 'images/bottom_nav_bg.png',
-			layout: 'absolute',
-		};
+	nav_bottomview : function(properties) {
+		var bottomview = {};
+		bottomview.backgroundColor = 'white';
+		bottomview.height = 50;
+		bottomview.backgroundImage = 'images/bottom_nav_bg.png';
+		bottomview.layout = 'absolute';
+		for (property in properties)
+			bottomview[property] = properties[property];
+		return bottomview;
 	},
 	tutorial_scrollview : function(properties) {
 		var scrollproperty = {};
