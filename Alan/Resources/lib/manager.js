@@ -35,6 +35,7 @@ exports.initialize = function(){
 	foreground();
 	//TODO: start trainer.
 	foregroundId = foreground();
+	background();
 	return collector.status();
 };
 
@@ -62,7 +63,7 @@ var background = function(){
 			
 		if (utility.isOS4_Plus()){
 			log.debug('Yup, now registering background service');
-			var service = Ti.App.iOS.registerBackgroundService({url: 'background.js'});
+			var service = Ti.App.iOS.registerBackgroundService({url: 'lib/background.js'});
 		}
 	});
 	
