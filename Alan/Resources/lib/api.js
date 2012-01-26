@@ -1,13 +1,18 @@
 /**
  * @author Chuka Okoye
- * API management
+ * API abstraction.
+ * 
+ * live: api.alanapp.com
+ * debug: api.thepuppetprojects.com
  */
 
 var log = require('lib/logger');
 
-var base = 'http://api.rstallion.com';
 
-exports.createAccount = function(email, password, callback){
+var base = 'http://api.thepuppetprojects.com'; //FIXME
+var local = {};
+
+local.createAccount = function(email, password, callback){
 	log.info('Sending email & password to api');
 	
 	var conn = Ti.Network.createHTTPClient({
@@ -22,7 +27,6 @@ exports.createAccount = function(email, password, callback){
 			}
 		},
 		onerror: function(e){
-			//TODO: write to persistent log
 			log.debug('An error occured when creating account');
 			log.debug(JSON.stringify(e));
 			callback({status: 'error', message:'Cannot connect to the Alan network at this time.', data: JSON.stringify(e)});
@@ -35,3 +39,28 @@ exports.createAccount = function(email, password, callback){
 		password: password 
 	}));
 };
+local.train = function(body, headers){
+	log.info('Sending training data to api');
+	
+	var conn = Ti.Network.createHTTPClient({
+		onload: function(e){
+			if (this.status === 204)
+				callback({status: 'success', data: JSON.parse(this.responseText)});
+			else
+				callback({status: 'error', message: 'Experiencing issues contacting Alan network'});
+		},
+		onerror: function(e){
+			log.debug('An error occured when sending training data');
+			log.debug(JSON.stringify(e));
+			callback({status: 'error', message: 'Cannot send training data at this time', data: JSON.stringify(e)});
+		}
+	});
+	conn.open('POST', base+'/train');
+	for (key in headers){
+		conn.setRequestHeader(key, headers[key]);
+	}
+	conn.send(JSON.stringify(body));
+};
+exports.createAccount = local.createAccount;
+exports.login = local.createAccount;
+exports.train = local.train;

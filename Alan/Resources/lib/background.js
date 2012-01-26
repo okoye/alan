@@ -19,7 +19,7 @@ var processor = new processing.Processor({
 			log.info('Sucessful classification'); //TODO: store feedback
 		},
 		failure: function(data){
-			log.info('Failed classification'); //TODO: store feedback
+			log.info('Failed classification');
 		},
 });
 

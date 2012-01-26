@@ -25,10 +25,7 @@ function Collector(properties){
 	this.proximity_period = (properties.proximity_period) ? properties.proximity_period:60000;
 	this.last_gps_update = 0;
 	this.last_wifi_update = 0;
-	this.last_movement_update = 0;
-	
-	log.info('Collector class properties set succesfully. '+JSON.stringify(this));
-	
+	this.last_movement_update = 0;	
 	
 	//setup some iphone specific settings.
 	Ti.Geolocation.preferredProvider = "gps";

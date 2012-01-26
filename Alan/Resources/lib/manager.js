@@ -1,7 +1,7 @@
 /**
  * @author Chuka Okoye
  * 
- * Responsible for managing data collection and processing elements.
+ * Responsible for managing foreground and background collection logic.
  */
 
 var collections = require("lib/collector");
@@ -15,7 +15,7 @@ var processor = {};
 var debug = {};
 var foregroundId;
 
-exports.initialize = function(){
+exports.initialize = function(training){
 	log.debug('Initializing collector routine');
 	collector = new collections.Collector({ //TODO: refactor for background.js
 		context_period: 1800000, //30 mins
@@ -32,10 +32,12 @@ exports.initialize = function(){
 			log.info('Failed classification'); //TODO: store feedback
 		},
 	});
-	foreground();
-	//TODO: start trainer.
 	foregroundId = foreground();
 	background();
+	
+	if (training)
+		trainer.start();
+	
 	return collector.status();
 };
 

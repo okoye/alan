@@ -187,7 +187,7 @@ exports.TrainWindow = function(args){
 	
 	//Event handler routines.
 	start_button.addEventListener('click', function(evt){
-		if(manager.initialize())
+		if(manager.initialize(true))
 		{
 			text0.top = 19;
 			text0.height = 10;
@@ -202,7 +202,7 @@ exports.TrainWindow = function(args){
 	});
 	close_button.addEventListener('click', function(evt){
 		Ti.Platform.openURL('http://www.alanapp.com');
-	})
+	});
 	
 	train_window.open();
 	
