@@ -19,7 +19,6 @@ var accelerometer = [];
 
 function Collector(properties){
 	
-	log.info('Collector class properties being set')
 	this.context_period = (properties.context_period) ? properties.context_period:360000;
 	this.movement_period = (properties.movement_period) ? properties.movement_period:3000;
 	this.proximity_period = (properties.proximity_period) ? properties.proximity_period:60000;
@@ -49,6 +48,7 @@ function Collector(properties){
 		}
 	}
 	this.start();
+	log.info('Collector initialization complete.');
 }
 
 Collector.prototype.start = function(){

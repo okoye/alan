@@ -6,6 +6,7 @@
  */
 
 var api = require('lib/api');
+var log = require('lib/logger');
 
 var train_id = 'chuka'; //TODO
 
@@ -42,11 +43,13 @@ var initialize = function(){
 var getNextBatch = function(){
 	var buffer = [];
 	var db = Ti.Database.open('alan.sqlite');
-	var rows = db.execute('SELECT * FROM READINGS WHERE id > '+current_record); //TODO optimize retrieval
+	//var select_statement = 'SELECT * FROM READING'; //WHERE id >= '+current_record();
+	//log.debug(select_statement);
+	var rows = db.execute('SELECT * FROM READING');
 	log.info('READINGS row count: '+rows.getRowCount());
 	for (var i=0; (i < 300 && rows.isValidRow()); i++){
 		buffer.push(JSON.parse(rows.fieldByName('json')));
-		//TODO: update current record.
+		current_record(rows.fieldByName('id'));
 		rows.next();
 	}
 	rows.close();
