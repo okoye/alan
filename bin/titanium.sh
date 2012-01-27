@@ -6,9 +6,9 @@
 PROJECT_NAME=${PROJECT_NAME}
 PROJECT_ROOT=${PROJECT_ROOT:-../}
 APP_DEVICE=${DEVICE_TYPE}
-IPHONE_SDK_VERSION="4.2"
+IPHONE_SDK_VERSION="5.0"
 TI_SDK_VERSION="1.8.0.1"
-TI_DIR="/Library/Application\ Support/Titanium"
+TI_DIR="/Users/chuka/Library/Application\ Support/Titanium"
 TI_ASSETS_DIR="${TI_DIR}/mobilesdk/osx/${TI_SDK_VERSION}"
 TI_IPHONE_DIR="${TI_ASSETS_DIR}/iphone"
 TI_BUILD="${TI_IPHONE_DIR}/builder.py"
