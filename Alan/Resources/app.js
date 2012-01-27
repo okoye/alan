@@ -13,5 +13,6 @@
 //new ui.TrainWindow();
 
 //Test session
-Ti.include('test/tests.js');
+var tests = require('test/tests');
+tests.run();
 
