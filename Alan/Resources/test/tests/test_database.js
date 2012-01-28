@@ -48,6 +48,14 @@ exports.run = function(){
        it('should get no results', function(){
           expect(db.fetchId('test_database', 100).length).toEqual(0);
        });
+       
+       it('should get 3 results', function(){
+          db.insert(0, {test: 'object'}, 'test_database');
+          db.insert(0, {test: 'object'}, 'test_database');
+          db.insert(0, {test: 'object'}, 'test_database');
+          db.insert(0, {test: 'object'}, 'test_database');
+          expect(db.fetchValuesGreater('test_database', 1).length).toEqual(3); //not zero indexed
+       });
     });
     
 };

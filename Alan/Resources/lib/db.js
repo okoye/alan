@@ -43,7 +43,7 @@ exports.fetchAll = function(table){
     var rows = db.execute(statement);
     var result = [];
     var counter = 0;
-    while (rows.isValidRow() && counter < HARD_LIMIT){
+    while (rows.isValidRow() && counter < HARD_LIMIT){ //TODO: refactor
         result.push({
             id: rows.fieldByName('id'),
             timestamp: rows.fieldByName('timestamp'),
@@ -64,7 +64,7 @@ exports.fetchId = function(table, id){
   var rows = db.execute(statement, id);
   var counter = 0;
   var result = [];
-  while (rows.isValidRow() && counter < HARD_LIMIT){
+  while (rows.isValidRow() && counter < HARD_LIMIT){ //TODO: refactor
       result.push({
           id: rows.fieldByName('id'),
           timestamp: rows.fieldByName('timestamp'),
@@ -76,8 +76,24 @@ exports.fetchId = function(table, id){
   rows.close();
   db.close();
   return result;
-  return result;  
 };
 exports.fetchValuesGreater = function(table, id){
-    
-}
+  log.info('Fetching all data greater than '+id+' in '+table);
+  var db = Ti.Database.open(DATABASE_NAME);
+  statement = "SELECT * FROM "+table+" WHERE id>?";
+  var rows = db.execute(statement, id);
+  var counter = 0;
+  var result = [];
+  while (rows.isValidRow() && counter < HARD_LIMIT){ //TODO: refactor
+      result.push({
+          id: rows.fieldByName('id'),
+          timestamp: rows.fieldByName('timestamp'),
+          json: rows.fieldByName('json')
+      });
+      counter += 1;
+      rows.next();
+  } 
+  rows.close();
+  db.close();
+  return result;
+};
