@@ -1,8 +1,13 @@
-// this sets the background color of the master UIView (when there are no windows/tab groups on it)
-// Titanium.UI.setBackgroundColor('#000');
-// 
-//var ui = require("lib/ui");
-//var win = {};
+/**
+ * @author Chuka Okoye
+ * 
+ * Main app module that controls what type of application launches: train, test, or live.
+ */
+
+Titanium.UI.setBackgroundColor('#000');
+
+var ui = require("lib/ui");
+var win = {};
 
 
 //Live Session

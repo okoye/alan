@@ -133,6 +133,8 @@ Collector.prototype.getReadings = function(callback){
 		accelerometer: temp_buffer,
 		gps: gps,
 		wifi: wifi,
+		batteryLevel: Ti.Platform.getBatteryLevel(),
+		memoryLevel: Ti.Platform.getAvailableMemory(),
 	};
 };
 

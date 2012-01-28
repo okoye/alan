@@ -32,7 +32,7 @@ Processor.prototype.process = function(data){
 		this.activity_buffer.push({readings: data, timestamp: timestamp, precision: 'seconds', processed: false});
 	}
 		
-	if (this.activity_buffer.length >= 10){
+	if (this.activity_buffer.length >= 0){
 		log.debug('Calling updateDB');
 		this.updateDB();
 		Ti.App.fireEvent('alan:sensorReadingsUpdate', {length: this.activity_buffer.length});

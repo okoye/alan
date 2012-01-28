@@ -11,6 +11,7 @@ var log = require('lib/logger');
 
 var base = 'http://api.thepuppetprojects.com'; //FIXME
 var local = {};
+var headers = {};
 
 local.createAccount = function(email, password, callback){
 	log.info('Sending email & password to api');
@@ -39,7 +40,7 @@ local.createAccount = function(email, password, callback){
 		password: password 
 	}));
 };
-local.train = function(body, headers){
+local.train = function(body, callback){
 	log.info('Sending training data to api');
 	
 	var conn = Ti.Network.createHTTPClient({
@@ -52,7 +53,8 @@ local.train = function(body, headers){
 		onerror: function(e){
 			log.debug('An error occured when sending training data');
 			log.debug(JSON.stringify(e));
-			callback({status: 'error', message: 'Cannot send training data at this time', data: JSON.stringify(e)});
+			if (callback)
+			 callback({status: 'error', message: 'Cannot send training data at this time', data: JSON.stringify(e)});
 		}
 	});
 	conn.open('POST', base+'/train');
