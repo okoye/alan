@@ -11,20 +11,15 @@
 
 var log = require('lib/logger');
 var classifier = require('lib/classifier');
-
-//TODO: remove buffering.
+var db = require('lib/db');
 
 function Processor(properties){
 	this.activity_buffer = [];
 	this.success = properties.success; //on successful activity classification; feedback loop
 	this.failure = properties.failure; //on failed activity classification; feedback loop
+	this.TABLE_NAME = 'READINGS';
 	
-	//database initialization routines
-	var create_you_table = "CREATE TABLE IF NOT EXISTS READINGS (id INTEGER PRIMARY KEY, timestamp INTEGER NOT NULL, json TEXT NOT NULL)";
-	var db = Ti.Database.open("alan.sqlite");
-	
-	db.execute(create_you_table);
-	db.close();
+	db.createTable(this.TABLE_NAME);
 }
 
 Processor.prototype.process = function(data){
@@ -46,12 +41,9 @@ Processor.prototype.process = function(data){
 };
 
 Processor.prototype.updateDB = function(){
-	var db = Ti.Database.open("alan.sqlite");
-	var insert_you_statement = "INSERT INTO READINGS (timestamp, json) VALUES (?,?)";
 	for (var i=0; i<this.activity_buffer.length; i++){
-		db.execute(insert_you_statement, this.activity_buffer[i].timestamp, JSON.stringify(this.activity_buffer[i]));
+		db.insert(this.activity_buffer[i].timestamp, this.activity_buffer[i], this.TABLE_NAME);
 	}
-	db.close();
 };
 
 Processor.prototype.shutdown = function(){
