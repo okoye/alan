@@ -7,10 +7,11 @@
 
 var api = require('lib/api');
 var log = require('lib/logger');
+var db = require('lib/db');
 
-var train_id = 'chuka'; //TODO
+var train_id = '';
 
-var current_record = function(current){
+var currentRecord = function(current){
 	//fetch and return current record. if not exist, create and return 0.
 	if (current){
 		Ti.App.Properties.setInt('current_record', current);
@@ -21,40 +22,28 @@ var current_record = function(current){
 	}
 };
 
-//TODO: listen for event from processor, then if on wifi, connect to db, retrieve result then send!
-
 var initialize = function(){
+    if (Ti.App.Properties.getString('train_id', 'null') == 'null'){
+        //TODO Fetch from API and store in App.Properties and train_id
+        train_id = 'chuka';
+    }
+    else{
+        train_id = Ti.App.Properties.getString('train_id');
+    }
 	Ti.App.addEventListener('alan:sensorReadingsUpdate', function(evt){
 		log.debug('Sensor Readings Update Fired Successfully');
 		if (Ti.Network.networkType == Ti.Network.NETWORK_WIFI || Ti.Network.networkType == Ti.Network.NETWORK_LAN){
 			log.info('Connected to Wifi, sending aggregated data');
-			var batch = getNextBatch();
-			while(batch.length > 0){
-				api.train({'measurements': batch, 'train_id': train_id});
-				batch = getNextBatch(rows); //batch of 300 readings.
+			var batch = db.fetchValuesGreater('READINGS', currentRecord());
+			var processed_batch = [];
+			for(data in batch){
+			    processed_batch.push(JSON.parse(data.json));
 			}
+			api.train({'measurements': processed_batch, 'train_id': train_id});
 		}
 		else{
 			log.info('Not connected to Wifi or LAN, skipping.');
 		}
 	});
 };
-
-var getNextBatch = function(){
-	var buffer = [];
-	var db = Ti.Database.open('alan.sqlite');
-	//var select_statement = 'SELECT * FROM READING'; //WHERE id >= '+current_record();
-	//log.debug(select_statement);
-	var rows = db.execute('SELECT * FROM READING');
-	log.info('READINGS row count: '+rows.getRowCount());
-	for (var i=0; (i < 300 && rows.isValidRow()); i++){
-		buffer.push(JSON.parse(rows.fieldByName('json')));
-		current_record(rows.fieldByName('id'));
-		rows.next();
-	}
-	rows.close();
-	db.close();
-	return buffer;
-};
-
 exports.start = initialize;
