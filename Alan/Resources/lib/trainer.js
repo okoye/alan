@@ -42,12 +42,27 @@ exports.start = function(){
 			}
 			var current_id = batch.pop().id;
 			log.debug(JSON.stringify(processed_batch));
-			//TODO: send in batches of 200
-			api.train({'measurements': processed_batch, 'train_id': train_id}, function(msg){
-			    if (msg.status != 'error'){
-			        currentRecord(current_id);
+			if (processed_batch.length > 200){
+			    var start = 0, end = 200;
+			    var stop = false;
+			    while (!stop){
+			        api.train({'measurements': processed_batch.slice(start, end), train_id: train_id}, function(msg){
+			            currentRecord(current_id);
+			        });
+			        start = end;
+			        end += 200;
+			        if (end >= processed_batch.length){
+			            end = -1;
+			            stop = true;
+			        }
 			    }
-			});
+			}
+			else{
+			    api.train({'measurements': processed_batch, 'train_id': train_id}, function(msg){
+                        currentRecord(current_id);
+                });
+			}
+			
 		}
 		else{
 			log.info('Not connected to Wifi or LAN, skipping.');
