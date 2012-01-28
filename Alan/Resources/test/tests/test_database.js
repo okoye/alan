@@ -6,6 +6,10 @@ exports.run = function(){
           db.createTable('test_database');
        });
        
+       afterEach(function(){
+          db.deleteTable('test_database'); 
+       });
+       
        it('should do nothing.', function(){
           expect(null).toBeNull(); 
        }); 
@@ -39,6 +43,10 @@ exports.run = function(){
          expect(db.fetchId('test_database', 1).length).toEqual(1); 
          var result = db.fetchId('test_database', 1);
          expect(result[0].id).toEqual(1);
+       });
+       
+       it('should get no results', function(){
+          expect(db.fetchId('test_database', 100).length).toEqual(0);
        });
     });
     

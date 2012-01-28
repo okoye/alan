@@ -20,7 +20,11 @@ exports.createTable = function(name){
 exports.deleteTable = function(name){
 	log.info('Dropping table from Alan database');
 	var db = Ti.Database.open(DATABASE_NAME);
-	db.execute('DROP TABLE '+name);
+	try{
+	    db.execute('DROP TABLE '+name);
+	}catch (ex){
+	    log.info('Encountered an error when dropping database. '+ex);
+	}
 	db.close();
 	return true;
 };
@@ -53,6 +57,7 @@ exports.fetchAll = function(table){
     return result;
 };
 exports.fetchId = function(table, id){
+    //Returns ideally 1 result, that is this specific id
   log.info('Fetching datum by specific ID in table '+table);
   var db = Ti.Database.open(DATABASE_NAME);
   statement = "SELECT * FROM "+table+" WHERE id=?";
@@ -73,3 +78,6 @@ exports.fetchId = function(table, id){
   return result;
   return result;  
 };
+exports.fetchValuesGreater = function(table, id){
+    
+}
