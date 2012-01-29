@@ -9,7 +9,7 @@ var collections = require('lib/collector');
 var processing = require('lib/processor');
 
 var collector = new collections.Collector({
-		context_period: 1800000, //30 mins
+		context_period: 7200000, //2 hrs
 		movement_period: 60000, //60 secs
 		proximity_period: 3600000, //1 hr
 });

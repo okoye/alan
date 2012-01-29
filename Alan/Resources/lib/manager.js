@@ -18,7 +18,7 @@ var foregroundId;
 exports.initialize = function(training){
 	log.debug('Initializing collector routine');
 	collector = new collections.Collector({ //TODO: refactor for background.js
-		context_period: 1800000, //30 mins
+		context_period: 3600000, // 1 hr
 		movement_period: 60000, //60 secs
 		proximity_period: 3600000, //1 hr
 	});

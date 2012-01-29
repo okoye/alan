@@ -11,11 +11,13 @@ var log = require('lib/logger');
 var utility = require('lib/utilities');
 
 //Global state variables
-var gps = {};
+var gps = {latitude: 'none', longitude: 'none'};
 var wifi = false;
 var proximity = "";
 var ready = false;
 var accelerometer = [];
+
+//TODO: Re-write/Re-factor into modules.
 
 function Collector(properties){
 	
@@ -42,7 +44,7 @@ function Collector(properties){
 				Ti.UI.createAlertDialog({title: 'Activity Profiler', message: 'Your device has disallowed Alan from running geolocation services'}).show();
 			} else {
 				Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
-				Ti.Geolocation.distanceFilter = 30; //in meters.
+				Ti.Geolocation.distanceFilter = 100; //in meters.
 				ready = true;
 			}
 		}
@@ -59,6 +61,11 @@ Collector.prototype.start = function(){
 		setInterval(this.sampleGPS, this.context_period);
 		this.sampleAccelerometer();
 	}
+	//Some good defaults.
+	this.sampleWifi();
+	this.sampleProximity();
+	this.sampleGPS();
+	
 	return ready;
 };
 
@@ -90,7 +97,7 @@ Collector.prototype.sampleGPS = function(){
 	var timestamp = (new Date).getTime();
 	if ((timestamp - this.last_gps_update) < (this.context_period - 1000)){
 		//we took a gps reading very recently, dont take another.
-
+		log.info('Recent GPS reading taken, not querying gps sensors');
 	} else{
 		//read gps position again.
 		Ti.Geolocation.getCurrentPosition( function(e){
@@ -129,8 +136,6 @@ Collector.prototype.sampleAccelerometer = function(){
 Collector.prototype.getReadings = function(callback){
 	var temp_buffer = accelerometer;
 	this.sampleAccelerometer();
-	log.info('Accelerometer: '+temp_buffer);
-	log.debug('GPS: '+gps);
 	return {
 		accelerometer: temp_buffer,
 		gps: gps,
@@ -150,8 +155,7 @@ var gpsHandler = function(e){
 	gps.accuracy = e.coords.accuracy;
 	gps.speed = e.coords.speed;
 	gps.timestamp = e.coords.timestamp;
-	gps.altitude_accuracy = e.coords.altitude_accuracy;
-	
+	gps.altitude_accuracy = e.coords.altitude_accuracy;	
 	log.info('Sampled GPS '+JSON.stringify(gps));
 }
 
