@@ -10,7 +10,7 @@
     </deployment-targets>
     <id>Alan</id>
     <name>Alan</name>
-    <version>1.0</version>
+    <version>1.0 beta3</version>
     <publisher>chuka</publisher>
     <url>http://www.alanapp.com</url>
     <description>not specified</description>
@@ -35,12 +35,12 @@
             <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
         </orientations>
         <backgroundModes>
-          <mode>location</mode>
+            <mode>location</mode>
         </backgroundModes>
         <requires>
-          <feature>accelerometer</feature>
-          <feature>location-services</feature>
-          <feature>gps</feature>
+            <feature>accelerometer</feature>
+            <feature>location-services</feature>
+            <feature>gps</feature>
         </requires>
     </iphone>
     <android xmlns:android="http://schemas.android.com/apk/res/android"/>
