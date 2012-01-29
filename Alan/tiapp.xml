@@ -34,6 +34,14 @@
             <orientation>Ti.UI.LANDSCAPE_LEFT</orientation>
             <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
         </orientations>
+        <backgroundModes>
+          <mode>location</mode>
+        </backgroundModes>
+        <requires>
+          <feature>accelerometer</feature>
+          <feature>location-services</feature>
+          <feature>gps</feature>
+        </requires>
     </iphone>
     <android xmlns:android="http://schemas.android.com/apk/res/android"/>
     <modules/>

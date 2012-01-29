@@ -30,7 +30,7 @@ function Collector(properties){
 	Ti.Geolocation.preferredProvider = "gps";
 	
 	if (utility.isOS3_2_Plus())
-		Ti.Geolocation.purpose = 'Daily Activity Analysis';
+		Ti.Geolocation.purpose = "For Alan's activity and behavior analysis.";
 	
 	if (Ti.Geolocation.locationServicesEnabled === false){
 		Ti.UI.createAlertDialog({title:'Activity Profiler', message: 'Your device has geolocation turned off. You can enable it in your settings.'}).show();
@@ -129,6 +129,8 @@ Collector.prototype.sampleAccelerometer = function(){
 Collector.prototype.getReadings = function(callback){
 	var temp_buffer = accelerometer;
 	this.sampleAccelerometer();
+	log.info('Accelerometer: '+temp_buffer);
+	log.debug('GPS: '+gps);
 	return {
 		accelerometer: temp_buffer,
 		gps: gps,

@@ -18,7 +18,7 @@ var currentRecord = function(current){
 	}
 	else{
 		var temp = Ti.App.Properties.getString('current_record', 0);
-		return 0;
+		return temp;
 	}
 };
 
@@ -26,7 +26,7 @@ exports.start = function(){
 	Ti.App.addEventListener('alan:sensorReadingsUpdate', function(evt){
 		log.debug('Sensor Readings Update Fired Successfully');
 		if (Ti.Network.networkType == Ti.Network.NETWORK_WIFI || Ti.Network.networkType == Ti.Network.NETWORK_LAN){
-			log.info('Connected to Wifi, sending aggregated data');
+			log.info('Connected to Wifi, sending aggregated data '+currentRecord());
 			var batch = db.fetchValuesGreater('READINGS', currentRecord());
 			var processed_batch = [];
 			var json;
@@ -42,6 +42,7 @@ exports.start = function(){
 			}
 			var current_id = batch.pop().id;
 			log.debug(JSON.stringify(processed_batch));
+			log.debug('Length of processed batch '+processed_batch.length);
 			if (processed_batch.length > 200){
 			    var start = 0, end = 200;
 			    var stop = false;
