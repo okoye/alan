@@ -6,7 +6,7 @@
  */
 
 var log = require('lib/logger');
-var utility = require('lib/utility');
+var utility = require('lib/utilities');
 var processor = require('lib/processor');
 
 var readings = {};
