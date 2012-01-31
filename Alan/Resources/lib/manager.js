@@ -10,6 +10,7 @@ var sal = require('lib/sal');
 var timeouts = 0;
 var SANITY_CHECK = false;
 var DURATION = 30000;
+var CURRENT_MODE = sal.mode.BACKGROUND;
 
 function Manager(properties){
     log.info('Initializing manager routine');
@@ -20,10 +21,10 @@ function Manager(properties){
     SANITY_CHECK = sal.initialize();
 }
 
-var _start = function(mode){
+var _start = function(){
     log.info('Collecting data at '+(new Date).getTime());
-    sal.collect(mode[0]);
-    timeouts = setTimeout(_start, DURATION, mode[0]);
+    sal.collect(CURRENT_MODE);
+    timeouts = setTimeout(_start, DURATION);
 };
 
 //foreground, background callbacks.
@@ -31,13 +32,15 @@ Manager.prototype.start = function(){
     Ti.App.addEventListener('resume', function(e){
         //do something in foreground
         clearTimeout(timeouts);
-        timeouts = setTimeout(_start, DURATION, sal.mode.FOREGROUND);
+        CURRENT_MODE = sal.mode.FOREGROUND;
+        timeouts = setTimeout(_start, DURATION);
         log.info('Initialized foreground services');
     });
     Ti.App.addEventListener('pause', function(e){
        //do something in background 
        clearTimeout(timeouts);
-       timeouts = setTimeout(_start, DURATION, sal.mode.BACKGROUND);
+       CURRENT_MODE = sal.mode.BACKGROUND;
+       timeouts = setTimeout(_start, DURATION);
        log.info('Initialized background services');
     });
     Ti.App.addEventListener('close', function(e){
@@ -48,7 +51,8 @@ Manager.prototype.start = function(){
     Ti.App.addEventListener('alan:resume', function(e){
        //repeat of foreground code 
        clearTimeout(timeouts);
-       timeouts = setTimeout(_start, DURATION, [sal.mode.FOREGROUND]);
+       CURRENT_MODE = sal.mode.FOREGROUND;
+       timeouts = setTimeout(_start, DURATION);
        log.info('Initialized fake foreground services');
     });   
     Ti.App.fireEvent('alan:resume');

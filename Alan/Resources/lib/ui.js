@@ -128,6 +128,9 @@ exports.AppWindow = function(args){
 
 exports.TrainWindow = function(args){
 	log.info('Creating train window');
+	var mgt = new manager.Manager({
+            training: true
+    });
 	var done = "Close the application and go about normal. It will work in the background learning what walking, running, sitting, etc...is";
 	var thanks = "Thank you again\n -Alan";
 	var train_window = Ti.UI.createWindow({
@@ -187,9 +190,6 @@ exports.TrainWindow = function(args){
 	
 	//Event handler routines.
 	start_button.addEventListener('click', function(evt){
-	    var mgt = new manager.Manager({
-	        training: true
-	    });
 		if(mgt.start())
 		{
 			text0.top = 19;
