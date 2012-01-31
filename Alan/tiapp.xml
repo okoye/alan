@@ -10,7 +10,7 @@
     </deployment-targets>
     <id>Alan</id>
     <name>Alan</name>
-    <version>1.0 beta3</version>
+    <version>Beta 3</version>
     <publisher>chuka</publisher>
     <url>http://www.alanapp.com</url>
     <description>not specified</description>
@@ -22,7 +22,7 @@
     <statusbar-hidden>false</statusbar-hidden>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
-    <analytics>true</analytics>
+    <analytics>false</analytics>
     <guid>efcc40af-cf56-4511-92c5-e4802f02e297</guid>
     <iphone>
         <orientations device="iphone">
