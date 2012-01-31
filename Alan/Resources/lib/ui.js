@@ -187,7 +187,10 @@ exports.TrainWindow = function(args){
 	
 	//Event handler routines.
 	start_button.addEventListener('click', function(evt){
-		if(manager.initialize(true))
+	    var mgt = new manager.Manager({
+	        training: true
+	    });
+		if(mgt.start())
 		{
 			text0.top = 19;
 			text0.height = 10;

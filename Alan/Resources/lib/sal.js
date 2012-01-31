@@ -58,11 +58,15 @@ exports.initialize = function(){
     });
     
     log.info('SAL (re)initialization complete');
+    return SANITY_CHECK_SUCCESSFUL;
 };
 
 //start collection in the necessary mode.
-exports.start = function(mode){
+exports.collect = function(mode){
     var result = {};
+    if (!SANITY_CHECK_SUCCESSFUL)
+        return {};
+        
     if (mode == exports.mode.BACKGROUND){
         result.battery = sampleBattery();
         result.memory = sampleMemory();

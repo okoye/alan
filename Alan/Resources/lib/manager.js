@@ -4,75 +4,53 @@
  * Responsible for managing foreground and background collection logic.
  */
 
-var collections = require("lib/collector");
-var processing = require("lib/processor");
-var trainer = require("lib/trainer");
 var log = require('lib/logger');
-var utility = require("lib/utilities");
+var sal = require('lib/sal');
 
-var collector = {};
-var processor = {};
-var debug = {};
-var foregroundId;
+var timeouts = 0;
+var DURATION = 30000;
 
-exports.initialize = function(training){
-	log.debug('Initializing collector routine');
-	collector = new collections.Collector({ //TODO: refactor for background.js
-		context_period: 3600000, // 1 hr
-		movement_period: 60000, //60 secs
-		proximity_period: 3600000, //1 hr
-	});
-	log.debug('Collector status: '+collector.status());
-	log.debug('Initalizing processor routine');
-	processor = new processing.Processor({
-		success: function(data){
-			log.info('Sucessful classification'); //TODO: store feedback
-		},
-		failure: function(data){
-			log.info('Failed classification'); //TODO: store feedback
-		},
-	});
-	foregroundId = foreground();
-	background();
-	
-	if (training)
-		trainer.start();
-	
-	return collector.status();
+function Manager(properties){
+    log.info('Initializing manager routine');
+    if (properties.training){
+        var trainer = require('lib/trainer');
+        trainer.start();
+    }
+    sal.initialize();
+}
+
+var _start = function(mode){
+    log.info('Collecting data at '+(Date).getTime());
+    sal.collect(mode);
+    timeouts = setTimeout(_start, DURATION, mode);
 };
 
-var foreground = function(){
-	log.debug('Firing foreground service.');
-	var data = {};
-	
-	var id = setInterval(function(){
-		data = collector.getReadings();
-		processor.process(data);
-	}, 30000);
-	return id;
+//foreground, background callbacks.
+Manager.prototype.start = function(){
+    Ti.App.addEventListener('resume', function(e){
+        //do something in foreground
+        clearTimeout(timeouts);
+        timeouts = setTimeout(_start, DURATION, sal.mode.FOREGROUND);
+        log.info('Initialized foreground services');
+    });
+    Ti.App.addEventListener('pause', function(e){
+       //do something in background 
+       clearTimeout(timeouts);
+       timeouts = setTimeout(_start, DURATION, sal.mode.BACKGROUND);
+       log.info('Initialized background services');
+    });
+    Ti.App.addEventListener('close', function(e){
+       //shutdown app components. 
+       clearTimeout(timeouts);
+       log.info('Shutting down all services');
+    });
+    Ti.App.addEventListener('alan:resume', function(e){
+       //repeat of foreground code 
+       clearTimeout(timeouts);
+       timeouts = setTimeout(_start, DURATION, sal.mode.FOREGROUND);
+       log.info('Initialized fake foreground services');
+    });   
+    Ti.App.fireEvent('alan:resume');
 };
 
-var background = function(){
-	Ti.App.addEventListener('resume', function(e){
-		log.debug('Running foreground services');
-		foregroundId = foreground();
-	});
-	
-	Ti.App.addEventListener('pause', function(e){
-		log.debug('Running background services');
-		if (foregroundId)
-			clearTimeout(foregroundId);
-			
-		if (utility.isOS4_Plus()){
-			log.debug('Yup, now registering background service');
-			var service = Ti.App.iOS.registerBackgroundService({url: 'lib/background.js'});
-		}
-	});
-	
-	Ti.App.addEventListener('close', function(e){
-		log.debug('Closing application');
-	});
-	
-};
-
-
+exports.Manager = Manager;
