@@ -86,5 +86,6 @@ exports = {
 		for (property in properties)
 			textfield[property] = properties[property];
 		return textfield;
-	}
+	},
+	tabHeight: 50,
 };

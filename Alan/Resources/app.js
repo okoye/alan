@@ -11,13 +11,12 @@ var win = {};
 
 
 //Live Session
-// win = new ui.AppWindow();
-// win.open();
+win = new ui.AppWindow();
 
 //Training session
-new ui.TrainWindow();
+//new ui.TrainWindow();
 
 //Test session
-//var tests = require('test/tests');
-//tests.run();
+// var tests = require('test/tests');
+// tests.run();
 

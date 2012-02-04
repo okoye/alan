@@ -7,11 +7,13 @@ var styling = require("lib/styles");
 var log = require("lib/logger");
 var account = require("lib/account");
 var manager = require("lib/manager");
+var alan = require('ui/alanWindow');
 
 //Module state variables
 var local = {};
 local.nav_control = {};
 
+//TODO: cleanup and refactor with app.js
 
 //Internal functions
 local.GettingStarted = function(args) {
@@ -46,7 +48,6 @@ local.GettingStarted = function(args) {
 		});
 		
 		choice_dialog.addEventListener('click', function(evt){
-			log.info('Event details '+evt.button+' || '+evt.index);
 			switch(evt.index){
 				case 0:
 					log.info('Choice dialog is executing CreateAccount action')
@@ -68,8 +69,8 @@ local.GettingStarted = function(args) {
 };
 
 local.Alan = function(args) {
-	log.info('Creating you window');
-	return Ti.UI.createWindow({backgroundColor: 'white'});
+	log.info('Now executing Alan');
+	alan.createAlanWindow();
 };
 
 local.CreateAccount = function(args) {
@@ -81,16 +82,25 @@ local.CreateAccount = function(args) {
 	var center_view = Ti.UI.createView(styling.nav_centerview({layout: 'vertical'}));
 	var footer_view = Ti.UI.createView(styling.nav_bottomview());
 	var continue_button = Ti.UI.createButton(styling.continue_button());
+	var logo = Ti.UI.createImageView({
+	    image: 'images/logo.png',
+	    top: 45,
+	    height: 45,
+	    width: 92
+	});
 	var email = Ti.UI.createTextField(styling.text_field({
-		top: 60,
+		top: 10,
 		hintText: 'Email',
-		backgroundColor: 'grey'
+		backgroundColor: 'grey',
+		borderRadius: 1,
 	}));
 	var password = Ti.UI.createTextField(styling.text_field({
-		top: 70,
+		top: 10,
 		passwordMask: true,
 		hintText: 'Password',
+		borderRadius: 1,
 	}));
+	center_view.add(logo);
 	center_view.add(email);
 	center_view.add(password);
 	footer_view.add(continue_button);
@@ -118,11 +128,12 @@ local.Login = function(args) {
 };
 
 exports.AppWindow = function(args){
-	//Have we been instantiated in the past before?
+	var win;
 	if (!Ti.App.Properties.getBool('instantiated', false)){
-		return local.GettingStarted(args);
+		win = local.GettingStarted(args);
+		win.open();
 	} else{
-		return local.You(args);
+		local.Alan(args);
 	}
 };
 

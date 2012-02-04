@@ -28,9 +28,9 @@ local.createAccount = function(email, password, callback){
 			}
 		},
 		onerror: function(e){
-			log.debug('An error occured when creating account');
+			log.debug('An error occured when creating account: '+this.status);
 			log.debug(JSON.stringify(e));
-			callback({status: 'error', message:'Cannot connect to the Alan network at this time.', data: JSON.stringify(e)});
+			callback({status: 'error', message:'Cannot connect to the Alan network at this time.', data: JSON.stringify(this.responseText)});
 		}
 	});
 	conn.open('POST', base+'/accounts');
@@ -39,6 +39,7 @@ local.createAccount = function(email, password, callback){
 		email: email,
 		password: password 
 	}));
+	return conn;
 };
 local.train = function(body, callback){
 	log.info('Sending training data to api');
@@ -58,10 +59,8 @@ local.train = function(body, callback){
 		}
 	});
 	conn.open('POST', base+'/train');
-	for (key in headers){
-		conn.setRequestHeader(key, headers[key]);
-	}
 	conn.send(JSON.stringify(body));
+	return conn;
 };
 exports.createAccount = local.createAccount;
 exports.login = local.createAccount;
