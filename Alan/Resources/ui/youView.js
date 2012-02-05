@@ -5,5 +5,8 @@
  */
 
 exports.createView = function(_args){
-    return null; //TODO
+    return Ti.UI.createView({
+        height: 300, //TODO: do actual computation
+        backgroundColor: 'blue',
+    });
 };
