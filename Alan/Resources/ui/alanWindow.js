@@ -25,7 +25,7 @@ exports.createAlanWindow = function(_args){
         bottom: 0,
         height: styling.tabHeight,
         backgroundImage: 'images/bottom_nav_bg_alan.png',
-        width: PLATFORM_WIDTH
+        width: PLATFORM_WIDTH,
     }),
     tabWidth = PLATFORM_WIDTH/NUM_TABS,
     tabs = [];
@@ -38,12 +38,11 @@ exports.createAlanWindow = function(_args){
         }),
         inactive_image = _icon+'.png',
         active_image = _icon+'_current.png',
-        dimension = 30,
         icon = Ti.UI.createImageView({
-            height: dimension,
-            width: dimension,
+            height: 45,
+            width: tabWidth,
             image: (_on) ? active_image : inactive_image,
-            bottom: 2
+            bottom: 0
         });
         
         view.on = _on||false;
@@ -58,7 +57,13 @@ exports.createAlanWindow = function(_args){
     var changeTab = function(tabNo){
         for (var i=0, l = tabs.length; i < l; i++){
             if (tabNo === i){
-                log.info();
+                if(!tabs[i].on){
+                    bodyView.fireEvent('alan:changeIndex', {index: i});
+                    tabs[i].toggle();
+                }
+            }
+            else if(tabs[i].on && (tabNo !== i)){
+                tabs[i].toggle();
             }
         }
     };
@@ -67,15 +72,15 @@ exports.createAlanWindow = function(_args){
     tabs.push(createTab('images/bottom_nav_btn_me', function(){
         changeTab(0);
     }, true));
-    tabs.push(createTab('images/bottom_nav_btn_life_meter'), function(){
+    tabs.push(createTab('images/bottom_nav_btn_life_meter', function(){
         changeTab(1);
-    });
-    tabs.push(createTab('images/bottom_nav_btn_rewards'), function(){
+    }));
+    tabs.push(createTab('images/bottom_nav_btn_rewards', function(){
         changeTab(2);
-    });
-    tabs.push(createTab('images/bottom_nav_btn_settings'), function(){
+    }));
+    tabs.push(createTab('images/bottom_nav_btn_settings', function(){
         changeTab(3);
-    });
+    }));
     
     //Tabs to footer view
     for (var i=0; i<tabs.length; i++){
