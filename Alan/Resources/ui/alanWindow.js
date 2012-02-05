@@ -25,11 +25,11 @@ exports.createAlanWindow = function(_args){
         bottom: 0,
         height: styling.tabHeight,
         backgroundImage: 'images/bottom_nav_bg_alan.png',
-        width: PLATFORM_WIDTH,
     }),
     tabWidth = PLATFORM_WIDTH/NUM_TABS,
+    tabHeight = styling.tabHeight,
     tabs = [];
-    
+    log.debug('tabWidth is '+tabWidth);
     var bodyView = myAnalytics.createView();
     
     var createTab = function(_icon, _cb, _on){
@@ -39,12 +39,12 @@ exports.createAlanWindow = function(_args){
         inactive_image = _icon+'.png',
         active_image = _icon+'_current.png',
         icon = Ti.UI.createImageView({
-            height: 45,
+            height: tabHeight,
             width: tabWidth,
+            left: 0,
             image: (_on) ? active_image : inactive_image,
-            bottom: 0
+            bottom: 0,
         });
-        
         view.on = _on||false;
         view.add(icon);
         view.addEventListener('click', _cb);
@@ -86,6 +86,7 @@ exports.createAlanWindow = function(_args){
     for (var i=0; i<tabs.length; i++){
         tabs[i].left = tabWidth * i;
         footerView.add(tabs[i]);
+        log.debug('Tab index added at: '+tabs[i].left);
     }
     
     //Generic method to change tab from whatever current view
