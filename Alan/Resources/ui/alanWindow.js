@@ -4,7 +4,7 @@
  */
 
 var styling = require('lib/styles');
-var myAnalytics = require('ui/youView');
+var myAnalytics = require('ui/analyticsView');
 var log = require('lib/logger');
 var imageView = require('com.obscure.imageview_ex');
 
@@ -18,14 +18,8 @@ exports.createAlanWindow = function(_args){
         exitOnClose: true,
         orientationModes: [Ti.UI.PORTRAIT],
     }),
-    headerView = Ti.UI.iOS.createToolbar({  //TODO: Autochanging top label
-         backgroundImage: 'images/top_nav.png',
-         width: PLATFORM_WIDTH,
-         height: 40,
-         top: 0,
-         borderTop: false,
-         borderBottom: false,
-    });
+    headerHeight = 45,
+    headerView = Ti.UI.createView(),
     footerView = Ti.UI.createView({
         bottom: 0,
         height: styling.tabHeight,
@@ -61,7 +55,8 @@ exports.createAlanWindow = function(_args){
         for (var i=0, l = tabs.length; i < l; i++){
             if (tabNo === i){
                 if(!tabs[i].on){
-                    bodyView.fireEvent('alan:changeIndex', {index: i});
+                    bodyView.fireEvent('alan:changeBody', {no: i});
+                    headerView.fireEvent('alan:changeTitle', {no: i});
                     tabs[i].toggle();
                 }
             }
@@ -69,6 +64,30 @@ exports.createAlanWindow = function(_args){
                 tabs[i].toggle();
             }
         }
+    };
+    
+    //Add callbacks, text and other elements to headerview.
+    var updateHeader = function(){
+        headerView.backgroundImage = 'images/top_nav.png';
+        headerView.height = headerHeight;
+        headerView.top = 0;
+        headerView.width = PLATFORM_WIDTH;
+        
+        var titleLabel = Ti.UI.createLabel({
+            text: 'Alan',
+            color: '#fff',
+            textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+            height: 'auto',
+            width: 'auto',
+            font: {fontFamily: 'Arial', fontSize: 18},
+        });
+        
+        headerView.add(titleLabel);
+        
+        headerView.addEventListener('alan:changeTitle', function(e){
+            log.debug('Updating window title')
+        });
+        return headerView;
     };
     
     //Create main application tabs
@@ -91,11 +110,8 @@ exports.createAlanWindow = function(_args){
         footerView.add(tabs[i]);
     }
     
-    //Generic method to change tab from whatever current view
-    Ti.App.addEventListener('alan:changeTabs', function(e){
-        changeTab(e.no);
-    });
-    win.add(headerView);
+   
+    win.add(updateHeader());
     win.add(bodyView);
     win.add(footerView);
     win.open();
