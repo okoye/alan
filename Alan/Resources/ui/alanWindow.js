@@ -34,16 +34,15 @@ exports.createAlanWindow = function(_args){
     
     var createTab = function(_icon, _cb, _on){
         var view = Ti.UI.createView({
-            width: tabWidth,
+            width: 80,
+            height: 45,
+            borderRadius: 0,
+            backgroundColor: 'white'
         }),
         inactive_image = _icon+'.png',
         active_image = _icon+'_current.png',
         icon = Ti.UI.createImageView({
-            height: tabHeight,
-            width: tabWidth,
-            left: 0,
             image: (_on) ? active_image : inactive_image,
-            bottom: 0,
         });
         view.on = _on||false;
         view.add(icon);
@@ -93,7 +92,6 @@ exports.createAlanWindow = function(_args){
     Ti.App.addEventListener('alan:changeTabs', function(e){
         changeTab(e.no);
     });
-    
     win.add(headerView);
     win.add(bodyView);
     win.add(footerView);
