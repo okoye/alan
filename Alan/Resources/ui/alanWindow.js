@@ -6,6 +6,7 @@
 var styling = require('lib/styles');
 var myAnalytics = require('ui/youView');
 var log = require('lib/logger');
+var imageView = require('com.obscure.imageview_ex');
 
 //Constants
 var PLATFORM_WIDTH = Ti.Platform.displayCaps.platformWidth;
@@ -19,7 +20,11 @@ exports.createAlanWindow = function(_args){
     }),
     headerView = Ti.UI.iOS.createToolbar({  //TODO: Autochanging top label
          backgroundImage: 'images/top_nav.png',
-         width: PLATFORM_WIDTH, 
+         width: PLATFORM_WIDTH,
+         height: 40,
+         top: 0,
+         borderTop: false,
+         borderBottom: false,
     });
     footerView = Ti.UI.createView({
         bottom: 0,
@@ -34,15 +39,14 @@ exports.createAlanWindow = function(_args){
     
     var createTab = function(_icon, _cb, _on){
         var view = Ti.UI.createView({
-            width: 80,
-            height: 45,
-            borderRadius: 0,
-            backgroundColor: 'white'
+            width: tabWidth,
+            height: tabHeight,
         }),
         inactive_image = _icon+'.png',
         active_image = _icon+'_current.png',
-        icon = Ti.UI.createImageView({
+        icon = imageView.createImageView({
             image: (_on) ? active_image : inactive_image,
+            left: 0,
         });
         view.on = _on||false;
         view.add(icon);
@@ -85,7 +89,6 @@ exports.createAlanWindow = function(_args){
     for (var i=0; i<tabs.length; i++){
         tabs[i].left = tabWidth * i;
         footerView.add(tabs[i]);
-        log.debug('Tab index added at: '+tabs[i].left);
     }
     
     //Generic method to change tab from whatever current view
