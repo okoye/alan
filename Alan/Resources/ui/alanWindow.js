@@ -28,7 +28,6 @@ exports.createAlanWindow = function(_args){
     tabWidth = PLATFORM_WIDTH/NUM_TABS,
     tabHeight = styling.tabHeight,
     tabs = [];
-    log.debug('tabWidth is '+tabWidth);
     var bodyView = myAnalytics.createView();
     
     var createTab = function(_icon, _cb, _on){
