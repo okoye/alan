@@ -72,9 +72,15 @@ exports.createAlanWindow = function(_args){
         headerView.height = headerHeight;
         headerView.top = 0;
         headerView.width = PLATFORM_WIDTH;
+        headerView.titles = {
+            0: 'Alan',
+            1: 'Death Clock',
+            2: 'Comparison',
+            3: 'Settings'
+        };
         
         var titleLabel = Ti.UI.createLabel({
-            text: 'Alan',
+            text: headerView.titles[0],
             color: '#fff',
             textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
             height: 'auto',
@@ -85,7 +91,7 @@ exports.createAlanWindow = function(_args){
         headerView.add(titleLabel);
         
         headerView.addEventListener('alan:changeTitle', function(e){
-            log.debug('Updating window title')
+            titleLabel.text = headerView.titles[e.no];
         });
         return headerView;
     };
