@@ -28,7 +28,9 @@ exports.createAlanWindow = function(_args){
     tabWidth = PLATFORM_WIDTH/NUM_TABS,
     tabHeight = styling.tabHeight,
     tabs = [];
-    var bodyView = myAnalytics.createView();
+    var bodyView = myAnalytics.createView({
+        height: PLATFORM_HEIGHT - (tabHeight + headerHeight),
+    });
     
     var createTab = function(_icon, _cb, _on){
         var view = Ti.UI.createView({
@@ -115,8 +117,9 @@ exports.createAlanWindow = function(_args){
         footerView.add(tabs[i]);
     }
     
+    updateHeader();
    
-    win.add(updateHeader());
+    win.add(headerView);
     win.add(bodyView);
     win.add(footerView);
     win.open();
