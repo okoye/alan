@@ -33,7 +33,7 @@ local.createAccount = function(email, password, callback){
 			callback({status: 'error', message:'Cannot connect to the Alan network at this time.', data: JSON.stringify(this.responseText)});
 		}
 	});
-	conn.open('POST', base+'/accounts');
+	conn.open('POST', base+'/1/accounts');
 	conn.setRequestHeader('Content-Type', 'application/json');
 	conn.send(JSON.stringify({
 		email: email,
@@ -58,7 +58,7 @@ local.train = function(body, callback){
 			 callback({status: 'error', message: 'Cannot send training data at this time', data: JSON.stringify(e)});
 		}
 	});
-	conn.open('POST', base+'/train');
+	conn.open('POST', base+'/1/train');
 	conn.send(JSON.stringify(body));
 	return conn;
 };
