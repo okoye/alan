@@ -4,9 +4,10 @@
  */
 
 var styling = require('lib/styles');
-var myAnalytics = require('ui/analyticsView');
 var log = require('lib/logger');
 var imageView = require('com.obscure.imageview_ex');
+var summaryView = require('ui/summaryView');
+var itemSummaryView = require('ui/itemSummaryView');
 
 //Constants
 var PLATFORM_WIDTH = Ti.Platform.displayCaps.platformWidth;
@@ -28,8 +29,13 @@ exports.createAlanWindow = function(_args){
     tabWidth = PLATFORM_WIDTH/NUM_TABS,
     tabHeight = styling.tabHeight,
     tabs = [];
-    var bodyView = myAnalytics.createView({
+    var meBodyView = Ti.UI.createScrollView({
         height: PLATFORM_HEIGHT - (tabHeight + headerHeight),
+        backgroundImage: 'images/center_view_bg.png',
+        top: headerHeight,
+        width: PLATFORM_WIDTH,
+        showVerticalScrollIndicator: true,
+        layout: 'vertical'
     });
     
     var createTab = function(_icon, _cb, _on){
@@ -56,7 +62,7 @@ exports.createAlanWindow = function(_args){
         for (var i=0, l = tabs.length; i < l; i++){
             if (tabNo === i){
                 if(!tabs[i].on){
-                    bodyView.fireEvent('alan:changeBody', {no: i});
+                    meBodyView.fireEvent('alan:changeBody', {no: i});
                     headerView.fireEvent('alan:changeTitle', {no: i});
                     tabs[i].toggle();
                 }
@@ -117,10 +123,24 @@ exports.createAlanWindow = function(_args){
         footerView.add(tabs[i]);
     }
     
+    //Set header view will necessary callbacks
     updateHeader();
+    
+    //Add content to body view  
+    meBodyView.add(summaryView.create({
+        height: 170,
+        width: 280,
+        top: 10
+    }));
+    
+    meBodyView.add(itemSummaryView.create({
+        height: 60,
+        width: 280,
+        top: 5
+    }));
    
     win.add(headerView);
-    win.add(bodyView);
+    win.add(meBodyView);
     win.add(footerView);
     win.open();
 };
