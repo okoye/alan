@@ -46,5 +46,6 @@
     <android xmlns:android="http://schemas.android.com/apk/res/android"/>
     <modules>
     	<module version="1.0" platform="iphone">com.obscure.imageview_ex</module>
+    	<module version="1.0" platform="iphone">com.infinery.ds</module>
     </modules>
 </ti:app>

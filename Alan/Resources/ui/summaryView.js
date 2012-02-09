@@ -5,6 +5,7 @@
  */
 
 var log = require('lib/logger');
+var shadows = require('com.infinery.ds');
 
 exports.create = function(_args){
     var view = Ti.UI.createWebView({
@@ -16,7 +17,13 @@ exports.create = function(_args){
         backgroundColor: 'white',
         keepScreenOn: false,
         scalePageToFit: true,
-        borderRadius: 1,
+        borderRadius: 3,
+    });
+    
+    shadows.Shadow(view, {
+        shadowRadius: 10,
+        shadowOpacity: 0.8,
+        shadowOffset: {x:5, y:5}
     });
     
     var _onData = function(e){
