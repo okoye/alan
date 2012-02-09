@@ -6,10 +6,14 @@ var log = require('lib/logger');
 var summaryView = require('ui/summaryView');
 var itemSummaryView = require('ui/itemSummaryView');
 
+var PLATFORM_HEIGHT = Ti.Platform.displayCaps.platformHeight;
+var PLATFORM_WIDTH = Ti.Platform.displayCaps.platformWidth;
+
 exports.create = function(_args){
-    var headerHeight = (_args.height) ? _args.height : 45;
+    var headerHeight = (_args && _args.height) ? _args.height : 45;
+    var tabHeight = headerHeight;
     var meBodyView = Ti.UI.createScrollView({
-        height: (_args.height) ? _args.height:PLATFORM_HEIGHT - (tabHeight + headerHeight),
+        height: (_args && _args.height) ? _args.height:PLATFORM_HEIGHT - (tabHeight + headerHeight),
         backgroundImage: 'images/center_view_bg.png',
         width: PLATFORM_WIDTH,
         showVerticalScrollIndicator: true,

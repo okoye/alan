@@ -4,7 +4,7 @@
  */
 var log = require('lib/logger');
 var imageView = require('com.obscure.imageview_ex');
-var strip = require('ui/stripView');
+var stripView = require('ui/stripView');
 var meView = require('ui/meView');
 var scoreView = require('ui/scoreView');
 var pvpView = require('ui/pvpView');
@@ -36,7 +36,7 @@ exports.createAlanWindow = function(_args){
     tabHeight = 45,
     tabs = [];
     
-    var bodyView = strip.create({
+    var bodyView = stripView.create({
         views : [
             meView.create(),
             scoreView.create(),
