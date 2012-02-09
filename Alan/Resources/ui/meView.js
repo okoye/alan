@@ -1,0 +1,30 @@
+/**
+ * @author Chuka Okoye
+ */
+
+var log = require('lib/logger');
+var summaryView = require('ui/summaryView');
+var itemSummaryView = require('ui/itemSummaryView');
+
+exports.create = function(_args){
+    var headerHeight = (_args.height) ? _args.height : 45;
+    var meBodyView = Ti.UI.createScrollView({
+        height: (_args.height) ? _args.height:PLATFORM_HEIGHT - (tabHeight + headerHeight),
+        backgroundImage: 'images/center_view_bg.png',
+        width: PLATFORM_WIDTH,
+        showVerticalScrollIndicator: true,
+        layout: 'vertical'
+    });
+    meBodyView.add(summaryView.create({
+        height: 170,
+        width: 280,
+        top: 10
+    }));
+    
+    meBodyView.add(itemSummaryView.create({
+        height: 60,
+        width: 280,
+        top: 5
+    }));
+    return meBodyView;
+}

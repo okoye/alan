@@ -18,6 +18,7 @@ exports.create = function(_args){
         keepScreenOn: false,
         scalePageToFit: true,
         borderRadius: 3,
+        url: 'html/summary.html'
     });
     
     shadows.Shadow(view, {

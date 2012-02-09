@@ -2,40 +2,50 @@
  * @author Chuka Okoye
  * Creates the main Alan application window.
  */
-
-var styling = require('lib/styles');
 var log = require('lib/logger');
 var imageView = require('com.obscure.imageview_ex');
-var summaryView = require('ui/summaryView');
-var itemSummaryView = require('ui/itemSummaryView');
+var strip = require('ui/stripView');
+var meView = require('ui/meView');
+var scoreView = require('ui/scoreView');
+var pvpView = require('ui/pvpView');
+var storeView = require('ui/storeView');
+var settingsView = require('ui/settingsView');
 
 //Constants
 var PLATFORM_WIDTH = Ti.Platform.displayCaps.platformWidth;
 var PLATFORM_HEIGHT = Ti.Platform.displayCaps.platformHeight;
-var NUM_TABS = 4;
+var NUM_TABS = 5;
 
 exports.createAlanWindow = function(_args){
     var win = Ti.UI.createWindow({
         exitOnClose: true,
         orientationModes: [Ti.UI.PORTRAIT],
     }),
-    headerHeight = 45,
-    headerView = Ti.UI.createView(),
+    headerView = Ti.UI.createView({
+        backgroundImage : 'images/top_nav.png',
+        height : 45,
+        top : 0,
+        width: PLATFORM_WIDTH,
+    }),
     footerView = Ti.UI.createView({
         bottom: 0,
-        height: styling.tabHeight,
+        height: 45,
         backgroundImage: 'images/bottom_nav_bg_alan.png',
     }),
     tabWidth = PLATFORM_WIDTH/NUM_TABS,
-    tabHeight = styling.tabHeight,
+    tabHeight = 45,
     tabs = [];
-    var meBodyView = Ti.UI.createScrollView({
-        height: PLATFORM_HEIGHT - (tabHeight + headerHeight),
-        backgroundImage: 'images/center_view_bg.png',
-        top: headerHeight,
-        width: PLATFORM_WIDTH,
-        showVerticalScrollIndicator: true,
-        layout: 'vertical'
+    
+    var bodyView = strip.create({
+        views : [
+            meView.create(),
+            scoreView.create(),
+            pvpView.create(),
+            storeView.create(),
+            settingsView.create()
+        ],
+        width : PLATFORM_WIDTH,
+        height : PLATFORM_HEIGHT - 90,
     });
     
     var createTab = function(_icon, _cb, _on){
@@ -75,15 +85,12 @@ exports.createAlanWindow = function(_args){
     
     //Add callbacks, text and other elements to headerview.
     var updateHeader = function(){
-        headerView.backgroundImage = 'images/top_nav.png';
-        headerView.height = headerHeight;
-        headerView.top = 0;
-        headerView.width = PLATFORM_WIDTH;
         headerView.titles = {
             0: 'Alan',
-            1: 'Death Clock',
-            2: 'Comparison',
-            3: 'Settings'
+            1: 'Health Scoring',
+            2: 'Me vs Others',
+            3: 'Store',
+            4: 'Settings'
         };
         
         var titleLabel = Ti.UI.createLabel({
@@ -116,6 +123,9 @@ exports.createAlanWindow = function(_args){
     tabs.push(createTab('images/bottom_nav_btn_settings', function(){
         changeTab(3);
     }));
+    tabs.push(createTab('images/bottom_nav_btn_settings', function(){
+        changeTab(4);
+    }));
     
     //Tabs to footer view
     for (var i=0; i<tabs.length; i++){
@@ -126,23 +136,10 @@ exports.createAlanWindow = function(_args){
     //Set header view will necessary callbacks
     updateHeader();
     
-    //Add content to body view  
-    meBodyView.add(summaryView.create({
-        height: 170,
-        width: 280,
-        top: 10
-    }));
-    
-    meBodyView.add(itemSummaryView.create({
-        height: 60,
-        width: 280,
-        top: 5
-    }));
-   
     win.add(headerView);
-    win.add(meBodyView);
-    win.add(footerView);
-    win.open();
+    win.add(bodyView);
+    win.add(footerView)
+;    win.open();
 };
 
 
