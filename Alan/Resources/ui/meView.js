@@ -11,7 +11,6 @@ var PLATFORM_WIDTH = Ti.Platform.displayCaps.platformWidth;
 
 exports.create = function(_args){
     var meBodyView = Ti.UI.createScrollView({
-        height: 370,
         backgroundImage: 'images/center_view_bg.png',
         width: PLATFORM_WIDTH,
         showVerticalScrollIndicator: true,

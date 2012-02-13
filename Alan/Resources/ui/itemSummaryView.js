@@ -5,8 +5,6 @@
  */
 
 var log = require('lib/logger');
-var shadows = require('com.infinery.ds');
-
 
 var WIDTH = 170,
 LEFT = 20,

@@ -39,7 +39,6 @@ exports.createAlanWindow = function(_args){
     var bodyView = stripView.create({
         views : [
             meView.create({
-                height: PLATFORM_HEIGHT - (footerView.height + headerView.height)
             }),
             scoreView.create(),
             pvpView.create(),
@@ -47,7 +46,7 @@ exports.createAlanWindow = function(_args){
             settingsView.create()
         ],
         width : PLATFORM_WIDTH,
-        height : PLATFORM_HEIGHT - 90,
+        height : 370,
     });
     
     var createTab = function(_icon, _cb, _on){
