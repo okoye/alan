@@ -38,7 +38,9 @@ exports.createAlanWindow = function(_args){
     
     var bodyView = stripView.create({
         views : [
-            meView.create(),
+            meView.create({
+                height: PLATFORM_HEIGHT - (footerView.height + headerView.height)
+            }),
             scoreView.create(),
             pvpView.create(),
             storeView.create(),
@@ -72,7 +74,7 @@ exports.createAlanWindow = function(_args){
         for (var i=0, l = tabs.length; i < l; i++){
             if (tabNo === i){
                 if(!tabs[i].on){
-                    meBodyView.fireEvent('alan:changeBody', {no: i});
+                    bodyView.fireEvent('alan:changeBody', {no: i});
                     headerView.fireEvent('alan:changeTitle', {no: i});
                     tabs[i].toggle();
                 }
@@ -99,7 +101,9 @@ exports.createAlanWindow = function(_args){
             textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
             height: 'auto',
             width: 'auto',
-            font: {fontFamily: 'Arial', fontSize: 18},
+            font: {fontFamily: 'Arial', fontSize: 20, fontWeight: 'bold'},
+            shadowColor: '#4e869c',
+            shadowOffset: {x:-1, y:-1}
         });
         
         headerView.add(titleLabel);

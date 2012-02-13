@@ -10,10 +10,8 @@ var PLATFORM_HEIGHT = Ti.Platform.displayCaps.platformHeight;
 var PLATFORM_WIDTH = Ti.Platform.displayCaps.platformWidth;
 
 exports.create = function(_args){
-    var headerHeight = (_args && _args.height) ? _args.height : 45;
-    var tabHeight = headerHeight;
     var meBodyView = Ti.UI.createScrollView({
-        height: (_args && _args.height) ? _args.height:PLATFORM_HEIGHT - (tabHeight + headerHeight),
+        height: 370,
         backgroundImage: 'images/center_view_bg.png',
         width: PLATFORM_WIDTH,
         showVerticalScrollIndicator: true,

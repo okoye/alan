@@ -5,6 +5,8 @@
  */
 
 var log = require('lib/logger');
+var shadows = require('com.infinery.ds');
+
 
 var WIDTH = 170,
 LEFT = 20,
@@ -20,6 +22,12 @@ exports.create = function(_args, _cb){
         layout: 'horizontal',
         backgroundColor: 'white',
         borderRadius: 3
+    });
+    
+    shadows.Shadow(view, {
+        shadowRadius: 10,
+        shadowOpacity: 0.9,
+        shadowOffset: {x: 10, y:10}
     });
     
     //Now, create containers for the three subsections

@@ -13,7 +13,7 @@ exports.create = function(_args){
         width: _args.width,
         height: _args.height
     }),
-    views = args.views,
+    views = _args.views,
     container = Ti.UI.createView({
         top: 0,
         left: 0,

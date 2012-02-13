@@ -23,8 +23,8 @@ exports.create = function(_args){
     
     shadows.Shadow(view, {
         shadowRadius: 10,
-        shadowOpacity: 0.8,
-        shadowOffset: {x:5, y:5}
+        shadowOpacity: 0.9,
+        shadowOffset: {x:10, y:10}
     });
     
     var _onData = function(e){
