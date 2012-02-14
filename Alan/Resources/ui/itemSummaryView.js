@@ -25,7 +25,7 @@ exports.create = function(_args, _cb, sections){
         left: 0,
         top: 0,
         layout: 'horizontal',
-        backgroundColor: 'white',
+        backgroundImage: (sections == 2) ? 'images/info_box_bg_a.png':'images/info_box_bg_b.png',
         borderRadius: 3,
     });
     
@@ -38,22 +38,20 @@ exports.create = function(_args, _cb, sections){
         backgroundColor: '#b1b1b1'
     });
     
-    //Now, add section dividers
-    var divider = function(_left){
-        return Ti.UI.createImageView({
-            image: 'images/line_sep.png',
-            left: _left,
-            width: 1,
-        });
+    var triplePartition = function(){
+        
     };
-    if (sections === 3){
-        view.add(divider(Math.round(0.25*view.width)));
-        view.add(divider(Math.round(0.75*view.width)));
-    }
     
-    // view.add(left);
-    // view.add(center);
-    // view.add(right);
+    var doublePartition = function(){
+        
+    };
+    
+    if (sections === 2){
+        doublePartition();
+    }
+    else if(sections === 3){
+        triplePartition();
+    }
     
     container.add(viewShadow);
     container.add(view);

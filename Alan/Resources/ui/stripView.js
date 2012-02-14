@@ -32,12 +32,14 @@ exports.create = function(_args){
         container.add(newView);
     }
     root.add(container);
-    root.addEventListener('alan:changeBody', function(e){
-        var left = PLATFORM_WIDTH * e.no;
+    var updateStrip = function(i){
+        log.info('received an updateStrip command');
+        var left = PLATFORM_WIDTH * i * -1;
         container.animate({
             duration: 3,
             left: left
-        });
-    });
+        }); //TODO: is this working?
+    };
+    root.updateStrip = updateStrip;
     return root;
 }

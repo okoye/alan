@@ -48,4 +48,5 @@
     	<module version="1.0" platform="iphone">com.obscure.imageview_ex</module>
     	<module version="1.0" platform="iphone">com.infinery.ds</module>
     </modules>
+    <prerendered-icon>true</prerendered-icon>
 </ti:app>

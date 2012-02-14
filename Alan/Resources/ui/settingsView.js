@@ -5,5 +5,7 @@
  */
 
 exports.create = function(_args){
-    return Ti.UI.createView();
+    return Ti.UI.createView({
+        backgroundImage: 'images/center_view_bg.png',
+    });
 };

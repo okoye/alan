@@ -69,8 +69,7 @@ exports.createAlanWindow = function(_args){
     var changeTab = function(tabNo){
         for (var i=0, l = tabs.length; i < l; i++){
             if (tabNo === i){
-                if(!tabs[i].on){
-                    bodyView.fireEvent('alan:changeBody', {no: i});
+                if(!tabs[i].on){                    
                     headerView.fireEvent('alan:changeTitle', {no: i});
                     tabs[i].toggle();
                 }
@@ -102,7 +101,7 @@ exports.createAlanWindow = function(_args){
         });
         
         headerView.add(titleLabel);
-        
+        //TODO: switch from listener to callback function.
         headerView.addEventListener('alan:changeTitle', function(e){
             titleLabel.text = headerView.titles[e.no];
         });
@@ -112,15 +111,19 @@ exports.createAlanWindow = function(_args){
     //Create main application tabs
     tabs.push(createTab('images/bottom_nav_btn_me', function(){
         changeTab(0);
+        bodyView.updateStrip(0);
     }, true));
     tabs.push(createTab('images/bottom_nav_btn_act_age', function(){
         changeTab(1);
+        bodyView.updateStrip(1);
     }));
     tabs.push(createTab('images/bottom_nav_btn_connect', function(){
         changeTab(2);
+        bodyView.updateStrip(2);
     }));
     tabs.push(createTab('images/bottom_nav_btn_store', function(){
         changeTab(3);
+        bodyView.updateStrip(3);
     }));
     
     //Tabs to footer view
@@ -134,8 +137,10 @@ exports.createAlanWindow = function(_args){
     
     win.add(headerView);
     win.add(bodyView);
-    win.add(footerView)
-;    win.open();
+    win.add(footerView);
+    
+    //Initialize collection and processing systems.    
+    win.open();
 };
 
 
