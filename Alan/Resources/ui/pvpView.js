@@ -12,9 +12,6 @@ var PLATFORM_WIDTH = Ti.Platform.displayCaps.platformWidth;
 exports.create = function(_args){
     var view = Ti.UI.createView({
         backgroundImage: 'images/center_view_bg.png',
-        backgroundColor: 'white',
-        width: PLATFORM_WIDTH,
     });
-    log.info('Instantiated logger module.');
     return view;
 };

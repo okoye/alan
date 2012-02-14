@@ -11,6 +11,8 @@ var platformHeight = Titanium.Platform.displayCaps.platformHeight;
 log.info('Platform width is '+platformWidth);
 log.info('Platform height is '+platformHeight);
 
+//TODO: refactor
+
 exports = {
 	nav_window : function(properties) {
 		var navproperty = {};
@@ -87,6 +89,25 @@ exports = {
 			textfield[property] = properties[property];
 		return textfield;
 	},
-	tabHeight: 45,
+	RUNNING : {
+	    buttonImage: 'images/arw_btn_blue.png',
+	    color: 'blue'
+	},
+	WALKING : {
+	    buttonImage: 'images/arw_btn_green.png',
+	    color: 'green'
+	},
+	LAZY : {
+	    buttonImage: 'images/arw_btn_red.png',
+	    color: 'red'
+	},
+	TRANSPORT : {
+	    buttonImage: 'images/arw_btn_yellow.png',
+	    color: 'yellow'
+	},
+	UNKNOWN : {
+	    buttonImage: 'images/arw_btn_grey.png',
+	    color: 'grey'
+	},
 	
 };
