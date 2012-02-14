@@ -24,7 +24,7 @@ exports.create = function(_args, sections, style, _cb){
         width: container.width,
         left: 0,
         top: 0,
-        backgroundImage: (sections == 2) ? 'images/info_box_bg_a.png':'images/info_box_bg_b.png',
+        backgroundColor: 'white',
         borderRadius: 3,
     });
     
@@ -43,7 +43,7 @@ exports.create = function(_args, sections, style, _cb){
             width: 1,
             top: 2,
             left: _left,
-            backgroundColor: 'blue',
+            backgroundColor: '#b1b1b1',
         });
     }
     
@@ -51,17 +51,15 @@ exports.create = function(_args, sections, style, _cb){
         var left = Ti.UI.createView({
             width: Math.round(0.25*view.width) - 1,
             left: 0,
-            backgroundColor: 'green',
             opacity: 0.5,
         }),
         middle = Ti.UI.createView({
-            width: Math.round(0.5*view.width) - 1,
+            width: Math.round(0.5*view.width) - 2,
             left: left.width + 2,
         }),
         right = Ti.UI.createView({
             width: Math.round(0.25*view.width) - 1,
             right: 0,
-            backgroundColor: 'red',
             opacity: 0.5,
         });
         
@@ -86,7 +84,7 @@ exports.create = function(_args, sections, style, _cb){
         });
         
         left.add(activity); middle.add(distance); right.add(moreInfo);
-        view.add(left); view.add(divider(left.width+1)); view.add(middle); view.add(divider(middle.width+1)); view.add(right);
+        view.add(left); view.add(divider(left.width+1)); view.add(middle); view.add(divider(middle.width+left.width+2)); view.add(right);
     };
     
     var doublePartition = function(){
@@ -117,7 +115,5 @@ exports.create = function(_args, sections, style, _cb){
     
     container.add(viewShadow);
     container.add(view);
-    
-    log.debug(JSON.stringify(view.getChildren()));
     return container;
 };
