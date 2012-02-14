@@ -25,7 +25,7 @@ exports.create = function(_args){
     meBodyView.add(itemSummaryView.create({
         height: 60,
         width: 280,
-        top: 5
-    }));
+        top: 5,
+    }, function(){}, 3));
     return meBodyView;
 }

@@ -3,7 +3,6 @@
  * Creates the main Alan application window.
  */
 var log = require('lib/logger');
-var imageView = require('com.obscure.imageview_ex');
 var stripView = require('ui/stripView');
 var meView = require('ui/meView');
 var scoreView = require('ui/scoreView');
@@ -14,12 +13,11 @@ var settingsView = require('ui/settingsView');
 //Constants
 var PLATFORM_WIDTH = Ti.Platform.displayCaps.platformWidth;
 var PLATFORM_HEIGHT = Ti.Platform.displayCaps.platformHeight;
-var NUM_TABS = 5;
+var NUM_TABS = 4;
 
 exports.createAlanWindow = function(_args){
-    var win = Ti.UI.createWindow({
-        exitOnClose: true,
-        orientationModes: [Ti.UI.PORTRAIT],
+    var win = (Ti.UI.currentWindow)? Ti.UI.currentWindow:Ti.UI.createWindow({
+        
     }),
     headerView = Ti.UI.createView({
         backgroundImage : 'images/top_nav.png',
@@ -27,23 +25,21 @@ exports.createAlanWindow = function(_args){
         top : 0,
         width: PLATFORM_WIDTH,
     }),
+    tabHeight = 50,
     footerView = Ti.UI.createView({
         bottom: 0,
-        height: 45,
+        height: tabHeight,
         backgroundImage: 'images/bottom_nav_bg_alan.png',
     }),
     tabWidth = PLATFORM_WIDTH/NUM_TABS,
-    tabHeight = 45,
     tabs = [];
     
     var bodyView = stripView.create({
         views : [
-            meView.create({
-            }),
-            scoreView.create(),
-            pvpView.create(),
-            storeView.create(),
-            settingsView.create()
+            meView.create(),    //me
+            scoreView.create(), //activity age
+            pvpView.create(),   //connect
+            storeView.create(), //store
         ],
         width : PLATFORM_WIDTH,
         height : 370,
@@ -56,9 +52,10 @@ exports.createAlanWindow = function(_args){
         }),
         inactive_image = _icon+'.png',
         active_image = _icon+'_current.png',
-        icon = imageView.createImageView({
+        icon = Ti.UI.createImageView({
             image: (_on) ? active_image : inactive_image,
             left: 0,
+            contentMode: 'aspectFit',
         });
         view.on = _on||false;
         view.add(icon);
@@ -88,10 +85,9 @@ exports.createAlanWindow = function(_args){
     var updateHeader = function(){
         headerView.titles = {
             0: 'Alan',
-            1: 'Health Scoring',
+            1: 'Activity Age',
             2: 'Me vs Others',
             3: 'Store',
-            4: 'Settings'
         };
         
         var titleLabel = Ti.UI.createLabel({
@@ -117,17 +113,14 @@ exports.createAlanWindow = function(_args){
     tabs.push(createTab('images/bottom_nav_btn_me', function(){
         changeTab(0);
     }, true));
-    tabs.push(createTab('images/bottom_nav_btn_life_meter', function(){
+    tabs.push(createTab('images/bottom_nav_btn_act_age', function(){
         changeTab(1);
     }));
-    tabs.push(createTab('images/bottom_nav_btn_rewards', function(){
+    tabs.push(createTab('images/bottom_nav_btn_connect', function(){
         changeTab(2);
     }));
-    tabs.push(createTab('images/bottom_nav_btn_settings', function(){
+    tabs.push(createTab('images/bottom_nav_btn_store', function(){
         changeTab(3);
-    }));
-    tabs.push(createTab('images/bottom_nav_btn_settings', function(){
-        changeTab(4);
     }));
     
     //Tabs to footer view
