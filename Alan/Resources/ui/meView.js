@@ -28,13 +28,18 @@ exports.create = function(_args){
         width: 280,
         top: 5
     }, 2, styling.INFO);
-    totalToday._setContent('Total Today', 2000, 'Cal. Burn');
-    log.info('Finished setting content');
+    totalToday._setContent('Total Today', 0, 'Cal. Burn');
     var setTodayTotal = function(calories){
        totalToday._setContent('Total Today', calories,'Cal. Burn'); 
     };
-    meBodyView.setTotal = setTodayTotal;
-    meBodyView.add(totalToday);
     
+    //TODO: add functions to add activity, set total today, clear activities
+    
+    var clearActivities = function(){
+        //For each view, if _type == 'itemSummaryView', delete it by using remove.
+    };
+    
+    meBodyView.totalCalories = setTodayTotal;
+    meBodyView.add(totalToday);
     return meBodyView;
 }
