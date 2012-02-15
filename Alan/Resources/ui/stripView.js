@@ -38,7 +38,7 @@ exports.create = function(_args){
         container.animate({
             duration: 3,
             left: left
-        }); //TODO: is this working?
+        });
     };
     root.updateStrip = updateStrip;
     return root;

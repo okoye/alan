@@ -11,7 +11,7 @@ LEFT = 20,
 HEIGHT = 60,
 TOP = 10;
 
-exports.create = function(_args, sections, style, _cb){
+exports.create = function(_args, sections, style){
     var container = Ti.UI.createView({
         height: (_args.height) ? _args.height:HEIGHT,
         width: (_args.width) ? _args.width:WIDTH,
@@ -51,7 +51,6 @@ exports.create = function(_args, sections, style, _cb){
         var left = Ti.UI.createView({
             width: Math.round(0.25*view.width) - 1,
             left: 0,
-            opacity: 0.5,
         }),
         middle = Ti.UI.createView({
             width: Math.round(0.5*view.width) - 2,
@@ -60,7 +59,6 @@ exports.create = function(_args, sections, style, _cb){
         right = Ti.UI.createView({
             width: Math.round(0.25*view.width) - 1,
             right: 0,
-            opacity: 0.5,
         });
         
         var activity = Ti.UI.createLabel({
@@ -68,44 +66,91 @@ exports.create = function(_args, sections, style, _cb){
             font: {
                 fontSize: 20,
                 fontWeight: 'bold',
-            }
+            },
+            left: 2,
+            right: 2
         });
         var distance = Ti.UI.createLabel({
             color: style.color,
             font: {
                 fontSize: 20,
                 fontWeight: 'bold',
-            }
+            },
+            left: 2,
+            right: 2,
         });
         var moreInfo = Ti.UI.createButton({
             backgroundImage: style.buttonImage,
-            height: right.height,
-            width: right.width,
+            height: 25,
+            width: 12,
+            left: Math.round(0.5*right.width)-2,
         });
+        
+        var setContent = function(act, dist, _cb){
+            activity.setText(act);
+            distance.setText(dist);
+            moreInfo.addEventListener('click', _cb||function(e){log.info('NOOP');});
+        };
         
         left.add(activity); middle.add(distance); right.add(moreInfo);
         view.add(left); view.add(divider(left.width+1)); view.add(middle); view.add(divider(middle.width+left.width+2)); view.add(right);
+        container._setContent = setContent;
     };
     
     var doublePartition = function(){
+        var left = Ti.UI.createView({
+            width: Math.round(0.25*view.width) - 1,
+            left: 0,
+        }),
+        right = Ti.UI.createView({
+            width: Math.round(0.75*view.width) - 1,
+            right: 0,
+        });
+        
         var title = Ti.UI.createLabel({
             color: style.color,
+            textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
             font: {
-                fontSize: 20,
+                fontSize: 12,
                 fontWeight: 'bold'
-            }
+            },
+            left: 2,
+            right: 2
         });
         var summary = Ti.UI.createLabel({
             color: style.color,
+            textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
             font: {
-                fontSize: 20,
+                fontSize: 42,
                 fontWeight: 'bold'
-            }
+            },
+            width: Math.round(0.55*right.width),
+            left: 0,
         });
+        var unit = Ti.UI.createLabel({
+            color: style.color,
+            textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+            font: {
+                fontSize: 12,
+                fontWeight: 'bold'
+            },
+            left: summary.width+2,
+            right: 1,
+            top: 20,
+            width: Math.round(right.width*0.45),
+        });
+        
+        var setContent = function(tit, sum, uni){
+            title.setText(tit);
+            summary.setText(sum);
+            unit.setText(uni);
+        };
+        
+        left.add(title); right.add(summary); right.add(unit);
+        view.add(left); view.add(divider(left.width+1)); view.add(right);
+        container._setContent = setContent;
     };
-    
-    //TODO: add function to set content
-    
+        
     if (sections === 2){
         doublePartition();
     }

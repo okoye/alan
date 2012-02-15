@@ -91,23 +91,25 @@ exports = {
 	},
 	RUNNING : {
 	    buttonImage: 'images/arw_btn_blue.png',
-	    color: 'blue'
+	    color: '#62c1e6'
 	},
 	WALKING : {
 	    buttonImage: 'images/arw_btn_green.png',
-	    color: 'green'
+	    color: '#add267'
 	},
 	LAZY : {
 	    buttonImage: 'images/arw_btn_red.png',
-	    color: 'red'
+	    color: '#de7474'
 	},
 	TRANSPORT : {
 	    buttonImage: 'images/arw_btn_yellow.png',
-	    color: 'yellow'
+	    color: '#eae493'
 	},
 	UNKNOWN : {
 	    buttonImage: 'images/arw_btn_grey.png',
-	    color: 'grey'
+	    color: '#e0e0e0'
 	},
-	
+	INFO : {
+	    color: '#748dde',//PURPLE
+	},
 };
