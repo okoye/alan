@@ -6,19 +6,22 @@
  */
 
 //Dependencies
-var activity = require('model/activity');
+var log = require('lib/logger');
 
 //State variables
 var meView = null;
-var activities = {};
+var activities = {},
+distances = {},
+times = {};
+
 var currentDay = (new Date).getDay();
 
 exports.start = function(meV){
     //listen for relevant data model changes. when they occur, 
     //cache changes locally, and then push to view when appropriate.
     //or push immediately.
-    
     meView = meV;
+    
     var isNewDay = function(){
         if ((new Date).getDay() === currentDay){
             return false;
@@ -28,13 +31,33 @@ exports.start = function(meV){
             return true;
         }
     };
-    var onProcessed = function(evt, data){
+    var updateStateVars = function(activity){
+        distances[activity.name] = activity.cumulativeDistance;
+        times[activity.name] = activity.cumulativeTime;
+    };
+    var updateView = function(activity){
+        //TODO: update activities, and meView
+    };
+    var onProcessed = function(activity){
         if (isNewDay()){
             activities = {};
+            distances = {};
+            times = {};
             meView.clearActivities();
         }
         
-        //create activity model then render in view.
-        
+        if (activities[activity.name]){
+            updateStateVars(activity);
+            updateView(activity);
+        }
+        else{
+            //TODO: add new itemSummaryView (activity) to meView.
+            updateStateVars(activity);
+            updateView(activity);
+
+        }
     };
+    
+    Ti.App.addEventListener('alan:sensorReadingsUpdate', onProcessed);
+
 };

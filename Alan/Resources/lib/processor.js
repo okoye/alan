@@ -7,13 +7,13 @@
  * event.
  */
 
-//TODO: Add support for success (to send to api/trainer hook-in).
+//TODO: Add support for filter.
 
 var log = require('lib/logger');
 var classifier = require('lib/classifier');
 var db = require('lib/db');
 
-var BATCH_UPDATE = 10;
+var BATCH_UPDATE = 1;
 
 function Processor(properties){
 	this.activity_buffer = [];
@@ -37,7 +37,7 @@ Processor.prototype.process = function(data){
 	if (this.activity_buffer.length >= BATCH_UPDATE){
 		log.debug('Calling updateDB');
 		this.updateDB();
-		Ti.App.fireEvent('alan:sensorReadingsUpdate', {length: this.activity_buffer.length});
+		Ti.App.fireEvent('alan:sensorReadingsUpdate', {length: this.activity_buffer.length}); //TODO: use models
 		this.activity_buffer = [];
 	}
 };
