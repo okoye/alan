@@ -9,8 +9,6 @@ var log = require('lib/logger');
 var filter = require('lib/filter');
 var activity = require('model/activity');
 
-//TODO: write tests.
-
 function Classifier(thresholds){
     var defaultThresholds = {
         LAZY: 1,
@@ -53,8 +51,7 @@ Classifier.prototype._toActivityModel = function(state, data){
 
 Classifier.prototype._filter = function(state){
     //What is the next probable value returned by the filter?
-    //return filter.probableActivity(state);
-    return state;
+    return filter.probableActivity(state);
 };
 
 exports.Classifier = Classifier;

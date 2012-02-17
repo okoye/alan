@@ -8,6 +8,9 @@ exports.run = function(){
   
   var classifier = require('test/tests/test_classifier');
   classifier.run();
+  
+  var cache = require('test/tests/test_cache');
+  cache.run();
 
   jasmine.getEnv().addReporter(new jasmine.TitaniumReporter());
   jasmine.getEnv().execute();  

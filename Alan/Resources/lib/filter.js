@@ -8,3 +8,7 @@
 exports.purge = function(){
     //clear out any state vars/cache
 };
+
+exports.probableActivity = function(activity){
+    //use markov models.
+}

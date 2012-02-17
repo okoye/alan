@@ -13,8 +13,6 @@ var activities = {
         UNKNOWN: 5
 };
 
-//TODO: write tests
-
 function Activity(name, reading, properties){
     if (this._isValidActivityName(name)){
         reading.name = name;
