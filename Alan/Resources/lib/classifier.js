@@ -13,7 +13,7 @@ var activity = require('model/activity');
 
 function Classifier(thresholds){
     var defaultThresholds = {
-        STATIONARY: 1,
+        LAZY: 1,
         WALKING: 3.18,
         RUNNING: 10,
         TRANSPORT: 1000
@@ -31,7 +31,7 @@ Classifier.prototype._classify = function(data){
     //Classify current item incorporating gps, filter.
     var state = null;
     if (data.speed < this.thresholds.STATIONARY){
-        state = 'STATIONARY';
+        state = 'LAZY';
     } else if(data.speed < this.thresholds.WALKING){
         state = 'WALKING';
     } else if(data.speed < this.thresholds.RUNNING){

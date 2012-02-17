@@ -4,6 +4,7 @@ var c = null;
 var running = {speed: 4, state: 'RUNNING'};
 var walking = {speed: 2, state: 'WALKING'};
 var transport = {speed: 12, state: 'TRANSPORT'};
+var lazy = {speed: 0.4, state: 'LAZY'};
 
 exports.run = function(){
     describe('Classifier tests', function(){
@@ -25,8 +26,10 @@ exports.run = function(){
         
         it('should classify as transport.', function(){
             expect(c.classify(transport).name).toEqual(transport.state);
-        })
+        });
         
-        
+        it('should classify as lazy.', function(){
+            expect(c.classify(lazy).name).toEqual(lazy.state);
+        });
     });
 }
