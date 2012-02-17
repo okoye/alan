@@ -13,21 +13,26 @@ var activities = {
         UNKNOWN: 5
 };
 
-function Activity(name, timestamp, velocity, aggression, cTime, distance){
+function Activity(name, reading){
     if (this._isValidActivityName(name)){
         this.name = name;
-        this.timestamp = timestamp;
-        this.velocity = velocity;
-        this.aggression = aggression;
-        this.cumulativeTime = cTime;        //Cumulative time spent in this activity mode today.
-        this.cumulativeDistance = distance; //Cumulative distance travelled by this activity for today.
+        this.timestamp = reading.timestamp;
+        this.speed = reading.speed;
+        this.latitude = reading.latitude;
+        this.longitude = reading.longitude;
+        this.altitude = reading.altitude;
     }
     else{
-        throw "Invalid Activity Recorded";
+        throw "Invalid Activity State";
     }
 }
 
 Activity.prototype._isValidActivityName = function(name){
     return (activities.name);
 }
+
+Activity.prototype.computeDistance = function(activity){
+    //return the distance between this activity and supplied activity
+    
+};
 

@@ -7,6 +7,7 @@
 
 var log = require('lib/logger');
 var filter = require('lib/filter');
+var activity = require('model/activity');
 
 function Classifer(thresholds){
     var defaultThresholds = {
@@ -21,15 +22,36 @@ function Classifer(thresholds){
 }
 
 Classifier.prototype.classify = function(data){
-    
+    return this._classify(data);
 };
 
 Classifier.prototype._classify = function(data){
     //Classify current item incorporating gps, filter.
+    var state = null;
+    if (data.velocity < this.thresholds.STATIONARY){
+        state = 'STATIONARY';
+    } else if(data.velocity < this.thresholds.WALKING){
+        state = 'WALKING';
+    } else if(data.velocity < this.thresholds.RUNNING){
+        state = 'RUNNING';
+    } else{
+        state = 'TRANSPORT';
+    }
+    log.info('GPS Classification result: '+state);
+    state = this._filter(state);
+    log.info('Markov Model Classification result: '+state);
+    return state;
 };
 
-Classifier.prototype._filter = function(){
+Classifier.prototype._toActivityModel = function(state, data){
+    //convert current state to activity model object
+    var a = new activity.Activity(state, data);
+    return a;
+};
+
+Classifier.prototype._filter = function(state){
     //What is the next probable value returned by the filter?
+    return filter.probableActivity(state);
 };
 
 Classifier.prototype.posture = function(){
