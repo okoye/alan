@@ -30,7 +30,7 @@ Classifier.prototype.classify = function(data){
 Classifier.prototype._classify = function(data){
     //Classify current item incorporating gps, filter.
     var state = null;
-    if (data.speed < this.thresholds.STATIONARY){
+    if (data.speed < this.thresholds.LAZY){
         state = 'LAZY';
     } else if(data.speed < this.thresholds.WALKING){
         state = 'WALKING';
