@@ -6,6 +6,9 @@ exports.run = function(){
   var db = require('test/tests/test_database');
   db.run();
   
+  var classifier = require('test/tests/test_classifier');
+  classifier.run();
+
   jasmine.getEnv().addReporter(new jasmine.TitaniumReporter());
   jasmine.getEnv().execute();  
 };

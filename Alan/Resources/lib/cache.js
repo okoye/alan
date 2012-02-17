@@ -5,6 +5,8 @@
 
 var cacheStore = {}; //TODO Use persistent in app store
 
+//TODO: write tests.
+
 exports.create = function(name){
     //create a new cache given the name 'name'
     cacheStore[name] = [];

@@ -13,22 +13,23 @@ var activities = {
         UNKNOWN: 5
 };
 
-function Activity(name, reading){
+//TODO: write tests
+
+function Activity(name, reading, properties){
     if (this._isValidActivityName(name)){
-        this.name = name;
-        this.timestamp = reading.timestamp;
-        this.speed = reading.speed;
-        this.latitude = reading.latitude;
-        this.longitude = reading.longitude;
-        this.altitude = reading.altitude;
+        reading.name = name;
+        this._fromJSONObject(reading);
+    }
+    else if(properties){
+        this._fromJSONObject(properties);
     }
     else{
-        throw "Invalid Activity State";
+        throw "Invalid Activity State "+name;
     }
 }
 
 Activity.prototype._isValidActivityName = function(name){
-    return (activities.name);
+    return (name && activities[name]);
 }
 
 Activity.prototype.computeDistance = function(activity){
@@ -36,3 +37,13 @@ Activity.prototype.computeDistance = function(activity){
     
 };
 
+Activity.prototype._fromJSONObject = function(properties){
+    this.name = properties.name;
+    this.timestamp = properties.timestamp;
+    this.speed = properties.speed;
+    this.latitude = properties.latitude;
+    this.longitude = properties.longitude;
+    this.altitude = properties.altitude;
+};
+
+exports.Activity = Activity;
