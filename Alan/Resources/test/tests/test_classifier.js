@@ -32,6 +32,4 @@ exports.run = function(){
             expect(c.classify(lazy).name).toEqual(lazy.state);
         });
     });
-    
-    describe
 }

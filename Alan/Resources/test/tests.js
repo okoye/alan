@@ -11,6 +11,9 @@ exports.run = function(){
   
   var cache = require('test/tests/test_cache');
   cache.run();
+  
+  var filter = require('test/tests/test_filter');
+  filter.run();
 
   jasmine.getEnv().addReporter(new jasmine.TitaniumReporter());
   jasmine.getEnv().execute();  

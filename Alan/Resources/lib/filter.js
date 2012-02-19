@@ -7,6 +7,7 @@ var cache = require('lib/cache');
 var log = require('lib/logger');
 
 var key = 'activities';
+var divider = '<=>';
 
 exports.purge = function(){
     //clear out any state vars/cache
@@ -69,10 +70,10 @@ exports.probableActivity = function(activity){
     
     cache.add(key, activity); //one of the last things to do.
     temp = {
-        element: fiveN.pop()+activity,
+        element: fiveN.pop()+divider+activity,
         score: scores[this.element]
     };
-    log.info('now testing final sufficiently Greater condition');
+    log.info('now testing final sufficiently Greater condition '+JSON.stringify(temp));
     return sufficientlyGreater(maxProbability, temp);
 };
 
@@ -81,7 +82,7 @@ var probabilities = function(element, values){
     var last = values[0];
     var count = 0;
     for(var i=0; i<values.length; i++){
-        if (last+values[i] === element)
+        if (last+divider+values[i] === element)
             count++;
         last = values[i];
     }
@@ -104,7 +105,7 @@ var max = function(scores){
 
 var sufficientlyGreater = function(value1, value2){
     //score1 must be at least 2x score2 for it to be returned.
-    
+    log.info('Value 1 '+JSON.stringify(value1));
     if (value2 && value2.element && value2.score){
         if (value1.score > (value2.score * 2))
             return value1;
@@ -136,7 +137,7 @@ var cross = function(vector){
     while(vector2.length > 0){
         var current = vector2.pop();
         for (var i=0; i<vector.length; i++){
-            result[vector[i]+''+current] = 0.0;
+            result[vector[i]+divider+current] = 0.0;
         }
     }
     return result;
