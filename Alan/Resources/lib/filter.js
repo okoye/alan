@@ -57,7 +57,7 @@ exports.probableActivity = function(activity){
     //score the transition probabilities, where c is a constant and X are probabilities.
     var scores = {};
     for (property in matrixT){
-        scores[property] = matrixT[property] + (2 * ((matrixF[property]) ? matrixF[property]:0));
+        scores[property] =(0.5 *matrixT[property]) + (2 * ((matrixF[property]) ? matrixF[property]:0)); //TODO: use log for matrixT ? since it is slower.
     }
     for (property in matrixF){
         if (!scores[property]){
@@ -65,13 +65,13 @@ exports.probableActivity = function(activity){
         }
     }
     
-    log.info('computing max score of all scores');
+    log.info('computing max score of all scores '+JSON.stringify(scores));
     var maxProbability = max(scores);
     
     cache.add(key, activity); //one of the last things to do.
     temp = {
-        element: fiveN.pop()+divider+activity,
-        score: scores[this.element]
+        element: fiveN[fiveN.length-1]+divider+activity,
+        score: scores[fiveN[fiveN.length-1]+divider+activity]
     };
     log.info('now testing final sufficiently Greater condition '+JSON.stringify(temp));
     return sufficientlyGreater(maxProbability, temp);
@@ -86,7 +86,9 @@ var probabilities = function(element, values){
             count++;
         last = values[i];
     }
-    return count/(values.length -1);
+    var prob = count/values.length;
+    log.info('Computed probability for element '+element+' is: '+prob);
+    return prob;
 };
 
 var max = function(scores){
@@ -107,7 +109,7 @@ var sufficientlyGreater = function(value1, value2){
     //score1 must be at least 2x score2 for it to be returned.
     log.info('Value 1 '+JSON.stringify(value1));
     if (value2 && value2.element && value2.score){
-        if (value1.score > (value2.score * 2))
+        if (value1.score > (value2.score * 4))
             return value1;
         else
             return value2;
