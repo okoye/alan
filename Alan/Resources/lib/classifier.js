@@ -9,7 +9,7 @@ var log = require('lib/logger');
 var filter = require('lib/filter');
 var activity = require('model/activity');
 
-function Classifier(thresholds){
+function Classifier(thresholds, filtering){
     var defaultThresholds = {
         LAZY: 1,
         WALKING: 3.18,
@@ -17,6 +17,7 @@ function Classifier(thresholds){
         TRANSPORT: 1000
     };
     this.thresholds = (thresholds) ? thresholds:defaultThresholds;
+    this.filtering = (filtering) ? true:false;
     filter.purge(); //cleanse any existing values in the filter.    
     log.info('Initialized new improved classifier');
 }
@@ -40,7 +41,7 @@ Classifier.prototype._classify = function(data){
     log.info('GPS Classification result: '+state);
     state = this._filter(state);
     log.info('Markov Model Classification result: '+JSON.stringify(state));
-    return this._toActivityModel(state.element, data);
+    return this._toActivityModel(state, data);
 };
 
 Classifier.prototype._toActivityModel = function(state, data){
@@ -51,7 +52,10 @@ Classifier.prototype._toActivityModel = function(state, data){
 
 Classifier.prototype._filter = function(state){
     //What is the next probable value returned by the filter?
-    return filter.probableActivity(state);
+    if (this.filtering)
+        return filter.probableActivity(state);
+    else
+        return state;
 };
 
 exports.Classifier = Classifier;

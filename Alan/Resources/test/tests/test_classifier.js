@@ -9,7 +9,7 @@ var lazy = {speed: 0.4, state: 'LAZY'};
 exports.run = function(){
     describe('Classifier tests', function(){
         beforeEach(function(){
-            c = new classifier.Classifier(null);
+            c = new classifier.Classifier(null, false);
         });
         
         it('should classify as running.', function(){
@@ -32,4 +32,6 @@ exports.run = function(){
             expect(c.classify(lazy).name).toEqual(lazy.state);
         });
     });
+    
+    describe
 }

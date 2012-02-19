@@ -23,17 +23,17 @@ exports.probableActivity = function(activity){
     var tenN = cache.fetchLastN(key, 10);
     var fiveN = cache.fetchLastN(key, 5);
     
-    log.info('now computing unique sets');
+    log.info('now computing unique sets '+tenN.length);
     //now, compute the unique set for ten and five N
     var uniqueT = set(tenN);
     var uniqueF = set(fiveN);
     
-    log.info('taking cross product of vector');
+    log.info('taking cross product of vector '+JSON.stringify(uniqueT));
     //now take the cross product of the returned vector.
     var matrixT = cross(uniqueT);
     var matrixF = cross(uniqueF);
     
-    log.info('computing transition probabilities');
+    log.info('computing transition probabilities '+JSON.stringify(matrixT));
     //finally compute transition probabilities
     var temp = uniqueT.slice();
     while(temp.length > 0){
@@ -50,7 +50,7 @@ exports.probableActivity = function(activity){
         }
     }
     
-    log.info('computing scores of potential activity transitions');
+    log.info('computing scores of potential activity transitions '+JSON.stringify(matrixT));
     //using the formula:
     //c1.X1 + c2.X2
     //score the transition probabilities, where c is a constant and X are probabilities.
