@@ -33,7 +33,7 @@ exports.run = function(){
         });
     });
     
-    describe('Classifier, filter integration tests', function(){
+    describe('Classifier, Filter integration tests', function(){
         c = new classifier.Classifier(null, true);
         it('should classify as running.', function(){
             expect(c.classify(running).name).toEqual(running.state);

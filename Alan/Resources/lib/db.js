@@ -10,10 +10,12 @@ var local = {};
 var DATABASE_NAME  = 'Alan.db';
 var HARD_LIMIT = 100000;
 
-exports.createTable = function(name){
+exports.createTable = function(name, structure){
 	log.info('Creating a new table, if none exists');
+	if (!structure)
+	   var structure = '(id INTEGER PRIMARY KEY, timestamp INTEGER NOT NULL, json TEXT NOT NULL)';
 	var db = Ti.Database.open(DATABASE_NAME);
-	db.execute('CREATE TABLE IF NOT EXISTS '+name+' (id INTEGER PRIMARY KEY, timestamp INTEGER NOT NULL, json TEXT NOT NULL)');
+	db.execute('CREATE TABLE IF NOT EXISTS '+name+' '+structure);
 	db.close();
 	return true;
 };
@@ -28,13 +30,22 @@ exports.deleteTable = function(name){
 	db.close();
 	return true;
 };
-exports.insert = function(timestamp, json, table){ //Treated like a key, value store.
+exports.insert = function(timestamp, json, table){ //Treated like a key, value store. for standard tables only.
 	log.info('Inserting new data into table '+table);
 	var db = Ti.Database.open(DATABASE_NAME);
 	var statement = "INSERT INTO "+table+" (timestamp, json) VALUES (?, ?);";
 	db.execute(statement, timestamp, JSON.stringify(json));
 	db.close();
 	return true;
+};
+exports.insertActivity = function(activity, table){
+    if(!table)
+        var table = 'ACTIVITIES';
+    var db = Ti.Database.open(DATABASE_NAME);
+    var statement = "INSERT INTO "+table+" (name, timestamp, speed, latitude, longitude, altitude) VALUES (?, ?, ?, ?, ?, ?);";
+    db.execute(statement, activity.name, activity.timestamp, activity.speed, activity.latitude, activity.longitude, activity.altitude);
+    db.close();
+    return true;
 };
 exports.fetchAll = function(table){
     log.info('Fetching all data in table '+table);
@@ -48,6 +59,30 @@ exports.fetchAll = function(table){
             id: rows.fieldByName('id'),
             timestamp: rows.fieldByName('timestamp'),
             json: rows.fieldByName('json')
+        });
+        counter += 1;
+        rows.next();
+    }
+    rows.close();
+    db.close();
+    return result;
+};
+exports.fetchAllActivity = function(table){
+    log.info('Fetching all data in table '+table);
+    var db = Ti.Database.open(DATABASE_NAME);
+    var statement = "SELECT * FROM "+table;
+    var rows = db.execute(statement);
+    var result = [];
+    var counter = 0;
+    while (rows.isValidRow() && counter < HARD_LIMIT){ //TODO: refactor
+        result.push({
+            id: rows.fieldByName('id'),
+            name: rows.fieldByName('name'),
+            timestamp: rows.fieldByName('timestamp'),
+            speed: rows.fieldByName('speed'),
+            latitude: rows.fieldByName('latitude'),
+            longitude: rows.fieldByName('longitude'),
+            altitude: rows.fieldByName('altitude')
         });
         counter += 1;
         rows.next();

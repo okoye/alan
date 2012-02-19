@@ -13,27 +13,29 @@ var log = require('lib/logger');
 var classifier = require('lib/classifier');
 var db = require('lib/db');
 
-var BATCH_UPDATE = 1;
+var BATCH_UPDATE = 2; //most likely once a minute
 
 function Processor(properties){
 	this.activity_buffer = [];
 	this.success = properties.success; //on successful activity classification; feedback loop
 	this.failure = properties.failure; //on failed activity classification; feedback loop
-	this.TABLE_NAME = 'READINGS';
-	
-	db.createTable(this.TABLE_NAME);
+	this.TABLE_NAME = 'ACTIVITIES';
+	this.TABLE_STRUCTURE = '(id INTEGER PRIMARY KEY, name TEXT NOT NULL, timestamp INTEGER NOT NULL, speed REAL NOT NULL, latitude REAL, longitude REAL, altitude REAL)';
+	db.createTable(this.TABLE_NAME, this.TABLE_STRUCTURE);
 }
 
 Processor.prototype.process = function(data){
-	var activity = classifier.classify(data);
-	var timestamp = this.getTimestamp();
-	if (activity){
-		this.activity_buffer.push({readings: activity, timestamp: timestamp, precision: 'seconds', processed: true});
+    for (var i=0; i<data.gps.length; i++){
+       var datum = data.gps[i];
+	   var activity = classifier.classify(datum);
+	   var timestamp = this.getTimestamp();
+	   if (activity){
+		  this.activity_buffer.push(activity);
 		
-	} else{
-		this.activity_buffer.push({readings: data, timestamp: timestamp, precision: 'seconds', processed: false});
+	   } else{
+		  log.info('FAILURE, classification for '+JSON.stringify(datum)+' failed');
+	   }
 	}
-		
 	if (this.activity_buffer.length >= BATCH_UPDATE){
 		log.debug('Calling updateDB');
 		this.updateDB();
@@ -44,7 +46,7 @@ Processor.prototype.process = function(data){
 
 Processor.prototype.updateDB = function(){
 	for (var i=0; i<this.activity_buffer.length; i++){
-		db.insert(this.activity_buffer[i].timestamp, this.activity_buffer[i], this.TABLE_NAME);
+		db.insertActivity(this.activity_buffer[i], this.TABLE_NAME);
 	}
 };
 
