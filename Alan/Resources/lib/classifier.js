@@ -39,8 +39,8 @@ Classifier.prototype._classify = function(data){
     }
     log.info('GPS Classification result: '+state);
     state = this._filter(state);
-    log.info('Markov Model Classification result: '+state);
-    return this._toActivityModel(state, data);
+    log.info('Markov Model Classification result: '+JSON.stringify(state));
+    return this._toActivityModel(state.element, data);
 };
 
 Classifier.prototype._toActivityModel = function(state, data){

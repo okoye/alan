@@ -13,5 +13,9 @@ exports.run = function(){
         it('should retrieve 10 elements', function(){
             expect(cache.fetch('testing').length).toEqual(10);
         });
+        
+        it('should retreive only 10 elements.', function(){
+            expect(cache.fetchLastN('testing', 20).length).toEqual(10);
+        });
     });
 }

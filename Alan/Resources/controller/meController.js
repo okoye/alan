@@ -51,8 +51,8 @@ exports.start = function(meV){
                 height: 60,
                 width: 280,
                 top: 5,
-            }3, styling[activity.name]);
-            
+            }, 3, styling[activity.name]);
+       
             updateView(activity);
 
         }

@@ -33,6 +33,16 @@ exports.fetch = function(name){
     }
 };
 
+exports.remove = function(name){
+    cacheStore[name] = [];
+};
+
+exports.fetchLastN = function(name, size){
+    if (_exists(name)){
+        return cacheStore[name].slice(size*-1); //TODO test this.
+    }
+};
+
 //Some helper functions
 var _exists = function(name){
     return (cacheStore[name]);
