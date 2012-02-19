@@ -69,9 +69,10 @@ exports.probableActivity = function(activity){
     var maxProbability = max(scores);
     
     cache.add(key, activity); //one of the last things to do.
+    var element = (fiveN[fiveN.length-1]+divider+activity) ? fiveN[fiveN.length-1]+divider+activity:null;
     temp = {
-        element: fiveN[fiveN.length-1]+divider+activity,
-        score: scores[fiveN[fiveN.length-1]+divider+activity]
+        element: (element) ? element:undefined,
+        score: scores[element]
     };
     log.info('now testing final sufficiently Greater condition '+JSON.stringify(temp));
     return sufficientlyGreater(maxProbability, temp);

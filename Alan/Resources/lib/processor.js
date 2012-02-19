@@ -22,12 +22,14 @@ function Processor(properties){
 	this.TABLE_NAME = 'ACTIVITIES';
 	this.TABLE_STRUCTURE = '(id INTEGER PRIMARY KEY, name TEXT NOT NULL, timestamp INTEGER NOT NULL, speed REAL NOT NULL, latitude REAL, longitude REAL, altitude REAL)';
 	db.createTable(this.TABLE_NAME, this.TABLE_STRUCTURE);
+	
+	this.discriminator = new classifier.Classifier(null, true);
 }
 
 Processor.prototype.process = function(data){
     for (var i=0; i<data.gps.length; i++){
        var datum = data.gps[i];
-	   var activity = classifier.classify(datum);
+	   var activity = this.discriminator.classify(datum);
 	   var timestamp = this.getTimestamp();
 	   if (activity){
 		  this.activity_buffer.push(activity);

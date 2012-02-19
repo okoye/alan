@@ -3,6 +3,7 @@
  * Creates the main Alan application window.
  */
 var log = require('lib/logger');
+var manager = require('lib/manager');
 var stripView = require('ui/stripView');
 var meView = require('ui/meView');
 var scoreView = require('ui/scoreView');
@@ -139,8 +140,12 @@ exports.createAlanWindow = function(_args){
     win.add(bodyView);
     win.add(footerView);
     
-    //Initialize collection and processing systems.    
-    win.open();
+    //Start collection manager.
+    mgt = new manager.Manager();
+    
+    //Initialize collection and processing systems.
+    if (mgt.start())    
+        win.open();
 };
 
 

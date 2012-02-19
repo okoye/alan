@@ -14,7 +14,7 @@ var CURRENT_MODE = sal.mode.BACKGROUND;
 
 function Manager(properties){
     log.info('Initializing manager routine');
-    if (properties.training){
+    if (properties && properties.training){
         var trainer = require('lib/trainer');
         trainer.start();
     }

@@ -54,7 +54,13 @@ Classifier.prototype._filter = function(state){
     //What is the next probable value returned by the filter?
     if (this.filtering){
         var result = filter.probableActivity(state);
-        return result.split('<=>')[1];
+        try{
+            return result.element.split('<=>')[1];
+        }
+        catch (err){
+            log.debug('ERROR occured during filtering '+err);
+            return state;
+        }
     }
     else
         return state;
