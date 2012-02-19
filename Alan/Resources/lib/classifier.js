@@ -52,8 +52,10 @@ Classifier.prototype._toActivityModel = function(state, data){
 
 Classifier.prototype._filter = function(state){
     //What is the next probable value returned by the filter?
-    if (this.filtering)
-        return filter.probableActivity(state);
+    if (this.filtering){
+        var result = filter.probableActivity(state);
+        return result.split('<=>')[1];
+    }
     else
         return state;
 };

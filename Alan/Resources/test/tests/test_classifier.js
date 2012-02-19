@@ -32,4 +32,15 @@ exports.run = function(){
             expect(c.classify(lazy).name).toEqual(lazy.state);
         });
     });
-}
+    
+    describe('Classifier, filter integration tests', function(){
+        c = new classifier.Classifier(null, true);
+        it('should classify as running.', function(){
+            expect(c.classify(running).name).toEqual(running.state);
+        });
+        
+        it('should classify as walking.', function(){
+            expect(c.classify(walking).name).toEqual(walking.state);
+        });
+    });
+};
