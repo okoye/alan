@@ -91,8 +91,10 @@ exports.fetchAllActivity = function(table){
     db.close();
     return result;
 };
-exports.fetchActivitySince = function(table, time){
+exports.fetchActivitySince = function(time, table){
     log.info('Fetching all activity since '+time);
+    if (!table)
+        var table = 'ACTIVITIES';
     var db = Ti.Database.open(DATABASE_NAME);
     var statement = "SELECT * FROM "+table+" WHERE timestamp>?";
     var rows = db.execute(statement, time+'');

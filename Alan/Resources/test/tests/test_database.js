@@ -105,7 +105,7 @@ exports.run = function(){
                altitude: 0
            });
            db.insertActivity(act, 'test_activity_database');
-           expect(db.fetchActivitySince('test_activity_database', (new Date).getTime()).length).toEqual(1);
+           expect(db.fetchActivitySince((new Date).getTime(), 'test_activity_database').length).toEqual(1);
        })
     });
     

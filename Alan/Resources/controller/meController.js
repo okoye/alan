@@ -9,10 +9,11 @@
 var log = require('lib/logger');
 var itemSummary = require('ui/itemSummaryView');
 var styling = require('lib/styles');
+var db = require('lib/db');
 
 //State variables
 var meView = null;
-var activities = {};
+var viewActivityState = {}; //tracks what kind of 
 var lastActivity = null;
 
 var currentDay = (new Date).getDay();
@@ -36,27 +37,51 @@ exports.start = function(meV){
         //TODO: update activities, and base calorie.
         log.info('Now updating view with new activity '+JSON.stringify(activity));
     };
-    var onProcessed = function(activity){
-        if (isNewDay()){
-            activities = {};
-            lastActivity = activity;
-            meView.clearActivities();
+    var processActivities = function(activities){
+        //TODO: compute overall distance change for each activity type and update viewActivityState
+        log.info('Running all necessary computations on activites');
+        if (activities.length > 0){
+            if (!lastActivity)
+                lastActivity = activities[0];
+            
+            //Now, start proper processing.
+            
         }
-        
-        if (activities[activity.name]){
-            updateView(activity);
+    };
+    var onProcessed = function(activityInfo){
+        // if (isNewDay()){
+            // viewActivityState = {};
+            // meView.clearActivities();
+            // lastActivity = null;
+        // }
+        // var activities = db.
+            // if (activities[activity.name]){
+                // updateView(activity);
+            // }
+            // else{
+                // //TODO: add new itemSummaryView (activity) to meView.
+                // log.debug('Styling value: '+JSON.stringify(activity));
+                // isv = itemSummary.create({
+                    // height: 60,
+                    // width: 280,
+                    // top: 5,
+                // }, 3, styling[activity.name]);
+                // meView.newActivity(isv);
+                // updateView(activity);
+//     
+            // }
+        if (isNewDay()){
+            meView.clearActivities();
+            viewActivityState = {};
+            lastActivity = null;
+        }
+        if (lastActivity){
+            var activities = db.fetchActivitySince(lastActivity.timestamp);
+            processActivities(activities); //extract distances, updateView activity state, compute total calories
         }
         else{
-            //TODO: add new itemSummaryView (activity) to meView.
-            log.debug('Styling value: '+JSON.stringify(activity));
-            isv = itemSummary.create({
-                height: 60,
-                width: 280,
-                top: 5,
-            }, 3, styling[activity.name]);
-            meView.newActivity(isv);
-            updateView(activity);
-
+            var activities = db.fetchActivitySince((new Date).getTime()-2000);
+            processActivities(activities);
         }
     };
     
