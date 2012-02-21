@@ -4,12 +4,17 @@
  */
 var log = require('lib/logger');
 var manager = require('lib/manager');
+
+//views
 var stripView = require('ui/stripView');
 var meView = require('ui/meView');
 var scoreView = require('ui/scoreView');
 var pvpView = require('ui/pvpView');
 var storeView = require('ui/storeView');
 var settingsView = require('ui/settingsView');
+
+//controllers
+var meController = require('controller/meController');
 
 //Constants
 var PLATFORM_WIDTH = Ti.Platform.displayCaps.platformWidth;
@@ -139,6 +144,9 @@ exports.createAlanWindow = function(_args){
     win.add(headerView);
     win.add(bodyView);
     win.add(footerView);
+    
+    //Start various controllers
+    meController.start();
     
     //Start collection manager.
     mgt = new manager.Manager();

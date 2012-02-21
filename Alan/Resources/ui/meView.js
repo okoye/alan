@@ -39,7 +39,14 @@ exports.create = function(_args){
         //For each view, if _type == 'itemSummaryView', delete it by using remove.
     };
     
+    var addActivity = function(isv){
+        log.info('adding new activity to meView');
+        meBodyView.add(isv);
+    };
+    
     meBodyView.totalCalories = setTodayTotal;
+    meBodyView.newActivity = addActivity;
+    
     meBodyView.add(totalToday);
     return meBodyView;
 }

@@ -33,7 +33,8 @@ exports.start = function(meV){
         }
     };
     var updateView = function(activity){
-        //TODO: update activities, and meView
+        //TODO: update activities, and base calorie.
+        log.info('Now updating view with new activity '+JSON.stringify(activity));
     };
     var onProcessed = function(activity){
         if (isNewDay()){
@@ -52,7 +53,7 @@ exports.start = function(meV){
                 width: 280,
                 top: 5,
             }, 3, styling[activity.name]);
-       
+            meView.newActivity(isv);
             updateView(activity);
 
         }
