@@ -55,7 +55,7 @@ Classifier.prototype._filter = function(state){
     if (this.filtering){
         var result = filter.probableActivity(state);
         try{
-            return result.element.split('<=>')[1];
+            return result.element.split('<=>')[1]; //off by one error probably
         }
         catch (err){
             log.debug('ERROR occured during filtering '+err);

@@ -94,6 +94,19 @@ exports.run = function(){
            db.insertActivity(act, 'test_activity_database');
            expect(db.fetchAllActivity('test_activity_database').length).toEqual(1);
        });
+       
+       it('should retrieve activity by time', function(){
+           var act = new activity.Activity(null, null, {
+               name : 'RUNNING',
+               timestamp: (new Date).getTime() + 2000,
+               speed: 7,
+               latitude: 0,
+               longitude: 0,
+               altitude: 0
+           });
+           db.insertActivity(act, 'test_activity_database');
+           expect(db.fetchActivitySince('test_activity_database', (new Date).getTime()).length).toEqual(1);
+       })
     });
     
 };

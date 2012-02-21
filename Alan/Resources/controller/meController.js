@@ -48,6 +48,7 @@ exports.start = function(meV){
         }
         else{
             //TODO: add new itemSummaryView (activity) to meView.
+            log.debug('Styling value: '+JSON.stringify(activity));
             isv = itemSummary.create({
                 height: 60,
                 width: 280,

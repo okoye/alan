@@ -91,11 +91,35 @@ exports.fetchAllActivity = function(table){
     db.close();
     return result;
 };
+exports.fetchActivitySince = function(table, time){
+    log.info('Fetching all activity since '+time);
+    var db = Ti.Database.open(DATABASE_NAME);
+    var statement = "SELECT * FROM "+table+" WHERE timestamp>?";
+    var rows = db.execute(statement, time+'');
+    var counter = 0;
+    var result = [];
+    while (rows.isValidRow() && counter < HARD_LIMIT){ //TODO: refactor
+        result.push({
+            id: rows.fieldByName('id'),
+            name: rows.fieldByName('name'),
+            timestamp: rows.fieldByName('timestamp'),
+            speed: rows.fieldByName('speed'),
+            latitude: rows.fieldByName('latitude'),
+            longitude: rows.fieldByName('longitude'),
+            altitude: rows.fieldByName('altitude')
+        });
+        counter += 1;
+        rows.next();
+    }
+    rows.close();
+    db.close();
+    return result;
+};
 exports.fetchId = function(table, id){
     //Returns ideally 1 result, that is this specific id
   log.info('Fetching datum by specific ID in table '+table);
   var db = Ti.Database.open(DATABASE_NAME);
-  statement = "SELECT * FROM "+table+" WHERE id=?";
+  var statement = "SELECT * FROM "+table+" WHERE id=?";
   var rows = db.execute(statement, id);
   var counter = 0;
   var result = [];

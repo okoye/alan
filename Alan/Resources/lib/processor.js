@@ -13,7 +13,7 @@ var log = require('lib/logger');
 var classifier = require('lib/classifier');
 var db = require('lib/db');
 
-var BATCH_UPDATE = 2; //most likely once a minute
+var BATCH_UPDATE = 2;
 
 function Processor(properties){
 	this.activity_buffer = [];
@@ -41,7 +41,7 @@ Processor.prototype.process = function(data){
 	if (this.activity_buffer.length >= BATCH_UPDATE){
 		log.debug('Calling updateDB');
 		this.updateDB();
-		Ti.App.fireEvent('alan:sensorReadingsUpdate', {length: this.activity_buffer.length}); //TODO: use models
+		Ti.App.fireEvent('alan:sensorReadingsUpdate', {length: this.activity_buffer.length}); 
 		this.activity_buffer = [];
 	}
 };
