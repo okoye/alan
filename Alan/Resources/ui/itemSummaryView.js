@@ -45,7 +45,7 @@ exports.create = function(_args, sections, style){
             left: _left,
             backgroundColor: '#b1b1b1',
         });
-    }
+    };
     
     var triplePartition = function(){        
         var left = Ti.UI.createView({

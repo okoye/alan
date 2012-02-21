@@ -10,13 +10,15 @@ var log = require('lib/logger');
 var itemSummary = require('ui/itemSummaryView');
 var styling = require('lib/styles');
 var db = require('lib/db');
+var activityModel = require('model/activity');
 
 //State variables
 var meView = null;
 var viewActivityState = {}; //tracks what kind of 
 var lastActivity = null;
+var cumulativeDistance = {};
 
-var currentDay = (new Date).getDay();
+var currentDay = (new Date).getDay(); //TODO persist across app restarts.
 
 exports.start = function(meV){
     //listen for relevant data model changes. when they occur, 
@@ -33,7 +35,7 @@ exports.start = function(meV){
             return true;
         }
     };
-    var updateView = function(activity){
+    var syncView = function(activity){
         //TODO: update activities, and base calorie.
         log.info('Now updating view with new activity '+JSON.stringify(activity));
     };
@@ -42,10 +44,27 @@ exports.start = function(meV){
         log.info('Running all necessary computations on activites');
         if (activities.length > 0){
             if (!lastActivity)
-                lastActivity = activities[0];
+                lastActivity = new activityModel.Activity(null, null, activities[0]);
             
             //Now, start proper processing.
-            
+            for (var i=0; i<activities.length; i++){
+                var activity = new activityModel.Activity(null, null, activities[i]);
+                if (!viewActivityState[activity.name]){
+                    //create itemSummaryView and push to viewActivityState
+                    var isv = itemSummary.create({
+                        height: 60,
+                        width: 280,
+                        top: 5,
+                    }, 3, styling[activity.name]);
+                    viewActivityState[activity.name] = isv;
+                }
+                
+                //compute distances
+                var dist = activity.computeDistance(lastActivity);
+                cumulativeDistance[activity.name] += dist;
+                lastActivity = activity;
+            }
+            log.debug('Cumulative distance: '+JSON.stringify(cumulativeDistance));
         }
     };
     var onProcessed = function(activityInfo){
@@ -74,13 +93,16 @@ exports.start = function(meV){
             meView.clearActivities();
             viewActivityState = {};
             lastActivity = null;
+            cumulativeDistance = {};
         }
         if (lastActivity){
             var activities = db.fetchActivitySince(lastActivity.timestamp);
             processActivities(activities); //extract distances, updateView activity state, compute total calories
         }
         else{
-            var activities = db.fetchActivitySince((new Date).getTime()-2000);
+            var time = (new Date).getTime() - 60000;
+            log.debug(time);
+            var activities = db.fetchActivitySince(time);
             processActivities(activities);
         }
     };
