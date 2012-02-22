@@ -45,7 +45,7 @@ Activity.prototype.computeDistance = function(activity){
 
 Activity.prototype._fromJSONObject = function(properties){
     this.name = properties.name;
-    this.timestamp = properties.timestamp;
+    this.timestamp = properties.timestamp + '';
     this.speed = properties.speed;
     this.latitude = properties.latitude;
     this.longitude = properties.longitude;

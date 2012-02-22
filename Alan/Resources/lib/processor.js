@@ -12,6 +12,7 @@
 var log = require('lib/logger');
 var classifier = require('lib/classifier');
 var db = require('lib/db');
+var activityModel = require('model/activity');
 
 var BATCH_UPDATE = 2;
 
@@ -20,7 +21,8 @@ function Processor(properties){
 	this.success = properties.success; //on successful activity classification; feedback loop
 	this.failure = properties.failure; //on failed activity classification; feedback loop
 	this.TABLE_NAME = 'ACTIVITIES';
-	this.TABLE_STRUCTURE = '(id INTEGER PRIMARY KEY, name TEXT NOT NULL, timestamp INTEGER NOT NULL, speed REAL NOT NULL, latitude REAL, longitude REAL, altitude REAL)';
+	this.TABLE_STRUCTURE = '(id INTEGER PRIMARY KEY, name TEXT NOT NULL, timestamp TEXT NOT NULL, speed REAL NOT NULL, latitude REAL, longitude REAL, altitude REAL)';
+	db.deleteTable(this.TABLE_NAME); //TODO: should only be done after a fresh installation/upgrade.
 	db.createTable(this.TABLE_NAME, this.TABLE_STRUCTURE);
 	
 	this.discriminator = new classifier.Classifier(null, true);
@@ -48,7 +50,8 @@ Processor.prototype.process = function(data){
 
 Processor.prototype.updateDB = function(){
 	for (var i=0; i<this.activity_buffer.length; i++){
-		db.insertActivity(this.activity_buffer[i], this.TABLE_NAME);
+	    log.debug('Activity to be inserted '+JSON.stringify(this.activity_buffer[i]));
+		db.insertActivity(new activityModel.Activity(null, null, this.activity_buffer[i]), this.TABLE_NAME);
 	}
 };
 
