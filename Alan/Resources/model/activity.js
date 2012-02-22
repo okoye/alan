@@ -12,6 +12,7 @@ var activities = {
         TRANSPORT: 4,
         UNKNOWN: 5
 };
+var radius = 6371; //radius of earth in kilometers
 
 function Activity(name, reading, properties){
     if (this._isValidActivityName(name)){
@@ -32,7 +33,14 @@ Activity.prototype._isValidActivityName = function(name){
 
 Activity.prototype.computeDistance = function(activity){
     //return the distance between this activity and supplied activity
+    var dLat = this._toRadians((this.latitude - activity.latitude));
+    var dLon = this._toRadians((this.longitude - activity.longitude));
+    var lat1 = this._toRadians(this.latitude);
+    var lat2 = this._toRadians(activity.latitude);
     
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return radius * c; //NOTE: in kilometers
 };
 
 Activity.prototype._fromJSONObject = function(properties){
@@ -43,5 +51,9 @@ Activity.prototype._fromJSONObject = function(properties){
     this.longitude = properties.longitude;
     this.altitude = properties.altitude;
 };
+
+Activity.prototype._toRadians = function(degree){
+    return (Math.PI/180) * degree;
+}
 
 exports.Activity = Activity;

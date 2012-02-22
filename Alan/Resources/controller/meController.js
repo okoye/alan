@@ -101,7 +101,6 @@ exports.start = function(meV){
         }
         else{
             var time = (new Date).getTime() - 60000;
-            log.debug(time);
             var activities = db.fetchActivitySince(time);
             processActivities(activities);
         }
