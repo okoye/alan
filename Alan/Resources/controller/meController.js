@@ -25,6 +25,7 @@ exports.start = function(meV){
     //cache changes locally, and then push to view when appropriate.
     //or push immediately.
     meView = meV;
+    log.debug('meV is now '+JSON.stringify(meV));
     
     var isNewDay = function(){
         if ((new Date).getDay() === currentDay){
@@ -39,8 +40,9 @@ exports.start = function(meV){
         //TODO: update activities, and base calorie.
         log.info('Now updating view with new activity '+JSON.stringify(activity));
     };
-    var processActivities = function(activities, meView){
+    var processActivities = function(activities){
         log.info('Running all necessary computations on activities '+activities.length);
+        log.debug('meView is now '+JSON.stringify(meView));
         if (activities.length > 0){
             if (!lastActivity)
                 lastActivity = new activityModel.Activity(null, null, activities[0]);
@@ -69,27 +71,6 @@ exports.start = function(meV){
         }
     };
     var onProcessed = function(activityInfo){
-        // if (isNewDay()){
-            // viewActivityState = {};
-            // meView.clearActivities();
-            // lastActivity = null;
-        // }
-        // var activities = db.
-            // if (activities[activity.name]){
-                // updateView(activity);
-            // }
-            // else{
-                // //TODO: add new itemSummaryView (activity) to meView.
-                // log.debug('Styling value: '+JSON.stringify(activity));
-                // isv = itemSummary.create({
-                    // height: 60,
-                    // width: 280,
-                    // top: 5,
-                // }, 3, styling[activity.name]);
-                // meView.newActivity(isv);
-                // updateView(activity);
-//     
-            // }
         if (isNewDay()){
             meView.clearActivities();
             viewActivityState = {};
@@ -99,13 +80,13 @@ exports.start = function(meV){
         if (lastActivity){
             log.debug('Last Activity Timestamp '+lastActivity.timestamp);
             var activities = db.fetchActivitySince(lastActivity.timestamp);
-            processActivities(activities, meView); //extract distances, updateView activity state, compute total calories
+            processActivities(activities); //extract distances, updateView activity state, compute total calories
         }
         else{
             var time = (new Date).getTime() - 60000;
             log.debug('No last activity timestamp '+time);
             var activities = db.fetchActivitySince(time);
-            processActivities(activities, meView);
+            processActivities(activities);
         }
     };
     

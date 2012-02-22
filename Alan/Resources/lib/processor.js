@@ -41,7 +41,6 @@ Processor.prototype.process = function(data){
 	   }
 	}
 	if (this.activity_buffer.length >= BATCH_UPDATE){
-		log.debug('Calling updateDB');
 		this.updateDB();
 		Ti.App.fireEvent('alan:sensorReadingsUpdate', {length: this.activity_buffer.length}); 
 		this.activity_buffer = [];
@@ -50,7 +49,6 @@ Processor.prototype.process = function(data){
 
 Processor.prototype.updateDB = function(){
 	for (var i=0; i<this.activity_buffer.length; i++){
-	    log.debug('Activity to be inserted '+JSON.stringify(this.activity_buffer[i]));
 		db.insertActivity(new activityModel.Activity(null, null, this.activity_buffer[i]), this.TABLE_NAME);
 	}
 };

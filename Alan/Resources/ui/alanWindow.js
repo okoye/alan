@@ -39,14 +39,14 @@ exports.createAlanWindow = function(_args){
     }),
     tabWidth = PLATFORM_WIDTH/NUM_TABS,
     tabs = [];
-    
+    var viewArray = [
+        meView.create(),
+        scoreView.create(),
+        pvpView.create(),
+        storeView.create(),
+    ];
     var bodyView = stripView.create({
-        views : [
-            meView.create(),    //me
-            scoreView.create(), //activity age
-            pvpView.create(),   //connect
-            storeView.create(), //store
-        ],
+        views : viewArray,
         width : PLATFORM_WIDTH,
         height : 370,
     });
@@ -146,7 +146,7 @@ exports.createAlanWindow = function(_args){
     win.add(footerView);
     
     //Start various controllers
-    meController.start();
+    meController.start(viewArray[0]);
     
     //Start collection manager.
     mgt = new manager.Manager();
