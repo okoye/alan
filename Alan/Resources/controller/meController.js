@@ -41,7 +41,7 @@ exports.start = function(meV){
     };
     var processActivities = function(activities){
         //TODO: compute overall distance change for each activity type and update viewActivityState
-        log.info('Running all necessary computations on activites');
+        log.info('Running all necessary computations on activities '+activities.length);
         if (activities.length > 0){
             if (!lastActivity)
                 lastActivity = new activityModel.Activity(null, null, activities[0]);
@@ -49,6 +49,7 @@ exports.start = function(meV){
             //Now, start proper processing.
             for (var i=0; i<activities.length; i++){
                 var activity = new activityModel.Activity(null, null, activities[i]);
+                log.debug('Current activity '+JSON.stringify(activity));
                 if (!viewActivityState[activity.name]){
                     //create itemSummaryView and push to viewActivityState
                     var isv = itemSummary.create({
@@ -57,8 +58,9 @@ exports.start = function(meV){
                         top: 5,
                     }, 3, styling[activity.name]);
                     viewActivityState[activity.name] = isv;
+                    meView.newActivity(isv);
+                    cumulativeDistance[activity.name] = 0;
                 }
-                
                 //compute distances
                 var dist = activity.computeDistance(lastActivity);
                 cumulativeDistance[activity.name] += dist;
@@ -96,11 +98,13 @@ exports.start = function(meV){
             cumulativeDistance = {};
         }
         if (lastActivity){
+            log.debug('Last Activity Timestamp '+lastActivity.timestamp);
             var activities = db.fetchActivitySince(lastActivity.timestamp);
             processActivities(activities); //extract distances, updateView activity state, compute total calories
         }
         else{
             var time = (new Date).getTime() - 60000;
+            log.debug('No last activity timestamp '+time);
             var activities = db.fetchActivitySince(time);
             processActivities(activities);
         }
