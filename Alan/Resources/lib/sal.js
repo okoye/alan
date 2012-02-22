@@ -158,7 +158,7 @@ var sampleGPS = function(){
         _gps.heading = e.coords.heading;
         _gps.accuracy = e.coords.accuracy;
         _gps.speed = e.coords.speed;
-        _gps.timestamp = new Date(e.coords.timestamp).getTime();
+        _gps.timestamp = (new Date).getTime();
         _gps.altitude_accuracy = e.coords.altitude_accuracy;
         readings.gps.push(_gps);
     };

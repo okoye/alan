@@ -39,8 +39,7 @@ exports.start = function(meV){
         //TODO: update activities, and base calorie.
         log.info('Now updating view with new activity '+JSON.stringify(activity));
     };
-    var processActivities = function(activities){
-        //TODO: compute overall distance change for each activity type and update viewActivityState
+    var processActivities = function(activities, meView){
         log.info('Running all necessary computations on activities '+activities.length);
         if (activities.length > 0){
             if (!lastActivity)
@@ -100,13 +99,13 @@ exports.start = function(meV){
         if (lastActivity){
             log.debug('Last Activity Timestamp '+lastActivity.timestamp);
             var activities = db.fetchActivitySince(lastActivity.timestamp);
-            processActivities(activities); //extract distances, updateView activity state, compute total calories
+            processActivities(activities, meView); //extract distances, updateView activity state, compute total calories
         }
         else{
             var time = (new Date).getTime() - 60000;
             log.debug('No last activity timestamp '+time);
             var activities = db.fetchActivitySince(time);
-            processActivities(activities);
+            processActivities(activities, meView);
         }
     };
     
