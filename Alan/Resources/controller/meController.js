@@ -49,7 +49,6 @@ exports.start = function(meV){
             //Now, start proper processing.
             for (var i=0; i<activities.length; i++){
                 var activity = new activityModel.Activity(null, null, activities[i]);
-                log.debug('Current activity '+JSON.stringify(activity));
                 if (!viewActivityState[activity.name]){
                     //create itemSummaryView and push to viewActivityState
                     var isv = itemSummary.create({
@@ -58,6 +57,7 @@ exports.start = function(meV){
                         top: 5,
                     }, 3, styling[activity.name]);
                     viewActivityState[activity.name] = isv;
+                    log.debug('meView is '+JSON.stringify(meView));
                     meView.newActivity(isv);
                     cumulativeDistance[activity.name] = 0;
                 }
