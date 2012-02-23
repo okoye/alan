@@ -42,6 +42,7 @@ exports.start = function(meV){
     };
     var detailedView = function(activity){
        //TODO: how does activity detail view look?
+       //construct nav window components here.
        log.info(activity +' detail view called.'); 
     };
     var processActivities = function(activities){

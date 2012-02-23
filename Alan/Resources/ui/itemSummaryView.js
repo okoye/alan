@@ -64,7 +64,7 @@ exports.create = function(_args, sections, style){
         var activity = Ti.UI.createLabel({
             color: style.color,
             font: {
-                fontSize: 20,
+                fontSize: 12,
                 fontWeight: 'bold',
             },
             left: 2,
@@ -72,12 +72,26 @@ exports.create = function(_args, sections, style){
         });
         var distance = Ti.UI.createLabel({
             color: style.color,
+            textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
             font: {
-                fontSize: 20,
+                fontSize: 42,
                 fontWeight: 'bold',
             },
             left: 2,
             right: 2,
+            width: '70%'
+        });
+        var unit = Ti.UI.createLabel({
+            color: style.color,
+            textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+            font: {
+                fontSize: 12,
+                fontWeight: 'bold'
+            },
+            left: distance.width+2,
+            right: 1,
+            top: 20,
+            width: '30%',
         });
         var moreInfo = Ti.UI.createButton({
             backgroundImage: style.buttonImage,
@@ -96,7 +110,7 @@ exports.create = function(_args, sections, style){
             distance.setText(dist);
         }
         
-        left.add(activity); middle.add(distance); right.add(moreInfo);
+        left.add(activity); middle.add(distance); middle.add(unit); right.add(moreInfo);
         view.add(left); view.add(divider(left.width+1)); view.add(middle); view.add(divider(middle.width+left.width+2)); view.add(right);
         container._setContent = setContent;
         container._updateDistance = updateDistance;
