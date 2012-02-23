@@ -5,3 +5,7 @@ Version 1 Beta 4:
 -> Brand new Sensor Abstraction Layer replacing outdated Collection Layer
 -> Refactored Reading Management Layer for better modularity and debugging options
 -> Removed old Background logic code to fix Background Termination Bug
+-> Implement functional activity classifier
+-> Intelligent filter using Markov Models for transition probabilities implemented
+-> Super modular views for Alan window
+-> Added caching abstration
