@@ -14,6 +14,7 @@ exports.create = function(_args){
         top: (_args.top) ? _args.top: 10,
     });
     
+    //TODO: explore using toImage
     var view = Ti.UI.createWebView({
         dataCache : [],
         height: container.height,
