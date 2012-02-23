@@ -87,17 +87,19 @@ exports.create = function(_args, sections, style){
         });
         
         var setContent = function(act, dist, _cb){
-            if (act)
-                activity.setText(act);
-            if(dist)
-                distance.setText(dist);
-            if(_cb)
-                moreInfo.addEventListener('click', _cb||function(e){log.info('NOOP');});
+            activity.setText(act);
+            distance.setText(dist);
+            moreInfo.addEventListener('click', _cb||function(e){log.info('NOOP');});
         };
+        
+        var updateDistance = function(dist){
+            distance.setText(dist);
+        }
         
         left.add(activity); middle.add(distance); right.add(moreInfo);
         view.add(left); view.add(divider(left.width+1)); view.add(middle); view.add(divider(middle.width+left.width+2)); view.add(right);
         container._setContent = setContent;
+        container._updateDistance = updateDistance;
     };
     
     var doublePartition = function(){

@@ -40,6 +40,10 @@ exports.start = function(meV){
         //TODO: update activities, and base calorie.
         log.info('Now updating view with new activity '+JSON.stringify(activity));
     };
+    var detailedView = function(activity){
+       //TODO: how does activity detail view look?
+       log.info(activity +' detail view called.'); 
+    };
     var processActivities = function(activities){
         log.info('Running all necessary computations on activities '+activities.length);
         if (activities.length > 0){
@@ -57,12 +61,17 @@ exports.start = function(meV){
                         top: 5,
                     }, 3, styling[activity.name]);
                     viewActivityState[activity.name] = isv;
+                    isv._setContent(activity.name, null, function(evt){
+                        detailedView(activity.name);
+                    });
                     meView.newActivity(isv);
                     cumulativeDistance[activity.name] = 0;
                 }
-                //compute distances
+                //compute delta distances
                 var dist = activity.computeDistance(lastActivity);
                 cumulativeDistance[activity.name] += dist;
+                //now update view activity state with new distance
+                viewActivityState[activity.name]._updateDistance(cumulativeDistance[activity.name]);
                 lastActivity = activity;
             }
             log.debug('Cumulative distance: '+JSON.stringify(cumulativeDistance));

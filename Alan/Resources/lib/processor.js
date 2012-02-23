@@ -22,7 +22,6 @@ function Processor(properties){
 	this.failure = properties.failure; //on failed activity classification; feedback loop
 	this.TABLE_NAME = 'ACTIVITIES';
 	this.TABLE_STRUCTURE = '(id INTEGER PRIMARY KEY, name TEXT NOT NULL, timestamp TEXT NOT NULL, speed REAL NOT NULL, latitude REAL, longitude REAL, altitude REAL)';
-	db.deleteTable(this.TABLE_NAME); //TODO: should only be done after a fresh installation/upgrade.
 	db.createTable(this.TABLE_NAME, this.TABLE_STRUCTURE);
 	
 	this.discriminator = new classifier.Classifier(null, true);
