@@ -139,7 +139,7 @@ var sampleGPS = function(){
             latitude: 9999,
             heading: 9999,
             accuracy: 9999,
-            speed: 9999,
+            speed: 0,
             timestamp: 0,
             altitude_accuracy: 9999
         }];

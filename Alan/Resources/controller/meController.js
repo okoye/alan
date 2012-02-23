@@ -42,7 +42,6 @@ exports.start = function(meV){
     };
     var processActivities = function(activities){
         log.info('Running all necessary computations on activities '+activities.length);
-        log.debug('meView is now '+JSON.stringify(meView));
         if (activities.length > 0){
             if (!lastActivity)
                 lastActivity = new activityModel.Activity(null, null, activities[0]);
@@ -58,7 +57,6 @@ exports.start = function(meV){
                         top: 5,
                     }, 3, styling[activity.name]);
                     viewActivityState[activity.name] = isv;
-                    log.debug('meView is '+JSON.stringify(meView));
                     meView.newActivity(isv);
                     cumulativeDistance[activity.name] = 0;
                 }

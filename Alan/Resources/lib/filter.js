@@ -57,7 +57,7 @@ exports.probableActivity = function(activity){
     //score the transition probabilities, where c is a constant and X are probabilities.
     var scores = {};
     for (property in matrixT){
-        scores[property] =(0.5 *matrixT[property]) + (2 * ((matrixF[property]) ? matrixF[property]:0)); //TODO: use log for matrixT ? since it is slower.
+        scores[property] =(0.5 *matrixT[property]) + (2 * ((matrixF[property]) ? matrixF[property]:0)); //TODO: use log for matrixT ? since it is slower growing.
     }
     for (property in matrixF){
         if (!scores[property]){
