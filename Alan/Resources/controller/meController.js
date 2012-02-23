@@ -72,7 +72,7 @@ exports.start = function(meV){
                 var dist = activity.computeDistance(lastActivity);
                 cumulativeDistance[activity.name] += dist;
                 //now update view activity state with new distance
-                viewActivityState[activity.name]._updateDistance(cumulativeDistance[activity.name]);
+                viewActivityState[activity.name]._updateDistance(cumulativeDistance[activity.name], 'miles');
                 lastActivity = activity;
             }
             log.debug('Cumulative distance: '+JSON.stringify(cumulativeDistance));

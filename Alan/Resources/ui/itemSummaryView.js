@@ -63,6 +63,7 @@ exports.create = function(_args, sections, style){
         
         var activity = Ti.UI.createLabel({
             color: style.color,
+            textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
             font: {
                 fontSize: 12,
                 fontWeight: 'bold',
@@ -100,14 +101,16 @@ exports.create = function(_args, sections, style){
             left: Math.round(0.5*right.width)-2,
         });
         
-        var setContent = function(act, dist, _cb){
+        var setContent = function(act, dist, _cb, _unit){
             activity.setText(act);
             distance.setText(dist);
+            unit.setText(_unit);
             moreInfo.addEventListener('click', _cb||function(e){log.info('NOOP');});
         };
         
-        var updateDistance = function(dist){
+        var updateDistance = function(dist, _unit){
             distance.setText(dist);
+            unit.setText(_unit);
         }
         
         left.add(activity); middle.add(distance); middle.add(unit); right.add(moreInfo);
