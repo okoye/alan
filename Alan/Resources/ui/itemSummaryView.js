@@ -87,9 +87,12 @@ exports.create = function(_args, sections, style){
         });
         
         var setContent = function(act, dist, _cb){
-            activity.setText(act);
-            distance.setText(dist);
-            moreInfo.addEventListener('click', _cb||function(e){log.info('NOOP');});
+            if (act)
+                activity.setText(act);
+            if(dist)
+                distance.setText(dist);
+            if(_cb)
+                moreInfo.addEventListener('click', _cb||function(e){log.info('NOOP');});
         };
         
         left.add(activity); middle.add(distance); right.add(moreInfo);
