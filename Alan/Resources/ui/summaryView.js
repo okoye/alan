@@ -43,14 +43,7 @@ exports.create = function(_args){
         log.debug('On Data view called');
     };
     
-    var _onFocus = function(e){
-        //TODO add logic for when view gains focus after being hidden
-        log.debug('On Focus view called');  
-    };
-    
-    view.addEventListener('alan:newActivityReport', _onData);
-    Ti.App.addEventListener('alan:changeBody', _onFocus); //FIXME: switch to me specific event.
-    
+        
     container.add(viewShadow);
     container.add(view);
     return container;
