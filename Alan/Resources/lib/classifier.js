@@ -11,10 +11,10 @@ var activity = require('model/activity');
 
 function Classifier(thresholds, filtering){
     var defaultThresholds = {
-        LAZY: 1,
-        WALKING: 3.18,
-        RUNNING: 10,
-        TRANSPORT: 1000
+        Inactive: 1,
+        Walking: 3.18,
+        Running: 10,
+        Transport: 1000
     };
     this.thresholds = (thresholds) ? thresholds:defaultThresholds;
     this.filtering = (filtering) ? true:false;

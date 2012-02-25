@@ -6,11 +6,11 @@
 var log = require('lib/logger');
 
 var activities = {
-        RUNNING: 1,
-        WALKING: 2,
-        LAZY: 3,
-        TRANSPORT: 4,
-        UNKNOWN: 5
+        Running: 1,
+        Walking: 2,
+        Inactive: 3,
+        Transport: 4,
+        Unknown: 5
 };
 var radius = 6371; //radius of earth in kilometers
 

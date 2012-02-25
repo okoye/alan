@@ -104,14 +104,14 @@ exports.create = function(_args, sections, style){
             (uni) ? unit.setText(uni):unit.setText('miles');
             moreInfo.addEventListener('click', _cb||function(e){ log.info('NOOP'); });
         };
-        var distance = function(dist){
-            distance.setText(dist);
+        var updateContent = function(cont){
+            distance.setText(cont);
         };
         
         left.add(activity); middle.add(distance); middle.add(unit); right.add(moreInfo);
         view.add(left); view.add(divider(left.width+1)); view.add(middle); view.add(divider(middle.width+left.width+2)); view.add(right);
         container.content = content;
-        container.distance = distance;
+        container.updateContent = updateContent;
     };
     
     var doublePartition = function(){

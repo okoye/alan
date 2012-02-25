@@ -89,27 +89,27 @@ exports = {
 			textfield[property] = properties[property];
 		return textfield;
 	},
-	RUNNING : {
+	Running : {
 	    buttonImage: 'images/arw_btn_blue.png',
 	    color: '#62c1e6'
 	},
-	WALKING : {
+	Walking : {
 	    buttonImage: 'images/arw_btn_green.png',
 	    color: '#add267'
 	},
-	LAZY : {
+	Inactive : {
 	    buttonImage: 'images/arw_btn_red.png',
 	    color: '#de7474'
 	},
-	TRANSPORT : {
+	Transport : {
 	    buttonImage: 'images/arw_btn_yellow.png',
 	    color: '#eae493'
 	},
-	UNKNOWN : {
+	Unkown : {
 	    buttonImage: 'images/arw_btn_grey.png',
 	    color: '#e0e0e0'
 	},
-	INFO : {
+	Info : {
 	    color: '#748dde',//PURPLE
 	},
 };

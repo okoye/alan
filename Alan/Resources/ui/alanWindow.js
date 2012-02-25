@@ -22,8 +22,8 @@ var PLATFORM_HEIGHT = Ti.Platform.displayCaps.platformHeight;
 var NUM_TABS = 4;
 
 exports.createAlanWindow = function(_args){
-    var win = (Ti.UI.currentWindow)? Ti.UI.currentWindow:Ti.UI.createWindow({
-        
+    var win = Ti.UI.createWindow({
+        navBarHidden: false,
     }),
     headerView = Ti.UI.createView({
         backgroundImage : 'images/top_nav.png',

@@ -28,7 +28,7 @@ exports.create = function(_args){
         height: 60,
         width: 280,
         top: 5
-    }, 2, styling.INFO);
+    }, 2, styling.Info);
     totalToday.content('Total Today', 0, 'Cal. Burn');
     var setTodayTotal = function(calories){
        totalToday.content('Total Today', calories,'Cal. Burn'); 
