@@ -68,16 +68,16 @@ exports.collect = function(mode){
         return {};
         
     if (mode == exports.mode.BACKGROUND){
-        result.battery = sampleBattery();
-        result.memory = sampleMemory();
+        //result.battery = sampleBattery();
+        //result.memory = sampleMemory();
         result.gps = sampleGPS();
-        result.wifi = sampleWifi();
+        //result.wifi = sampleWifi();
     }
     else if(mode == exports.mode.FOREGROUND){
-        result.battery = sampleBattery();
-        result.memory = sampleMemory();
+        //result.battery = sampleBattery();
+        //result.memory = sampleMemory();
         result.gps = sampleGPS();
-        result.wifi = sampleWifi();
+        //result.wifi = sampleWifi();
     }
     
     processing.process(result);
@@ -144,7 +144,7 @@ var sampleGPS = function(){
             altitude_accuracy: 9999
         }];
     }
-    buffer = readings.gps;
+    buffer = readings.gps.slice(); //copy into buffer.
     readings.gps = buffer.slice(-1);
     var callback = function(e){
         if (!e.success || e.error){

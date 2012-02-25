@@ -16,7 +16,7 @@ var activityModel = require('model/activity');
 var meView = null;
 var viewActivityState = {}; //tracks what kind of 
 var lastActivity = null;
-var cumulativeDistance = {};
+var displayData = {}; //cumulative distance, time etc displayed on screen
 
 var currentDay = (new Date).getDay(); //TODO persist across app restarts.
 
@@ -61,20 +61,32 @@ exports.start = function(meV){
                         top: 5,
                     }, 3, styling[activity.name]);
                     viewActivityState[activity.name] = isv;
-                    isv.content(activity.name, null, 'miles', function(evt){
-                        detailedView(activity.name);
-                    });
+                    if (activity.name === 'Running' || activity.name === 'Walking'){
+                        isv.content(activity.name, '0', 'miles', function(evt){
+                            detailedView(activity.name);
+                        });
+                    }
+                    else if(activity.name === 'Inactive'){
+                        isv.content(activity.name, '0', 'min', function(evt){
+                            detailedView(activity.name);
+                        });
+                    }
                     meView.newActivity(isv);
-                    cumulativeDistance[activity.name] = 0;
+                    displayData[activity.name] = 0;
                 }
-                //compute delta distances
-                var dist = activity.computeDistance(lastActivity);
-                cumulativeDistance[activity.name] += dist;
+                var delta = 0;
+                if (activity.name === 'Running' || activity.name === 'Walking'){
+                    delta = activity.computeDistance(lastActivity);
+                }
+                else if(activity.name === 'Inactive'){
+                    delta = activity.computeTime(lastActivity);
+                }
+                displayData[activity.name] += delta;
                 //now update view activity state with new distance
-                viewActivityState[activity.name].updateContent(cumulativeDistance[activity.name]);
+                viewActivityState[activity.name].updateContent(displayData[activity.name]);
                 lastActivity = activity;
             }
-            log.debug('Cumulative distance: '+JSON.stringify(cumulativeDistance));
+            log.debug('Cumulative data: '+JSON.stringify(displayData));
         }
     };
     var onProcessed = function(activityInfo){
@@ -82,7 +94,7 @@ exports.start = function(meV){
             meView.clearActivities();
             viewActivityState = {};
             lastActivity = null;
-            cumulativeDistance = {};
+            displayData = {};
         }
         if (lastActivity){
             log.debug('Last Activity Timestamp '+lastActivity.timestamp);

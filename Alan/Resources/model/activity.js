@@ -43,6 +43,11 @@ Activity.prototype.computeDistance = function(activity){
     return radius * c; //NOTE: in kilometers
 };
 
+Activity.prototype.computeTime = function(activity){
+    //TODO: return actual time difference in minutes
+    return 1;
+}
+
 Activity.prototype._fromJSONObject = function(properties){
     this.name = properties.name;
     this.timestamp = properties.timestamp + '';
