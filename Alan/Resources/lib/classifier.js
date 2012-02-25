@@ -29,14 +29,14 @@ Classifier.prototype.classify = function(data){
 Classifier.prototype._classify = function(data){
     //Classify current item incorporating gps, filter.
     var state = null;
-    if (data.speed < this.thresholds.LAZY){
-        state = 'LAZY';
-    } else if(data.speed < this.thresholds.WALKING){
-        state = 'WALKING';
-    } else if(data.speed < this.thresholds.RUNNING){
-        state = 'RUNNING';
+    if (data.speed < this.thresholds.Inactive){
+        state = 'Inactive';
+    } else if(data.speed < this.thresholds.Walking){
+        state = 'Walking';
+    } else if(data.speed < this.thresholds.Running){
+        state = 'Running';
     } else{
-        state = 'TRANSPORT';
+        state = 'Transport';
     }
     log.info('GPS Classification result: '+state);
     state = this._filter(state);

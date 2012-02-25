@@ -100,8 +100,8 @@ exports.create = function(_args, sections, style){
         });
         var content = function(act, dist, uni, _cb){
             (act) ? activity.setText(act):false;
-            (dist) ? distance.setText(dist):distance.setText(0);
-            (uni) ? unit.setText(uni):unit.setText('miles');
+            (dist) ? distance.setText(dist):distance.setText('');
+            (uni) ? unit.setText(uni):unit.setText('');
             moreInfo.addEventListener('click', _cb||function(e){ log.info('NOOP'); });
         };
         var updateContent = function(cont){
@@ -158,9 +158,13 @@ exports.create = function(_args, sections, style){
         });
         
         var content = function(tit, sum, uni){
-            title.setText(tit);
-            summary.setText(sum);
-            unit.setText(uni);
+            (title) ? title.setText(tit):false;
+            (sum) ? summary.setText(sum):false;
+            (uni) ? unit.setText(uni):false;
+        };
+        
+        var updateContent = function(sum){
+           summary.setText(sum); 
         };
         
         left.add(title); right.add(summary); right.add(unit);
