@@ -98,17 +98,20 @@ exports.create = function(_args, sections, style){
             width: 12,
             left: Math.round(0.5*right.width)-2,
         });
-        
-        var content = function(act, dist, _cb){
-            activity.setText(act);
-            distance.setText("0");
-            unit.setText('miles');
-            moreInfo.addEventListener('click', _cb||function(e){log.info('NOOP');});
+        var content = function(act, dist, uni, _cb){
+            (act) ? activity.setText(act):false;
+            (dist) ? distance.setText(dist):distance.setText(0);
+            (uni) ? unit.setText(uni):unit.setText('miles');
+            moreInfo.addEventListener('click', _cb||function(e){ log.info('NOOP'); });
+        };
+        var distance = function(dist){
+            distance.setText(dist);
         };
         
         left.add(activity); middle.add(distance); middle.add(unit); right.add(moreInfo);
         view.add(left); view.add(divider(left.width+1)); view.add(middle); view.add(divider(middle.width+left.width+2)); view.add(right);
         container.content = content;
+        container.distance = distance;
     };
     
     var doublePartition = function(){

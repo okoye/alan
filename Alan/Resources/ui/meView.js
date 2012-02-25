@@ -49,5 +49,6 @@ exports.create = function(_args){
     meBodyView.newActivity = addActivity;
     
     meBodyView.add(totalToday);
+    
     return meBodyView;
 }

@@ -25,7 +25,6 @@ exports.start = function(meV){
     //cache changes locally, and then push to view when appropriate.
     //or push immediately.
     meView = meV;
-    log.debug('meV is now '+JSON.stringify(meV));
     
     var isNewDay = function(){
         if ((new Date).getDay() === currentDay){
@@ -62,7 +61,7 @@ exports.start = function(meV){
                         top: 5,
                     }, 3, styling[activity.name]);
                     viewActivityState[activity.name] = isv;
-                    isv.content(activity.name, null, function(evt){
+                    isv.content(activity.name, null, 'miles', function(evt){
                         detailedView(activity.name);
                     });
                     meView.newActivity(isv);
@@ -72,7 +71,7 @@ exports.start = function(meV){
                 var dist = activity.computeDistance(lastActivity);
                 cumulativeDistance[activity.name] += dist;
                 //now update view activity state with new distance
-                //viewActivityState[activity.name]._updateDistance(cumulativeDistance[activity.name], 'miles');
+                viewActivityState[activity.name].distance(cumulativeDistance[activity.name]);
                 lastActivity = activity;
             }
             log.debug('Cumulative distance: '+JSON.stringify(cumulativeDistance));

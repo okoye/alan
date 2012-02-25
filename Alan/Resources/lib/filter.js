@@ -20,21 +20,17 @@ exports.create = function(){
 
 exports.probableActivity = function(activity){
     //use markov models.
-    log.info('extracting fetchlastN elements');
     var tenN = cache.fetchLastN(key, 10);
     var fiveN = cache.fetchLastN(key, 5);
     
-    log.info('now computing unique sets '+tenN.length);
     //now, compute the unique set for ten and five N
     var uniqueT = set(tenN);
     var uniqueF = set(fiveN);
     
-    log.info('taking cross product of vector '+JSON.stringify(uniqueT));
     //now take the cross product of the returned vector.
     var matrixT = cross(uniqueT);
     var matrixF = cross(uniqueF);
     
-    log.info('computing transition probabilities '+JSON.stringify(matrixT));
     //finally compute transition probabilities
     var temp = uniqueT.slice();
     while(temp.length > 0){
@@ -51,7 +47,6 @@ exports.probableActivity = function(activity){
         }
     }
     
-    log.info('computing scores of potential activity transitions '+JSON.stringify(matrixT));
     //using the formula:
     //c1.X1 + c2.X2
     //score the transition probabilities, where c is a constant and X are probabilities.
@@ -65,7 +60,6 @@ exports.probableActivity = function(activity){
         }
     }
     
-    log.info('computing max score of all scores '+JSON.stringify(scores));
     var maxProbability = max(scores);
     
     cache.add(key, activity); //one of the last things to do.
@@ -74,7 +68,6 @@ exports.probableActivity = function(activity){
         element: (element) ? element:undefined,
         score: scores[element]
     };
-    log.info('now testing final sufficiently Greater condition '+JSON.stringify(temp));
     return sufficientlyGreater(maxProbability, temp);
 };
 
@@ -88,7 +81,6 @@ var probabilities = function(element, values){
         last = values[i];
     }
     var prob = count/values.length;
-    log.info('Computed probability for element '+element+' is: '+prob);
     return prob;
 };
 
@@ -108,7 +100,6 @@ var max = function(scores){
 
 var sufficientlyGreater = function(value1, value2){
     //score1 must be at least 2x score2 for it to be returned.
-    log.info('Value 1 '+JSON.stringify(value1));
     if (value2 && value2.element && value2.score){
         if (value1.score > (value2.score * 4))
             return value1;
