@@ -73,14 +73,13 @@ exports.create = function(_args, sections, style){
         });
         var distance = Ti.UI.createLabel({
             color: style.color,
-            textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+            textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
             font: {
                 fontSize: 42,
                 fontWeight: 'bold',
             },
             left: 2,
-            right: 2,
-            width: '70%'
+            width: '68%',
         });
         var unit = Ti.UI.createLabel({
             color: style.color,
@@ -89,10 +88,9 @@ exports.create = function(_args, sections, style){
                 fontSize: 12,
                 fontWeight: 'bold'
             },
-            left: distance.width+2,
             right: 1,
             top: 20,
-            width: '30%',
+            width: '28%'
         });
         var moreInfo = Ti.UI.createButton({
             backgroundImage: style.buttonImage,
@@ -101,22 +99,16 @@ exports.create = function(_args, sections, style){
             left: Math.round(0.5*right.width)-2,
         });
         
-        var setContent = function(act, dist, _cb, _unit){
+        var content = function(act, dist, _cb){
             activity.setText(act);
-            distance.setText(dist);
-            unit.setText(_unit);
+            distance.setText("0");
+            unit.setText('miles');
             moreInfo.addEventListener('click', _cb||function(e){log.info('NOOP');});
         };
         
-        var updateDistance = function(dist, _unit){
-            distance.setText(dist);
-            unit.setText(_unit);
-        }
-        
         left.add(activity); middle.add(distance); middle.add(unit); right.add(moreInfo);
         view.add(left); view.add(divider(left.width+1)); view.add(middle); view.add(divider(middle.width+left.width+2)); view.add(right);
-        container._setContent = setContent;
-        container._updateDistance = updateDistance;
+        container.content = content;
     };
     
     var doublePartition = function(){
@@ -162,7 +154,7 @@ exports.create = function(_args, sections, style){
             width: Math.round(right.width*0.45),
         });
         
-        var setContent = function(tit, sum, uni){
+        var content = function(tit, sum, uni){
             title.setText(tit);
             summary.setText(sum);
             unit.setText(uni);
@@ -170,7 +162,7 @@ exports.create = function(_args, sections, style){
         
         left.add(title); right.add(summary); right.add(unit);
         view.add(left); view.add(divider(left.width+1)); view.add(right);
-        container._setContent = setContent;
+        container.content = content;
     };
         
     if (sections === 2){

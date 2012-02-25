@@ -15,7 +15,8 @@ exports.create = function(_args){
         backgroundImage: 'images/center_view_bg.png',
         width: PLATFORM_WIDTH,
         showVerticalScrollIndicator: true,
-        layout: 'vertical'
+        contentHeight: 'auto',
+        layout: 'vertical',
     });
     meBodyView.add(summaryView.create({
         height: 195,
@@ -28,9 +29,9 @@ exports.create = function(_args){
         width: 280,
         top: 5
     }, 2, styling.INFO);
-    totalToday._setContent('Total Today', 0, 'Cal. Burn');
+    totalToday.content('Total Today', 0, 'Cal. Burn');
     var setTodayTotal = function(calories){
-       totalToday._setContent('Total Today', calories,'Cal. Burn'); 
+       totalToday.content('Total Today', calories,'Cal. Burn'); 
     };
     
     //TODO: add functions to add activity, set total today, clear activities

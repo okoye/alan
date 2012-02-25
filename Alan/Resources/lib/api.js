@@ -13,6 +13,8 @@ var base = 'http://api.thepuppetprojects.com'; //FIXME
 var local = {};
 var headers = {};
 
+//TODO: refactor.
+
 local.createAccount = function(email, password, callback){
 	log.info('Sending email & password to api');
 	

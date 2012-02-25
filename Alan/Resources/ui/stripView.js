@@ -26,7 +26,7 @@ exports.create = function(_args){
             top: 0,
             bottom: 0,
             left: PLATFORM_WIDTH * i,
-            width: PLATFORM_WIDTH
+            width: PLATFORM_WIDTH,
         });
         newView.add(views[i]);
         container.add(newView);
