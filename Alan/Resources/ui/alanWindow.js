@@ -23,7 +23,7 @@ var NUM_TABS = 4;
 
 exports.createAlanWindow = function(_args){
     var win = Ti.UI.createWindow({
-        navBarHidden: false,
+        tabBarHidden: true,
     }),
     headerView = Ti.UI.createView({
         backgroundImage : 'images/top_nav.png',
@@ -48,9 +48,12 @@ exports.createAlanWindow = function(_args){
     var bodyView = stripView.create({
         views : viewArray,
         width : PLATFORM_WIDTH,
-        height : 370,
+        height : 425,
     });
-    
+    var tabGroup =Ti.UI.createTabGroup();
+    var dummyTab = Ti.UI.createTab({
+        window: win,
+    });
     var createTab = function(_icon, _cb, _on){
         var view = Ti.UI.createView({
             width: tabWidth,
@@ -137,13 +140,12 @@ exports.createAlanWindow = function(_args){
         tabs[i].left = tabWidth * i;
         footerView.add(tabs[i]);
     }
-    
-    //Set header view will necessary callbacks
-    updateHeader();
-    
-    win.add(headerView);
+        
     win.add(bodyView);
     win.add(footerView);
+    
+    //Setup tabgroup
+    tabGroup.addTab(dummyTab);
     
     //Start various controllers
     meController.start(viewArray[0]);
@@ -153,7 +155,7 @@ exports.createAlanWindow = function(_args){
     
     //Initialize collection and processing systems.
     if (mgt.start())    
-        win.open();
+        tabGroup.open();
 };
 
 
