@@ -24,7 +24,7 @@ var NUM_TABS = 4;
 exports.createAlanWindow = function(_args){
     var win = Ti.UI.createWindow({
         tabBarHidden: true,
-        barImage: 'images/top_nav.png'
+        barImage: 'images/top_nav.png',
     }),
     tabHeight = 50,
     footerView = Ti.UI.createView({
@@ -34,11 +34,20 @@ exports.createAlanWindow = function(_args){
     }),
     tabWidth = PLATFORM_WIDTH/NUM_TABS,
     tabs = [];
+    var settingsButton = Ti.UI.createButton({
+        backgroundImage: 'images/top_nav_btn_settings.png'
+    });
+    var settingsContainer = Ti.UI.createView({
+        width: 40,
+        height: 33
+    });
+    settingsContainer.add(settingsButton);
     var viewArray = [
         meView.create(),
         scoreView.create(),
         pvpView.create(),
         storeView.create(),
+        settingsView.create(),
     ];
     var bodyView = stripView.create({
         views : viewArray,
@@ -82,30 +91,30 @@ exports.createAlanWindow = function(_args){
             }
         }
     };    
-    var headerUpdate = function(_leftNav, _rightNav, _title){
-        (_title) ? dummyTab.title = _title : dummyTab.title = "";
-        
+    var headerUpdate = function(_title){
+        (_title) ? dummyTab.title = _title : dummyTab.title = "";        
     };
+    
     //Create main application tabs
     tabs.push(createTab('images/bottom_nav_btn_me', function(){
         changeTab(0);
         bodyView.updateStrip(0);
-        headerUpdate(0);
+        headerUpdate('Me');
     }, true));
     tabs.push(createTab('images/bottom_nav_btn_act_age', function(){
         changeTab(1);
         bodyView.updateStrip(1);
-        headerUpdate(1);
+        headerUpdate('Activity Age');
     }));
     tabs.push(createTab('images/bottom_nav_btn_connect', function(){
         changeTab(2);
         bodyView.updateStrip(2);
-        headerUpdate(2);
+        headerUpdate('Connect');
     }));
     tabs.push(createTab('images/bottom_nav_btn_addon', function(){
         changeTab(3);
         bodyView.updateStrip(3);
-        headerUpdate(3);
+        headerUpdate('Add-ons');
     }));
     
     //Tabs to footer view
@@ -116,12 +125,27 @@ exports.createAlanWindow = function(_args){
         
     win.add(bodyView);
     win.add(footerView);
+    win.rightNavButton = settingsContainer;
     
     //Setup tabgroup
     tabGroup.addTab(dummyTab);
     
     //Start various controllers
     meController.start(viewArray[0]);
+    
+    //HACK to fire and update first tab info.
+    tabs[0].fireEvent('click', {source: 'synthesized event'});
+    
+    //pull up settings window when clicked
+    settingsContainer.addEventListener('touchstart', function(evt){
+        settingsButton.backgroundImage = 'images/top_nav_btn_settings_current.png';
+        headerUpdate('Settings');
+        changeTab(-1);
+        bodyView.updateStrip(4);
+    });
+    settingsContainer.addEventListener('touchend', function(evt){
+        settingsButton.backgroundImage = 'images/top_nav_btn_settings.png';
+    });
     
     //Start collection manager.
     mgt = new manager.Manager();

@@ -43,9 +43,17 @@ exports.create = function(_args, sections, style){
             width: 1,
             top: 2,
             left: _left,
-            backgroundColor: '#b1b1b1',
+            backgroundColor: '#dfdfdf',
         });
     };
+    
+    view.addEventListener('touchstart', function(e){
+        view.backgroundColor = '#eeeeee'
+    });
+    
+    view.addEventListener('touchend', function(e){
+        view.backgroundColor = 'white'
+    })
     
     var triplePartition = function(){        
         var left = Ti.UI.createView({
