@@ -129,6 +129,7 @@ exports.createAlanWindow = function(_args){
     
     //Setup tabgroup
     tabGroup.addTab(dummyTab);
+    tabGroup.setActiveTab(0);
     
     //Start various controllers
     meController.start(viewArray[0]);

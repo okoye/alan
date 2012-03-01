@@ -16,18 +16,17 @@ exports.create = function(_args){
     
     //TODO: explore using toImage
     var view = Ti.UI.createWebView({
-        dataCache : [],
         height: container.height,
         width: container.width,
         left: 0,
         top: 0,
         backgroundColor: 'white',
         keepScreenOn: false,
-        scalePageToFit: true,
+        scalePageToFit: false,
         borderRadius: 3,
         borderColor: '#c3c2c2',
         borderWidth: 0, 
-        url: 'html/summary.html'
+        url: 'html/piechart.html'
     });
     
     var viewShadow = Ti.UI.createView({
@@ -38,11 +37,6 @@ exports.create = function(_args){
        borderRadius: 3,
        backgroundColor: '#b1b1b1',
     });
-    
-    var _onData = function(e){
-        //TODO add logic for if view is active, animate new data.
-        log.debug('On Data view called');
-    };
     
         
     container.add(viewShadow);

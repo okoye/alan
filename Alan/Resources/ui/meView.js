@@ -1,5 +1,6 @@
 /**
  * @author Chuka Okoye
+ * Implementing the meView.
  */
 
 var log = require('lib/logger');
@@ -15,7 +16,7 @@ exports.create = function(_args){
         backgroundImage: 'images/center_view_bg.png',
         width: PLATFORM_WIDTH,
         showVerticalScrollIndicator: true,
-        contentHeight: 'auto',
+        contentHeight: 300,
         layout: 'vertical',
     });
     meBodyView.add(summaryView.create({

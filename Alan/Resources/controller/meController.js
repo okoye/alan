@@ -88,6 +88,13 @@ exports.start = function(meV){
             }
             log.debug('Cumulative data: '+JSON.stringify(displayData));
         }
+        Ti.App.fireEvent('alan:updatePieChart', {data : [ 
+                                                            Math.round(100*Math.random()), 
+                                                            Math.round(100*Math.random()), 
+                                                            Math.round(100*Math.random()), 
+                                                            Math.round(100*Math.random())],
+                                                 label : [Running, Walking, Transport, Idle]
+                                                });
     };
     var onProcessed = function(activityInfo){
         if (isNewDay()){

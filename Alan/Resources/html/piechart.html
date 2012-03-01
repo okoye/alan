@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>Summary</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<script type="text/javascript" src="raphael-min.lib" charset="utf-8"></script>
+		<script type="text/javascript" src="g.raphael-min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="g.pie-min.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="piechart.css">
+	</head>
+	<body>
+		<script type="text/javascript">
+		Ti.App.addEventListener('alan:updatePieChart', function(evt){
+			var r = Raphael(0, 0, 280, 195); //create canvas 170 x 170 at 0, 0
+			var pie = r.piechart(140, 98, 80, evt.data, {legend: evt.label, legendpos: "west"}); //create chart with center 80, 80, radius 80, data.
+			pie.each(function(){
+			});
+		}); //TODO: Animate
+		</script>
+	</body>
+</html>
