@@ -35,7 +35,7 @@ exports.load = function Account(email, password){
     
     Ti.App.addEventListener('alan:accountResync', function(err){
         log.debug('Resending data to API');
-        exports.save();
+        update();
     });
 }
 

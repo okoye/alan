@@ -7,7 +7,6 @@
 
 var log = require('lib/logger');
 var filter = require('lib/filter');
-var activity = require('model/activity');
 
 function Classifier(thresholds, filtering){
     var defaultThresholds = {
@@ -46,7 +45,7 @@ Classifier.prototype._classify = function(data){
 
 Classifier.prototype._toActivityModel = function(state, data){
     //convert current state to activity model object
-    var a = new activity.Activity(state, data);
+    // var a = new activity.Activity(state, data);
     return a;
 };
 

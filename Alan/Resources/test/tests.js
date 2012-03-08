@@ -6,14 +6,14 @@ exports.run = function(){
   var db = require('test/tests/test_database');
   db.run();
   
-  var classifier = require('test/tests/test_classifier');
-  classifier.run();
+  // var classifier = require('test/tests/test_classifier');
+  // classifier.run();
   
   var cache = require('test/tests/test_cache');
   cache.run();
   
-  var filter = require('test/tests/test_filter');
-  filter.run();
+  // var filter = require('test/tests/test_filter');
+  // filter.run();
   
   var acc = require('test/tests/test_account');
   acc.run();

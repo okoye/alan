@@ -9,6 +9,7 @@ exports.run = function(){
         });
         
         it('should have email and password fields', function(){
+            account.save();
             expect(Ti.App.Properties.getString('model/account')).toBeTruthy();
         });
     });

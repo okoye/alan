@@ -5,7 +5,7 @@
 //Requires
 var styling = require("lib/styles");
 var log = require("lib/logger");
-var account = require("lib/account");
+var account = require("model/account");
 var manager = require("lib/manager");
 var alan = require('ui/alanWindow');
 
