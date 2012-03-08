@@ -48,14 +48,7 @@ exports.initialize = function(){
         }
     }
     
-    processing = new processor.Processor({
-        success: function(data){
-            log.info('Successful processing callback');
-        },
-        failure: function(data){
-            log.info('Failure processing callback');
-        }
-    });
+    processing = new processor.Processor();
     
     log.info('SAL (re)initialization complete');
     return SANITY_CHECK_SUCCESSFUL;
@@ -100,7 +93,8 @@ var sampleAccelerometer = function(){
         readings.accelerometer.push({
            x: e.x,
            y: e.y,
-           z: e.z 
+           z: e.z, 
+           timestamp: (new Date).getTime(),
         });
       }
       else{

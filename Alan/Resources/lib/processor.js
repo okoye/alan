@@ -17,7 +17,7 @@ function Processor(properties){
 
 Processor.prototype.process = function(data){
     //format data for sending into a list structure.
-    api.UpdateSensor(this.account, [data]);
+    api.UpdateSensor(this.account, data.gps);
 };
 
 Processor.prototype.shutdown = function(){
