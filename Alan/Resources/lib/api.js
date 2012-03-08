@@ -15,27 +15,34 @@ var headers = {};
 
 //TODO: refactor.
 
-local.createAccount = function(email, password, callback){
+exports.CreateAccount = function(email, password, callback){
 	log.info('Sending email & password to api');
 	
 	var conn = Ti.Network.createHTTPClient({
 		onload: function(e){
-			log.debug('Successfully created a new account');
-			callback({status: 'success', data: this.responseText});
 			var response = Ti.JSON.parse(this.responseText);
-			if (response.token){
-				callback({status: 'success', data: JSON.parse(this.responseText)});
-			} else{
-				callback({status:'error', message: 'Alan experienced an error while creating your account', data: JSON.stringify(this.responseText)});
+			var status = this.status;
+			if (status === 204){
+				callback({status: 'success', data: {}});
+			} 
+			else{
+				callback({
+				    status:'error', 
+				    message: 'Alan experienced an error while creating your account', 
+				    data: [email, password]
+				});
 			}
 		},
 		onerror: function(e){
-			log.debug('An error occured when creating account: '+this.status);
+			log.debug('An error occured when creating account');
 			log.debug(JSON.stringify(e));
-			callback({status: 'error', message:'Cannot connect to the Alan network at this time.', data: JSON.stringify(this.responseText)});
+			callback({status: 'error', 
+			 message:'Cannot connect to the Alan network at this time.', 
+			 data: [email, password]
+			});
 		}
 	});
-	conn.open('POST', base+'/1/accounts');
+	conn.open('POST', base+'/1/accounts/basic/create');
 	conn.setRequestHeader('Content-Type', 'application/json');
 	conn.send(JSON.stringify({
 		email: email,
@@ -43,27 +50,37 @@ local.createAccount = function(email, password, callback){
 	}));
 	return conn;
 };
-local.train = function(body, callback){
-	log.info('Sending training data to api');
-	
-	var conn = Ti.Network.createHTTPClient({
-		onload: function(e){
-			if (this.status === 204)
-				callback({status: 'success', data: JSON.parse(this.responseText)});
-			else
-				callback({status: 'error', message: 'Experiencing issues contacting Alan network'});
-		},
-		onerror: function(e){
-			log.debug('An error occured when sending training data');
-			log.debug(JSON.stringify(e));
-			if (callback)
-			 callback({status: 'error', message: 'Cannot send training data at this time', data: JSON.stringify(e)});
-		}
-	});
-	conn.open('POST', base+'/1/train');
-	conn.send(JSON.stringify(body));
-	return conn;
+
+exports.UpdateSensor = function(readings, callback){
+    log.info('Updating sensors on api');
+    
+    var conn = Ti.Network.createHTTPClient({
+        onload: function(e){
+            var status = this.status;
+            if (status === 204){
+                callback({status: 'success', data: {}});
+            }
+            else{
+                callback({
+                    status: 'error',
+                    message: 'Cannot update gps information.',
+                    data: [readings]
+                });
+            }
+        },
+        onerror: function(e){
+            log.debug('An error occured when updating sensor');
+            log.debug(JSON.stringify(e));
+            callback({
+                status: 'error',
+                message: 'Cannot connect to Alan network at this time.',
+                data: [readings]
+            });
+        }
+    });
+    conn.open('POST', base+'/1/sensors/update');
+    conn.setRequestHeader('Content-Type', 'application/json');
+    conn.send(JSON.stringify(readings));
+    return conn;
 };
-exports.createAccount = local.createAccount;
-exports.login = local.createAccount;
-exports.train = local.train;
+

@@ -28,28 +28,7 @@ function Processor(properties){
 }
 
 Processor.prototype.process = function(data){
-    for (var i=0; i<data.gps.length; i++){
-       var datum = data.gps[i];
-	   var activity = this.discriminator.classify(datum);
-	   var timestamp = this.getTimestamp();
-	   if (activity){
-		  this.activity_buffer.push(activity);
-		
-	   } else{
-		  log.info('FAILURE, classification for '+JSON.stringify(datum)+' failed');
-	   }
-	}
-	if (this.activity_buffer.length >= BATCH_UPDATE){
-		this.updateDB();
-		Ti.App.fireEvent('alan:sensorReadingsUpdate', {length: this.activity_buffer.length}); 
-		this.activity_buffer = [];
-	}
-};
-
-Processor.prototype.updateDB = function(){
-	for (var i=0; i<this.activity_buffer.length; i++){
-		db.insertActivity(new activityModel.Activity(null, null, this.activity_buffer[i]), this.TABLE_NAME);
-	}
+    
 };
 
 Processor.prototype.shutdown = function(){
