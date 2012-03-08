@@ -20,9 +20,9 @@ function Processor(properties){
 	this.activity_buffer = [];
 	this.success = properties.success; //on successful activity classification; feedback loop
 	this.failure = properties.failure; //on failed activity classification; feedback loop
-	this.TABLE_NAME = 'ACTIVITIES';
-	this.TABLE_STRUCTURE = '(id INTEGER PRIMARY KEY, name TEXT NOT NULL, timestamp TEXT NOT NULL, speed REAL NOT NULL, latitude REAL, longitude REAL, altitude REAL)';
-	db.createTable(this.TABLE_NAME, this.TABLE_STRUCTURE);
+	//this.TABLE_NAME = 'ACTIVITIES';
+	//this.TABLE_STRUCTURE = '(id INTEGER PRIMARY KEY, name TEXT NOT NULL, timestamp TEXT NOT NULL, speed REAL NOT NULL, latitude REAL, longitude REAL, altitude REAL)';
+	//db.createTable(this.TABLE_NAME, this.TABLE_STRUCTURE);
 	
 	this.discriminator = new classifier.Classifier(null, true);
 }

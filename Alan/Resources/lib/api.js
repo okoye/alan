@@ -51,7 +51,7 @@ exports.CreateAccount = function(email, password, callback){
 	return conn;
 };
 
-exports.UpdateSensor = function(readings, callback){
+exports.UpdateSensor = function(account, readings, callback){
     log.info('Updating sensors on api');
     
     var conn = Ti.Network.createHTTPClient({
