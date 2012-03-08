@@ -7,30 +7,22 @@
  * event.
  */
 
-//TODO: Add support for filter.
-
 var log = require('lib/logger');
-var classifier = require('lib/classifier');
-var db = require('lib/db');
-var activityModel = require('model/activity');
-
-var BATCH_UPDATE = 2;
+var account = require('model/account');
+var api = require('lib/api');
 
 function Processor(properties){
-	
+	this.account = new account.Account();
 }
 
 Processor.prototype.process = function(data){
-    
+    //format data for sending into a list structure.
+    api.UpdateSensor(this.account, [data]);
 };
 
 Processor.prototype.shutdown = function(){
-	this.updateDB();
+	this.account.save();
 	return true;
-};
-
-Processor.prototype.getTimestamp = function(){
-	return (new Date).getTime(); //seconds since epoch.
 };
 
 exports.Processor = Processor;

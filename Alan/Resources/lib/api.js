@@ -10,10 +10,6 @@ var log = require('lib/logger');
 
 
 var base = 'http://api.thepuppetprojects.com'; //FIXME
-var local = {};
-var headers = {};
-
-//TODO: refactor.
 
 exports.CreateAccount = function(email, password, callback){
 	log.info('Sending email & password to api');

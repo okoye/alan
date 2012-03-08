@@ -18,4 +18,4 @@ exports.run = function(){
             expect(cache.fetchLastN('testing', 20).length).toEqual(10);
         });
     });
-}
+};

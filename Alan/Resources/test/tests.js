@@ -14,6 +14,9 @@ exports.run = function(){
   
   var filter = require('test/tests/test_filter');
   filter.run();
+  
+  var acc = require('test/tests/test_account');
+  acc.run();
 
   jasmine.getEnv().addReporter(new jasmine.TitaniumReporter());
   jasmine.getEnv().execute();  
