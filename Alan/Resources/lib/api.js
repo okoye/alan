@@ -16,7 +16,6 @@ exports.CreateAccount = function(email, password, callback){
 	
 	var conn = Ti.Network.createHTTPClient({
 		onload: function(e){
-			var response = Ti.JSON.parse(this.responseText);
 			var status = this.status;
 			if (status === 204){
 				callback({status: 'success', data: {}});
@@ -107,7 +106,7 @@ exports.Analytics = function(account, callback){
             });
         }
     });
-    conn.open('GET', base+'1/analytics');
+    conn.open('GET', base+'/1/analytics');
     conn.setRequestHeader('Content-Type', 'application/json');
     conn.send();
     return conn;
