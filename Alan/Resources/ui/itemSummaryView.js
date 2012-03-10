@@ -167,7 +167,7 @@ exports.create = function(_args, sections, style){
         
         var content = function(tit, sum, uni){
             (title) ? title.setText(tit):false;
-            (sum) ? summary.setText(sum):false;
+            (sum) ? summary.setText(sum+''):summary.setText('');
             (uni) ? unit.setText(uni):false;
         };
         
