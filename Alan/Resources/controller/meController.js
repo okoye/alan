@@ -15,6 +15,7 @@ var DURATION = 900000; //Every 15 mins
 function Controller(view){
     log.info('initializing meController');
     this.view = view;
+    analytics.load();
 }
 
 var _start = function(){
