@@ -15,34 +15,42 @@ exports.create = function(_args){
     var meBodyView = Ti.UI.createScrollView({
         backgroundImage: 'images/center_view_bg.png',
         width: PLATFORM_WIDTH,
+        height: 370,
+        top: 0,
         showVerticalScrollIndicator: true,
         contentHeight: 'auto',
         contentWidth: 'auto',
         verticalBounce: true,
         layout: 'vertical',
     });
+    var space = function(diff){
+        return Ti.UI.createView({
+                    height: (diff) ? diff:4,
+                    opacity: 0,
+                    width: 280,
+                });
+    };
     meBodyView.add(summaryView.create({
         height: 195,
         width: 280,
-        top: 10
+        top: 10,
     }));
-    
     var calories = itemSummaryView.create({
         height: 60,
         width: 280,
-        top: 5
+        top: 1
     }, 2, styling.Blue);
     
     var steps = itemSummaryView.create({
         height: 60,
         width: 280,
-        top: 5,
+        top: 1,
     }, 3, styling.Green);
     
     var distance = itemSummaryView.create({
         height: 60,
         width: 280,
-        top: 5
+        top: 1,
     }, 2, styling.Yellow);
 
     
@@ -59,9 +67,13 @@ exports.create = function(_args){
     var _updateCalories = function(value){
         calories.content(null, value, null);
     };
+    meBodyView.add(space());
     meBodyView.add(calories);
+    meBodyView.add(space());
     meBodyView.add(distance);
+    meBodyView.add(space());
     meBodyView.add(steps);
+    meBodyView.add(space(10));
     
     meBodyView.updateSteps = _updateSteps;
     meBodyView.updateDistance = _updateDistance;
