@@ -16,7 +16,8 @@ exports.create = function(_args){
         backgroundImage: 'images/center_view_bg.png',
         width: PLATFORM_WIDTH,
         showVerticalScrollIndicator: true,
-        contentHeight: 300,
+        contentHeight: 'auto',
+        contentWidth: 'auto',
         layout: 'vertical',
     });
     meBodyView.add(summaryView.create({
@@ -60,10 +61,16 @@ exports.create = function(_args){
     meBodyView.add(calories);
     meBodyView.add(distance);
     meBodyView.add(steps);
-
     
     meBodyView.updateSteps = _updateSteps;
     meBodyView.updateDistance = _updateDistance;
     meBodyView.updateCalories = _updateCalories;
+    
+    meBodyView.addEventListener('scroll', function(evt){
+        log.debug('SCROLLING###############');
+    });
+    meBodyView.addEventListener('click', function(evt){
+        log.debug('CLICKED################');
+    });
     return meBodyView;
 }

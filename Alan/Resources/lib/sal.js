@@ -38,8 +38,8 @@ exports.initialize = function(){
                 Ti.UI.createAlertDialog({'title': 'Alan Warning', message: 'You have disallowed Alan from running location services'}).show();
             }
             else{
-                Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_NEAREST_TEN_METERS;
-                Ti.Geolocation.distanceFilter = GPS_DISTANCE_FILTER;
+                Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
+                //Ti.Geolocation.distanceFilter = GPS_DISTANCE_FILTER;
                 SANITY_CHECK_SUCCESSFUL = true;
             }
         }
@@ -156,10 +156,10 @@ var sampleGPS = function(){
         _gps.altitude_accuracy = e.coords.altitude_accuracy;
         readings.gps.push(_gps);
     };
-    if (!GPS_CALLBACK_SET){
-        Ti.Geolocation.addEventListener('location', callback);
-        GPS_CALLBACK_SET = true;
-    }
+    // if (!GPS_CALLBACK_SET){
+        // Ti.Geolocation.addEventListener('location', callback);
+        // GPS_CALLBACK_SET = true;
+    // }
     log.info('sampleGPS finished; length: '+buffer.length);
     return buffer;
 };

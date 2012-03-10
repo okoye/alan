@@ -30,10 +30,6 @@ exports.load = function(){
         if (last.getDate() != today){
             sync();
         }
-        
-        Ti.App.addEventListener('alan:analyticsResync', function(){
-            sync();
-        });
     }
     
 };
@@ -68,7 +64,7 @@ var sync = function(){
             _analytics.distance = res['data']['distance'];
         }
         else{
-            setTimeout(Ti.App.fireEvent, 30000, 'alan:analyticsResync');
+            setTimeout(sync, 30000);
         }
     });
 };

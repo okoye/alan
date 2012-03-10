@@ -20,8 +20,7 @@ function Controller(view){
 
 var _start = function(){
     log.info('Fetching new analytics data');
-    
-    if(LAST_FETCH != analytics.timestamp()){ //view current result is outdated
+    if(LAST_FETCH != analytics.timestamp()){
         this.view.updateSteps(analytics.steps());
         this.view.updateDistance(analytics.distance());
         this.view.updateCalories(analytics.calories());

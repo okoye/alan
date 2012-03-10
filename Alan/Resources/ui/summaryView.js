@@ -14,19 +14,15 @@ exports.create = function(_args){
         top: (_args.top) ? _args.top: 10,
     });
     
-    //TODO: explore using toImage
-    var view = Ti.UI.createWebView({
+    var view = Ti.UI.createView({
         height: container.height,
         width: container.width,
         left: 0,
         top: 0,
         backgroundColor: 'white',
-        keepScreenOn: false,
-        scalePageToFit: false,
         borderRadius: 3,
         borderColor: '#c3c2c2',
         borderWidth: 0, 
-        url: 'html/piechart.html'
     });
     
     var viewShadow = Ti.UI.createView({
