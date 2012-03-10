@@ -25,31 +25,45 @@ exports.create = function(_args){
         top: 10
     }));
     
-    var totalToday = itemSummaryView.create({
+    var calories = itemSummaryView.create({
         height: 60,
         width: 280,
         top: 5
-    }, 2, styling.Info);
-    totalToday.content('Total Today', 0, 'Cal. Burn');
-    var setTodayTotal = function(calories){
-       totalToday.content('Total Today', calories,'Cal. Burn'); 
-    };
+    }, 2, styling.Blue);
     
-    //TODO: add functions to add activity, set total today, clear activities
+    var steps = itemSummaryView.create({
+        height: 60,
+        width: 280,
+        top: 5,
+    }, 3, styling.Green);
     
-    var clearActivities = function(){
-        //For each view, if _type == 'itemSummaryView', delete it by using remove.
-    };
+    var distance = itemSummaryView.create({
+        height: 60,
+        width: 280,
+        top: 5
+    }, 2, styling.Yellow);
     
-    var addActivity = function(isv){
-        log.info('adding new activity to meView');
-        meBodyView.add(isv);
-    };
+    // totalToday.content('Total Today', 0, 'Cal. Burn');
+    // var setTodayTotal = function(calories){
+       // totalToday.content('Total Today', calories,'Cal. Burn'); 
+    // };
+//     
+    // //TODO: add functions to add activity, set total today, clear activities
+//     
+    // var clearActivities = function(){
+        // //For each view, if _type == 'itemSummaryView', delete it by using remove.
+    // };
+//     
+    // var addActivity = function(isv){
+        // log.info('adding new activity to meView');
+        // meBodyView.add(isv);
+    // };
+//     
+    // meBodyView.totalCalories = setTodayTotal;
+    // meBodyView.newActivity = addActivity;
     
-    meBodyView.totalCalories = setTodayTotal;
-    meBodyView.newActivity = addActivity;
+    calories.content('Total Today', 0, 'Cal. Burn');
     
-    meBodyView.add(totalToday);
-    
+    meBodyView.add(calories);
     return meBodyView;
 }

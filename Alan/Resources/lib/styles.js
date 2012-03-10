@@ -89,27 +89,27 @@ exports = {
 			textfield[property] = properties[property];
 		return textfield;
 	},
-	Running : {
+	Blue : {
 	    buttonImage: 'images/arw_btn_blue.png',
 	    color: '#62c1e6'
 	},
-	Walking : {
+	Green : {
 	    buttonImage: 'images/arw_btn_green.png',
 	    color: '#add267'
 	},
-	Inactive : {
+	Red : {
 	    buttonImage: 'images/arw_btn_red.png',
 	    color: '#de7474'
 	},
-	Transport : {
+	Yellow : {
 	    buttonImage: 'images/arw_btn_yellow.png',
 	    color: '#eae493'
 	},
-	Unkown : {
+	Grey : {
 	    buttonImage: 'images/arw_btn_grey.png',
 	    color: '#e0e0e0'
 	},
-	Info : {
+	Purple : {
 	    color: '#748dde',//PURPLE
 	},
 };
