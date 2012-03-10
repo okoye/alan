@@ -66,6 +66,8 @@ exports.create = function(_args){
     steps.content('Steps', 0, '');
     distance.content('Walking', 0, 'miles');
     
+    
     meBodyView.add(calories);
+    meBodyView.add(steps);
     return meBodyView;
 }

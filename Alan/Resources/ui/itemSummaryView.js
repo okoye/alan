@@ -107,6 +107,7 @@ exports.create = function(_args, sections, style){
             left: Math.round(0.5*right.width)-2,
         });
         var content = function(act, dist, uni, _cb){
+            dist = dist + '';
             (act) ? activity.setText(act):false;
             (dist) ? distance.setText(dist):distance.setText('');
             (uni) ? unit.setText(uni):unit.setText('');
@@ -166,6 +167,7 @@ exports.create = function(_args, sections, style){
         });
         
         var content = function(tit, sum, uni){
+            sum = sum + '';
             (title) ? title.setText(tit):false;
             (sum) ? summary.setText(sum+''):summary.setText('');
             (uni) ? unit.setText(uni):false;
