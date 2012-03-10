@@ -132,7 +132,8 @@ exports.createAlanWindow = function(_args){
     tabGroup.setActiveTab(0);
     
     //Start various controllers
-    meController.start(viewArray[0]);
+    var mc = new meController(viewArray[0]);
+    mc.start();
     
     //HACK to fire and update first tab info.
     tabs[0].fireEvent('click', {source: 'synthesized event'});

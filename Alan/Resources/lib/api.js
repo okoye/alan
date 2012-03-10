@@ -59,7 +59,7 @@ exports.UpdateSensor = function(account, readings, callback){
             else{
                 callback({
                     status: 'error',
-                    message: 'Cannot update gps information.',
+                    message: 'Cannot update gps information at this time.',
                     data: [readings]
                 });
             }
@@ -69,7 +69,7 @@ exports.UpdateSensor = function(account, readings, callback){
             log.debug(JSON.stringify(e));
             callback({
                 status: 'error',
-                message: 'Cannot connect to Alan network at this time.',
+                message: 'Experiencing network connection issues.',
                 data: [readings]
             });
         }
@@ -79,4 +79,37 @@ exports.UpdateSensor = function(account, readings, callback){
     conn.send(JSON.stringify(readings));
     return conn;
 };
+
+exports.Analytics = function(account, callback){
+    log.info('Retrieving Analytics data');
+    
+    var conn = Ti.Network.createHTTPClient({
+        onload: function(e){
+            var status = this.status;
+            if (status === 200){
+                callback({status: 'success', data: JSON.stringify(this.responseText)});
+            }
+            else{
+                callback({
+                    status: 'error',
+                    message: 'Experiencing issues connecting to Alan at this time.',
+                    data: {}
+                });
+            }
+        },
+        onerror: function(e){
+            log.debug('An error occured when fetching analytics data');
+            log.debug(JSON.stringify(e));
+            callback({
+                status: 'error',
+                message: 'Experiencing network connection issues.',
+                data: {}
+            });
+        }
+    });
+    conn.open('GET', base+'1/analytics');
+    conn.setRequestHeader('Content-Type', 'application/json');
+    conn.send();
+    return conn;
+}
 

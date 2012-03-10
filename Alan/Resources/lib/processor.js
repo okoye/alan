@@ -12,16 +12,15 @@ var account = require('model/account');
 var api = require('lib/api');
 
 function Processor(properties){
-	this.account = new account.Account();
 }
 
 Processor.prototype.process = function(data){
     //format data for sending into a list structure.
-    api.UpdateSensor(this.account, data.gps);
+    api.UpdateSensor(account, data.gps);
 };
 
 Processor.prototype.shutdown = function(){
-	this.account.save();
+	account.save();
 	return true;
 };
 

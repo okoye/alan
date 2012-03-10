@@ -7,16 +7,15 @@
 Titanium.UI.setBackgroundColor('#000');
 
 var ui = require("lib/ui");
-var win = {};
 
 
 //Live Session
-//win = new ui.AppWindow();
+win = new ui.AppWindow();
 
 //Training session
 //new ui.TrainWindow();
 
 //Test session
-var tests = require('test/tests');
-tests.run();
+// var tests = require('test/tests');
+// tests.run();
 

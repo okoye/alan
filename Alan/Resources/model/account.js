@@ -13,7 +13,7 @@ var _account = null;
 var _errors = [];
 var _errorListenerRegistered = false;
 
-exports.load = function Account(email, password){
+exports.load = function(email, password){
     if (email && password){
         _account = {};
         if (isValidEmail(email)){
