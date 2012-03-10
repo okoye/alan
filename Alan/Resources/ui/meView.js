@@ -63,6 +63,8 @@ exports.create = function(_args){
     // meBodyView.newActivity = addActivity;
     
     calories.content('Total Today', 0, 'Cal. Burn');
+    steps.content('Steps', 0, '');
+    distance.content('Walking', 0, 'miles');
     
     meBodyView.add(calories);
     return meBodyView;
