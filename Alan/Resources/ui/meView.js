@@ -42,32 +42,28 @@ exports.create = function(_args){
         width: 280,
         top: 5
     }, 2, styling.Yellow);
-    
-    // totalToday.content('Total Today', 0, 'Cal. Burn');
-    // var setTodayTotal = function(calories){
-       // totalToday.content('Total Today', calories,'Cal. Burn'); 
-    // };
-//     
-    // //TODO: add functions to add activity, set total today, clear activities
-//     
-    // var clearActivities = function(){
-        // //For each view, if _type == 'itemSummaryView', delete it by using remove.
-    // };
-//     
-    // var addActivity = function(isv){
-        // log.info('adding new activity to meView');
-        // meBodyView.add(isv);
-    // };
-//     
-    // meBodyView.totalCalories = setTodayTotal;
-    // meBodyView.newActivity = addActivity;
+
     
     calories.content('Total Today', 0, 'Cal. Burn');
-    steps.content('Steps', 0, '');
-    distance.content('Walking', 0, 'miles');
+    steps.content('Steps', 0, ''); //TODO: add callback function.
+    distance.content('Distance', 0, 'miles');
     
-    
+    var _updateSteps = function(value){
+        steps.content(null, value, null);
+    };
+    var _updateDistance = function(value){
+        distance.content(null, value, null);
+    };
+    var _updateCalories = function(value){
+        calories.content(null, value, null);
+    };
     meBodyView.add(calories);
+    meBodyView.add(distance);
     meBodyView.add(steps);
+
+    
+    meBodyView.updateSteps = _updateSteps;
+    meBodyView.updateDistance = _updateDistance;
+    meBodyView.updateCalories = _updateCalories;
     return meBodyView;
 }

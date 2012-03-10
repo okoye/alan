@@ -109,8 +109,8 @@ exports.create = function(_args, sections, style){
         var content = function(act, dist, uni, _cb){
             dist = dist + '';
             (act) ? activity.setText(act):false;
-            (dist) ? distance.setText(dist):distance.setText('');
-            (uni) ? unit.setText(uni):unit.setText('');
+            (dist) ? distance.setText(dist):false;
+            (uni) ? unit.setText(uni):false;
             moreInfo.addEventListener('click', _cb||function(e){ log.info('NOOP'); });
         };
         var updateContent = function(cont){
@@ -169,7 +169,7 @@ exports.create = function(_args, sections, style){
         var content = function(tit, sum, uni){
             sum = sum + '';
             (title) ? title.setText(tit):false;
-            (sum) ? summary.setText(sum+''):summary.setText('');
+            (sum) ? summary.setText(sum+''):false;
             (uni) ? unit.setText(uni):false;
         };
         
