@@ -15,7 +15,7 @@ exports.create = function(_args){
     var meBodyView = Ti.UI.createScrollView({
         backgroundImage: 'images/center_view_bg.png',
         width: PLATFORM_WIDTH,
-        height: 370,
+        height: 372,
         top: 0,
         showVerticalScrollIndicator: true,
         contentHeight: 'auto',
@@ -39,24 +39,24 @@ exports.create = function(_args){
         height: 60,
         width: 280,
         top: 1
-    }, 2, styling.Blue);
+    }, 3, styling.Red);
     
     var steps = itemSummaryView.create({
         height: 60,
         width: 280,
         top: 1,
-    }, 3, styling.Green);
+    }, 3, styling.Blue);
     
     var distance = itemSummaryView.create({
         height: 60,
         width: 280,
         top: 1,
-    }, 2, styling.Yellow);
+    }, 3, styling.Green);
 
     
-    calories.content('Total Today', 0, 'Cal. Burn');
-    steps.content('Steps', 0, ''); //TODO: add callback function.
-    distance.content('Distance', 0, 'miles');
+    calories.content('Calorie Burn', 10);
+    steps.content('Total   Steps', 10);
+    distance.content('Miles Travelled', 10);
     
     var _updateSteps = function(value){
         steps.content(null, value, null);
@@ -70,17 +70,14 @@ exports.create = function(_args){
     meBodyView.add(space());
     meBodyView.add(calories);
     meBodyView.add(space());
-    meBodyView.add(distance);
-    meBodyView.add(space());
     meBodyView.add(steps);
+    meBodyView.add(space());
+    meBodyView.add(distance);
     meBodyView.add(space(10));
     
     meBodyView.updateSteps = _updateSteps;
     meBodyView.updateDistance = _updateDistance;
     meBodyView.updateCalories = _updateCalories;
     
-    meBodyView.addEventListener('scroll', function(evt){
-        log.debug('SCROLLING###############');
-    });
     return meBodyView;
 }

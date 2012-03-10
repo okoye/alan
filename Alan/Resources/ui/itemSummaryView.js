@@ -87,19 +87,9 @@ exports.create = function(_args, sections, style){
                 fontWeight: 'bold',
             },
             left: 2,
-            width: '68%',
+            right: 15,
         });
-        var unit = Ti.UI.createLabel({
-            color: style.color,
-            textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-            font: {
-                fontSize: 12,
-                fontWeight: 'bold'
-            },
-            right: 1,
-            top: 20,
-            width: '28%'
-        });
+        
         var moreInfo = Ti.UI.createButton({
             backgroundImage: style.buttonImage,
             height: 25,
@@ -110,14 +100,13 @@ exports.create = function(_args, sections, style){
             dist = dist + '';
             (act) ? activity.setText(act):false;
             (dist) ? distance.setText(dist):false;
-            (uni) ? unit.setText(uni):false;
             moreInfo.addEventListener('click', _cb||function(e){ log.info('NOOP'); });
         };
         var updateContent = function(cont){
             distance.setText(cont);
         };
         
-        left.add(activity); middle.add(distance); middle.add(unit); right.add(moreInfo);
+        left.add(activity); middle.add(distance); right.add(moreInfo);
         view.add(left); view.add(divider(left.width+1)); view.add(middle); view.add(divider(middle.width+left.width+2)); view.add(right);
         container.content = content;
         container.updateContent = updateContent;

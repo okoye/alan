@@ -25,6 +25,7 @@ exports.createAlanWindow = function(_args){
     var win = Ti.UI.createWindow({
         tabBarHidden: true,
         barImage: 'images/top_nav.png',
+        backgroundColor: 'white',
     }),
     tabHeight = 50,
     footerView = Ti.UI.createView({

@@ -1,7 +1,7 @@
-Version 1 Beta 3:
+Version 0.2:
 -> Support for battery, memory data
 -> More resilient database storage and retrieval
-Version 1 Beta 4:
+Version 0.3:
 -> Brand new Sensor Abstraction Layer replacing outdated Collection Layer
 -> Refactored Reading Management Layer for better modularity and debugging options
 -> Removed old Background logic code to fix Background Termination Bug
@@ -9,3 +9,7 @@ Version 1 Beta 4:
 -> Intelligent filter using Markov Models for transition probabilities implemented
 -> Super modular views for Alan window
 -> Added caching abstraction
+Version 0.4
+-> Application more energy efficient with 4 GPS polls/hr
+-> Heavy model computations done on Alan Cloud Platform
+-> More robust and modular UI elements
