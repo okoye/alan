@@ -18,6 +18,7 @@ exports.create = function(_args){
         showVerticalScrollIndicator: true,
         contentHeight: 'auto',
         contentWidth: 'auto',
+        verticalBounce: true,
         layout: 'vertical',
     });
     meBodyView.add(summaryView.create({
@@ -68,9 +69,6 @@ exports.create = function(_args){
     
     meBodyView.addEventListener('scroll', function(evt){
         log.debug('SCROLLING###############');
-    });
-    meBodyView.addEventListener('click', function(evt){
-        log.debug('CLICKED################');
     });
     return meBodyView;
 }
