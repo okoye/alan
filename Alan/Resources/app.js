@@ -4,7 +4,8 @@
  * Main app module that controls what type of application launches: train, test, or live.
  */
 
-Titanium.UI.setBackgroundColor('#000');
+Ti.UI.setBackgroundColor('#000');
+Ti.App.idleTimerDisabled = true;
 
 var ui = require("ui/start");
 
