@@ -12,6 +12,7 @@ var account = require('model/account');
 
 //global variables
 var _analytics = null;
+var _timeout = 0;
 
 exports.load = function(){
     //reinstantiate if not already initialized.
@@ -55,6 +56,11 @@ exports.sync = function(){
 };
 
 var sync = function(){
+    if (_timeout){
+        log.info('Clearing existing analytics timeout');
+        clearTimeout(_timeout);
+    }
+        
     api.Analytics(account, function(res){
         if (res.status === 'success'){
             _analytics.timestamp = (new Date).getTime();
@@ -64,7 +70,7 @@ var sync = function(){
             _analytics.distance = res['data']['distance'];
         }
         else{
-            setTimeout(sync, 30000);
+            _timeout = setTimeout(sync, 300000); //attempt to resync in 5 mins
         }
     });
 };
