@@ -9,7 +9,10 @@
 var log = require('lib/logger');
 
 
-var base = 'http://api.thepuppetprojects.com'; //FIXME
+var base = 'http://api.alanapp.com';
+
+if (Ti.App.deployType === 'development')
+    base = 'http://api.thepuppetprojects.com';
 
 exports.CreateAccount = function(email, password, callback){
 	log.info('Sending email & password to api');
