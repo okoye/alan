@@ -14,10 +14,6 @@ var CURRENT_MODE = sal.mode.BACKGROUND;
 
 function Manager(properties){
     log.info('Initializing manager routine');
-    if (properties && properties.training){
-        var trainer = require('lib/trainer');
-        trainer.start();
-    }
     SANITY_CHECK = sal.initialize();
 }
 
@@ -27,20 +23,21 @@ var _start = function(){
     timeouts = setTimeout(_start, DURATION);
 };
 
-//foreground, background callbacks.
 Manager.prototype.start = function(){
+    //Register all necessary handlers for foreground and background operation
+    
+    var service = Ti.App.iOS.registerBackgroundService({url: 'lib/background.js'});
+    
     Ti.App.addEventListener('resume', function(e){
         //do something in foreground
-        clearTimeout(timeouts);
         CURRENT_MODE = sal.mode.FOREGROUND;
-        timeouts = setTimeout(_start, DURATION);
+        _start();
         log.info('Initialized foreground services');
     });
     Ti.App.addEventListener('pause', function(e){
        //do something in background 
        clearTimeout(timeouts);
        CURRENT_MODE = sal.mode.BACKGROUND;
-       timeouts = setTimeout(_start, DURATION);
        log.info('Initialized background services');
     });
     Ti.App.addEventListener('close', function(e){
@@ -52,11 +49,10 @@ Manager.prototype.start = function(){
        //repeat of foreground code 
        clearTimeout(timeouts);
        CURRENT_MODE = sal.mode.FOREGROUND;
-       timeouts = setTimeout(_start, DURATION);
+       _start();
        log.info('Initialized fake foreground services');
     });   
     Ti.App.fireEvent('alan:resume');
     return SANITY_CHECK;
-};
-
+}
 exports.Manager = Manager;
