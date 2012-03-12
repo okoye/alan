@@ -13,3 +13,4 @@ Version 0.4
 -> Application more energy efficient with 4 GPS polls/hr
 -> Heavy model computations done on Alan Cloud Platform
 -> More robust and modular UI elements
+-> Upgraded to Titanium 1.8.2

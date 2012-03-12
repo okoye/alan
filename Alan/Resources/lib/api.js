@@ -33,7 +33,6 @@ exports.CreateAccount = function(email, password, callback){
 		},
 		onerror: function(e){
 			log.debug('An error occured when creating account');
-			log.debug(JSON.stringify(e));
 			callback({status: 'error', 
 			 message:'Cannot connect to the Alan network at this time.', 
 			 data: [email, password]
@@ -68,7 +67,6 @@ exports.UpdateSensor = function(account, readings, callback){
         },
         onerror: function(e){
             log.debug('An error occured when updating sensor');
-            log.debug(JSON.stringify(e));
             callback({
                 status: 'error',
                 message: 'Experiencing network connection issues.',
@@ -101,7 +99,6 @@ exports.Analytics = function(account, callback){
         },
         onerror: function(e){
             log.debug('An error occured when fetching analytics data');
-            log.debug(JSON.stringify(e));
             callback({
                 status: 'error',
                 message: 'Experiencing network connection issues.',
