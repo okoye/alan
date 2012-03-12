@@ -54,5 +54,6 @@ Manager.prototype.start = function(){
     });   
     Ti.App.fireEvent('alan:resume');
     return SANITY_CHECK;
-}
+};
+
 exports.Manager = Manager;

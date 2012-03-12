@@ -20,6 +20,7 @@ var _start = function(){
 };
 
 Ti.App.currentService.addEventListener('stop', function(){
+    log.info('Cleaning up background process data');
     clearTimeout(timeouts);
 });
 
