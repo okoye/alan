@@ -10,7 +10,6 @@ var sal = require('lib/sal');
 var timeouts = 0;
 var SANITY_CHECK = false;
 var DURATION = 900000;
-var DURATION = 3000;
 var CURRENT_MODE = sal.mode.BACKGROUND;
 
 function Manager(properties){
