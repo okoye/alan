@@ -126,9 +126,8 @@ var sampleMemory = function(){
 
 //knows how to read gps results
 var sampleGPS = function(){
-    var buffer = [];
     if (!GPS_CALLBACK_SET){ //first time through function, will set constant later.
-        readings.gps = [{
+        readings.gps = {
             longitude: 9999,
             latitude: 9999,
             heading: 9999,
@@ -136,10 +135,9 @@ var sampleGPS = function(){
             speed: 0,
             timestamp: 0,
             altitude_accuracy: 9999
-        }];
+        };
     }
-    buffer = readings.gps.slice(); //copy into buffer.
-    readings.gps = buffer.slice(-1);
+    GPS_CALLBACK_SET = true; //TODO: re-write.
     var callback = function(e){
         if (!e.success || e.error){
             log.info('GPS Callback could not retrieve information '+JSON.stringify(e.error));
@@ -154,14 +152,15 @@ var sampleGPS = function(){
         _gps.speed = e.coords.speed;
         _gps.timestamp = (new Date).getTime();
         _gps.altitude_accuracy = e.coords.altitude_accuracy;
-        readings.gps.push(_gps);
+        readings.gps = _gps;
+        log.info('sampleGPS successfully finished '+JSON.stringify(_gps));
     };
     // if (!GPS_CALLBACK_SET){
         // Ti.Geolocation.addEventListener('location', callback);
         // GPS_CALLBACK_SET = true;
     // }
-    log.info('sampleGPS finished; length: '+buffer.length);
-    return buffer;
+    Ti.Geolocation.getCurrentPosition(callback);
+    return readings.gps;
 };
 
 //knows how to read Wifi

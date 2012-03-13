@@ -49,7 +49,7 @@ exports.CreateAccount = function(email, password, callback){
 };
 
 exports.UpdateSensor = function(account, readings, callback){
-    log.info('Updating sensors on api');
+    log.info('Updating sensors on api '+JSON.stringify(readings));
     
     var conn = Ti.Network.createHTTPClient({
         onload: function(e){

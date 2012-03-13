@@ -154,8 +154,10 @@ exports.createAlanWindow = function(_args){
     mgt = new manager.Manager();
     
     //Initialize collection and processing systems.
-    if (mgt.start())    
-        tabGroup.open();
+    mgt.start(); 
+    
+    //open all windows   
+    tabGroup.open();
 };
 
 

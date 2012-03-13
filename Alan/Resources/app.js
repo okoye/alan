@@ -5,6 +5,7 @@
  */
 
 Ti.UI.setBackgroundColor('#000');
+Ti.App.idleTimerDisabled = true;
 
 var ui = require("ui/start");
 

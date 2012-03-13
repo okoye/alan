@@ -15,3 +15,4 @@ Version 0.4
 -> More robust and modular UI elements
 -> Upgraded to Titanium 1.8.2
 -> Fixed major bug in background service implementation
+-> Fixed aggressive reconnection policy
