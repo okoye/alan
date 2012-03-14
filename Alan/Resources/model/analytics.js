@@ -32,7 +32,7 @@ exports.load = function(){
             sync();
         }
     }
-    
+    account.load();
 };
 
 exports.steps = function(){

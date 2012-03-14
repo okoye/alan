@@ -11,9 +11,11 @@ var log = require('lib/logger');
 //Global Vars
 var _account = null;
 var _errors = [];
-var _errorListenerRegistered = false;
+var _alreadyInitialized = false;
 
 exports.load = function(email, password){
+    if (_alreadyInitialized)
+        return;
     if (email && password){
         _account = {};
         if (isValidEmail(email)){
@@ -44,6 +46,7 @@ exports.load = function(email, password){
         log.debug('Resending data to API');
         update();
     });
+    _alreadyInitialized = true;
 }
 
 exports.username = function(){
