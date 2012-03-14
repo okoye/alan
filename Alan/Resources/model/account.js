@@ -27,8 +27,15 @@ exports.load = function(email, password){
     else{
         //instantiate from cache.
         _account = Ti.App.Properties.getString('model/account', null);
-        if (!_account)
-            throw "No account information saved";
+        if (!_account){
+            if (Ti.App.deployType === 'development'){
+                _account.email = Ti.Platform.macaddress+'@alanapptest.com';
+                _account.password = Ti.Platform.username+':alanapptest';
+            }
+            else{
+                throw "No account information saved";
+            }
+        }
         else
             _account = JSON.parse(_account);
     }
@@ -49,21 +56,28 @@ exports.password = function(){
     return _account.password
 };
 
-exports.save = function(){
+exports.create = function(){
     //saves data to app cache and to api
-    update();
+    create();
 };
 
-var update = function(){
+exports.purge = function(){
+    Ti.App.Properties.removeProperty('model/account');
+};
+
+var create = function(){
     //local equivalent of save function
     Ti.App.Properties.setString('model/account', JSON.stringify(_account));
     api.CreateAccount(_account.email, _account.password, function(res){
         if (res.status === 'error'){
             log.debug('Failed to send account info to api');
-            setTimeout(Ti.App.fireEvent, 30000, 'alan:accountResync');
         }
     });
 };
+
+var update = function(){
+    //TODO: update user account info.
+}
 
 var isValidEmail = function(email){
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
