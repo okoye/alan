@@ -16,7 +16,8 @@ var _timeout = 0;
 
 exports.load = function(){
     //reinstantiate if not already initialized.
-    if (!_analytics){        
+    if (!_analytics){
+        account.load();        
         _analytics = {};
         _analytics.age = 0;
         _analytics.steps = 0;
@@ -32,7 +33,6 @@ exports.load = function(){
             sync();
         }
     }
-    account.load();
 };
 
 exports.steps = function(){

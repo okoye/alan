@@ -11,10 +11,10 @@ var log = require('lib/logger');
 //Global Vars
 var _account = null;
 var _errors = [];
-var _alreadyInitialized = false;
 
 exports.load = function(email, password){
-    if (_alreadyInitialized)
+    //instantiates account.
+    if (_account)
         return;
     if (email && password){
         _account = {};
@@ -46,7 +46,6 @@ exports.load = function(email, password){
         log.debug('Resending data to API');
         update();
     });
-    _alreadyInitialized = true;
 }
 
 exports.username = function(){
@@ -66,6 +65,7 @@ exports.create = function(){
 
 exports.purge = function(){
     Ti.App.Properties.removeProperty('model/account');
+    _account = null;
 };
 
 var create = function(){
