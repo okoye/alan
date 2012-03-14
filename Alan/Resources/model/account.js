@@ -30,12 +30,13 @@ exports.load = function(email, password){
         //instantiate from cache.
         _account = Ti.App.Properties.getString('model/account', null);
         if (!_account){
-            if (Ti.App.deployType === 'development'){
+            _account = {};
+            if (Ti.App.deployType === 'development' ||Ti.App.deployType === 'test'){
                 _account.email = Ti.Platform.macaddress+'@alanapptest.com';
                 _account.password = Ti.Platform.username+':alanapptest';
             }
             else{
-                throw "No account information saved";
+                throw "No account information saved ";
             }
         }
         else

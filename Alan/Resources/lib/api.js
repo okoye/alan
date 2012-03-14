@@ -11,7 +11,7 @@ var log = require('lib/logger');
 
 var base = 'http://api.alanapp.com';
 
-if (Ti.App.deployType === 'development')
+if (Ti.App.deployType === 'development' || Ti.App.deployType === 'test')
     base = 'http://api.thepuppetprojects.com';
 
 var connector = function(callback, success, username, password){
