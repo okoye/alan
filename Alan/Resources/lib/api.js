@@ -14,101 +14,63 @@ var base = 'http://api.alanapp.com';
 if (Ti.App.deployType === 'development')
     base = 'http://api.thepuppetprojects.com';
 
+var connector = function(callback, success, username, password){
+    //accepts callback function, and expected success http code.
+    var conn = Ti.Network.createHTTPClient({
+        onload: function(e){
+            var status = this.status;
+            if (status === success){
+                callback({status: 'success'});
+            }
+            else{
+                callback({
+                    status: 'error',
+                    message: 'Cannot not connect to Alan network at this time.'
+                });
+            }
+        },
+        onerror: function(e){
+            log.debug('An error occured when contacting API '+JSON.stringify(e));
+            callback({
+                status: 'error',
+                message: 'Could not connect to Alan. Try again later.'
+            });
+        },
+        timeout: 5000,
+        enableKeepAlive: false
+    });
+    
+    if (username && password){
+        var authstr = 'Basic '+Ti.Utils.base64encode(username + ':' + password);
+        conn.setRequestHeader('Authorization', authstr);
+        conn.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    }
+    
+    return conn;
+    
+}
+
 exports.CreateAccount = function(email, password, callback){
 	log.info('Sending email & password to api');
-	
-	var conn = Ti.Network.createHTTPClient({
-		onload: function(e){
-			var status = this.status;
-			if (status === 204){
-				callback({status: 'success', data: {}});
-			} 
-			else{
-				callback({
-				    status:'error', 
-				    message: 'Alan experienced an error while creating your account', 
-				    data: [email, password]
-				});
-			}
-		},
-		onerror: function(e){
-			log.debug('An error occured when creating account');
-			callback({status: 'error', 
-			 message:'Cannot connect to the Alan network at this time.', 
-			 data: [email, password]
-			});
-		}
-	});
+	var conn = connector(callback, 204);
 	conn.open('POST', base+'/1/accounts/basic/create');
-	conn.setRequestHeader('Content-Type', 'application/json');
 	conn.send(JSON.stringify({
-		email: email,
-		password: password 
+	    email: email,
+	    password: password
 	}));
-	return conn;
 };
 
 exports.UpdateSensor = function(account, readings, callback){
     log.info('Updating sensors on api '+JSON.stringify(readings));
-    
-    var conn = Ti.Network.createHTTPClient({
-        onload: function(e){
-            var status = this.status;
-            if (status === 204){
-                callback({status: 'success', data: {}});
-            }
-            else{
-                callback({
-                    status: 'error',
-                    message: 'Cannot update gps information at this time.',
-                    data: [readings]
-                });
-            }
-        },
-        onerror: function(e){
-            log.debug('An error occured when updating sensor');
-            callback({
-                status: 'error',
-                message: 'Experiencing network connection issues.',
-                data: [readings]
-            });
-        }
-    });
+    var conn = connector(callback, 204, account.username(), account.password());
     conn.open('POST', base+'/1/sensors/update');
-    conn.setRequestHeader('Content-Type', 'application/json');
     conn.send(JSON.stringify(readings));
-    return conn;
 };
 
 exports.Analytics = function(account, callback){
     log.info('Retrieving Analytics data');
-    
-    var conn = Ti.Network.createHTTPClient({
-        onload: function(e){
-            var status = this.status;
-            if (status === 200){
-                callback({status: 'success', data: JSON.stringify(this.responseText)});
-            }
-            else{
-                callback({
-                    status: 'error',
-                    message: 'Experiencing issues connecting to Alan at this time.',
-                    data: {}
-                });
-            }
-        },
-        onerror: function(e){
-            log.debug('An error occured when fetching analytics data');
-            callback({
-                status: 'error',
-                message: 'Experiencing network connection issues.',
-                data: {}
-            });
-        }
-    });
+    var conn = connector(callback, 200, account.username(), account.password());
     conn.open('GET', base+'/1/analytics');
-    conn.setRequestHeader('Content-Type', 'application/json');
     conn.send();
-    return conn;
-}
+};
 
