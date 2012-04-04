@@ -30,11 +30,18 @@ exports.create = function(_args){
                     width: 280,
                 });
     };
-    meBodyView.add(summaryView.create({
-        height: 195,
+    var status = itemSummaryView.create({
+        height: 60,
         width: 280,
         top: 10,
-    }));
+    }, 3, styling.Grey);
+    
+    var summary = itemSummaryView.create({
+        height: 60,
+        width: 280,
+        top: 1,
+    }, 3, styling.Green);
+    
     var calories = itemSummaryView.create({
         height: 60,
         width: 280,
@@ -53,11 +60,17 @@ exports.create = function(_args){
         top: 1,
     }, 3, styling.Green);
 
+    summary.content('Activity Level', '0%');
+    calories.content('Calorie Burn', 0);
+    steps.content('Total   Steps', 0);
+    distance.content('Miles Travelled', 0);
     
-    calories.content('Calorie Burn', 10);
-    steps.content('Total   Steps', 10);
-    distance.content('Miles Travelled', 10);
-    
+    var _updateStatus = function(value){
+        //TODO: implement
+    };
+    var _updateSummary = function(value){
+        summary.content(null, value+'%', null);
+    };
     var _updateSteps = function(value){
         steps.content(null, value, null);
     };
@@ -67,6 +80,9 @@ exports.create = function(_args){
     var _updateCalories = function(value){
         calories.content(null, value, null);
     };
+    meBodyView.add(status);
+    meBodyView.add(space());
+    meBodyView.add(summary);
     meBodyView.add(space());
     meBodyView.add(calories);
     meBodyView.add(space());
