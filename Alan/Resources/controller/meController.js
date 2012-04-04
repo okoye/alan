@@ -12,6 +12,7 @@ var timeouts = 0;
 var LAST_FETCH = 0;
 var DURATION = 900000; //Every 15 mins
 
+
 function Controller(view){
     log.info('initializing meController');
     this.view = view;

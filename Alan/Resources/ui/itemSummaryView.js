@@ -50,11 +50,11 @@ exports.create = function(_args, sections, style){
     
     var style = (style) ? style:styles.Grey;
     
-    view.addEventListener('touchstart', function(e){
+    view.addEventListener('alan:buttonDown', function(e){
         view.backgroundColor = '#eeeeee'
     });
     
-    view.addEventListener('touchend', function(e){
+    view.addEventListener('alan:buttonUp', function(e){
         view.backgroundColor = 'white'
     });
     
@@ -99,6 +99,14 @@ exports.create = function(_args, sections, style){
             width: 12,
             left: Math.round(0.5*right.width)-2,
         });
+        
+        moreInfo.addEventListener('touchstart', function(evt){
+            view.fireEvent('alan:buttonDown', evt);
+        });
+        moreInfo.addEventListener('touchend', function(evt){
+            view.fireEvent('alan:buttonUp', evt);
+        });
+        
         var content = function(act, dist, uni, _cb){
             dist = dist + '';
             (act) ? activity.setText(act):false;
