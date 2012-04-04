@@ -33,8 +33,8 @@ exports.create = function(_args){
     var status = itemSummaryView.create({
         height: 60,
         width: 280,
-        top: 10,
-    }, 3, styling.Grey);
+        top: 19,
+    }, 0);
     
     var summary = itemSummaryView.create({
         height: 60,
@@ -60,7 +60,8 @@ exports.create = function(_args){
         top: 1,
     }, 3, styling.Green);
 
-    summary.content('Activity Level', '0%');
+    status.content('images/death.png', "I'M WORRIED", styling.Purple);
+    summary.content('Activity Level', '0');
     calories.content('Calorie Burn', 0);
     steps.content('Total   Steps', 0);
     distance.content('Miles Travelled', 0);

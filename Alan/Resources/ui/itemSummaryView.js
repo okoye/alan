@@ -5,6 +5,7 @@
  */
 
 var log = require('lib/logger');
+var styles = require('lib/styles');
 
 var WIDTH = 170,
 LEFT = 20,
@@ -47,13 +48,15 @@ exports.create = function(_args, sections, style){
         });
     };
     
+    var style = (style) ? style:styles.Grey;
+    
     view.addEventListener('touchstart', function(e){
         view.backgroundColor = '#eeeeee'
     });
     
     view.addEventListener('touchend', function(e){
         view.backgroundColor = 'white'
-    })
+    });
     
     var triplePartition = function(){        
         var left = Ti.UI.createView({
@@ -159,7 +162,7 @@ exports.create = function(_args, sections, style){
             sum = sum + '';
             (title) ? title.setText(tit):false;
             (sum) ? summary.setText(sum+''):false;
-            (uni) ? unit.setText(uni):false;
+            (uni) ? unit.setText(uni) : false;
         };
         
         var updateContent = function(sum){
@@ -170,12 +173,54 @@ exports.create = function(_args, sections, style){
         view.add(left); view.add(divider(left.width+1)); view.add(right);
         container.content = content;
     };
+    
+    var zeroPartition = function(){
+        var left = Ti.UI.createView({
+            width: Math.round(0.25*view.width) - 1,
+            left: 0,
+        });
+        var right = Ti.UI.createView({
+            width: Math.round(0.75*view.width) - 1,
+            right: 0,
+        });
+        var icon = Ti.UI.createImageView({
+            image: '',
+            width: 50,
+            height: 50,
+            right: 0,
+        });
+        var text = Ti.UI.createLabel({
+            color: style.color,
+            textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+            font: {
+                fontSize: 25,
+                fontWeight: 'bold',
+            },
+        });
+        
+        var content = function(image, info, color){
+            if (image){
+                icon.image = image;
+                icon.width = 50;
+                icon.height = 50;
+            }
+            text.color = (color) ? color.color:styles.Grey.color;
+            text.text = info;
+        };
+        
+        left.add(icon); right.add(text);
+        view.add(left); view.add(right);
+        container.content = content;
+    };
         
     if (sections === 2){
         doublePartition();
     }
     else if(sections === 3){
         triplePartition();
+    }
+    else if(sections === 0){
+        zeroPartition();
     }
     
     container.add(viewShadow);

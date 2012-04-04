@@ -36,7 +36,7 @@ exports.createAlanWindow = function(_args){
     tabWidth = PLATFORM_WIDTH/NUM_TABS,
     tabs = [];
     var settingsButton = Ti.UI.createButton({
-        backgroundImage: 'images/top_nav_btn_settings.png'
+        backgroundImage: 'images/top_nav_btn_feedback.png'
     });
     var settingsContainer = Ti.UI.createView({
         width: 40,
@@ -141,13 +141,13 @@ exports.createAlanWindow = function(_args){
     
     //pull up settings window when clicked
     settingsContainer.addEventListener('touchstart', function(evt){
-        settingsButton.backgroundImage = 'images/top_nav_btn_settings_current.png';
-        headerUpdate('Settings');
+        settingsButton.backgroundImage = 'images/top_nav_btn_feedback.png';
+        headerUpdate('Feedback');
         changeTab(-1);
         bodyView.updateStrip(4);
     });
     settingsContainer.addEventListener('touchend', function(evt){
-        settingsButton.backgroundImage = 'images/top_nav_btn_settings.png';
+        settingsButton.backgroundImage = 'images/top_nav_btn_feedback.png';
     });
     
     //Start collection manager.
