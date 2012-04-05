@@ -66,14 +66,19 @@ var sync = function(){
     api.Analytics(account, function(res){
         if (res.status === 'success'){
             _analytics.timestamp = (new Date).getTime();
-            _analytics.steps = res['data']['steps'];
-            _analytics.calories = res['data']['calories'];
-            _analytics.age = res['data']['age'];
-            _analytics.distance = res['data']['distance'];            
+            _analytics.steps = (res['data']['steps']) ? res['data']['steps']:0;
+            _analytics.calories = (res['data']['calories']) ? res['data']['calories']:0;
+            _analytics.age = (res['data']['age']) ? res['data']['age']:0;
+            _analytics.distance = (res['data']['distance']) ? res['data']['distance']:0;
+                        
         }
         else{
             _timeout = setTimeout(sync, 300000); //attempt to resync in 5 mins
         }
     });
+};
+
+var computeActivityLevels = function(){
+   //TODO: 
 };
 
