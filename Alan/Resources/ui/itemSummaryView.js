@@ -204,8 +204,7 @@ exports.create = function(_args, sections, style){
                 fontSize: 25,
                 fontWeight: 'bold',
             },
-        });
-        
+        });  
         var content = function(image, info, color){
             if (image){
                 icon.image = image;

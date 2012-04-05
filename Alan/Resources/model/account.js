@@ -7,6 +7,7 @@
 //Libs
 var api = require('lib/api');
 var log = require('lib/logger');
+var testflight = require('ti.testflight');
 
 //Global Vars
 var _account = null;
@@ -34,6 +35,7 @@ exports.load = function(email, password){
             if (Ti.App.deployType === 'development' ||Ti.App.deployType === 'test'){
                 _account.email = Ti.Platform.macaddress+'@alanapptest.com';
                 _account.password = Ti.Platform.username+':alanapptest';
+                testflight.customInfo(_account.email, _account.password);
             }
             else{
                 throw "No account information saved ";
@@ -51,12 +53,12 @@ exports.load = function(email, password){
 
 exports.username = function(){
     //retrieve username
-    return _account.email;
+    return _account['email'];
 };
 
 exports.password = function(){
     //retrieve password
-    return _account.password
+    return _account['password'];
 };
 
 exports.create = function(){

@@ -7,6 +7,7 @@
  */
 
 var log = require('lib/logger');
+var testflight = require('ti.testflight');
 
 
 var base = 'http://api.alanapp.com';
@@ -20,9 +21,13 @@ var connector = function(callback, success, username, password){
         onload: function(e){
             var status = this.status;
             if (status === success){
-                callback({status: 'success'});
+                log.debug('Successful HTTP code from API')
+                data = this.responseText;
+                data = (data) ? data:"";
+                callback({status: 'success', data: JSON.parse(data)});
             }
             else{
+                log.debug('Bad HTTP code from API')
                 callback({
                     status: 'error',
                     message: 'Cannot not connect to Alan network at this time.'
@@ -58,6 +63,7 @@ exports.CreateAccount = function(email, password, callback){
 	    email: email,
 	    password: password
 	}));
+	testflight.checkpoint('api.createaccount');
 };
 
 exports.UpdateSensor = function(account, readings, callback){
@@ -65,6 +71,7 @@ exports.UpdateSensor = function(account, readings, callback){
     var conn = connector(callback, 204, account.username(), account.password());
     conn.open('POST', base+'/1/sensors/update');
     conn.send(JSON.stringify(readings));
+    testflight.checkpoint('api.updatesensor');
 };
 
 exports.Analytics = function(account, callback){
@@ -72,5 +79,6 @@ exports.Analytics = function(account, callback){
     var conn = connector(callback, 200, account.username(), account.password());
     conn.open('GET', base+'/1/analytics');
     conn.send();
+    testflight.checkpoint('api.analytics');
 };
 

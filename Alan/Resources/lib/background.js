@@ -6,6 +6,7 @@
 
 var log = require('lib/logger');
 var sal = require('lib/sal');
+var testflight = require('ti.testflight');
 
 var timeouts = 0;
 var DURATION = 900000;
@@ -18,6 +19,7 @@ var _start = function(){
     log.info('Collecting data at '+(new Date).getTime());
     sal.collect(CURRENT_MODE);
     timeouts = setTimeout(_start, DURATION);
+    testflight.checkpoint('background.js '+(new Date).getTime());
 };
 
 Ti.App.currentService.addEventListener('stop', function(){

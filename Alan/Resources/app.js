@@ -8,6 +8,8 @@ Ti.UI.setBackgroundColor('#000');
 Ti.App.idleTimerDisabled = true;
 
 var ui = require("ui/start");
+var testflight = require("ti.testflight");
+testflight.token('e02a75890def3a7ac573022791989e18_NTE2NzcyMDEyLTAxLTI3IDAwOjQ2OjMxLjEwMDU5MQ');
 
 //Test session
 // var tests = require('test/tests');

@@ -53,6 +53,8 @@ exports.timestamp = function(){
 
 exports.sync = function(){
     sync();
+    log.debug('previous analytics data is '+JSON.stringify(_analytics));
+
 };
 
 var sync = function(){
@@ -67,7 +69,7 @@ var sync = function(){
             _analytics.steps = res['data']['steps'];
             _analytics.calories = res['data']['calories'];
             _analytics.age = res['data']['age'];
-            _analytics.distance = res['data']['distance'];
+            _analytics.distance = res['data']['distance'];            
         }
         else{
             _timeout = setTimeout(sync, 300000); //attempt to resync in 5 mins
