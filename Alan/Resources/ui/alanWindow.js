@@ -100,7 +100,7 @@ exports.createAlanWindow = function(_args){
     tabs.push(createTab('images/bottom_nav_btn_me', function(){
         changeTab(0);
         bodyView.updateStrip(0);
-        headerUpdate('Me');
+        headerUpdate('ME');
     }, true));
     tabs.push(createTab('images/bottom_nav_btn_act_age', function(){
         changeTab(1);

@@ -22,9 +22,9 @@ function Controller(ui){
 var _start = function(){
     log.info('Fetching new analytics data');
     if(LAST_FETCH != analytics.timestamp()){
-        view.updateSteps(analytics.steps());
-        view.updateDistance(analytics.distance());
-        view.updateCalories(analytics.calories());
+        // view.updateSteps(analytics.steps());
+        // view.updateDistance(analytics.distance());
+        // view.updateCalories(analytics.calories());
     }
     analytics.sync();
     timeouts = setTimeout(_start, DURATION);
