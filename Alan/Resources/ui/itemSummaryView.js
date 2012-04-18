@@ -41,31 +41,31 @@ var meteredSummary = function(properties, style){
     }),
     
     view = Ti.UI.createView({
-        height: container.height - 20,
-        width: container.width - 20,
-        left: 10,
-        right: 10,
-        top: 10,
-        bottom: 10,
+        height: container.height - 10,
+        width: container.width - 10,
+        left: 5,
+        right: 5,
+        top: 5,
+        bottom: 5,
         backgroundColor: 'pink',
     });
     
     //Setup components
-    var title = Ti.UI.createLabel({
-        height: 20,
-        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        font: {
-            fontSize: 15,
-            fontStyle: 'normal',
-            fontWeight: 'bold',
-        },
-        color: style.color,
-    }),
-    
+    // var title = Ti.UI.createLabel({
+        // height: 20,
+        // textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+        // font: {
+            // fontSize: 15,
+            // fontStyle: 'normal',
+            // fontWeight: 'bold',
+        // },
+        // color: style.color,
+    // }),
+//     
     bar = aBar.create({
         bottom: 0,
         width: view.width,
-        height: 40,
+        height: view.height,
     });
     
     //Data Handlers
@@ -73,7 +73,6 @@ var meteredSummary = function(properties, style){
     
     
     //Join containers and components
-    view.add(title);
     view.add(bar);
     container.add(shadow);
     container.add(background);
