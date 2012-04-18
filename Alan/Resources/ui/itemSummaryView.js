@@ -47,21 +47,9 @@ var meteredSummary = function(properties, style){
         right: 5,
         top: 5,
         bottom: 5,
-        backgroundColor: 'pink',
     });
     
-    //Setup components
-    // var title = Ti.UI.createLabel({
-        // height: 20,
-        // textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        // font: {
-            // fontSize: 15,
-            // fontStyle: 'normal',
-            // fontWeight: 'bold',
-        // },
-        // color: style.color,
-    // }),
-//     
+   
     bar = aBar.create({
         bottom: 0,
         width: view.width,
