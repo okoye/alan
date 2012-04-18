@@ -128,6 +128,7 @@ exports.createAlanWindow = function(_args){
     win.add(footerView);
     win.rightNavButton = settingsContainer;
     
+    
     //Setup tabgroup
     tabGroup.addTab(dummyTab);
     tabGroup.setActiveTab(0);

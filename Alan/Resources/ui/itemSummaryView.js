@@ -5,6 +5,7 @@
  */
 
 var log = require('lib/logger');
+var aBar = require('ui/awesomeBar');
 
 var WIDTH = 170,
 LEFT = 20,
@@ -46,7 +47,6 @@ var meteredSummary = function(properties, style){
         right: 10,
         top: 10,
         bottom: 10,
-        layout: 'vertical',
         backgroundColor: 'pink',
     });
     
@@ -62,8 +62,10 @@ var meteredSummary = function(properties, style){
         color: style.color,
     }),
     
-    bar = Ti.UI.createProgressBar({
-        
+    bar = aBar.create({
+        bottom: 0,
+        width: view.width,
+        height: 40,
     });
     
     //Data Handlers
@@ -72,6 +74,7 @@ var meteredSummary = function(properties, style){
     
     //Join containers and components
     view.add(title);
+    view.add(bar);
     container.add(shadow);
     container.add(background);
     container.add(view);
@@ -162,7 +165,6 @@ var messageSummary = function(properties, style){
     container.add(shadow);
     container.add(background);
     container.add(view);
-    log.debug('messageSummary Instance: '+JSON.stringify(container));
     return container;
 }
 
