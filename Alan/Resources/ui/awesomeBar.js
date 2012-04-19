@@ -39,7 +39,7 @@ var barManager = function(args){
     }),
     
     fillColor = Ti.UI.createView({
-        width: '10%',
+        width: '0%',
         backgroundColor: 'brown', //TODO should be according to style
         height: '100%',
         left: 0,
@@ -47,7 +47,7 @@ var barManager = function(args){
     }),
     
     fillPattern = Ti.UI.createView({ //Container for strechy pattern and caps
-        width: '10%',
+        width: '0%',
         height: '100%',
         backgroundColor: 'yellow',
         left: 0,
@@ -71,8 +71,9 @@ var barManager = function(args){
     centerStretch = Ti.UI.createView({
         backgroundColor: 'blue',
         backgroundImage: '', //TODO: stretchy component.
-        width: container.value,
+        width: 2,
         height: '100%',
+        backgroundRepeat: true,
     });
     
     
@@ -108,17 +109,15 @@ var barManager = function(args){
         var width = (container.value/container.max) * 100;
         
         if (width > 4 && width < 10){
-            //compute centerStretch, update color, 
-            centerStretch.width = width - 4;
-            fillColor.width = width;
+           fillPattern.width = width+'%';
+           fillColor.width = width+'%';
         }
         else if (width < 4){
             //Do nothing
         }
         else{ //Very wide
-            //compute CenterStretch, update color, and show label
-            centerStretch.width = width - 4;
-            fillColor.width = width;
+            fillPattern.width = width+'%';
+            fillColor.width = width+'%';
         }
     };
     var getMax = function(){ return container.max; };
@@ -128,6 +127,8 @@ var barManager = function(args){
     container.setMax = setMax;
     container.setValue = setValue;
     container.setBar = setBar;
+    
+    setBar(container.value);
     
     //Add components and containers together
     fillPattern.add(leftCap);

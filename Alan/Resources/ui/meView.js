@@ -58,15 +58,16 @@ exports.create = function(_args){
                 });
     };
     var height = 65;
+    var width = 289;
     var status = itemSummaryView.create({
         height: height,
-        width: 280,
+        width: width,
         top: 17,
     }, 'messageSummary', styling.Red);
     
     var summary = itemSummaryView.create({
         height: height,
-        width: 280,
+        width: width,
         top: 3,
     }, 'meteredSummary', styling.Green);
     

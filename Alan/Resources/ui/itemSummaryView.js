@@ -55,10 +55,10 @@ var meteredSummary = function(properties, style){
         height: view.height,
         max: 200,
         min: 0,
-        value: 55,
+        value: 25,
     });
     
-    bar.setBar
+   
     //Data Handlers
     //TODO: wire up data handlers passed as an array.
     
