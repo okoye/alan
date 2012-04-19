@@ -48,14 +48,17 @@ var meteredSummary = function(properties, style){
         top: 5,
         bottom: 5,
     });
-    
    
     bar = aBar.create({
         bottom: 0,
         width: view.width,
         height: view.height,
+        max: 200,
+        min: 0,
+        value: 55,
     });
     
+    bar.setBar
     //Data Handlers
     //TODO: wire up data handlers passed as an array.
     

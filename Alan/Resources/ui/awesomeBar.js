@@ -25,17 +25,17 @@ var barManager = function(args){
     var fillContainer = Ti.UI.createView({
         left: 0,
         width: '100%',
-        backgroundColor: 'red',
         height: '60%',
         bottom: 0,
+        backgroundImage: '',//Should hold background static pattern
     }),
     
-    fillParent = Ti.UI.createView({
+    fillParent = Ti.UI.createView({ //Holds, the fillColor and Pattern
         left: 4,
         right: 4,
         height: '100%',
         width: '98%',
-        backgroundColor: 'pink'
+        borderWidth: 1,
     }),
     
     fillColor = Ti.UI.createView({
@@ -43,14 +43,36 @@ var barManager = function(args){
         backgroundColor: 'brown', //TODO should be according to style
         height: '100%',
         left: 0,
+        opacity: 0.1
     }),
     
-    fillPattern = Ti.UI.createView({
+    fillPattern = Ti.UI.createView({ //Container for strechy pattern and caps
         width: '10%',
-        opacity: 0.2,
         height: '100%',
         backgroundColor: 'yellow',
         left: 0,
+        layout: 'horizontal',
+    }),
+    
+    leftCap = Ti.UI.createView({
+        backgroundColor: 'grey',
+        width: 2,
+        backgroundImage: '', //TODO: left cap image
+        height: '100%'
+    }),
+    
+    rightCap = Ti.UI.createView({
+        backgroundColor: 'red',
+        backgroundImage: '',//TODO right cap image
+        width: 2,
+        height: '100%',
+    }),
+    
+    centerStretch = Ti.UI.createView({
+        backgroundColor: 'blue',
+        backgroundImage: '', //TODO: stretchy component.
+        width: container.value,
+        height: '100%',
     });
     
     
@@ -69,12 +91,50 @@ var barManager = function(args){
     });
     
     //Message Handlers
+    var setMax = function(number){
+        //Update max where ever necessary
+        container.max = number;
+    };
+    var setValue = function(number){
+        //Compute the percentage of value
+        container.value = number;
+    };
+    var setBar = function(number){
+        //If no is supplied use it otherwise, update using new state vars.
+        if (number){
+            container.value = number;
+        }
+        
+        var width = (container.value/container.max) * 100;
+        
+        if (width > 4 && width < 10){
+            //compute centerStretch, update color, 
+            centerStretch.width = width - 4;
+            fillColor.width = width;
+        }
+        else if (width < 4){
+            //Do nothing
+        }
+        else{ //Very wide
+            //compute CenterStretch, update color, and show label
+            centerStretch.width = width - 4;
+            fillColor.width = width;
+        }
+    };
+    var getMax = function(){ return container.max; };
+    var getValue = function(){ return container.value; };
     
     
+    container.setMax = setMax;
+    container.setValue = setValue;
+    container.setBar = setBar;
     
     //Add components and containers together
-    fillParent.add(fillColor);
+    fillPattern.add(leftCap);
+    fillPattern.add(centerStretch);
+    fillPattern.add(rightCap);
     fillParent.add(fillPattern);
+    fillParent.add(fillColor);
     fillContainer.add(fillParent);
     container.add(title);
     container.add(fillContainer);
