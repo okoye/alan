@@ -12,7 +12,7 @@ var applyProperties = function(obj, properties){
 
 var barManager = function(args){
     var height = 30,
-    width = 269,
+    width = 269, //Range: [0, 265]
     
     min = (args.min) ? args.min:0, 
     max = (args.max) ? args.max:100,
