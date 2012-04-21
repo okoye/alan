@@ -81,6 +81,8 @@ exports.create = function(_args){
         height: height,
         width: width,
         top: 3,
+        maxLabelOn: true,
+        valueLabelOn: true,
     }, 'meteredSummary', styling.Blue);
     
     var distance = itemSummaryView.create({

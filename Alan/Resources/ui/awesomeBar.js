@@ -4,6 +4,8 @@
  * Our implementation of a progress bar
  */
 
+var log = require('lib/logger');
+
 var applyProperties = function(obj, properties){
     for(prop in properties)
         obj[prop] = properties[prop];
@@ -13,10 +15,7 @@ var applyProperties = function(obj, properties){
 var barManager = function(args){
     var height = 30,
     width = 269, //Range: [0, 265]
-    
-    min = (args.min) ? args.min:0, 
-    max = (args.max) ? args.max:100,
-    value = (args.value) ? args.value:0
+    widthDelta = 4;
         
     //Setup Containers
     var container = Ti.UI.createView();
@@ -36,7 +35,7 @@ var barManager = function(args){
         left: 2,
         height: 27,
         top: 2,
-        width: fillContainer.width - 4,
+        width: fillContainer.width - widthDelta,
         borderRadius: 1,
     }),
     
@@ -51,18 +50,18 @@ var barManager = function(args){
     leftCap = Ti.UI.createView({
         width: 3,
         left: 0,
-        backgroundImage: container.style.left, //TODO: left cap image, determined by style
+        backgroundImage: container.style.left,
         height: fillParent.height,
     }),
     
     rightCap = Ti.UI.createView({
-        backgroundImage: container.style.right,//TODO right cap image, determined by style
+        backgroundImage: container.style.right,
         width: 3,
         height: fillParent.height,
     }),
     
     centerStretch = Ti.UI.createView({
-        backgroundImage: container.style.center, //TODO: stretchy component., determined by style
+        backgroundImage: container.style.center,
         width: 20,
         height: fillParent.height,
         backgroundRepeat: true,
@@ -81,41 +80,71 @@ var barManager = function(args){
             fontSize: 12,
             fontWeight: 'bold',
         },
-        color: container.style.color, //TODO: should be according to style
+        color: container.style.color,
+    }),
+    
+    valueLabel = Ti.UI.createLabel({
+        text: '',
+        height: 10,
+        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+        color: container.style.color,
+        opacity: (args.valueLabelEnabled) ? 1:0
+    }),
+    
+    maxLabel = Ti.UI.createLabel({
+        text: 'max label',
+        height: 15,
+        width: 45,
+        textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
+        color: '#b2b2b2',
+        right: 0,
+        font: {
+            fontSize: 15,
+            fontWeight: 'bold',
+        },
+        opacity: (args.maxLabelEnabled) ? 1:0,
     });
     
     //Message Handlers
-    var setMax = function(number){
+    var _setMax = function(number){
         //Update max where ever necessary
         container.max = number;
+        maxLabel.text = ''+number;
     };
-    var setValue = function(number){
+    var _setValue = function(number, display){
         //Compute the percentage of value
         container.value = number;
         
-        var width = (container.value/container.max) * 100;
-        fillShell.width = width + '%';
+        var width = (container.value/container.max) * fillParent.width;
+        fillShell.width = width;
         
         if (width > 9  && width < 15){
             //Add bars but no label.
-            setBar(false, true);
+            _setBar(false, true);
         }
         else if(width < 9){
             //Dont add bars at all
-            setBar(false, false);
+            _setBar(false, false);
         }
         else{
             //Add bars and label
-            setBar(true, true);
+            _setBar(true, true);
         }
     };
-    var setBar = function(label, bars){
+    var _setBar = function(label, bars){
         if (label){
             
         }
+        else{
+            valueLabel.show = false;
+        }
         
         if (bars){
-            
+            fillShell.show = true;
+            centerStretch.width = Math.ceil(fillShell.width - 6);
+        }
+        else{
+            fillShell.show = false;
         }
         
     };
@@ -123,16 +152,16 @@ var barManager = function(args){
     var getValue = function(){ return container.value; };
     
     
-    container.setMax = setMax;
-    container.setValue = setValue;
-    container.setBar = setBar;
+    container.myMax = _setMax;
+    container.myValue = _setValue;
     
-    setValue(container.value);
-    
+    _setValue(container.value);
+    _setMax(container.max);
     //Add components and containers together
     fillShell.add(leftCap);
     fillShell.add(centerStretch);
     fillShell.add(rightCap);
+    fillParent.add(maxLabel);
     fillParent.add(fillShell);
     fillContainer.add(fillParent);
     container.add(title);
