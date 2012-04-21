@@ -8,26 +8,37 @@ var log = require('lib/logger');
 exports = {
 
 	Blue : {
-	    buttonImage: 'images/arw_btn_blue.png',
-	    color: '#62c1e6'
+	    color: '#62c1e6',
+	    left: 'images/blue_left_cap.png',
+	    right: 'images/blue_right_cap.png',
+	    center: 'images/blue_center.png'
 	},
 	Green : {
-	    buttonImage: 'images/arw_btn_green.png',
-	    color: '#add267'
+	    color: '#add267',
+	    left: 'images/green_left_cap.png',
+	    right: 'images/green_right_cap.png',
+	    center: 'images/green_center.png'
 	},
 	Red : {
-	    buttonImage: 'images/arw_btn_red.png',
-	    color: '#de7474'
+	    color: '#de7474',
+	    left: 'images/red_left_cap.png',
+	    right: 'images/red_right_cap.png',
+	    center: 'images/red_center.png'
 	},
-	Yellow : {
-	    buttonImage: 'images/arw_btn_yellow.png',
-	    color: '#eae493'
+	Orange : {
+	    color: '#eae493',
+	    left: 'images/orange_left_cap.png',
+	    right: 'images/orange_right_cap.png',
+	    center: 'images/orange_center.png'
 	},
 	Grey : {
-	    buttonImage: 'images/arw_btn_grey.png',
 	    color: '#e0e0e0'
 	},
 	Purple : {
-	    color: '#748dde',//PURPLE
+	    color: '#748dde',
+	    left: 'images/purple_left_cap.png',
+	    right: 'images/purple_right_cap.png',
+	    center: 'images/purple_center.png'
 	},
+	
 };

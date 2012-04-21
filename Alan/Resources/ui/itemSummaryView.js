@@ -7,7 +7,7 @@
 var log = require('lib/logger');
 var aBar = require('ui/awesomeBar');
 
-var WIDTH = 170,
+var WIDTH = 289,
 LEFT = 20,
 HEIGHT = 65,
 TOP = 10;
@@ -41,21 +41,20 @@ var meteredSummary = function(properties, style){
     }),
     
     view = Ti.UI.createView({
-        height: container.height - 10,
-        width: container.width - 10,
-        left: 5,
-        right: 5,
-        top: 5,
-        bottom: 5,
+        height: container.height - 20,
+        width: container.width - 20,
+        left: 10,
+        bottom: 10,
     });
    
     bar = aBar.create({
         bottom: 0,
         width: view.width,
         height: view.height,
-        max: 200,
+        max: 100,
         min: 0,
         value: 25,
+        style: style,
     });
     
    

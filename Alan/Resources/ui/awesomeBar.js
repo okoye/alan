@@ -12,6 +12,7 @@ var applyProperties = function(obj, properties){
 
 var barManager = function(args){
     var height = 30,
+    width = 269,
     
     min = (args.min) ? args.min:0, 
     max = (args.max) ? args.max:100,
@@ -19,61 +20,53 @@ var barManager = function(args){
         
     //Setup Containers
     var container = Ti.UI.createView();
-    container.height = height,   
+    container.height = height,
+    container.width = width,  
     container = applyProperties(container, args);
     
     var fillContainer = Ti.UI.createView({
         left: 0,
-        width: '100%',
-        height: '60%',
+        width: container.width,
+        height: 30,
         bottom: 0,
-        backgroundImage: '',//Should hold background static pattern
+        backgroundImage: 'images/container.png',//Should hold background static pattern
     }),
     
     fillParent = Ti.UI.createView({ //Holds, the fillColor and Pattern
-        left: 4,
-        right: 4,
-        height: '100%',
-        width: '98%',
-        borderWidth: 1,
+        left: 2,
+        height: 27,
+        top: 2,
+        width: fillContainer.width - 4,
+        borderRadius: 1,
     }),
     
-    fillColor = Ti.UI.createView({
-        width: '0%',
-        backgroundColor: 'brown', //TODO should be according to style
-        height: '100%',
+    fillShell = Ti.UI.createView({
         left: 0,
-        opacity: 0.1
-    }),
-    
-    fillPattern = Ti.UI.createView({ //Container for strechy pattern and caps
-        width: '0%',
-        height: '100%',
-        backgroundColor: 'yellow',
-        left: 0,
+        height: fillParent.height,
+        top: 0,
         layout: 'horizontal',
+        width: 0,
     }),
     
     leftCap = Ti.UI.createView({
-        backgroundColor: 'grey',
-        width: 2,
-        backgroundImage: '', //TODO: left cap image
-        height: '100%'
+        width: 3,
+        left: 0,
+        backgroundImage: container.style.left, //TODO: left cap image, determined by style
+        height: fillParent.height,
     }),
     
     rightCap = Ti.UI.createView({
-        backgroundColor: 'red',
-        backgroundImage: '',//TODO right cap image
-        width: 2,
-        height: '100%',
+        backgroundImage: container.style.right,//TODO right cap image, determined by style
+        width: 3,
+        height: fillParent.height,
     }),
     
     centerStretch = Ti.UI.createView({
-        backgroundColor: 'blue',
-        backgroundImage: '', //TODO: stretchy component.
-        width: 2,
-        height: '100%',
+        backgroundImage: container.style.center, //TODO: stretchy component., determined by style
+        width: 20,
+        height: fillParent.height,
         backgroundRepeat: true,
+        backgroundColor: 'yellow'
     });
     
     
@@ -81,14 +74,14 @@ var barManager = function(args){
     //add title label here.
     var title = Ti.UI.createLabel({
         text: 'Title goes here',
-        height: 20,
+        height: 18,
         top: 0,
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         font: {
-            fontSize: 15,
+            fontSize: 12,
             fontWeight: 'bold',
         },
-        color: 'blue', //TODO: should be according to style
+        color: container.style.color, //TODO: should be according to style
     });
     
     //Message Handlers
@@ -99,26 +92,32 @@ var barManager = function(args){
     var setValue = function(number){
         //Compute the percentage of value
         container.value = number;
-    };
-    var setBar = function(number){
-        //If no is supplied use it otherwise, update using new state vars.
-        if (number){
-            container.value = number;
-        }
         
         var width = (container.value/container.max) * 100;
+        fillShell.width = width + '%';
         
-        if (width > 4 && width < 10){
-           fillPattern.width = width+'%';
-           fillColor.width = width+'%';
+        if (width > 9  && width < 15){
+            //Add bars but no label.
+            setBar(false, true);
         }
-        else if (width < 4){
-            //Do nothing
+        else if(width < 9){
+            //Dont add bars at all
+            setBar(false, false);
         }
-        else{ //Very wide
-            fillPattern.width = width+'%';
-            fillColor.width = width+'%';
+        else{
+            //Add bars and label
+            setBar(true, true);
         }
+    };
+    var setBar = function(label, bars){
+        if (label){
+            
+        }
+        
+        if (bars){
+            
+        }
+        
     };
     var getMax = function(){ return container.max; };
     var getValue = function(){ return container.value; };
@@ -128,14 +127,13 @@ var barManager = function(args){
     container.setValue = setValue;
     container.setBar = setBar;
     
-    setBar(container.value);
+    setValue(container.value);
     
     //Add components and containers together
-    fillPattern.add(leftCap);
-    fillPattern.add(centerStretch);
-    fillPattern.add(rightCap);
-    fillParent.add(fillPattern);
-    fillParent.add(fillColor);
+    fillShell.add(leftCap);
+    fillShell.add(centerStretch);
+    fillShell.add(rightCap);
+    fillParent.add(fillShell);
     fillContainer.add(fillParent);
     container.add(title);
     container.add(fillContainer);

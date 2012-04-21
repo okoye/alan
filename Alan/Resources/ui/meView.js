@@ -73,19 +73,19 @@ exports.create = function(_args){
     
     var calories = itemSummaryView.create({
         height: height,
-        width: 280,
+        width: width,
         top: 3
     }, 'meteredSummary', styling.Red);
     
     var steps = itemSummaryView.create({
         height: height,
-        width: 280,
+        width: width,
         top: 3,
     }, 'meteredSummary', styling.Blue);
     
     var distance = itemSummaryView.create({
         height: height,
-        width: 280,
+        width: width,
         top: 3,
     }, 'meteredSummary', styling.Green);
 
