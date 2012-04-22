@@ -127,7 +127,7 @@ var barManager = function(args){
         var width = (container.value/container.max) * fillParent.width;
         fillShell.width = width;
         
-        if (width > 9  && width < 15){
+        if (width > 9  && width < 45){
             //Add bars but no label.
             _setBar(false, true);
         }
@@ -137,6 +137,7 @@ var barManager = function(args){
         }
         else{
             //Add bars and label
+            log.debug('########################## '+width)
             _setBar(true, true);
         }
     };
