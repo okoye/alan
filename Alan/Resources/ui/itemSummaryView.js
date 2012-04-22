@@ -58,7 +58,7 @@ var meteredSummary = function(properties, style){
         valueLabelEnabled: (properties.valueLabelOn) ? true:false,
     });
     
-    bar.myValue(30);
+    bar.myValue(60);
     //Data Handlers
     //TODO: wire up data handlers passed as an array.
     

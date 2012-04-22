@@ -43,7 +43,6 @@ var barManager = function(args){
         left: 0,
         height: fillParent.height,
         top: 0,
-        layout: 'horizontal',
         width: 0,
     }),
     
@@ -65,7 +64,7 @@ var barManager = function(args){
         width: 20,
         height: fillParent.height,
         backgroundRepeat: true,
-        backgroundColor: 'yellow'
+        left:3,
     });
     
     
@@ -84,15 +83,21 @@ var barManager = function(args){
     }),
     
     valueLabel = Ti.UI.createLabel({
-        text: '',
-        height: 10,
-        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-        color: container.style.color,
-        opacity: (args.valueLabelEnabled) ? 1:0
+        text: '10000',
+        height: 15,
+        width: 45,
+        textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
+        color: 'white',
+        opacity: (args.valueLabelEnabled) ? 1:0,
+        right: 0,
+        font: {
+            fontSize: 15,
+            fontWeight: 'bold',
+        },
     }),
     
     maxLabel = Ti.UI.createLabel({
-        text: 'max label',
+        text: '',
         height: 15,
         width: 45,
         textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
@@ -113,6 +118,10 @@ var barManager = function(args){
     };
     var _setValue = function(number, display){
         //Compute the percentage of value
+        
+        if (number > container.max)
+            number = container.max;
+        
         container.value = number;
         
         var width = (container.value/container.max) * fillParent.width;
@@ -132,16 +141,17 @@ var barManager = function(args){
         }
     };
     var _setBar = function(label, bars){
-        if (label){
-            
+        if (label && args.valueLabelEnabled){
+            valueLabel.opacity = 1;
         }
         else{
-            valueLabel.show = false;
+            valueLabel.opacity = 0;
         }
         
         if (bars){
             fillShell.show = true;
             centerStretch.width = Math.ceil(fillShell.width - 6);
+            rightCap.left = centerStretch.width + leftCap.width;
         }
         else{
             fillShell.show = false;
@@ -157,10 +167,12 @@ var barManager = function(args){
     
     _setValue(container.value);
     _setMax(container.max);
+    
     //Add components and containers together
     fillShell.add(leftCap);
     fillShell.add(centerStretch);
     fillShell.add(rightCap);
+    fillShell.add(valueLabel);
     fillParent.add(maxLabel);
     fillParent.add(fillShell);
     fillContainer.add(fillParent);
