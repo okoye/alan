@@ -89,12 +89,12 @@ var barManager = function(args){
         textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
         color: 'white',
         opacity: (args.valueLabelEnabled) ? 1:0,
-        right: 0,
+        right: 2,
         font: {
             fontSize: 12,
             fontWeight: 'bold',
         },
-        bottom: 0,
+        bottom: 2,
     }),
     
     maxLabel = Ti.UI.createLabel({
@@ -103,13 +103,13 @@ var barManager = function(args){
         width: 45,
         textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
         color: '#b2b2b2',
-        right: 0,
+        right: 2,
         font: {
             fontSize: 12,
             fontWeight: 'bold',
         },
         opacity: (args.maxLabelEnabled) ? 1:0,
-        bottom: 0,
+        bottom: 2,
     });
     
     //Message Handlers
@@ -129,7 +129,7 @@ var barManager = function(args){
         var width = (container.value/container.max) * fillParent.width;
         fillShell.width = width;
         
-        if (width > 9  && width < 45){
+        if (width > 9  && width < 47){
             //Add bars but no label.
             _setBar(false, true);
         }
