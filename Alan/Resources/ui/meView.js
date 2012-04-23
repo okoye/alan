@@ -39,15 +39,11 @@ var ME_STATES = {
 }
 
 exports.create = function(_args){
-    var meBodyView = Ti.UI.createScrollView({
+    var meBodyView = Ti.UI.createView({
         backgroundImage: 'images/center_view_bg.png',
         width: PLATFORM_WIDTH,
         height: 372,
         top: 0,
-        showVerticalScrollIndicator: true,
-        contentHeight: 'auto',
-        contentWidth: 'auto',
-        verticalBounce: true,
         layout: 'vertical',
     });
     var space = function(diff){
@@ -70,9 +66,10 @@ exports.create = function(_args){
         width: width,
         top: 3,
         title: "Today's Activity Level",
+        valueLabelOn: true,
     }, 'meteredSummary', styling.Green);
     
-    summary.myValue(160, "Good");
+    summary.myValue(160, "GOOD");
     
     var calories = itemSummaryView.create({
         height: height,
@@ -80,7 +77,7 @@ exports.create = function(_args){
         top: 3,
         title: "Calorie Burn",
         valueLabelOn: true,
-        maxLabelEnabled: true,
+        maxLabelOn: true,
         max: 10000,
     }, 'meteredSummary', styling.Red);
     
