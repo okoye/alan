@@ -20,7 +20,7 @@ var barManager = function(args){
     //Setup Containers
     var container = Ti.UI.createView();
     container.height = height,
-    container.width = width,  
+    container.width = width,
     container = applyProperties(container, args);
     
     var fillContainer = Ti.UI.createView({
@@ -71,8 +71,8 @@ var barManager = function(args){
     //Setup Components
     //add title label here.
     var title = Ti.UI.createLabel({
-        text: 'Title goes here',
-        height: 18,
+        text: (args.title) ? args.title:'',
+        height: 13,
         top: 0,
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         font: {
@@ -91,9 +91,10 @@ var barManager = function(args){
         opacity: (args.valueLabelEnabled) ? 1:0,
         right: 0,
         font: {
-            fontSize: 15,
+            fontSize: 12,
             fontWeight: 'bold',
         },
+        bottom: 0,
     }),
     
     maxLabel = Ti.UI.createLabel({
@@ -104,10 +105,11 @@ var barManager = function(args){
         color: '#b2b2b2',
         right: 0,
         font: {
-            fontSize: 15,
+            fontSize: 12,
             fontWeight: 'bold',
         },
         opacity: (args.maxLabelEnabled) ? 1:0,
+        bottom: 0,
     });
     
     //Message Handlers
@@ -137,7 +139,6 @@ var barManager = function(args){
         }
         else{
             //Add bars and label
-            log.debug('########################## '+width)
             _setBar(true, true);
         }
     };

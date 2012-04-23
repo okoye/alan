@@ -54,11 +54,12 @@ var meteredSummary = function(properties, style){
         max: 200,
         value: 0,
         style: style,
+        title: (properties.title) ? properties.title:'',
         maxLabelEnabled: (properties.maxLabelOn) ? true:false,
         valueLabelEnabled: (properties.valueLabelOn) ? true:false,
     });
     
-    bar.myValue(38);
+    bar.myValue(70);
     //Data Handlers
     //TODO: wire up data handlers passed as an array.
     
