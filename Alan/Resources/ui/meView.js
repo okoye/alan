@@ -80,6 +80,7 @@ exports.create = function(_args){
         top: 3,
         title: "Calorie Burn",
         valueLabelOn: true,
+        maxLabelEnabled: true,
         max: 10000,
     }, 'meteredSummary', styling.Red);
     
