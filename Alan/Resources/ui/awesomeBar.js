@@ -128,10 +128,10 @@ var barManager = function(args){
         
         container.value = number;
         
-        if (display && args.maxLabelEnabled){
+        if (display && args.valueLabelEnabled){
             valueLabel.text = display;
         }
-        else if(!display && args.maxLabelEnabled){
+        else if(!display && args.valueLabelEnabled){
             valueLabel.text = ""+number;
         }
         
