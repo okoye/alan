@@ -62,7 +62,16 @@ var meteredSummary = function(properties, style){
     bar.myValue(70);
     //Data Handlers
     //TODO: wire up data handlers passed as an array.
+    var _setMax = function(max){
+        bar.myMax(max);
+    };
     
+    var _setValue = function(num, label){
+        bar.myValue(num, label);
+    };
+    
+    container.myMax = _setMax;
+    container.myValue = _setValue;
     
     //Join containers and components
     view.add(bar);

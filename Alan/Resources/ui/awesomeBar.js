@@ -160,12 +160,14 @@ var barManager = function(args){
         }
         
     };
-    var getMax = function(){ return container.max; };
-    var getValue = function(){ return container.value; };
+    var _getMax = function(){ return container.max; };
+    var _getValue = function(){ return container.value; };
     
     
     container.myMax = _setMax;
     container.myValue = _setValue;
+    container.getMax = _getMax;
+    container.getValue = _getValue;
     
     _setValue(container.value);
     _setMax(container.max);
