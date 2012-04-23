@@ -8,7 +8,7 @@ var log = require('lib/logger');
 var aBar = require('ui/awesomeBar');
 
 var WIDTH = 289,
-LEFT = 20,
+LEFT = 15,
 HEIGHT = 65,
 TOP = 10;
 
