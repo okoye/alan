@@ -117,7 +117,7 @@ var barManager = function(args){
         //Update max where ever necessary
         container.max = number;
         
-        if (maxLabel.maxLabelEnabled)
+        if (args.maxLabelEnabled)
             maxLabel.text = ''+number;
     };
     var _setValue = function(number, display){
