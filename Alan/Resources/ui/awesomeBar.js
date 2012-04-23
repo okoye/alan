@@ -83,7 +83,7 @@ var barManager = function(args){
     }),
     
     valueLabel = Ti.UI.createLabel({
-        text: '10000',
+        text: '',
         height: 15,
         width: 45,
         textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
@@ -116,7 +116,9 @@ var barManager = function(args){
     var _setMax = function(number){
         //Update max where ever necessary
         container.max = number;
-        maxLabel.text = ''+number;
+        
+        if (maxLabel.maxLabelEnabled)
+            maxLabel.text = ''+number;
     };
     var _setValue = function(number, display){
         //Compute the percentage of value
@@ -125,6 +127,13 @@ var barManager = function(args){
             number = container.max;
         
         container.value = number;
+        
+        if (display && args.maxLabelEnabled){
+            valueLabel.text = display;
+        }
+        else if(!display && args.maxLabelEnabled){
+            valueLabel.text = ""+number;
+        }
         
         var width = (container.value/container.max) * fillParent.width;
         fillShell.width = width;

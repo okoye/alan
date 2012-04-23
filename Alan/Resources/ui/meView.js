@@ -72,12 +72,18 @@ exports.create = function(_args){
         title: "Today's Activity Level",
     }, 'meteredSummary', styling.Green);
     
+    summary.myValue(160, "Good");
+    
     var calories = itemSummaryView.create({
         height: height,
         width: width,
         top: 3,
         title: "Calorie Burn",
+        valueLabelOn: true,
+        max: 10000,
     }, 'meteredSummary', styling.Red);
+    
+    calories.myValue(4000);
     
     var steps = itemSummaryView.create({
         height: height,
@@ -85,15 +91,23 @@ exports.create = function(_args){
         top: 3,
         maxLabelOn: true,
         valueLabelOn: true,
+        max: 13000,
         title: "Total Steps",
     }, 'meteredSummary', styling.Blue);
+    
+    steps.myValue(10000);
     
     var distance = itemSummaryView.create({
         height: height,
         width: width,
         top: 3,
+        maxLabelOn: true,
+        valueLabelOn: true,
+        max: 4.1,
         title: "Miles Travelled",
     }, 'meteredSummary', styling.Purple);
+    
+    distance.myValue(3.2);
 
      status.content(ME_STATES.NO_DATA.image, ME_STATES.NO_DATA.summary, ME_STATES.NO_DATA.style);
     // summary.content('Activity Level', '0');

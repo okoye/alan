@@ -51,7 +51,7 @@ var meteredSummary = function(properties, style){
         bottom: 0,
         width: view.width,
         height: view.height,
-        max: 200,
+        max: (properties.max) ? properties.max:200,
         value: 0,
         style: style,
         title: (properties.title) ? properties.title:'',
@@ -59,9 +59,7 @@ var meteredSummary = function(properties, style){
         valueLabelEnabled: (properties.valueLabelOn) ? true:false,
     });
     
-    bar.myValue(70);
     //Data Handlers
-    //TODO: wire up data handlers passed as an array.
     var _setMax = function(max){
         bar.myMax(max);
     };
