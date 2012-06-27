@@ -18,3 +18,5 @@ Version 0.4
 -> Fixed aggressive reconnection policy
 -> Refactored API module
 -> Fixed out of sync initialization issues
+Version 0.5
+-> Reworked Me section UI

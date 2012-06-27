@@ -45,10 +45,10 @@ exports.createAlanWindow = function(_args){
     settingsContainer.add(settingsButton);
     var viewArray = [
         meView.create(),
-        scoreView.create(),
-        pvpView.create(),
-        storeView.create(),
-        settingsView.create(),
+        // scoreView.create(),
+        // pvpView.create(),
+        // storeView.create(),
+        // settingsView.create(),
     ];
     var bodyView = stripView.create({
         views : viewArray,
@@ -119,13 +119,13 @@ exports.createAlanWindow = function(_args){
     }));
     
     //Tabs to footer view
-    for (var i=0; i<tabs.length; i++){
-        tabs[i].left = tabWidth * i;
-        footerView.add(tabs[i]);
-    }
+    // for (var i=0; i<tabs.length; i++){
+        // tabs[i].left = tabWidth * i;
+        // footerView.add(tabs[i]);
+    // }
         
     win.add(bodyView);
-    win.add(footerView);
+    //win.add(footerView);
     win.rightNavButton = settingsContainer;
     
     
