@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <sdk-version>1.8.2</sdk-version>
+    <sdk-version>2.1.0.GA</sdk-version>
     <deployment-targets>
         <target device="mobileweb">false</target>
         <target device="iphone">true</target>
@@ -14,7 +14,7 @@
     <publisher>Lightcurves Inc.</publisher>
     <url>http://www.alanapp.com</url>
     <description>not specified</description>
-    <copyright>Lightcurves Inc.</copyright>
+    <copyright>Lightcurves</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>

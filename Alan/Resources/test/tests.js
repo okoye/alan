@@ -20,6 +20,9 @@ exports.run = function(){
   
   var ana = require('test/tests/test_analytics');
   ana.run();
+  
+  var prof = require('test/tests/test_profile');
+  prof.run();
 
   jasmine.getEnv().addReporter(new jasmine.TitaniumReporter());
   jasmine.getEnv().execute();  

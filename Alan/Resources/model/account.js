@@ -10,10 +10,9 @@ var log = require('lib/logger');
 var testflight = require('ti.testflight');
 
 //Global Vars
-var _account = null;
-var _errors = [];
+var username, password, firstname, lastname, nickname, avatar;
 
-exports.load = function(email, password){
+exports.load = function(username, password){
     //instantiates account.
     if (_account)
         return;
