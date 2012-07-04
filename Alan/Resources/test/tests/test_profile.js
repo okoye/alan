@@ -14,7 +14,6 @@ exports.run = function(){
         it('should instantiate Profile model', function(){
             aprofile = profile.create(mock_profile);
             expect(aprofile).toBeDefined();
-            log.debug(JSON.stringify(aprofile));
             expect(aprofile.height).toBeDefined();
             expect(aprofile.weight).toBeDefined();
             expect(aprofile.birthday).toBeTruthy();

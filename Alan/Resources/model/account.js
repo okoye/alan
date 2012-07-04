@@ -7,84 +7,76 @@
 //Libs
 var api = require('lib/api');
 var log = require('lib/logger');
-var testflight = require('ti.testflight');
 
 //Global Vars
-var username, password, firstname, lastname, nickname, avatar;
-
-exports.load = function(username, password){
-    //instantiates account.
-    if (_account)
-        return;
-    if (email && password){
-        _account = {};
-        if (isValidEmail(email)){
-            _account.email = email;
-            _account.password = password;
-        }
-        else{
-            throw "Invalid Email";
-        }
-    }
-    else{
-        //instantiate from cache.
-        _account = Ti.App.Properties.getString('model/account', null);
-        if (!_account){
-            _account = {};
-            if (Ti.App.deployType === 'development' ||Ti.App.deployType === 'test'){
-                _account.email = Ti.Platform.macaddress+'@alanapptest.com';
-                _account.password = Ti.Platform.username+':alanapptest';
-                testflight.customInfo(_account.email, _account.password);
-            }
-            else{
-                throw "No account information saved ";
-            }
-        }
-        else
-            _account = JSON.parse(_account);
-    }
-    
-    Ti.App.addEventListener('alan:accountResync', function(err){
-        log.debug('Resending data to API');
-        update();
-    });
-}
-
-exports.username = function(){
-    //retrieve username
-    return _account['email'];
-};
-
-exports.password = function(){
-    //retrieve password
-    return _account['password'];
-};
-
-exports.create = function(){
-    //saves data to app cache and to api
-    create();
-};
-
-exports.purge = function(){
-    Ti.App.Properties.removeProperty('model/account');
-    _account = null;
-};
-
-var create = function(){
-    //local equivalent of save function
-    Ti.App.Properties.setString('model/account', JSON.stringify(_account));
-    api.CreateAccount(_account.email, _account.password, function(res){
-        if (res.status === 'error'){
-            log.debug('Failed to send account info to api');
-        }
-    });
-};
-
-var update = function(){
-    //TODO: update user account info.
-}
+var _account = null;
 
 var isValidEmail = function(email){
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
+};
+
+var _validators = {
+    username: function(arg){
+        log.debug('validating username');
+    },
+    password: function(arg){
+        log.debug('validating password');
+    },
+    firstname: function(arg){
+        log.debug('validating firstname');
+    },
+    lastname: function(arg){
+        log.debug('validating lastname');
+    },
+    nickname: function(arg){
+        log.debug('validating nickname');
+    },
+    avatar_url: function(arg){
+        log.debug('validating avatar url')
+    }
+};
+
+//Initialization function, pass in required object
+exports.create = function(properties){
+    _account = {};
+    _account.username = properties.username;
+    _account.password = properties.password;
+    _account.firstname = properties.firstname;
+    _account.lastname = properties.lastname;
+    _account.nickname = (properties.nickname) ? properties.nickname:"";
+    _account.avatar_url = (properties.avatar_url) ? properties.avatar_url:"";
+    
+    log.debug('instantiated a new account object');
+    return _account;
+};
+
+//Responsible for retrieving all properties
+exports.get = function(element){
+    return _account[element];
+};
+
+//Responsible for setting all properties
+exports.set = function(key, value){
+    _account[key] = value;
+};
+
+//Performs validation on specific arg or whole object
+exports.validate = function(element){
+    if(element){
+        log.debug('validating '+element+' in account model');
+        _validators[element](_account[element]);
+    }
+    else{
+        for (validator in _validators){
+            log.debug('validating '+validator+' in profile mnodel');
+            _validators[validator](_account[validator]);
+        }
+    }
+    return true;
+};
+
+//Returns a string representation of the object
+exports.toString = function(){
+    return JSON.stringify(_account);
 };

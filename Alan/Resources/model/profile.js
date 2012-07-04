@@ -93,7 +93,7 @@ exports.validate = function(element){
     return true;
 };
 
-//Returns JSON representation of object
+//Returns string representation of the object
 exports.toString = function(){
-    return JSON.parse(_profile);
+    return JSON.stringify(_profile);
 };
