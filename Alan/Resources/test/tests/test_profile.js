@@ -46,6 +46,17 @@ exports.run = function(){
             profile.create(mock_profile);
             expect(profile.validate()).toBeTruthy();
         });
+        
+        it('should check negative tests for validation', function(){
+            profile.set('height', 'chuka');
+            try{
+                profile.validate('height');
+                expect(false).toBeTruthy(); //fail
+            }
+            catch(err){
+                expect(true).toBeTruthy();
+            }
+        });
     });
     
 }
