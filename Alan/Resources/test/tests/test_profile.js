@@ -31,6 +31,21 @@ exports.run = function(){
             profile.set('nickname', 'icewoman');
             expect(profile.get('nickname')).toEqual('icewoman');
         });
+        
+        it('should ensure model validation functions for individual elements', function(){
+            profile.create(mock_profile);
+            expect(profile.validate('height')).toBeTruthy();
+            expect(profile.validate('weight')).toBeTruthy();
+            expect(profile.validate('birthday')).toBeTruthy();
+            expect(profile.validate('sex')).toBeTruthy();
+            expect(profile.validate('hours_sitting')).toBeTruthy();
+            expect(profile.validate('days_workout')).toBeTruthy();
+        });
+        
+        it('should ensure group model validation functions', function(){
+            profile.create(mock_profile);
+            expect(profile.validate()).toBeTruthy();
+        });
     });
     
 }
