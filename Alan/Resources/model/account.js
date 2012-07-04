@@ -19,15 +19,26 @@ var isValidEmail = function(email){
 var _validators = {
     username: function(arg){
         log.debug('validating username');
+        if(!isValidEmail(arg))
+            throw "Username must be an email";
     },
     password: function(arg){
         log.debug('validating password');
+        if (arg.length < 6){
+            throw "Password should be 6 or more characters";
+        }
     },
     firstname: function(arg){
         log.debug('validating firstname');
+        if (arg.length == 0){
+            throw "Firstname is required";
+        }
     },
     lastname: function(arg){
         log.debug('validating lastname');
+        if (arg.length == 0){
+            throw "Lastname is required";
+        }
     },
     nickname: function(arg){
         log.debug('validating nickname');

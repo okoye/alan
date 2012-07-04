@@ -44,5 +44,21 @@ exports.run = function(){
             expect(account.validate('nickname')).toBeTruthy();
             expect(account.validate('avatar_url')).toBeTruthy();
         });
+        
+        it('should ensure group model validation functions', function(){
+            account.create(mock_account);
+            expect(account.validate()).toBeTruthy();
+        });
+        
+        it('should check negative test for validation', function(){
+            account.set('password', 'a_bad');
+            try{
+                account.validate('password');
+                expect(false).toBeTruthy(); //compulsory fail
+            }
+            catch(err){
+                expect(true).toBeTruthy();
+            }
+        });
     });
 };
