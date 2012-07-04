@@ -55,20 +55,24 @@ var connector = function(callback, success, username, password){
     
 }
 
-exports.CreateAccount = function(email, password, callback){
+exports.CreateAccount = function(account, profile, callback){ //FIXME: need to merge profile and accounts
 	log.info('Sending email & password to api');
 	var conn = connector(callback, 204);
 	conn.open('POST', base+'/1/accounts/basic/create');
-	conn.send(JSON.stringify({
-	    email: email,
-	    password: password
-	}));
+	var packet = {};
+	for (prop in account){
+	    packet[prop] = account[prop];
+	}
+	for (prop in profile){
+	    packet[prop] = profile[prop];
+	}
+	conn.send(JSON.stringify(packet));
 	testflight.checkpoint('api.createaccount');
 };
 
 exports.UpdateSensor = function(account, readings, callback){
     log.info('Updating sensors on api '+JSON.stringify(readings));
-    var conn = connector(callback, 204, account.username(), account.password());
+    var conn = connector(callback, 204, account.get('username'), account.get('password'));
     conn.open('POST', base+'/1/sensors/update');
     conn.send(JSON.stringify(readings));
     testflight.checkpoint('api.updatesensor');
@@ -76,7 +80,7 @@ exports.UpdateSensor = function(account, readings, callback){
 
 exports.Analytics = function(account, callback){
     log.info('Retrieving Analytics data');
-    var conn = connector(callback, 200, account.username(), account.password());
+    var conn = connector(callback, 200, account.get('username'), account.get('password'));
     conn.open('GET', base+'/1/analytics');
     conn.send();
     testflight.checkpoint('api.analytics');
