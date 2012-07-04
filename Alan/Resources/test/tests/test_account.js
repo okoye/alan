@@ -30,6 +30,19 @@ exports.run = function(){
             expect(account.get('lastname')).toEqual(mock_account.lastname);
             expect(account.get('nickname')).toEqual(mock_account.nickname);
             expect(account.get('avatar_url')).toEqual(mock_account.avatar_url);
+            expect(account.get('firstname')).toEqual(mock_account.firstname); //checking for side effects from previous call
+            account.set('fisher', 'nickname');
+            expect(account.get('fisher')).toEqual('nickname');
+        });
+        
+        it('should ensure model validation function of individual elements', function(){
+            account.create(mock_account);
+            expect(account.validate('username')).toBeTruthy();
+            expect(account.validate('password')).toBeTruthy();
+            expect(account.validate('firstname')).toBeTruthy();
+            expect(account.validate('lastname')).toBeTruthy();
+            expect(account.validate('nickname')).toBeTruthy();
+            expect(account.validate('avatar_url')).toBeTruthy();
         });
     });
 };
