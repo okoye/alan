@@ -10,7 +10,7 @@ var instrumentation = require('lib/instrument');
 
 //Final settings
 var LAST_FETCH = 0;
-var DURATION = 9000;//900000; //Every 15 mins
+var DURATION = 900000; //9000;//900000; //Every 15 mins
 
 //Global variables
 var view = null;
