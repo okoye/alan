@@ -23,11 +23,13 @@ exports.createAlanWindow = function(_args){
     
     //Setup settings button
     var settingsButton = Ti.UI.createButton({
-        backgroundImage: 'images/top_nav_btn_feedback.png',
-    });
-    var settings = Ti.UI.createView({
+        backgroundImage: 'images/top_nav_btn_settings.png',
         width: 40,
         height: 33
+    });
+    var settings = Ti.UI.createView({
+        width: settingsButton.width,
+        height: settingsButton.height,
     });
     settings.add(settingsButton);
     
@@ -37,13 +39,6 @@ exports.createAlanWindow = function(_args){
         backgroundColor: 'white',
         title: 'Me',
         rightNavButton: settings,
-    });
-    
-    //hack for meView window's rightNavButton
-    meWindow.addEventListener('focus', function(e){
-        var t = e.source.rightNavButton;
-        e.source.rightNavButton = null;
-        e.source.rightNavButton = t;
     });
     
     //Setup navigation bar
