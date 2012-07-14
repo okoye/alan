@@ -19,15 +19,17 @@ var timeouts = 0;
 var me = {
     getCurrentInfo: function(){
         log.debug('me.getCurrentInfo');
+        instrumentation.customInfo('meController.getCurrentInfo', (new Date).getTime());
     },
     getSummaryInfo: function(){
         log.debug('me.getSummaryInfo');
+        instrumentation.customInfo('meController.getSummaryInfo', (new Date).getTime());
     },
 };
 
 var _start = function(){
     clearTimeout(timeouts);
-    log.info('fetching new meView data @ '+(new Date).toUTCString());
+    log.info('fetching new meView data @ '+(new Date).getTime());
     var info = me.getCurrentInfo();
     //TODO update various view components
     timeouts = setTimeout(_start, DURATION);

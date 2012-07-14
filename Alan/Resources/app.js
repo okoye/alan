@@ -11,7 +11,6 @@ var instrumentation = require('lib/instrument');
 
 
 //Globals
-var myId = Ti.Platform.getId();
 instrumentation.checkpoint('booted');
 
 //Test session
