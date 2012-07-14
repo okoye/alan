@@ -21,6 +21,9 @@ exports.createAlanWindow = function(_args){
         backgroundColor: 'white',
     });
     
+    log.info('PLATFORM WIDTH '+PLATFORM_WIDTH);
+    log.info('PLATFORM HEIGHT '+PLATFORM_HEIGHT);
+    
     //Setup settings button
     var settingsButton = Ti.UI.createButton({
         backgroundImage: 'images/top_nav_btn_settings.png',
@@ -33,6 +36,11 @@ exports.createAlanWindow = function(_args){
     });
     settings.add(settingsButton);
     
+    //Setup meView content
+    var content = meView.create({
+        height: 435,
+    });
+    
     //Setup meView window
     var meWindow = Ti.UI.createWindow({
         barImage: 'images/top_nav.png',
@@ -40,6 +48,7 @@ exports.createAlanWindow = function(_args){
         title: 'Me',
         rightNavButton: settings,
     });
+    meWindow.add(content);
     
     //Setup navigation bar
     var navigation = Ti.UI.iPhone.createNavigationGroup({

@@ -42,7 +42,7 @@ exports.create = function(_args){
     var meBodyView = Ti.UI.createView({
         backgroundImage: 'images/center_view_bg.png',
         width: PLATFORM_WIDTH,
-        height: 372,
+        height: (_args.height) ? _args.height:372,
         top: 0,
         layout: 'vertical',
     });
@@ -53,7 +53,7 @@ exports.create = function(_args){
                     width: 280,
                 });
     };
-    var height = 65;
+    var height = 73;
     var width = 289;
     var status = itemSummaryView.create({
         height: height,
