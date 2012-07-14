@@ -55,6 +55,11 @@ exports.createAlanWindow = function(_args){
         window: meWindow,
     });
     
+    //Setup controllers
+    var meControl = meController.Controller(content);
+    meControl.start();
+    
+    
     win.add(navigation);
     win.open();
 };

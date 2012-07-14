@@ -6,35 +6,39 @@
  */
 
 var log = require('lib/logger');
-var analytics = require('model/analytics');
 
-var timeouts = 0;
+//Final settings
 var LAST_FETCH = 0;
 var DURATION = 9000;//900000; //Every 15 mins
+
+//Global variables
 var view = null;
+var timeouts = 0;
+
+var me = {
+    getCurrentInfo: function(){
+        log.debug('me.getCurrentInfo');
+    },
+    getSummaryInfo: function(){
+        log.debug('me.getSummaryInfo');
+    },
+};
+
+var _start = function(){
+    clearTimeout(timeouts);
+    log.info('fetching new meView data @ '+(new Date).toUTCString());
+    var info = me.getCurrentInfo();
+    //TODO update various view components
+    timeouts = setTimeout(_start, DURATION);
+};
 
 function Controller(ui){
     log.info('initializing meController');
     view = ui;
-    analytics.load();
 }
 
-var _start = function(){
-    log.info('Fetching new analytics data');
-    if(LAST_FETCH != analytics.timestamp()){
-        // view.updateSteps(analytics.steps());
-        // view.updateDistance(analytics.distance());
-        // view.updateCalories(analytics.calories());
-    }
-    analytics.sync();
-    timeouts = setTimeout(_start, DURATION);
-};
 
 Controller.prototype.start = function(){
-    clearTimeout(timeouts);
-    LAST_FETCH = analytics.timestamp();
-    log.debug('LAST_FETCH '+LAST_FETCH);
-    
     timeouts = setTimeout(_start, DURATION);
     log.info('Started fetch cycles');
 };
