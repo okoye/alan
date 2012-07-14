@@ -7,6 +7,7 @@
 //Libs
 var api = require('lib/api');
 var log = require('lib/logger');
+var instrumentation = require('lib/instrument');
 
 //Global Vars
 var _account = null;
@@ -59,6 +60,7 @@ exports.create = function(properties){
     _account.avatar_url = (properties.avatar_url) ? properties.avatar_url:"";
     
     log.debug('instantiated a new account object');
+    instrumentation.checkpoint('account');
     return _account;
 };
 

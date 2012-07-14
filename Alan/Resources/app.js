@@ -7,8 +7,12 @@
 Ti.UI.setBackgroundColor('#000');
 
 var ui = require("ui/start");
-var testflight = require("ti.testflight");
-testflight.token('e02a75890def3a7ac573022791989e18_NTE2NzcyMDEyLTAxLTI3IDAwOjQ2OjMxLjEwMDU5MQ');
+var instrumentation = require('lib/instrument');
+
+
+//Globals
+var myId = Ti.Platform.getId();
+instrumentation.checkpoint('booted');
 
 //Test session
 // var tests = require('test/tests');

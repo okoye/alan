@@ -4,6 +4,7 @@
  */
 var log = require('lib/logger');
 var manager = require('lib/manager');
+var instrumentation = require('lib/instrument');
 
 //views
 var meView = require('ui/meView');
@@ -62,6 +63,7 @@ exports.createAlanWindow = function(_args){
     
     win.add(navigation);
     win.open();
+    instrumentation.checkpoint('alanWindow');
 };
 
 

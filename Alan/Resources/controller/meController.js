@@ -6,6 +6,7 @@
  */
 
 var log = require('lib/logger');
+var instrumentation = require('lib/instrument');
 
 //Final settings
 var LAST_FETCH = 0;
@@ -30,6 +31,7 @@ var _start = function(){
     var info = me.getCurrentInfo();
     //TODO update various view components
     timeouts = setTimeout(_start, DURATION);
+    instrumentation.checkpoint('meController');
 };
 
 function Controller(ui){
