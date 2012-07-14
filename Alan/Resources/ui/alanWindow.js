@@ -5,6 +5,7 @@
 var log = require('lib/logger');
 var manager = require('lib/manager');
 var instrumentation = require('lib/instrument');
+var meController = require('controller/meController');
 
 //views
 var meView = require('ui/meView');
