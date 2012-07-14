@@ -69,11 +69,11 @@ var barManager = function(args){
     
     
     //Setup Components
-    //add title label here.
     var title = Ti.UI.createLabel({
         text: (args.title) ? args.title:'',
         height: 13,
         top: 0,
+        left: 0,
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         font: {
             fontSize: 12,
