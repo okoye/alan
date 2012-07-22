@@ -7,6 +7,8 @@
 
 var log = require('lib/logger');
 var instrumentation = require('lib/instrument');
+var api = require('lib/api');
+var account = require('model/account');
 
 //Final settings
 var LAST_FETCH = 0;
@@ -14,25 +16,32 @@ var DURATION = 900000; //9000;//900000; //Every 15 mins
 
 //Global variables
 var view = null;
-var timeouts = 0;
-
+var timeouts ={
+    15: 0,
+    2: 0,
+};
 var me = {
-    getCurrentInfo: function(){
+    setCurrentInfo: function(data){
         log.debug('me.getCurrentInfo');
         instrumentation.customInfo('meController.getCurrentInfo', (new Date).getTime());
     },
-    getSummaryInfo: function(){
+    setSummaryInfo: function(data){
         log.debug('me.getSummaryInfo');
         instrumentation.customInfo('meController.getSummaryInfo', (new Date).getTime());
     },
 };
 
-var _start = function(){
-    clearTimeout(timeouts);
+var _start = function(timeout){
+    //Remove pre-existing timeouts
+    (timeout) ? clearTimeout(timeouts[timeout]): false;
+    
     log.info('fetching new meView data @ '+(new Date).getTime());
-    var info = me.getCurrentInfo();
-    //TODO update various view components
-    timeouts = setTimeout(_start, DURATION);
+    
+    //Fetch and update view
+    api.Analytics(account, me.setCurrentInfo);
+    
+    //Reset timeout to future date
+    timeouts.15 = setTimeout(_start, DURATION);
     instrumentation.checkpoint('meController');
 };
 
@@ -43,7 +52,7 @@ function Controller(ui){
 
 
 Controller.prototype.start = function(){
-    timeouts = setTimeout(_start, DURATION);
+    timeouts.15 = setTimeout(function(){_start(15);}, DURATION);
     log.info('Started fetch cycles');
 };
 
