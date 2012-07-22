@@ -12,13 +12,12 @@ var account = require('model/account');
 
 //Final settings
 var LAST_FETCH = 0;
-var DURATION = 900000; //9000;//900000; //Every 15 mins
+var DURATION = 9000;//900000; //Every 15 mins
 
 //Global variables
 var view = null;
 var timeouts ={
-    15: 0,
-    2: 0,
+    fifteen: 0,
 };
 var me = {
     setCurrentInfo: function(response){
@@ -44,7 +43,7 @@ var _start = function(timeout){
     log.info('fetching new meView data @ '+(new Date).getTime());
     
     //Fetch and update view
-    if (timeout == 15)
+    if (timeout == 'fifteen')
       api.Analytics(account, me.setCurrentInfo);
     
     //Reset timeout to future date
@@ -59,7 +58,7 @@ function Controller(ui){
 
 
 Controller.prototype.start = function(){
-    timeouts.15 = setTimeout(function(){_start(15);}, DURATION);
+    timeouts.fifteen = setTimeout(function(){_start('fifteen');}, DURATION);
     log.info('Started fetch cycles');
 };
 
