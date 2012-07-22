@@ -108,10 +108,6 @@ exports.create = function(_args){
     distance.myValue(3.2);
 
      status.content(ME_STATES.NO_DATA.image, ME_STATES.NO_DATA.summary, ME_STATES.NO_DATA.style);
-    // summary.content('Activity Level', '0');
-    // calories.content('Calorie Burn', 0);
-    // steps.content('Total   Steps', 0);
-    // distance.content('Miles Travelled', 0);
     
     var _updateStatus = function(me_state){
         status.content(me_state.image, me_state.summary, me_state.style);

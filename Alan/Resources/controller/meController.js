@@ -21,13 +21,19 @@ var timeouts ={
     2: 0,
 };
 var me = {
-    setCurrentInfo: function(data){
+    setCurrentInfo: function(response){
         log.debug('me.getCurrentInfo');
-        instrumentation.customInfo('meController.getCurrentInfo', (new Date).getTime());
+        if (response.status === 'success'){
+          log.debug('successful call, now update view');
+        }
+        instrumentation.customInfo('meController.setCurrentInfo', (new Date).getTime());
     },
-    setSummaryInfo: function(data){
+    setSummaryInfo: function(response){
         log.debug('me.getSummaryInfo');
-        instrumentation.customInfo('meController.getSummaryInfo', (new Date).getTime());
+        if (response.status === 'success'){
+          log.debug('successful call, now update view');
+        }
+        instrumentation.customInfo('meController.setSummaryInfo', (new Date).getTime());
     },
 };
 
@@ -38,10 +44,11 @@ var _start = function(timeout){
     log.info('fetching new meView data @ '+(new Date).getTime());
     
     //Fetch and update view
-    api.Analytics(account, me.setCurrentInfo);
+    if (timeout == 15)
+      api.Analytics(account, me.setCurrentInfo);
     
     //Reset timeout to future date
-    timeouts.15 = setTimeout(_start, DURATION);
+    timeouts[timeout] = setTimeout(function(){_start(timeout)}, DURATION);
     instrumentation.checkpoint('meController');
 };
 
