@@ -14,6 +14,15 @@ var account = require('model/account');
 var LAST_FETCH = 0;
 var DURATION = 9000;//900000; //Every 15 mins
 
+//DEBUG Hook
+if (Ti.App.deployType === 'development' || Ti.App.deployType === 'test'){
+    account.create({
+        username: Ti.Platform.macaddress+'@alanapptest.com',
+        password: Ti.Platform.macaddress+'@alanapptest.com',
+    });
+}
+
+
 //Global variables
 var view = null;
 var timeouts ={
