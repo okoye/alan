@@ -47,6 +47,7 @@ exports.createInitializeWindow = function(success, err){
     };
     
     if (Ti.App.deployType === 'development' || Ti.App.deployType === 'test'){
+        log.debug('in debug mode');
         account.create({
             username: Ti.Platform.macaddress+'@alanapptest.com',
             password: Ti.Platform.macaddress,
@@ -66,7 +67,7 @@ exports.createInitializeWindow = function(success, err){
         create_alannetwork_account('created-alannetwork-debug-account');
     }
     else{
-        //has account data being collected?
+        log.debug('in live mode');
         if (!cache.get(CACHE_NAME, 'collected-initialization-data')){
             create_newaccount_info('collected-initialization-data');
         }
