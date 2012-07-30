@@ -9,9 +9,6 @@ exports.run = function(){
   // var classifier = require('test/tests/test_classifier');
   // classifier.run();
   
-  var cache = require('test/tests/test_cache');
-  cache.run();
-  
   // var filter = require('test/tests/test_filter');
   // filter.run();
   

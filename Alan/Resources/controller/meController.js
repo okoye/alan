@@ -9,18 +9,11 @@ var log = require('lib/logger');
 var instrumentation = require('lib/instrument');
 var api = require('lib/api');
 var account = require('model/account');
+var profile = require('model/profile');
 
 //Final settings
 var LAST_FETCH = 0;
 var DURATION = 9000;//900000; //Every 15 mins
-
-//DEBUG Hook
-if (Ti.App.deployType === 'development' || Ti.App.deployType === 'test'){
-    account.create({
-        username: Ti.Platform.macaddress+'@alanapptest.com',
-        password: Ti.Platform.macaddress+'@alanapptest.com',
-    });
-}
 
 
 //Global variables
@@ -33,10 +26,14 @@ var me = {
         log.debug('me.getCurrentInfo');
         if (response.status === 'success'){
           log.debug('successful call, now update view');
+          view.updateSteps(response.data.steps);
+          view.updateDistance(response.data.distance);
+          view.updateCalories(response.data.calories);
         }
         instrumentation.customInfo('meController.setCurrentInfo', (new Date).getTime());
     },
     setSummaryInfo: function(response){
+        //FIXME: detail 24hr summary.
         log.debug('me.getSummaryInfo');
         if (response.status === 'success'){
           log.debug('successful call, now update view');

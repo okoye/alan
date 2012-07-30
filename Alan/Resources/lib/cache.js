@@ -1,51 +1,40 @@
 /**
  * @author Chuka Okoye
- * A simple cache abstracting the details of caching.
+ * A simple cache abstracting the details of caching. It stores to a JSON structure.
  */
+var log = require('lib/logger');
 
 var cacheStore = {}; //TODO Use persistent in app store
+var CACHE_NAME = 'ALAN_CACHE';
 
-//TODO: write tests.
-
-exports.create = function(name){
-    //create a new cache given the name 'name'
-    cacheStore[name] = [];
+var persist = function(){
+    Ti.App.Properties.setString(CACHE_NAME, JSON.stringify(cacheStore));
 };
 
-exports.add = function(name, data){
-    //push into 'name', this value
-    if (_exists(name)){
-        cacheStore[name].push(data);
-        return true;
+exports.create = function(name, override){
+    //create a new namespace
+    if (!override){
+        (cacheStore.name) ? true : cacheStore[name] = {};
     }
     else{
-        return false;
+        cacheStore.name = {};
     }
 };
-
-exports.fetch = function(name){
-    //fetch all data for 'name'
-    if (_exists(name)){
-        return cacheStore[name];
+exports.set = function(namespace, key, value){
+    //set the value of a key in some namespace
+    cacheStore[namespace][key] = value;
+    return cacheStore[namespace][key];
+};
+exports.get = function(namespace, key){
+    //fetch a value of a key from some namespace
+    return cacheStore[namespace][key];
+};
+exports.initialize = function(){
+    //loads from disk or performs new initialization
+    if (Ti.App.Properties.getString(CACHE_NAME) != null){
+        cacheStore = JSON.parse(Ti.App.Properties.getString(CACHE_NAME));
     }
     else{
-        return null;
+        cacheStore = {};
     }
 };
-
-exports.remove = function(name){
-    cacheStore[name] = [];
-};
-
-exports.fetchLastN = function(name, size){
-    if (_exists(name)){
-        return cacheStore[name].slice(size*-1); //TODO test this.
-    }
-};
-
-//Some helper functions
-var _exists = function(name){
-    return (cacheStore[name]);
-};
-
-
