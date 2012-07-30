@@ -6,23 +6,29 @@
 
 Ti.UI.setBackgroundColor('#000');
 
-var ui = require("ui/start");
+var alan = require("ui/alanWindow");
 var instrumentation = require('lib/instrument');
 
 
-//Globals
+/***********************
+ * GLOBAL DECLARATIONS
+ **********************/
 instrumentation.checkpoint('booted');
 
-//Test session
+/*********************
+ * TEST SESSION LOGIC
+ ********************/
 // var tests = require('test/tests');
 // tests.run();
 
 
-//Live Window
-//if (!Ti.App.Properties.getBool('instantiated', false)){
-//    ui.gettingStarted();
-//}
-//else{
-    ui.alan();
-//}
-
+/*********************
+ * LIVE WINDOW LOGIC
+ ********************/
+var success = function(){
+    alan.createAlanWindow();
+};
+var err = function(){
+    alan.createInitializeWindow(success, err);
+};
+alan.createInitializeWindow(success, err);
