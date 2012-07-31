@@ -28,6 +28,7 @@ exports.createInitializeWindow = function(success, err){
     
     //create cache
     cache.initialize();
+    cache.create(CACHE_NAME);
     //state variables
     var errors = 0;
     //helper functions
