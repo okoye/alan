@@ -58,7 +58,7 @@ var connector = function(callback, success, username, password){
 exports.CreateAccount = function(account, profile, callback){
 	log.info('Sending email & password to api');
 	var conn = connector(callback, 204);
-	conn.open('POST', base+'/1/accounts/basic/create');
+	conn.open('POST', base+'/1/accounts/basic');
 	var packet = {};
 	for (prop in account){
 	    packet[prop] = account[prop];
