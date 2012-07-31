@@ -21,7 +21,7 @@ var connector = function(callback, success, username, password){
         onload: function(e){
             var status = this.status;
             if (success.indexOf(status) != -1){
-                log.debug('Successful HTTP code from API')
+                log.debug('Successful HTTP code from API');
                 data = this.responseText;
                 data = (data) ? data:"{}";
                 callback({status: 'success', data: JSON.parse(data)});
@@ -35,11 +35,19 @@ var connector = function(callback, success, username, password){
             }
         },
         onerror: function(e){
-            log.debug('An error occured when contacting API '+JSON.stringify(e));
-            callback({
-                status: 'error',
-                message: 'Could not connect to Alan. Try again later.'
-            });
+        	if (success.indexOf(status) != -1){
+        		log.debug('Successful HTTP code from API');
+        		data = this.responseText;
+        		data = (data) ? data: "{}";
+        		callback({status: 'success', data:JSON.parse(data)});
+        	}
+        	else{
+        		log.debug('An error occured when contacting API '+JSON.stringify(e));
+            	callback({
+                	status: 'error',
+                	message: 'Could not connect to Alan. Try again later.'
+            	});
+        	}
         },
         timeout: 5000,
         enableKeepAlive: false
