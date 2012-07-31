@@ -10,6 +10,7 @@ var account = require('model/account');
 var profile = require('model/profile');
 var cache = require('lib/cache');
 var api = require('lib/api');
+var error = require('lib/errors');
 
 //views
 var meView = require('ui/meView');
@@ -30,11 +31,17 @@ exports.createInitializeWindow = function(success, err){
     //state variables
     var errors = 0;
     //helper functions
-    var create_alannetwork_account = function(key){
+    var create_alannetwork_account = function(key, duplicates){
         if (!cache.get(CACHE_NAME, key)){
             api.CreateAccount(JSON.parse(account.toString()), JSON.parse(profile.toString()), function(msg){
                 if (msg.status != 'success'){
-                    errors += 1;
+                    if (msg.message == error.codes.DuplicateAccount && duplicates)
+                    {
+                    	cache.set(CACHE_NAME, key, 'yes');
+                    }
+                    else{
+                    	errors += 1;
+                    }
                 }
                 else{
                     cache.set(CACHE_NAME, key, 'yes');
@@ -64,7 +71,7 @@ exports.createInitializeWindow = function(success, err){
             hours_sitting: 10,
             days_workout: 1
         });
-        create_alannetwork_account('created-alannetwork-debug-account');
+        create_alannetwork_account('created-alannetwork-debug-account', 'yes');
     }
     else{
         log.debug('in live mode');

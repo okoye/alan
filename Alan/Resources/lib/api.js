@@ -7,6 +7,7 @@
  */
 
 var log = require('lib/logger');
+var error = require('lib/errors');
 var testflight = require('ti.testflight');
 
 
@@ -60,12 +61,12 @@ exports.CreateAccount = function(account, profile, callback){
 	var evaluate = function(response){
 		if (response.status === 'error'){
 			if (response.code == 409){
-				response.message = 'An account with same username already exists';
+				response.message = error.codes.DuplicateAccount;
 			}
 			else{
-				response.message = 'Hmmm...you may be having network issues. Cannot connect to Alan.';
+				response.message = error.codes.NetworkError;
 			}
-			callback(reponse);
+			callback(response);
 		}
 	};
 	var conn = connector(evaluate, 204);
@@ -86,13 +87,13 @@ exports.UpdateSensor = function(account, readings, callback){
     var evaluate = function(response){
     	if (response.status === 'error'){
     		if (response.code == 401){
-    			response.message = 'Cannot login to your Alan account.';
+    			response.message = error.codes.AuthenticationError;
     		}
     		else if(response.status == 500){
-    			response.message = 'Oops, looks like Alan network is still being upgraded.';
+    			response.message = error.codes.InternalError;
     		}
     		else{
-    			response.message = 'Your wireless network connection is somewhat spotty.';
+    			response.message = error.codes.NetworkError;
     		}
     		callback(response);
     	}
@@ -108,13 +109,13 @@ exports.Analytics = function(account, callback){
     var evaluate = function(response){
     	if (response.status === 'error'){
     		if (response.code == 401){
-    			response.message = 'Cannot login to your Alan account.';
+    			response.message = error.codes.AuthenticationError;
     		}
     		else if(response.status == 500){
-    			response.message = 'Alan network is currently experiencing issues.';
+    			response.message = error.codes.InternalError;
     		}
     		else{
-    			response.message = 'Looks like you have poor internet connectivity at this time.'
+    			response.message = error.codes.NetworkError;
     		}
     		callback(response);
     	}

@@ -22,14 +22,14 @@ exports.create = function(name, override){
 };
 exports.set = function(namespace, key, value){
     //set the value of a key in some namespace
-    cacheStore[namespace][key] = value;
+    cacheStore.namespace.key = value;
     persist();
-    return cacheStore[namespace][key];
+    return cacheStore.namespace.key;
 };
 exports.get = function(namespace, key){
     //fetch a value of a key from some namespace
-    if(cacheStore[namespace] && cacheStore[namespace][key]){
-        return cacheStore[namespace][key];
+    if(cacheStore.namespace && cacheStore.namespace.key){
+        return cacheStore.namespace.key;
     }
     else{
         return null;
