@@ -20,3 +20,7 @@ Version 0.4
 -> Fixed out of sync initialization issues
 Version 0.5
 -> Reworked Me section UI
+-> Reimplementing caching module
+-> Upgraded to Titanium 2.1
+-> Introduced new on device data models
+-> Modularized alanWindow manager

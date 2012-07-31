@@ -20,10 +20,10 @@ var connector = function(callback, success, username, password){
     var conn = Ti.Network.createHTTPClient({
         onload: function(e){
             var status = this.status;
-            if (status === success){
+            if (success.indexOf(status) != -1){
                 log.debug('Successful HTTP code from API')
                 data = this.responseText;
-                data = (data) ? data:"";
+                data = (data) ? data:"{}";
                 callback({status: 'success', data: JSON.parse(data)});
             }
             else{
@@ -57,7 +57,7 @@ var connector = function(callback, success, username, password){
 
 exports.CreateAccount = function(account, profile, callback){
 	log.info('Sending email & password to api');
-	var conn = connector(callback, 204);
+	var conn = connector(callback, [204, 409]);
 	conn.open('POST', base+'/1/accounts/basic');
 	var packet = {};
 	for (prop in account){
@@ -72,7 +72,7 @@ exports.CreateAccount = function(account, profile, callback){
 
 exports.UpdateSensor = function(account, readings, callback){
     log.info('Updating sensors on api '+JSON.stringify(readings));
-    var conn = connector(callback, 204, account.get('username'), account.get('password'));
+    var conn = connector(callback, [204], account.get('username'), account.get('password'));
     conn.open('POST', base+'/1/sensors/update');
     conn.send(JSON.stringify(readings));
     testflight.checkpoint('api.updatesensor');
@@ -80,7 +80,7 @@ exports.UpdateSensor = function(account, readings, callback){
 
 exports.Analytics = function(account, callback){
     log.info('Retrieving Analytics data');
-    var conn = connector(callback, 200, account.get('username'), account.get('password'));
+    var conn = connector(callback, [200], account.get('username'), account.get('password'));
     conn.open('GET', base+'/1/analytics');
     conn.send();
     testflight.checkpoint('api.analytics');
