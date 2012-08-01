@@ -48,9 +48,9 @@ var connector = function(callback, success, username, password, method, url){
     conn.open(method, url);
     if (username && password){
         //var authstr = 'Basic '+Ti.Utils.base64encode(username + ':' + password);
-        var authstr = 'Basic '+Ti.Utils.base64encode(username);
+        var authstr = 'Basic '+Ti.Utils.base64encode(username+':'+password);
         conn.setRequestHeader('Authorization', authstr);
-        conn.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+        //conn.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
     }
     
     return conn;
@@ -70,7 +70,7 @@ exports.CreateAccount = function(account, profile, callback){
 			callback(response);
 		}
 	};
-	var conn = connector(evaluate, 204, 'POST', base+'/1/accounts/basic');
+	var conn = connector(evaluate, 204, '','','POST', base+'/1/accounts/basic');
 	var packet = {};
 	for (prop in account){
 	    packet[prop] = account[prop];
