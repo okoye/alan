@@ -33,7 +33,7 @@ exports.createInitializeWindow = function(success, err){
     var errors = 0;
     //helper functions
     var create_alannetwork_account = function(key, duplicates){
-        if (!cache.get(CACHE_NAME, key)){
+        if (cache.get(CACHE_NAME, key) != 'yes'){
             api.CreateAccount(JSON.parse(account.toString()), JSON.parse(profile.toString()), function(msg){
                 if (msg.status != 'success'){
                     if (msg.message == error.codes.DuplicateAccount && duplicates)

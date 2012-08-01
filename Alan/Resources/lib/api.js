@@ -43,10 +43,11 @@ var connector = function(callback, success, username, password, method, url){
             });
         },
         timeout: 5000,
-        enableKeepAlive: false
+        enableKeepAlive: false,
+        withCredentials: true,
     });
     conn.open(method, url);
-    if (username && password){
+    if (username != null && password != null){
         //var authstr = 'Basic '+Ti.Utils.base64encode(username + ':' + password);
         var authstr = 'Basic '+Ti.Utils.base64encode(username+':'+password);
         conn.setRequestHeader('Authorization', authstr);
