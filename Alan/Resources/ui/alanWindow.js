@@ -57,8 +57,8 @@ exports.createInitializeWindow = function(success, err){
     if (Ti.App.deployType === 'development' || Ti.App.deployType === 'test'){
         log.debug('in debug mode');
         account.create({
-            username: Ti.Platform.macaddress+'@alanapptest.com',
-            password: Ti.Platform.macaddress,
+            username: Ti.Platform.macaddress.substring(0, 6)+'@alanapptest.com',
+            password: Ti.Platform.macaddress.substring(0, 12),
             firstname: 'Kaiya',
             lastname: 'Rudenko',
             nickname: '',
@@ -136,6 +136,11 @@ exports.createAlanWindow = function(_args){
     //Setup controllers
     var meControl = new meController.Controller(content);
     meControl.start();
+    
+    //Setup sensing manager
+    if (!manager.start()){
+    	//show some error then quit.
+    }
     
     
     win.add(navigation);
