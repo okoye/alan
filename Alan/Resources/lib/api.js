@@ -16,7 +16,7 @@ var base = 'http://api.alanapp.com';
 if (Ti.App.deployType === 'development' || Ti.App.deployType === 'test')
     base = 'http://api.thepuppetprojects.com';
 
-var connector = function(callback, success, username, password){
+var connector = function(callback, success, username, password, method, url){
     //accepts callback function, and expected success http code.
     var conn = Ti.Network.createHTTPClient({
         onload: function(e){
@@ -45,16 +45,17 @@ var connector = function(callback, success, username, password){
         timeout: 5000,
         enableKeepAlive: false
     });
-    
+    conn.open(method, url);
     if (username && password){
-        var authstr = 'Basic '+Ti.Utils.base64encode(username + ':' + password);
+        //var authstr = 'Basic '+Ti.Utils.base64encode(username + ':' + password);
+        var authstr = 'Basic '+Ti.Utils.base64encode(username);
         conn.setRequestHeader('Authorization', authstr);
         conn.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
     }
     
     return conn;
     
-}
+};
 
 exports.CreateAccount = function(account, profile, callback){
 	log.info('Sending email & password to api');
@@ -69,8 +70,7 @@ exports.CreateAccount = function(account, profile, callback){
 			callback(response);
 		}
 	};
-	var conn = connector(evaluate, 204);
-	conn.open('POST', base+'/1/accounts/basic');
+	var conn = connector(evaluate, 204, 'POST', base+'/1/accounts/basic');
 	var packet = {};
 	for (prop in account){
 	    packet[prop] = account[prop];
@@ -98,8 +98,7 @@ exports.UpdateSensor = function(account, readings, callback){
     		callback(response);
     	}
     };
-    var conn = connector(evaluate, 204, account.get('username'), account.get('password'));
-    conn.open('POST', base+'/1/sensors/update');
+    var conn = connector(evaluate, 204, account.get('username'), account.get('password'),'POST', base+'/1/sensors/update');
     conn.send(JSON.stringify(readings));
     testflight.checkpoint('api.updatesensor');
 };
@@ -120,8 +119,7 @@ exports.Analytics = function(account, callback){
     		callback(response);
     	}
     }
-    var conn = connector(evaluate, 200, account.get('username'), account.get('password'));
-    conn.open('GET', base+'/1/analytics');
+    var conn = connector(evaluate, 200, account.get('username'), account.get('password'), 'GET', base+'/1/analytics');
     conn.send();
     testflight.checkpoint('api.analytics');
 };
