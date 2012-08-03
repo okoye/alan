@@ -55,7 +55,6 @@ exports.createInitializeWindow = function(success, err){
     };
     
     if (Ti.App.deployType === 'development' || Ti.App.deployType === 'test'){
-        log.debug('in debug mode');
         account.create({
             username: Ti.Platform.macaddress.substring(0, 6)+'@alanapptest.com',
             password: Ti.Platform.macaddress.substring(0, 12),
@@ -75,7 +74,6 @@ exports.createInitializeWindow = function(success, err){
         create_alannetwork_account('created-alannetwork-debug-account', 'yes');
     }
     else{
-        log.debug('in live mode');
         if (!cache.get(CACHE_NAME, 'collected-initialization-data')){
             create_newaccount_info('collected-initialization-data');
         }
@@ -138,7 +136,8 @@ exports.createAlanWindow = function(_args){
     meControl.start();
     
     //Setup sensing manager
-    if (!manager.start()){
+    var sensingManager = new manager.Manager()
+    if (sensingManager.start() == false){
     	//show some error then quit.
     }
     

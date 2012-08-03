@@ -84,7 +84,7 @@ exports.UpdateSensor = function(account, readings, callback){
     log.info('Updating sensors on api '+JSON.stringify(readings));
     var evaluate = function(response){
     	if (response.status === 'error'){
-    		if (response.code == 401){
+    		if (response.code == 404){
     			response.message = error.codes.AuthenticationError;
     		}
     		else if(response.status == 500){
@@ -105,7 +105,7 @@ exports.Analytics = function(account, callback){
     log.info('Retrieving Analytics data');
     var evaluate = function(response){
     	if (response.status === 'error'){
-    		if (response.code == 401){
+    		if (response.code == 404){
     			response.message = error.codes.AuthenticationError;
     		}
     		else if(response.status == 500){
