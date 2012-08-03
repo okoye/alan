@@ -4,11 +4,11 @@
  */
 var log = require('lib/logger');
 
-var cacheStore = {}; //TODO Use persistent in app store
+var cacheStore = null;
 var CACHE_NAME = 'ALAN_CACHE';
 
 var persist = function(){
-    Ti.App.Properties.setString(CACHE_NAME, JSON.stringify(cacheStore));
+    Ti.App.Properties.setObject(CACHE_NAME, cacheStore);
 };
 
 exports.create = function(name, override){
@@ -37,10 +37,10 @@ exports.get = function(namespace, key){
 };
 exports.initialize = function(){
     //loads from disk or performs new initialization
-    if (Ti.App.Properties.getString(CACHE_NAME) != null){
+    if (Ti.App.Properties.getString(CACHE_NAME) != null && cacheStore == null){
         cacheStore = JSON.parse(Ti.App.Properties.getString(CACHE_NAME));
     }
-    else{
-        cacheStore = {};
+    else if(Ti.App.Properties.getObject(CACHE_NAME) == null){
+    	cacheStore = {};
     }
 };

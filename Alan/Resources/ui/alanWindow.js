@@ -23,6 +23,7 @@ var PLATFORM_WIDTH = Ti.Platform.displayCaps.platformWidth;
 var PLATFORM_HEIGHT = Ti.Platform.displayCaps.platformHeight;
 var CACHE_NAME = 'alanWindowMetaData';
 
+//TODO: decouple initialization from this, move to app.js
 exports.createInitializeWindow = function(success, err){
     //start account setup and initialization window. it is indempotent
     
