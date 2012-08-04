@@ -24,3 +24,4 @@ Version 0.5
 -> Upgraded to Titanium 2.1
 -> Introduced new on device data models
 -> Modularized alanWindow manager
+-> Fixed infinite loop in starting up under error conditions

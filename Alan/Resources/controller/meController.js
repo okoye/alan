@@ -13,7 +13,7 @@ var profile = require('model/profile');
 
 //Final settings
 var LAST_FETCH = 0;
-var DURATION = 900000; 9000//Every 15 mins
+var DURATION = 900000; //9000Every 15 mins
 
 
 //Global variables
