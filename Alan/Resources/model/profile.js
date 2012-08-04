@@ -7,9 +7,11 @@
 
 //Libraries
 var log = require('lib/logger');
+var cache = require('lib/cache');
 
 //Globals
 var _profile = null;
+var initialized = false;
 
 var _isNumber = function(n){
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -70,12 +72,24 @@ exports.create  = function(properties){
 
 //Responsible for retrieving all properties
 exports.get = function(element){
-    return _profile[element];
+	if (initialized){
+    	return _profile[element];
+    }
+    else{
+    	initialize();
+    	return _profile[element];
+    }
 };
 
 //Responsible for setting all properties
 exports.set = function(key, value){
-    _profile[key] = value;
+	if(initialized){
+		_profile[key] = value;
+	}
+    else{
+    	initialize();
+    	_profile[key] = value;
+    }
 };
 
 //Performs validation on specific arg or whole object
@@ -96,4 +110,16 @@ exports.validate = function(element){
 //Returns string representation of the object
 exports.toString = function(){
     return JSON.stringify(_profile);
+};
+
+//Loads info from cache
+var initialize = function(){
+	var _temp = null;
+	if (_profile == null){
+		_temp = cache.get('profile', '_profile');
+		if (_temp != null){
+			_profile = _temp;
+		}
+	}
+	initialized = true;
 };

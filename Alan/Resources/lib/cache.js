@@ -14,21 +14,22 @@ var persist = function(){
 exports.create = function(name, override){
     //create a new namespace
     if (!override){
-        (cacheStore.name) ? true : cacheStore[name] = {};
+        (cacheStore[name] != null) ? true : cacheStore[name] = {};
     }
     else{
-        cacheStore.name = {};
+        cacheStore[name] = {};
     }
 };
 exports.set = function(namespace, key, value){
     //set the value of a key in some namespace
-    cacheStore[namespace].key = value;
+    cacheStore[namespace][key] = value;
     persist();
     return cacheStore[namespace][key];
 };
 exports.get = function(namespace, key){
     //fetch a value of a key from some namespace
-    if(cacheStore.namespace && cacheStore.namespace.key){
+    log.info('cacheStore is '+JSON.stringify(cacheStore));
+    if(cacheStore[namespace] != null && cacheStore[namespace][key] != null){
         return cacheStore[namespace][key];
     }
     else{
@@ -37,10 +38,14 @@ exports.get = function(namespace, key){
 };
 exports.initialize = function(){
     //loads from disk or performs new initialization
-    if (Ti.App.Properties.getString(CACHE_NAME) != null && cacheStore == null){
-        cacheStore = JSON.parse(Ti.App.Properties.getString(CACHE_NAME));
+    log.info('initialize app cache');
+    if (Ti.App.Properties.getObject(CACHE_NAME) != null){
+    	log.info('loading previous data into cache');
+    	if (cacheStore == null)
+        	cacheStore = Ti.App.Properties.getObject(CACHE_NAME);
     }
     else if(Ti.App.Properties.getObject(CACHE_NAME) == null){
+    	log.info('creating a brand new cache');
     	cacheStore = {};
     }
 };

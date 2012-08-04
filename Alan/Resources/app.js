@@ -31,8 +31,6 @@ instrumentation.checkpoint('booted');
 /*********************
  * LIVE WINDOW LOGIC
  ********************/
-//TODO: re-write. move alanWindow logic here.
-
 cache.initialize();
 cache.create('startup_routine', false);
 

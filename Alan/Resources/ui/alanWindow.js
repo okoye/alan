@@ -10,20 +10,12 @@ var account = require('model/account');
 var profile = require('model/profile');
 var api = require('lib/api');
 var error = require('lib/errors');
-
-//views
 var meView = require('ui/meView');
-
-//controllers
 var meController = require('controller/meController');
-
-//Constants
-var PLATFORM_WIDTH = Ti.Platform.displayCaps.platformWidth;
-var PLATFORM_HEIGHT = Ti.Platform.displayCaps.platformHeight;
-var CACHE_NAME = 'alanWindowMetaData';
 
 exports.createAccountWindow = function(callback){
 	//create account information on alan network
+	log.info('creating a new account');
     account.create({
     	username: Ti.Platform.macaddress.substring(0,6)+'@alanapptest.com',
     	password: Ti.Platform.macaddress.substring(0, 12),
@@ -50,23 +42,21 @@ exports.createAccountWindow = function(callback){
     	else{
     		callback(true);
     	}
-    })
+    });
 };
 
 exports.createInitializeWindow = function(callback){
 	//create about screen and tutorial
-	log.info('successfully initialized application');
+	log.info('creating initialize info pane');
 	callback(true);
 };
 
 exports.createAlanWindow = function(_args){
     //start alan quantification display window
+    log.info('creating alan quantification pane');
     var win = Ti.UI.createWindow({
         backgroundColor: 'white',
     });
-    
-    log.info('PLATFORM WIDTH '+PLATFORM_WIDTH);
-    log.info('PLATFORM HEIGHT '+PLATFORM_HEIGHT);
     
     //Setup settings button
     var settingsButton = Ti.UI.createButton({
