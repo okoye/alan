@@ -24,7 +24,6 @@ Processor.prototype.process = function(data){
 };
 
 Processor.prototype.shutdown = function(){
-	account.save();
 	return true;
 };
 

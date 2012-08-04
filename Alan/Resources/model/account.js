@@ -5,9 +5,9 @@
  */
 
 //Libs
-var api = require('lib/api');
 var log = require('lib/logger');
 var instrumentation = require('lib/instrument');
+var cache = require('lib/cache');
 
 //Global Vars
 var _account = null;
@@ -92,4 +92,15 @@ exports.validate = function(element){
 //Returns a string representation of the object
 exports.toString = function(){
     return JSON.stringify(_account);
+};
+
+//Loads _account with cached data
+var initialize = function(){
+	var _temp = null;
+	if (_account == null){
+		temp = cache.get('account', '_account');
+		if (temp != null){
+			_account = temp;
+		}
+	}
 };
