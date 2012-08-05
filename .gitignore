@@ -4,3 +4,4 @@
 .metadata
 *.dep
 *.dat
+.settings
