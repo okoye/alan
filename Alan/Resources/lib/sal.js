@@ -128,12 +128,11 @@ var sampleMemory = function(){
 var sampleGPS = function(){
     if (!GPS_CALLBACK_SET){ //first time through function, will set constant later.
         readings.gps = {
-            longitude: 9999,
-            latitude: 9999,
+            coordinates: new Array(0,0),
             heading: 9999,
             accuracy: 9999,
             speed: 0,
-            timestamp: 0,
+            timestamp: (new Date).toISOString(),
             altitude_accuracy: 9999
         };
     }
@@ -149,7 +148,7 @@ var sampleGPS = function(){
         _gps.heading = e.coords.heading;
         _gps.accuracy = e.coords.accuracy;
         _gps.speed = e.coords.speed;
-        _gps.timestamp = (new Date).getTime();
+        _gps.timestamp = (new Date).toISOString();
         _gps.altitude_accuracy = e.coords.altitude_accuracy;
         readings.gps = _gps;
         log.info('sampleGPS successfully finished '+JSON.stringify(_gps));
