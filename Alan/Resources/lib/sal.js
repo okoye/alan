@@ -144,8 +144,7 @@ var sampleGPS = function(){
             return;
         }
         var _gps = {};
-        _gps.longitude = e.coords.longitude;
-        _gps.latitude = e.coords.latitude;
+        _gps.coordinates = new Array(e.coords.latitude, e.coords.longitude);
         _gps.altitude = e.coords.altitude;
         _gps.heading = e.coords.heading;
         _gps.accuracy = e.coords.accuracy;
