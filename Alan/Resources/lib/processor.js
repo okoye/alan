@@ -16,7 +16,7 @@ function Processor(properties){
 
 Processor.prototype.process = function(data){
     //format data for sending into a list structure.
-    api.UpdateSensor(account, [data.gps], function(res){
+    api.UpdateSensor(account, data.gps, function(res){
         if (res.status === 'error'){
             log.info('Could not process sensor update command '+JSON.stringify(res));
         }
