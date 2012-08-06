@@ -78,10 +78,6 @@ exports.get = function(element){
 
 //Responsible for setting all properties
 exports.set = function(key, value){
-<<<<<<< HEAD
-    _account[key] = value;
-    cache.set('account', '_account', _account);
-=======
 	if (initialized){
 		_account[key] = value;
 	}
@@ -89,7 +85,6 @@ exports.set = function(key, value){
 		initialize();
 		return _account[key] = value;
 	}
->>>>>>> 8ee7f4a262917772bbddc00f034bba82b7427668
 };
 
 //Performs validation on specific arg or whole object
