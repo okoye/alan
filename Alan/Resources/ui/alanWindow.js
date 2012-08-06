@@ -102,7 +102,7 @@ exports.createAlanWindow = function(_args){
     
     win.add(navigation);
     win.open();
-    instrumentation.checkpoint('alanWindow');
+    instrumentation.checkpoint('window');
 };
 
 

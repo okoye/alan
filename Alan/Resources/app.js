@@ -49,6 +49,7 @@ var initialize = function(){
 	else{
 		create(true);
 	}
+	instrumentation.checkpoint('initialized');
 };
 var create = function(success){
 	if (!created_account && success){
@@ -62,11 +63,13 @@ var create = function(success){
 	else if(created_account){
 		monitor(true);
 	}
+	instrumentation.checkpoint('created');
 };
 var monitor = function(success){
 	if (success){
 		alan.createAlanWindow();
 	}
+	instrumentation.checkpoint('monitored');
 };
 
 initialize();

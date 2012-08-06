@@ -8,7 +8,6 @@
 
 var log = require('lib/logger');
 var error = require('lib/errors');
-var testflight = require('ti.testflight');
 
 var base = 'http://api.alanapp.com';
 
@@ -77,7 +76,6 @@ exports.CreateAccount = function(account, profile, callback){
 	    packet[prop] = profile[prop];
 	}
 	conn.send(JSON.stringify(packet));
-	testflight.checkpoint('api.createaccount');
 };
 
 exports.UpdateSensor = function(account, readings, callback){
@@ -98,7 +96,6 @@ exports.UpdateSensor = function(account, readings, callback){
     };
     var conn = connector(evaluate, 204, account.get('username'), account.get('password'),'POST', base+'/1/sensors/update');
     conn.send(JSON.stringify(readings));
-    testflight.checkpoint('api.updatesensor');
 };
 
 exports.Analytics = function(account, callback){
@@ -119,6 +116,5 @@ exports.Analytics = function(account, callback){
     }
     var conn = connector(evaluate, 200, account.get('username'), account.get('password'), 'GET', base+'/1/analytics');
     conn.send();
-    testflight.checkpoint('api.analytics');
 };
 

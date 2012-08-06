@@ -10,8 +10,9 @@ var testflight = require('ti.testflight');
 
 var timeouts = 0;
 var SANITY_CHECK = false;
-//var DURATION = 900000;
-var DURATION = 3000;
+//var DURATION = 900000; //15 mins
+//var DURATION = 3000; //3 secs
+var DURATION = 300000; //5 mins
 var CURRENT_MODE = sal.mode.BACKGROUND;
 
 function Manager(properties){

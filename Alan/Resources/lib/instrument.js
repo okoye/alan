@@ -10,7 +10,7 @@ var myId = Ti.Platform.getId();
 
 
 exports.checkpoint = function(str){
-    testflight.checkpoint(myId + ' '+str);
+    testflight.checkpoint(str);
 };
 
 exports.customInfo = function(key, value){
