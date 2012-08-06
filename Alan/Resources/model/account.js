@@ -10,6 +10,7 @@ var cache = require('lib/cache');
 
 //Global Vars
 var _account = null;
+var initialized = false;
 
 var isValidEmail = function(email){
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -66,13 +67,29 @@ exports.create = function(properties){
 
 //Responsible for retrieving all properties
 exports.get = function(element){
-    return _account[element];
+	if (initialized){
+		return _account[element];
+	}
+	else{
+		initialize();
+		return _account[element];
+	}
 };
 
 //Responsible for setting all properties
 exports.set = function(key, value){
+<<<<<<< HEAD
     _account[key] = value;
     cache.set('account', '_account', _account);
+=======
+	if (initialized){
+		_account[key] = value;
+	}
+	else{
+		initialize();
+		return _account[key] = value;
+	}
+>>>>>>> 8ee7f4a262917772bbddc00f034bba82b7427668
 };
 
 //Performs validation on specific arg or whole object
