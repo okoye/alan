@@ -25,3 +25,6 @@ Version 0.5
 -> Introduced new on device data models
 -> Modularized alanWindow manager
 -> Fixed infinite loop in starting up under error conditions
+Version 0.6
+-> Bug fixes in device data models
+-> Bug fixes in sensor abstraction layer
