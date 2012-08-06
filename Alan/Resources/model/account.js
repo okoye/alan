@@ -6,7 +6,6 @@
 
 //Libs
 var log = require('lib/logger');
-var instrumentation = require('lib/instrument');
 var cache = require('lib/cache');
 
 //Global Vars
@@ -60,7 +59,8 @@ exports.create = function(properties){
     _account.avatar_url = (properties.avatar_url) ? properties.avatar_url:"";
     
     log.debug('instantiated a new account object');
-    instrumentation.checkpoint('account');
+    cache.create('account', true);
+    cache.set('account', '_account', _account);
     return _account;
 };
 
@@ -72,6 +72,7 @@ exports.get = function(element){
 //Responsible for setting all properties
 exports.set = function(key, value){
     _account[key] = value;
+    cache.set('account', '_account', _account);
 };
 
 //Performs validation on specific arg or whole object

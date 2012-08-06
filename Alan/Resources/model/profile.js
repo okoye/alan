@@ -65,7 +65,9 @@ exports.create  = function(properties){
     _profile.sex = properties.sex;
     _profile.hours_sitting = properties.hours_sitting;
     _profile.days_workout = properties.days_workout;
-
+    
+    cache.create('profile', true);
+    cache.set('profile', '_profile', _profile);
     log.debug('instantiated a new profile object');
     return _profile;
 };
@@ -90,6 +92,7 @@ exports.set = function(key, value){
     	initialize();
     	_profile[key] = value;
     }
+    cache.set('profile', '_profile', _profile);
 };
 
 //Performs validation on specific arg or whole object
