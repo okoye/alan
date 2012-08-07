@@ -54,6 +54,7 @@ exports.createInitializeWindow = function(callback){
 exports.createAlanWindow = function(_args){
     //start alan quantification display window
     log.info('creating alan quantification pane');
+    var clicks = 0;
     var win = Ti.UI.createWindow({
         backgroundColor: 'white',
     });
@@ -70,6 +71,10 @@ exports.createAlanWindow = function(_args){
     });
     settings.add(settingsButton);
     
+    var settingsWindow = Ti.UI.createWindow({
+        title: 'SETTINGS',
+    });
+    
     //Setup meView content
     var content = meView.create({
         height: 435,
@@ -79,7 +84,7 @@ exports.createAlanWindow = function(_args){
     var meWindow = Ti.UI.createWindow({
         barImage: 'images/top_nav.png',
         backgroundColor: 'white',
-        title: 'Me',
+        title: 'ME',
         rightNavButton: settings,
     });
     meWindow.add(content);
@@ -87,6 +92,11 @@ exports.createAlanWindow = function(_args){
     //Setup navigation bar
     var navigation = Ti.UI.iPhone.createNavigationGroup({
         window: meWindow,
+    });
+    settingsButton.addEventListener('click', function(e){
+        navigation.open(settingsWindow);
+        clicks += 1;
+        alert('You clicked '+clicks+' times');
     });
     
     //Setup controllers
