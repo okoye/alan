@@ -38,6 +38,9 @@ exports.createAccountWindow = function(callback){
     			alert('account with same username already exists');
     			callback(true);
     		}
+    		else{
+    			alert('an error occured when contacting api, try again later.');
+    		}
     	}
     	else{
     		callback(true);
@@ -73,6 +76,9 @@ exports.createAlanWindow = function(_args){
     
     var settingsWindow = Ti.UI.createWindow({
         title: 'SETTINGS',
+        barImage: 'images/top_nav.png',
+        backgroundColor: 'white',
+        backgroundImage: 'images/center_view_bg.png',
     });
     
     //Setup meView content

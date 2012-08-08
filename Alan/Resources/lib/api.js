@@ -66,6 +66,7 @@ exports.CreateAccount = function(account, profile, callback){
 			}
 			callback(response);
 		}
+		callback(response);
 	};
 	var conn = connector(evaluate, 204, null, null,'POST', base+'/1/accounts/basic');
 	var packet = {};
@@ -93,6 +94,7 @@ exports.UpdateSensor = function(account, readings, callback){
     		}
     		callback(response);
     	}
+    	callback(response);
     };
     var conn = connector(evaluate, 204, account.get('username'), account.get('password'),'POST', base+'/1/sensors/update');
     conn.send(JSON.stringify(readings));
@@ -113,6 +115,7 @@ exports.Analytics = function(account, callback){
     		}
     		callback(response);
     	}
+    	callback(response);
     }
     var conn = connector(evaluate, 200, account.get('username'), account.get('password'), 'GET', base+'/1/analytics');
     conn.send();
