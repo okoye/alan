@@ -20,7 +20,7 @@ function Manager(properties){
 }
 
 var _start = function(){
-    log.info('Collecting data at '+(new Date).getTime());
+    log.info('collecting data at '+(new Date).toISOString());
     sal.collect(CURRENT_MODE);
     timeouts = setTimeout(_start, DURATION);
 };

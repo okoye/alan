@@ -59,20 +59,7 @@ exports.collect = function(mode){
     var result = {};
     if (!SANITY_CHECK_SUCCESSFUL)
         return {};
-        
-    if (mode == exports.mode.BACKGROUND){
-        //result.battery = sampleBattery();
-        //result.memory = sampleMemory();
-        result.gps = sampleGPS();
-        //result.wifi = sampleWifi();
-    }
-    else if(mode == exports.mode.FOREGROUND){
-        //result.battery = sampleBattery();
-        //result.memory = sampleMemory();
-        result.gps = sampleGPS();
-        //result.wifi = sampleWifi();
-    }
-    
+    result.gps = sampleGPS();  
     processing.process(result);
     return result;
 };

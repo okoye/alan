@@ -12,6 +12,7 @@ var account = require('model/account');
 var api = require('lib/api');
 
 function Processor(properties){
+	log.info('instantiated sensor data processor');
 }
 
 Processor.prototype.process = function(data){
