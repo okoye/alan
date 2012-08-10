@@ -8,12 +8,12 @@
         <target device="android">true</target>
         <target device="blackberry">false</target>
     </deployment-targets>
-    <id>Alan</id>
+    <id>alan.chuka</id>
     <name>Alan</name>
-    <version>0.6</version>
+    <version>0.6.5</version>
     <publisher>Lightcurves Inc.</publisher>
     <url>http://www.alanapp.com</url>
-    <description>not specified</description>
+    <description>Alan is a mobile health application that attempts to infer your daily routine behavior, giving you relevant info on how to improve your health without massive changes to your lifestyle.</description>
     <copyright>Lightcurves</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>

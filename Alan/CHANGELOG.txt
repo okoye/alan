@@ -28,3 +28,5 @@ Version 0.5
 Version 0.6
 -> Bug fixes in device data models
 -> Bug fixes in sensor abstraction layer
+-> SAL is now completely asynchronous
+-> Background location service bug fix
