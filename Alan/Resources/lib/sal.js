@@ -9,7 +9,7 @@ var log = require('lib/logger');
 var utility = require('lib/utilities');
 var processor = require('lib/processor');
 
-var readings = {};
+var readings = {}; //deprecated
 var ready = false;
 var processing = {};
 
@@ -17,6 +17,7 @@ var processing = {};
 var ACCELEROMETER_PERIOD = 60000;
 var GPS_DISTANCE_FILTER = 20; //every 20 meters
 var GPS_CALLBACK_SET = false;
+var GPS_FILTER_SET = false;
 var SANITY_CHECK_SUCCESSFUL = false;
 var ACCELEROMETER_READ_SIZE = 5000;
 
@@ -55,13 +56,10 @@ exports.initialize = function(){
 };
 
 //start collection in the necessary mode.
-exports.collect = function(mode){
-    var result = {};
-    if (!SANITY_CHECK_SUCCESSFUL)
-        return {};
-    result.gps = sampleGPS();  
-    processing.process(result);
-    return result;
+exports.collect = function(mode){   
+	if (!SANITY_CHECK_SUCCESSFUL)
+		return {};
+	sampleGPS(mode);
 };
 
 //modes
@@ -70,7 +68,9 @@ exports.mode = {
     FOREGROUND: 2
 };
 
-//knows how to read accelerometer results
+/*****************************************************************
+ * Various samplers for accelerometer, battery, memory, gps, wifi
+ ****************************************************************/
 var sampleAccelerometer = function(){
     var buffer = [];
     buffer = readings.accelerometer;
@@ -97,58 +97,29 @@ var sampleAccelerometer = function(){
     return buffer;
 };
 
-//knows how to read battery results
 var sampleBattery = function(){
     readings.batteryLevel = Ti.Platform.getBatteryLevel();
     log.info('sampleBattery finished; length: 1');
     return readings.batteryLevel;
 };
 
-//knows how to read memory results
 var sampleMemory = function(){
     readings.memoryLevel = Ti.Platform.getAvailableMemory();
     log.info('sampleMemory finished; length: 1')
     return readings.memoryLevel;
 };
 
-//knows how to read gps results
-var sampleGPS = function(){
-    if (!GPS_CALLBACK_SET){ //first time through function, will set constant later.
-        readings.gps = {
-            coordinates: new Array(0,0),
-            heading: 9999,
-            accuracy: 9999,
-            speed: 0,
-            timestamp: (new Date).toISOString(),
-            altitude_accuracy: 9999
-        };
+var sampleGPS = function(mode){
+	if (mode == exports.mode.BACKGROUND && !GPS_FILTER_SET){
+		Ti.Geolocation.addEventListener('location', gpsCallback);
+		Ti.Geolocation.distanceFilter = 10;
+		GPS_FILTER_SET = true;
+	}
+	else{
+		Ti.Geolocation.getCurrentPosition(gpsCallback);
     }
-    GPS_CALLBACK_SET = true; //TODO: re-write.
-    var callback = function(e){
-        if (!e.success || e.error){
-            log.info('GPS Callback could not retrieve information '+JSON.stringify(e.error));
-            return;
-        }
-        var _gps = {};
-        _gps.coordinates = new Array(e.coords.latitude, e.coords.longitude);
-        _gps.altitude = e.coords.altitude;
-        _gps.heading = e.coords.heading;
-        _gps.accuracy = e.coords.accuracy;
-        _gps.speed = e.coords.speed;
-        _gps.timestamp = (new Date).toISOString();
-        _gps.altitude_accuracy = e.coords.altitude_accuracy;
-        readings.gps = _gps;
-        log.info('sampleGPS successfully finished '+JSON.stringify(_gps));
-    };
-    // if (!GPS_CALLBACK_SET){
-        // Ti.Geolocation.addEventListener('location', callback);
-        // GPS_CALLBACK_SET = true;
-    // }
-    Ti.Geolocation.getCurrentPosition(callback);
-    return readings.gps;
 };
 
-//knows how to read Wifi
 var sampleWifi = function(){
     if (Ti.Network.networkType == Ti.Network.NETWORK_LAN || Ti.Network.networkType == Ti.Network.NETWORK_WIFI){
         readings.wifi = true;
@@ -159,9 +130,25 @@ var sampleWifi = function(){
     return readings.wifi;    
 };
 
-//knows how to read Compass
-var sampleCompass = function(){
-    
-};
 
+/***************************************
+ * Various processing callback handlers
+ * @param {Object} e
+ ***************************************/
+var gpsCallback = function(e) {
+	if (!e.success || e.error) {
+		log.info('GPS Callback could not retrieve information ' + JSON.stringify(e.error));
+		return;
+	}
+	var _gps = {};
+	_gps.coordinates = new Array(e.coords.latitude, e.coords.longitude);
+	_gps.altitude = e.coords.altitude;
+	_gps.heading = e.coords.heading;
+	_gps.accuracy = e.coords.accuracy;
+	_gps.speed = e.coords.speed;
+	_gps.timestamp = (new Date).toISOString();
+	_gps.altitude_accuracy = e.coords.altitude_accuracy;
+	processing.process(_gps);
+	log.debug('gpsCallback completed successfully '+JSON.stringify(_gps));
+}; 
 
