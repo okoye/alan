@@ -9,5 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+{
+    UILabel* display;
+}
+
+@property (nonatomic, retain) IBOutlet UILabel* display;
+
+- (IBAction) add: (id) sender;
+- (IBAction) sub: (id) sender;
+- (IBAction) dble: (id) sender;
+- (IBAction) opposite: (id) sender;
 
 @end

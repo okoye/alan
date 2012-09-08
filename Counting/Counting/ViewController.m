@@ -31,4 +31,30 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (IBAction) add:(id)sender
+{
+    NSLog(@"Incrementing value in label");
+}
+
+- (IBAction) sub:(id)sender
+{
+    NSLog(@"Decrementing value in label");
+}
+
+- (IBAction) dble:(id)sender
+{
+    NSLog(@"Doubling value in label");
+}
+
+- (IBAction) opposite:(id)sender
+{
+    NSLog(@"Multiplying value in label by -1");
+}
+
+- (BOOL) isInteger
+{
+    id value = [self.display text];
+    return [value isMemberOfClass: [NSNumber class]];
+}
+
 @end
