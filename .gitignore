@@ -5,3 +5,9 @@
 *.dep
 *.dat
 .settings
+
+#xcode noise
+*.pbxuser
+*.modelv3
+.svn
+profile
