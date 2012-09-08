@@ -11,3 +11,4 @@
 *.modelv3
 .svn
 profile
+*.xcuserstate
