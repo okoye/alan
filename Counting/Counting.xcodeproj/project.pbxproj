@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B7DDCEB815FBC58100CCD6CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DDCEB715FBC58100CCD6CC /* UIKit.framework */; };
+		B7DDCEBA15FBC58100CCD6CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DDCEB915FBC58100CCD6CC /* Foundation.framework */; };
+		B7DDCEBC15FBC58100CCD6CC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DDCEBB15FBC58100CCD6CC /* CoreGraphics.framework */; };
+		B7DDCEC215FBC58100CCD6CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7DDCEC015FBC58100CCD6CC /* InfoPlist.strings */; };
+		B7DDCEC415FBC58100CCD6CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDCEC315FBC58100CCD6CC /* main.m */; };
+		B7DDCEC815FBC58100CCD6CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDCEC715FBC58100CCD6CC /* AppDelegate.m */; };
+		B7DDCECB15FBC58100CCD6CC /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7DDCEC915FBC58100CCD6CC /* MainStoryboard.storyboard */; };
+		B7DDCECE15FBC58100CCD6CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDCECD15FBC58100CCD6CC /* ViewController.m */; };
+		B7DDCED615FBC58100CCD6CC /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DDCED515FBC58100CCD6CC /* SenTestingKit.framework */; };
+		B7DDCED715FBC58100CCD6CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DDCEB715FBC58100CCD6CC /* UIKit.framework */; };
+		B7DDCED815FBC58100CCD6CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DDCEB915FBC58100CCD6CC /* Foundation.framework */; };
+		B7DDCEE015FBC58100CCD6CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7DDCEDE15FBC58100CCD6CC /* InfoPlist.strings */; };
+		B7DDCEE315FBC58100CCD6CC /* CountingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDCEE215FBC58100CCD6CC /* CountingTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B7DDCED915FBC58100CCD6CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B7DDCEAA15FBC58100CCD6CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7DDCEB215FBC58100CCD6CC;
+			remoteInfo = Counting;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B7DDCEB315FBC58100CCD6CC /* Counting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Counting.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7DDCEB715FBC58100CCD6CC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B7DDCEB915FBC58100CCD6CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B7DDCEBB15FBC58100CCD6CC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B7DDCEBF15FBC58100CCD6CC /* Counting-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Counting-Info.plist"; sourceTree = "<group>"; };
+		B7DDCEC115FBC58100CCD6CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B7DDCEC315FBC58100CCD6CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B7DDCEC515FBC58100CCD6CC /* Counting-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Counting-Prefix.pch"; sourceTree = "<group>"; };
+		B7DDCEC615FBC58100CCD6CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B7DDCEC715FBC58100CCD6CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B7DDCECA15FBC58100CCD6CC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		B7DDCECC15FBC58100CCD6CC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B7DDCECD15FBC58100CCD6CC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B7DDCED415FBC58100CCD6CC /* CountingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountingTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7DDCED515FBC58100CCD6CC /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		B7DDCEDD15FBC58100CCD6CC /* CountingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CountingTests-Info.plist"; sourceTree = "<group>"; };
+		B7DDCEDF15FBC58100CCD6CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B7DDCEE115FBC58100CCD6CC /* CountingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountingTests.h; sourceTree = "<group>"; };
+		B7DDCEE215FBC58100CCD6CC /* CountingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountingTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B7DDCEB015FBC58100CCD6CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7DDCEB815FBC58100CCD6CC /* UIKit.framework in Frameworks */,
+				B7DDCEBA15FBC58100CCD6CC /* Foundation.framework in Frameworks */,
+				B7DDCEBC15FBC58100CCD6CC /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7DDCED015FBC58100CCD6CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7DDCED615FBC58100CCD6CC /* SenTestingKit.framework in Frameworks */,
+				B7DDCED715FBC58100CCD6CC /* UIKit.framework in Frameworks */,
+				B7DDCED815FBC58100CCD6CC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B7DDCEA815FBC58100CCD6CC = {
+			isa = PBXGroup;
+			children = (
+				B7DDCEBD15FBC58100CCD6CC /* Counting */,
+				B7DDCEDB15FBC58100CCD6CC /* CountingTests */,
+				B7DDCEB615FBC58100CCD6CC /* Frameworks */,
+				B7DDCEB415FBC58100CCD6CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B7DDCEB415FBC58100CCD6CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B7DDCEB315FBC58100CCD6CC /* Counting.app */,
+				B7DDCED415FBC58100CCD6CC /* CountingTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B7DDCEB615FBC58100CCD6CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7DDCEB715FBC58100CCD6CC /* UIKit.framework */,
+				B7DDCEB915FBC58100CCD6CC /* Foundation.framework */,
+				B7DDCEBB15FBC58100CCD6CC /* CoreGraphics.framework */,
+				B7DDCED515FBC58100CCD6CC /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7DDCEBD15FBC58100CCD6CC /* Counting */ = {
+			isa = PBXGroup;
+			children = (
+				B7DDCEC615FBC58100CCD6CC /* AppDelegate.h */,
+				B7DDCEC715FBC58100CCD6CC /* AppDelegate.m */,
+				B7DDCEC915FBC58100CCD6CC /* MainStoryboard.storyboard */,
+				B7DDCECC15FBC58100CCD6CC /* ViewController.h */,
+				B7DDCECD15FBC58100CCD6CC /* ViewController.m */,
+				B7DDCEBE15FBC58100CCD6CC /* Supporting Files */,
+			);
+			path = Counting;
+			sourceTree = "<group>";
+		};
+		B7DDCEBE15FBC58100CCD6CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B7DDCEBF15FBC58100CCD6CC /* Counting-Info.plist */,
+				B7DDCEC015FBC58100CCD6CC /* InfoPlist.strings */,
+				B7DDCEC315FBC58100CCD6CC /* main.m */,
+				B7DDCEC515FBC58100CCD6CC /* Counting-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B7DDCEDB15FBC58100CCD6CC /* CountingTests */ = {
+			isa = PBXGroup;
+			children = (
+				B7DDCEE115FBC58100CCD6CC /* CountingTests.h */,
+				B7DDCEE215FBC58100CCD6CC /* CountingTests.m */,
+				B7DDCEDC15FBC58100CCD6CC /* Supporting Files */,
+			);
+			path = CountingTests;
+			sourceTree = "<group>";
+		};
+		B7DDCEDC15FBC58100CCD6CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B7DDCEDD15FBC58100CCD6CC /* CountingTests-Info.plist */,
+				B7DDCEDE15FBC58100CCD6CC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B7DDCEB215FBC58100CCD6CC /* Counting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7DDCEE615FBC58100CCD6CC /* Build configuration list for PBXNativeTarget "Counting" */;
+			buildPhases = (
+				B7DDCEAF15FBC58100CCD6CC /* Sources */,
+				B7DDCEB015FBC58100CCD6CC /* Frameworks */,
+				B7DDCEB115FBC58100CCD6CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Counting;
+			productName = Counting;
+			productReference = B7DDCEB315FBC58100CCD6CC /* Counting.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B7DDCED315FBC58100CCD6CC /* CountingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7DDCEE915FBC58100CCD6CC /* Build configuration list for PBXNativeTarget "CountingTests" */;
+			buildPhases = (
+				B7DDCECF15FBC58100CCD6CC /* Sources */,
+				B7DDCED015FBC58100CCD6CC /* Frameworks */,
+				B7DDCED115FBC58100CCD6CC /* Resources */,
+				B7DDCED215FBC58100CCD6CC /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B7DDCEDA15FBC58100CCD6CC /* PBXTargetDependency */,
+			);
+			name = CountingTests;
+			productName = CountingTests;
+			productReference = B7DDCED415FBC58100CCD6CC /* CountingTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B7DDCEAA15FBC58100CCD6CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Chuka Okoye";
+			};
+			buildConfigurationList = B7DDCEAD15FBC58100CCD6CC /* Build configuration list for PBXProject "Counting" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B7DDCEA815FBC58100CCD6CC;
+			productRefGroup = B7DDCEB415FBC58100CCD6CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B7DDCEB215FBC58100CCD6CC /* Counting */,
+				B7DDCED315FBC58100CCD6CC /* CountingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B7DDCEB115FBC58100CCD6CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7DDCEC215FBC58100CCD6CC /* InfoPlist.strings in Resources */,
+				B7DDCECB15FBC58100CCD6CC /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7DDCED115FBC58100CCD6CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7DDCEE015FBC58100CCD6CC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B7DDCED215FBC58100CCD6CC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B7DDCEAF15FBC58100CCD6CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7DDCEC415FBC58100CCD6CC /* main.m in Sources */,
+				B7DDCEC815FBC58100CCD6CC /* AppDelegate.m in Sources */,
+				B7DDCECE15FBC58100CCD6CC /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7DDCECF15FBC58100CCD6CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7DDCEE315FBC58100CCD6CC /* CountingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B7DDCEDA15FBC58100CCD6CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B7DDCEB215FBC58100CCD6CC /* Counting */;
+			targetProxy = B7DDCED915FBC58100CCD6CC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B7DDCEC015FBC58100CCD6CC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7DDCEC115FBC58100CCD6CC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B7DDCEC915FBC58100CCD6CC /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7DDCECA15FBC58100CCD6CC /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		B7DDCEDE15FBC58100CCD6CC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7DDCEDF15FBC58100CCD6CC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B7DDCEE415FBC58100CCD6CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B7DDCEE515FBC58100CCD6CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B7DDCEE715FBC58100CCD6CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Counting/Counting-Prefix.pch";
+				INFOPLIST_FILE = "Counting/Counting-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B7DDCEE815FBC58100CCD6CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Counting/Counting-Prefix.pch";
+				INFOPLIST_FILE = "Counting/Counting-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B7DDCEEA15FBC58100CCD6CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Counting.app/Counting";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Counting/Counting-Prefix.pch";
+				INFOPLIST_FILE = "CountingTests/CountingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		B7DDCEEB15FBC58100CCD6CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Counting.app/Counting";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Counting/Counting-Prefix.pch";
+				INFOPLIST_FILE = "CountingTests/CountingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B7DDCEAD15FBC58100CCD6CC /* Build configuration list for PBXProject "Counting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7DDCEE415FBC58100CCD6CC /* Debug */,
+				B7DDCEE515FBC58100CCD6CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B7DDCEE615FBC58100CCD6CC /* Build configuration list for PBXNativeTarget "Counting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7DDCEE715FBC58100CCD6CC /* Debug */,
+				B7DDCEE815FBC58100CCD6CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B7DDCEE915FBC58100CCD6CC /* Build configuration list for PBXNativeTarget "CountingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7DDCEEA15FBC58100CCD6CC /* Debug */,
+				B7DDCEEB15FBC58100CCD6CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B7DDCEAA15FBC58100CCD6CC /* Project object */;
+}
