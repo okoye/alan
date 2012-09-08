@@ -19,5 +19,6 @@
 - (IBAction) sub: (id) sender;
 - (IBAction) dble: (id) sender;
 - (IBAction) opposite: (id) sender;
+- (IBAction) reset;
 
 @end

@@ -51,6 +51,11 @@
     NSLog(@"Multiplying value in label by -1");
 }
 
+- (IBAction) reset
+{
+    NSLog(@"Resetting the whole application");
+}
+
 - (BOOL) isInteger
 {
     id value = [self.display text];
