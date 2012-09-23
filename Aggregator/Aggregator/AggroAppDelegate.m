@@ -1,14 +1,12 @@
 //
 //  AggroAppDelegate.m
-//  Aggro
+//  Aggregator
 //
-//  Created by Chuka Okoye on 9/15/12.
+//  Created by Chuka Okoye on 9/23/12.
 //  Copyright (c) 2012 Lightcurves Labs. All rights reserved.
 //
 
 #import "AggroAppDelegate.h"
-
-#import "AggroViewController.h"
 
 @implementation AggroAppDelegate
 
@@ -16,8 +14,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[AggroViewController alloc] initWithNibName:@"AggroViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
