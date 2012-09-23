@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF05AA60160FACC90097E4A1 /* AggroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF05AA5F160FACC90097E4A1 /* AggroViewController.xib */; };
 		B7DDBF77160FA995005D3A2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DDBF76160FA995005D3A2F /* UIKit.framework */; };
 		B7DDBF79160FA995005D3A2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DDBF78160FA995005D3A2F /* Foundation.framework */; };
 		B7DDBF7B160FA995005D3A2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DDBF7A160FA995005D3A2F /* CoreGraphics.framework */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF05AA5F160FACC90097E4A1 /* AggroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AggroViewController.xib; sourceTree = "<group>"; };
 		B7DDBF72160FA995005D3A2F /* Aggregator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aggregator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7DDBF76160FA995005D3A2F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B7DDBF78160FA995005D3A2F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -111,6 +113,7 @@
 		B7DDBF91160FAA6E005D3A2F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AF05AA5F160FACC90097E4A1 /* AggroViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7DDBF81160FA995005D3A2F /* InfoPlist.strings in Resources */,
+				AF05AA60160FACC90097E4A1 /* AggroViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +298,7 @@
 				B7DDBF8C160FA995005D3A2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
