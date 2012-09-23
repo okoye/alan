@@ -45,6 +45,10 @@
 		B7DDBF67160FA995005D3A2F = {
 			isa = PBXGroup;
 			children = (
+				B7DDBF92160FAA7D005D3A2F /* Stores */,
+				B7DDBF91160FAA6E005D3A2F /* Views */,
+				B7DDBF8F160FAA5D005D3A2F /* Controllers */,
+				B7DDBF8D160FAA3C005D3A2F /* Models */,
 				B7DDBF7C160FA995005D3A2F /* Aggregator */,
 				B7DDBF75160FA995005D3A2F /* Frameworks */,
 				B7DDBF73160FA995005D3A2F /* Products */,
@@ -88,6 +92,34 @@
 				B7DDBF84160FA995005D3A2F /* Aggregator-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B7DDBF8D160FAA3C005D3A2F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B7DDBF8F160FAA5D005D3A2F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B7DDBF91160FAA6E005D3A2F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B7DDBF92160FAA7D005D3A2F /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Stores;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
