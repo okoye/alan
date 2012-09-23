@@ -1,0 +1,312 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B7D9731E16059116001A3442 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D9731D16059116001A3442 /* UIKit.framework */; };
+		B7D9732016059116001A3442 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D9731F16059116001A3442 /* Foundation.framework */; };
+		B7D9732216059116001A3442 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D9732116059116001A3442 /* CoreGraphics.framework */; };
+		B7D9732816059116001A3442 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7D9732616059116001A3442 /* InfoPlist.strings */; };
+		B7D9732A16059116001A3442 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D9732916059116001A3442 /* main.m */; };
+		B7D9732E16059116001A3442 /* AggroAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D9732D16059116001A3442 /* AggroAppDelegate.m */; };
+		B7D9733116059116001A3442 /* AggroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D9733016059116001A3442 /* AggroViewController.m */; };
+		B7D9733416059116001A3442 /* AggroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D9733216059116001A3442 /* AggroViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B7D9731916059116001A3442 /* Aggro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aggro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7D9731D16059116001A3442 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B7D9731F16059116001A3442 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B7D9732116059116001A3442 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B7D9732516059116001A3442 /* Aggro-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Aggro-Info.plist"; sourceTree = "<group>"; };
+		B7D9732716059116001A3442 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B7D9732916059116001A3442 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B7D9732B16059116001A3442 /* Aggro-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aggro-Prefix.pch"; sourceTree = "<group>"; };
+		B7D9732C16059116001A3442 /* AggroAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AggroAppDelegate.h; sourceTree = "<group>"; };
+		B7D9732D16059116001A3442 /* AggroAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AggroAppDelegate.m; sourceTree = "<group>"; };
+		B7D9732F16059116001A3442 /* AggroViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AggroViewController.h; sourceTree = "<group>"; };
+		B7D9733016059116001A3442 /* AggroViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AggroViewController.m; sourceTree = "<group>"; };
+		B7D9733316059116001A3442 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AggroViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B7D9731616059116001A3442 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7D9731E16059116001A3442 /* UIKit.framework in Frameworks */,
+				B7D9732016059116001A3442 /* Foundation.framework in Frameworks */,
+				B7D9732216059116001A3442 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B7D9730E16059116001A3442 = {
+			isa = PBXGroup;
+			children = (
+				B7D9732316059116001A3442 /* Aggro */,
+				B7D9731C16059116001A3442 /* Frameworks */,
+				B7D9731A16059116001A3442 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B7D9731A16059116001A3442 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B7D9731916059116001A3442 /* Aggro.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B7D9731C16059116001A3442 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7D9731D16059116001A3442 /* UIKit.framework */,
+				B7D9731F16059116001A3442 /* Foundation.framework */,
+				B7D9732116059116001A3442 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7D9732316059116001A3442 /* Aggro */ = {
+			isa = PBXGroup;
+			children = (
+				B7DDBF5D160FA0BC005D3A2F /* Stores */,
+				B7DDBF5C160FA030005D3A2F /* Controllers */,
+				B7DDBF5A160F9FFD005D3A2F /* Models */,
+				B7D9732D16059116001A3442 /* AggroAppDelegate.m */,
+				B7D9732C16059116001A3442 /* AggroAppDelegate.h */,
+				B7D9733216059116001A3442 /* AggroViewController.xib */,
+				B7D9732416059116001A3442 /* Supporting Files */,
+			);
+			path = Aggro;
+			sourceTree = "<group>";
+		};
+		B7D9732416059116001A3442 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B7D9732516059116001A3442 /* Aggro-Info.plist */,
+				B7D9732616059116001A3442 /* InfoPlist.strings */,
+				B7D9732916059116001A3442 /* main.m */,
+				B7D9732B16059116001A3442 /* Aggro-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B7DDBF5A160F9FFD005D3A2F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B7DDBF5C160FA030005D3A2F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B7D9732F16059116001A3442 /* AggroViewController.h */,
+				B7D9733016059116001A3442 /* AggroViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B7DDBF5D160FA0BC005D3A2F /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Stores;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B7D9731816059116001A3442 /* Aggro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7D9733716059116001A3442 /* Build configuration list for PBXNativeTarget "Aggro" */;
+			buildPhases = (
+				B7D9731516059116001A3442 /* Sources */,
+				B7D9731616059116001A3442 /* Frameworks */,
+				B7D9731716059116001A3442 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Aggro;
+			productName = Aggro;
+			productReference = B7D9731916059116001A3442 /* Aggro.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B7D9731016059116001A3442 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Aggro;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Lightcurves Labs";
+			};
+			buildConfigurationList = B7D9731316059116001A3442 /* Build configuration list for PBXProject "Aggro" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B7D9730E16059116001A3442;
+			productRefGroup = B7D9731A16059116001A3442 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B7D9731816059116001A3442 /* Aggro */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B7D9731716059116001A3442 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7D9732816059116001A3442 /* InfoPlist.strings in Resources */,
+				B7D9733416059116001A3442 /* AggroViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B7D9731516059116001A3442 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7D9732A16059116001A3442 /* main.m in Sources */,
+				B7D9732E16059116001A3442 /* AggroAppDelegate.m in Sources */,
+				B7D9733116059116001A3442 /* AggroViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B7D9732616059116001A3442 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7D9732716059116001A3442 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B7D9733216059116001A3442 /* AggroViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7D9733316059116001A3442 /* en */,
+			);
+			name = AggroViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B7D9733516059116001A3442 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B7D9733616059116001A3442 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B7D9733816059116001A3442 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Aggro/Aggro-Prefix.pch";
+				INFOPLIST_FILE = "Aggro/Aggro-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B7D9733916059116001A3442 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Aggro/Aggro-Prefix.pch";
+				INFOPLIST_FILE = "Aggro/Aggro-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B7D9731316059116001A3442 /* Build configuration list for PBXProject "Aggro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7D9733516059116001A3442 /* Debug */,
+				B7D9733616059116001A3442 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B7D9733716059116001A3442 /* Build configuration list for PBXNativeTarget "Aggro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7D9733816059116001A3442 /* Debug */,
+				B7D9733916059116001A3442 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B7D9731016059116001A3442 /* Project object */;
+}
