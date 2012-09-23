@@ -14,7 +14,6 @@
 		B7D9732A16059116001A3442 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D9732916059116001A3442 /* main.m */; };
 		B7D9732E16059116001A3442 /* AggroAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D9732D16059116001A3442 /* AggroAppDelegate.m */; };
 		B7D9733116059116001A3442 /* AggroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D9733016059116001A3442 /* AggroViewController.m */; };
-		B7D9733416059116001A3442 /* AggroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D9733216059116001A3442 /* AggroViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +29,6 @@
 		B7D9732D16059116001A3442 /* AggroAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AggroAppDelegate.m; sourceTree = "<group>"; };
 		B7D9732F16059116001A3442 /* AggroViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AggroViewController.h; sourceTree = "<group>"; };
 		B7D9733016059116001A3442 /* AggroViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AggroViewController.m; sourceTree = "<group>"; };
-		B7D9733316059116001A3442 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AggroViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +80,6 @@
 				B7DDBF5A160F9FFD005D3A2F /* Models */,
 				B7D9732D16059116001A3442 /* AggroAppDelegate.m */,
 				B7D9732C16059116001A3442 /* AggroAppDelegate.h */,
-				B7D9733216059116001A3442 /* AggroViewController.xib */,
 				B7D9732416059116001A3442 /* Supporting Files */,
 			);
 			path = Aggro;
@@ -175,7 +172,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7D9732816059116001A3442 /* InfoPlist.strings in Resources */,
-				B7D9733416059116001A3442 /* AggroViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,14 +197,6 @@
 				B7D9732716059116001A3442 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		B7D9733216059116001A3442 /* AggroViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B7D9733316059116001A3442 /* en */,
-			);
-			name = AggroViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
