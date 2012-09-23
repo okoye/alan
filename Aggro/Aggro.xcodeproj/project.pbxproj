@@ -77,10 +77,11 @@
 		B7D9732316059116001A3442 /* Aggro */ = {
 			isa = PBXGroup;
 			children = (
-				B7D9732C16059116001A3442 /* AggroAppDelegate.h */,
+				B7DDBF5D160FA0BC005D3A2F /* Stores */,
+				B7DDBF5C160FA030005D3A2F /* Controllers */,
+				B7DDBF5A160F9FFD005D3A2F /* Models */,
 				B7D9732D16059116001A3442 /* AggroAppDelegate.m */,
-				B7D9732F16059116001A3442 /* AggroViewController.h */,
-				B7D9733016059116001A3442 /* AggroViewController.m */,
+				B7D9732C16059116001A3442 /* AggroAppDelegate.h */,
 				B7D9733216059116001A3442 /* AggroViewController.xib */,
 				B7D9732416059116001A3442 /* Supporting Files */,
 			);
@@ -96,6 +97,29 @@
 				B7D9732B16059116001A3442 /* Aggro-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B7DDBF5A160F9FFD005D3A2F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B7DDBF5C160FA030005D3A2F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B7D9732F16059116001A3442 /* AggroViewController.h */,
+				B7D9733016059116001A3442 /* AggroViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B7DDBF5D160FA0BC005D3A2F /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Stores;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +304,7 @@
 				B7D9733916059116001A3442 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
