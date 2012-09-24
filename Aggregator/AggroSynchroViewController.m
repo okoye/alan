@@ -8,10 +8,6 @@
 
 #import "AggroSynchroViewController.h"
 
-@interface AggroSynchroViewController ()
-
-@end
-
 @implementation AggroSynchroViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,10 +27,31 @@
     [super viewWillAppear: animated];    
 }
 
-- (IBAction) sense:(id)sender
+- (IBAction) stationary:(id)sender
+{
+    NSLog(@"Stationary activity is being executed");
+}
+
+- (IBAction) walking:(id)sender
+{
+    NSLog(@"Walking activity is being executed");
+}
+
+- (IBAction) running:(id)sender
+{
+    NSLog(@"Running activity is being executed");
+}
+
+- (IBAction) transportation:(id)sender
+{
+    NSLog(@"Transportation activity is being executed");
+}
+
+- (void) sense:(id)sender withActivityType: (NSString*) activity
 {
     //Pop new view into view stack with necessary info.
-    NSLog(@"%@",sender);
+    NSLog(@"Now initializing view for %@", activity);
 }
+
 
 @end
