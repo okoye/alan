@@ -26,6 +26,13 @@
     return self;
 }
 
+- (void) viewWillAppear: (BOOL)animated
+{
+    [super viewWillAppear: animated];
+    
+    [[self view] setBackgroundColor:[UIColor orangeColor]];
+}
+
 - (IBAction) sense:(id)sender
 {
 }
