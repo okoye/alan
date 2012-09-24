@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AggroSynchroViewController.h"
 
 @interface AggroAppDelegate : UIResponder <UIApplicationDelegate>
 
