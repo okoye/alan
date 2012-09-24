@@ -14,6 +14,8 @@
 		B7DDBF83160FA995005D3A2F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDBF82160FA995005D3A2F /* main.m */; };
 		B7DDBF87160FA995005D3A2F /* AggroAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDBF86160FA995005D3A2F /* AggroAppDelegate.m */; };
 		B7DDBF99160FAE76005D3A2F /* AggroSynchroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDBF98160FAE76005D3A2F /* AggroSynchroViewController.m */; };
+		B7DDBFBC160FE8F3005D3A2F /* AggroSynchroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7DDBFBB160FE8F3005D3A2F /* AggroSynchroView.xib */; };
+		B7DDBFBF160FED90005D3A2F /* ActivityRecorderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7DDBFBE160FED90005D3A2F /* ActivityRecorderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		B7DDBF86160FA995005D3A2F /* AggroAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AggroAppDelegate.m; sourceTree = "<group>"; };
 		B7DDBF97160FAE76005D3A2F /* AggroSynchroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AggroSynchroViewController.h; sourceTree = "<group>"; };
 		B7DDBF98160FAE76005D3A2F /* AggroSynchroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AggroSynchroViewController.m; sourceTree = "<group>"; };
+		B7DDBFBB160FE8F3005D3A2F /* AggroSynchroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AggroSynchroView.xib; path = Aggregator/AggroSynchroView.xib; sourceTree = "<group>"; };
+		B7DDBFBE160FED90005D3A2F /* ActivityRecorderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityRecorderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 		B7DDBF91160FAA6E005D3A2F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B7DDBFBB160FE8F3005D3A2F /* AggroSynchroView.xib */,
+				B7DDBFBE160FED90005D3A2F /* ActivityRecorderView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -180,6 +186,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7DDBF81160FA995005D3A2F /* InfoPlist.strings in Resources */,
+				B7DDBFBC160FE8F3005D3A2F /* AggroSynchroView.xib in Resources */,
+				B7DDBFBF160FED90005D3A2F /* ActivityRecorderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

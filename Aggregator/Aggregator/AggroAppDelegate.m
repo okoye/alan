@@ -16,9 +16,7 @@
     
     // Override point for customization after application launch.
     AggroSynchroViewController* syncController = [[AggroSynchroViewController alloc] init];
-    UINavigationController* navController = [[UINavigationController alloc]
-                                                initWithRootViewController: syncController];
-    [self.window setRootViewController:navController];
+    [self.window setRootViewController:syncController];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
