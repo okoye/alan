@@ -13,6 +13,7 @@
 		B7DDBF81160FA995005D3A2F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7DDBF7F160FA995005D3A2F /* InfoPlist.strings */; };
 		B7DDBF83160FA995005D3A2F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDBF82160FA995005D3A2F /* main.m */; };
 		B7DDBF87160FA995005D3A2F /* AggroAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDBF86160FA995005D3A2F /* AggroAppDelegate.m */; };
+		B7DDBF99160FAE76005D3A2F /* AggroSynchroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDBF98160FAE76005D3A2F /* AggroSynchroViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		B7DDBF84160FA995005D3A2F /* Aggregator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aggregator-Prefix.pch"; sourceTree = "<group>"; };
 		B7DDBF85160FA995005D3A2F /* AggroAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AggroAppDelegate.h; sourceTree = "<group>"; };
 		B7DDBF86160FA995005D3A2F /* AggroAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AggroAppDelegate.m; sourceTree = "<group>"; };
+		B7DDBF97160FAE76005D3A2F /* AggroSynchroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AggroSynchroViewController.h; sourceTree = "<group>"; };
+		B7DDBF98160FAE76005D3A2F /* AggroSynchroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AggroSynchroViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 		B7DDBF8F160FAA5D005D3A2F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B7DDBF97160FAE76005D3A2F /* AggroSynchroViewController.h */,
+				B7DDBF98160FAE76005D3A2F /* AggroSynchroViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 			files = (
 				B7DDBF83160FA995005D3A2F /* main.m in Sources */,
 				B7DDBF87160FA995005D3A2F /* AggroAppDelegate.m in Sources */,
+				B7DDBF99160FAE76005D3A2F /* AggroSynchroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +300,7 @@
 				B7DDBF8C160FA995005D3A2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
