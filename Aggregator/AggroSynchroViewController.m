@@ -28,13 +28,13 @@
 
 - (void) viewWillAppear: (BOOL)animated
 {
-    [super viewWillAppear: animated];
-    
-    [[self view] setBackgroundColor:[UIColor orangeColor]];
+    [super viewWillAppear: animated];    
 }
 
 - (IBAction) sense:(id)sender
 {
+    //Pop new view into view stack with necessary info.
+    NSLog(@"%@",sender);
 }
 
 @end
