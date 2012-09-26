@@ -56,7 +56,7 @@
 {
     //Pop new view into view stack with necessary info.
     NSLog(@"Now initializing view for %@", activity);
-    AggroActivityRecorderViewController* activityRec = [[AggroActivityRecorderViewController alloc] init];
+    AggroActivityRecorderViewController* activityRec = [[AggroActivityRecorderViewController alloc] initWithNibName:@"ActivityRecorderView" bundle:nil];
     [activityRec setRecorderTitle:activity];
     
     [[self navigationController] pushViewController:activityRec animated:YES];
