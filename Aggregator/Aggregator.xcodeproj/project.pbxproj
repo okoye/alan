@@ -16,6 +16,8 @@
 		B7DDBF99160FAE76005D3A2F /* AggroSynchroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDBF98160FAE76005D3A2F /* AggroSynchroViewController.m */; };
 		B7DDBFBC160FE8F3005D3A2F /* AggroSynchroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7DDBFBB160FE8F3005D3A2F /* AggroSynchroView.xib */; };
 		B7DDBFBF160FED90005D3A2F /* ActivityRecorderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7DDBFBE160FED90005D3A2F /* ActivityRecorderView.xib */; };
+		B7DDBFCA161250C9005D3A2F /* AggroActivityRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDBFC9161250C9005D3A2F /* AggroActivityRecorderViewController.m */; };
+		B7DDBFCE16125DBE005D3A2F /* SensingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DDBFCD16125DBE005D3A2F /* SensingStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,10 @@
 		B7DDBF98160FAE76005D3A2F /* AggroSynchroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AggroSynchroViewController.m; sourceTree = "<group>"; };
 		B7DDBFBB160FE8F3005D3A2F /* AggroSynchroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AggroSynchroView.xib; path = Aggregator/AggroSynchroView.xib; sourceTree = "<group>"; };
 		B7DDBFBE160FED90005D3A2F /* ActivityRecorderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityRecorderView.xib; sourceTree = "<group>"; };
+		B7DDBFC8161250C9005D3A2F /* AggroActivityRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AggroActivityRecorderViewController.h; sourceTree = "<group>"; };
+		B7DDBFC9161250C9005D3A2F /* AggroActivityRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AggroActivityRecorderViewController.m; sourceTree = "<group>"; };
+		B7DDBFCC16125DBE005D3A2F /* SensingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensingStore.h; sourceTree = "<group>"; };
+		B7DDBFCD16125DBE005D3A2F /* SensingStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensingStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,8 @@
 			children = (
 				B7DDBF97160FAE76005D3A2F /* AggroSynchroViewController.h */,
 				B7DDBF98160FAE76005D3A2F /* AggroSynchroViewController.m */,
+				B7DDBFC8161250C9005D3A2F /* AggroActivityRecorderViewController.h */,
+				B7DDBFC9161250C9005D3A2F /* AggroActivityRecorderViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -129,6 +137,8 @@
 		B7DDBF92160FAA7D005D3A2F /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				B7DDBFCC16125DBE005D3A2F /* SensingStore.h */,
+				B7DDBFCD16125DBE005D3A2F /* SensingStore.m */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -201,6 +211,8 @@
 				B7DDBF83160FA995005D3A2F /* main.m in Sources */,
 				B7DDBF87160FA995005D3A2F /* AggroAppDelegate.m in Sources */,
 				B7DDBF99160FAE76005D3A2F /* AggroSynchroViewController.m in Sources */,
+				B7DDBFCA161250C9005D3A2F /* AggroActivityRecorderViewController.m in Sources */,
+				B7DDBFCE16125DBE005D3A2F /* SensingStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

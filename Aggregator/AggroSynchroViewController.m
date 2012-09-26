@@ -7,6 +7,7 @@
 //
 
 #import "AggroSynchroViewController.h"
+#import "AggroActivityRecorderViewController.h"
 
 @implementation AggroSynchroViewController
 
@@ -30,27 +31,35 @@
 - (IBAction) stationary:(id)sender
 {
     NSLog(@"Stationary activity is being executed");
+    [self sense:sender withActivityType:@"Stationary"];
 }
 
 - (IBAction) walking:(id)sender
 {
     NSLog(@"Walking activity is being executed");
+    [self sense:sender withActivityType:@"Walking"];
 }
 
 - (IBAction) running:(id)sender
 {
     NSLog(@"Running activity is being executed");
+    [self sense:sender withActivityType:@"Running"];
 }
 
 - (IBAction) transportation:(id)sender
 {
     NSLog(@"Transportation activity is being executed");
+    [self sense:sender withActivityType:@"Transportation"];
 }
 
 - (void) sense:(id)sender withActivityType: (NSString*) activity
 {
     //Pop new view into view stack with necessary info.
     NSLog(@"Now initializing view for %@", activity);
+    AggroActivityRecorderViewController* activityRec = [[AggroActivityRecorderViewController alloc] init];
+    [activityRec setRecorderTitle:activity];
+    
+    [[self navigationController] pushViewController:activityRec animated:YES];
 }
 
 
