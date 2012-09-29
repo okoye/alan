@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SensingStore.h"
 
 @interface AggroSynchroViewController : UIViewController
 
 @property(nonatomic, readonly) __weak IBOutlet UILabel* status;
+@property(nonatomic, readonly) SensingStore* store;
 
 - (IBAction) stationary:(id) sender;
 - (IBAction) walking:(id) sender;

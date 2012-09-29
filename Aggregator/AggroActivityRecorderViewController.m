@@ -11,7 +11,7 @@
 
 @implementation AggroActivityRecorderViewController
 
-@synthesize senseManager;
+@synthesize storeFront, recordingTag;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,16 +25,22 @@
 - (IBAction) startRecording:(id)sender
 {
     NSLog(@"Started recording data");
+    //TODO: setup pressdown and press up functionality
+    [storeFront startCollectionWithLabel: [self recordingTag]];
 }
 
 - (IBAction) stopRecording:(id)sender
 {
     NSLog(@"Stopped recording data");
+    //TODO: setup pressdown and press up functionality
+    [storeFront stopCollection];
 }
 
-- (void) setRecorderTitle:(NSString *)rec
+- (void) setRecorderTitle:(NSString *)rec andStoreFront:(SensingStore *)storeF
 {
     [[self navigationItem] setTitle:rec];
+    [self setStoreFront:storeF];
+    recordingTag = [rec copy];
 }
 
 @end

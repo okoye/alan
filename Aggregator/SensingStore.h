@@ -7,7 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface SensingStore : NSObject
+@interface SensingStore : NSObject <CLLocationManagerDelegate>
+{
+    @private
+    NSMutableArray* dataStore;
+    NSString* label;
+    CLLocationManager* locationManager;
+    BOOL collect;
+}
+//TODO: singleton
++ (SensingStore*) fetchStoreOrInitializeWithSize:(NSUInteger)size;
+
+- (BOOL) startCollectionWithLabel:(NSString*)currentLabel;
+
+- (BOOL) stopCollection;
+
+- (NSMutableArray*) fetchReadingsOfSize:(NSUInteger)size;
 
 @end

@@ -11,6 +11,8 @@
 
 @implementation AggroSynchroViewController
 
+@synthesize store;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -19,6 +21,7 @@
         [[self navigationItem] setTitle:@"Aggregator"];
         
         //Now configure datastores
+        store = [SensingStore fetchStoreOrInitializeWithSize:2000];
     }
     return self;
 }
@@ -57,7 +60,7 @@
     //Pop new view into view stack with necessary info.
     NSLog(@"Now initializing view for %@", activity);
     AggroActivityRecorderViewController* activityRec = [[AggroActivityRecorderViewController alloc] initWithNibName:@"ActivityRecorderView" bundle:nil];
-    [activityRec setRecorderTitle:activity];
+    [activityRec setRecorderTitle:activity andStoreFront:store];
     
     [[self navigationController] pushViewController:activityRec animated:YES];
 }

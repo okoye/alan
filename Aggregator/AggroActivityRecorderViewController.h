@@ -12,12 +12,13 @@
 @interface AggroActivityRecorderViewController : UIViewController
 
 @property(nonatomic, readonly) __weak IBOutlet UILabel *status;
-@property(nonatomic) SensingStore* senseManager;
+@property(nonatomic) SensingStore* storeFront;
+@property(nonatomic, readonly) NSString* recordingTag;
 
 - (IBAction) startRecording:(id)sender;
 
 - (IBAction) stopRecording:(id)sender;
 
-- (void) setRecorderTitle:(NSString*) rec;
+- (void) setRecorderTitle:(NSString*) rec andStoreFront:(SensingStore*) storeFront;
 
 @end
