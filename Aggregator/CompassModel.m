@@ -20,9 +20,20 @@
     return self;
 }
 
-- (id)JSON
+- (id) JSON
 {
-    return [NSDictionary alloc] initWithObjects:<#(NSArray *)#> forKeys:<#(NSArray *)#>;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    NSArray* values = [[NSArray alloc] initWithObjects: [NSNumber numberWithDouble:[heading magneticHeading]],
+                        [NSNumber numberWithDouble:[heading trueHeading]],
+                        [NSNumber numberWithDouble:[heading headingAccuracy]],
+                        [dateFormatter stringFromDate:[heading timestamp]],
+                        [NSNumber numberWithDouble:[heading x]],
+                        [NSNumber numberWithDouble:[heading y]],
+                        [NSNumber numberWithDouble:[heading z]], nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"", nil];
+    //return [NSDictionary alloc] initWithObjects:[@"", nil] forKeys:@"", nil];
+    return nil;
 }
 
 @end
