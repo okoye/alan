@@ -12,9 +12,10 @@
 @interface CompassModel : NSObject
 {
     CLHeading* heading;
+    NSString* activityTag;
 }
 
-- (id) initFromCompassReading:(CLHeading*) heading;
-- (NSString*) toJSON;
+- (id) initFromCompassReading:(CLHeading*) heading andTag:(NSString*)tag;
+- (id) JSON;
 
 @end

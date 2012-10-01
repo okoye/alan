@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7BA4E861618E4DE00115D33 /* YAJLiOS 2.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B7BA4E831618E46500115D33 /* YAJLiOS 2.framework */; };
 		B7DDBF77160FA995005D3A2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DDBF76160FA995005D3A2F /* UIKit.framework */; };
 		B7DDBF79160FA995005D3A2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DDBF78160FA995005D3A2F /* Foundation.framework */; };
 		B7DDBF7B160FA995005D3A2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DDBF7A160FA995005D3A2F /* CoreGraphics.framework */; };
@@ -23,7 +24,21 @@
 		B7E58D611614E6D100D2A1F1 /* CompassModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E58D601614E6D100D2A1F1 /* CompassModel.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B7BA4E851618E4C500115D33 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B7BA4E861618E4DE00115D33 /* YAJLiOS 2.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		B7BA4E831618E46500115D33 /* YAJLiOS 2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "YAJLiOS 2.framework"; sourceTree = "<group>"; };
 		B7DDBF72160FA995005D3A2F /* Aggregator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aggregator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7DDBF76160FA995005D3A2F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B7DDBF78160FA995005D3A2F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -67,7 +82,6 @@
 		B7DDBF67160FA995005D3A2F = {
 			isa = PBXGroup;
 			children = (
-				B7E58D5D1613D16000D2A1F1 /* CoreLocation.framework */,
 				B7DDBF92160FAA7D005D3A2F /* Stores */,
 				B7DDBF91160FAA6E005D3A2F /* Views */,
 				B7DDBF8F160FAA5D005D3A2F /* Controllers */,
@@ -89,6 +103,8 @@
 		B7DDBF75160FA995005D3A2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B7BA4E831618E46500115D33 /* YAJLiOS 2.framework */,
+				B7E58D5D1613D16000D2A1F1 /* CoreLocation.framework */,
 				B7DDBF76160FA995005D3A2F /* UIKit.framework */,
 				B7DDBF78160FA995005D3A2F /* Foundation.framework */,
 				B7DDBF7A160FA995005D3A2F /* CoreGraphics.framework */,
@@ -165,6 +181,7 @@
 			buildConfigurationList = B7DDBF8A160FA995005D3A2F /* Build configuration list for PBXNativeTarget "Aggregator" */;
 			buildPhases = (
 				B7DDBF6E160FA995005D3A2F /* Sources */,
+				B7BA4E851618E4C500115D33 /* CopyFiles */,
 				B7DDBF6F160FA995005D3A2F /* Frameworks */,
 				B7DDBF70160FA995005D3A2F /* Resources */,
 			);
@@ -269,6 +286,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -289,6 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -298,9 +317,14 @@
 		B7DDBF8B160FA995005D3A2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Aggregator/Aggregator-Prefix.pch";
 				INFOPLIST_FILE = "Aggregator/Aggregator-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -309,9 +333,14 @@
 		B7DDBF8C160FA995005D3A2F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Aggregator/Aggregator-Prefix.pch";
 				INFOPLIST_FILE = "Aggregator/Aggregator-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

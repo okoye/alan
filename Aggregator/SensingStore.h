@@ -26,4 +26,6 @@
 
 - (NSMutableArray*) fetchReadingsOfSize:(NSUInteger)size;
 
+- (void) removeReadings:(NSMutableArray*)objectsToRemove;
+
 @end

@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+//TODO refactor. should have common base class with compass model
+
 @interface GPSModel : NSObject
 {
     CLLocation* location;
+    NSString* activityTag;
 }
 
-- (id) initFromGPSReading: locationValue;
+- (id) initFromGPSReading: locationValue andTag:(NSString*)tag;
 - (NSString*) toJSON;
-//TODO: properties of a gps object
-//TODO: class method initializing object from CLLocation
+
 @end

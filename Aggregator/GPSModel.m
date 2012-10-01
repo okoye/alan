@@ -10,11 +10,12 @@
 
 @implementation GPSModel
 
-- (id) initFromGPSReading:(id)locationValue
+- (id) initFromGPSReading:(id)locationValue andTag:(NSString *)tag
 {
     self = [super init];
     if (self){
         location = [locationValue copy];
+        activityTag = [tag copy];
     }
     return self;
 }

@@ -21,7 +21,7 @@
         [[self navigationItem] setTitle:@"Aggregator"];
         
         //Now configure datastores
-        store = [SensingStore fetchStoreOrInitializeWithSize:2000];
+        store = [SensingStore fetchStoreOrInitializeWithSize:10000];
     }
     return self;
 }

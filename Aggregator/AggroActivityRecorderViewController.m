@@ -43,4 +43,9 @@
     recordingTag = [rec copy];
 }
 
+- (void) sizeChanged:(NSUInteger) count
+{
+    //callback for when size changes in store front
+}
+
 @end

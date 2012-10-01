@@ -10,18 +10,19 @@
 
 @implementation CompassModel
 
-- (id) initFromCompassReading:(CLHeading *)headingValue
+- (id) initFromCompassReading:(CLHeading *)headingValue andTag:(NSString *)tag
 {
     self = [super init];
     if (self){
         heading = [headingValue copy];
+        activityTag = [tag copy];
     }
     return self;
 }
 
-- (NSString*) toJSON
+- (id)JSON
 {
-    return @"";
+    return [NSDictionary alloc] initWithObjects:<#(NSArray *)#> forKeys:<#(NSArray *)#>;
 }
 
 @end

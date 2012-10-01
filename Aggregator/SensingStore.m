@@ -7,6 +7,7 @@
 //
 
 #import "SensingStore.h"
+#import "CompassModel.h"
 
 @implementation SensingStore
 
@@ -49,14 +50,33 @@
 - (NSMutableArray*) fetchReadingsOfSize:(NSUInteger)size
 {
     NSLog(@"Fetching readings of size %i",size);
-    return nil;
+    if (size > [dataStore count]){
+        size = [dataStore count];
+    }
+    else if (size <= 0){
+        return nil;
+    }
+    NSMutableArray *buffer = [NSMutableArray arrayWithCapacity:size];
+    while (size > 0){
+        [buffer addObject: [dataStore objectAtIndex:--size]];
+    }
+    return buffer;
+}
+
+- (void) removeReadings:(NSMutableArray *)objectsToRemove
+{
+    NSLog(@"Removing readings of size %i from datastore", [objectsToRemove count]);
+    for (CompassModel *mod in objectsToRemove){
+       [dataStore removeObjectIdenticalTo:mod];
+    }
 }
 
 - (void) locationManager:(CLLocationManager*) manager didUpdateHeading:(CLHeading *)newHeading
 {
     NSLog(@"Received heading update %@", newHeading);
-    
-    //TODO: new heading should be massaged into data model including label
+    CompassModel* aReading = [[CompassModel alloc] initFromCompassReading:newHeading andTag:label];
+    [dataStore addObject:aReading];
+    NSLog(@"Size of datastore readings is %i", [dataStore count]);
 }
 
 - (void) locationManager:(CLLocationManager*) manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
