@@ -36,6 +36,15 @@
     [storeFront stopCollection];
 }
 
+- (IBAction) synchronize:(id)sender
+{
+    NSLog(@"Synchronizing with api");
+    
+    while ([storeFront hasMoreReadings]){
+        //fetch in batches of 10, then convert to json.
+    }
+}
+
 - (void) setRecorderTitle:(NSString *)rec andStoreFront:(SensingStore *)storeF
 {
     [[self navigationItem] setTitle:rec];

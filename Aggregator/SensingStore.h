@@ -28,4 +28,6 @@
 
 - (void) removeReadings:(NSMutableArray*)objectsToRemove;
 
+- (BOOL) hasMoreReadings;
+
 @end

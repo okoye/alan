@@ -19,6 +19,8 @@
 
 - (IBAction) stopRecording:(id)sender;
 
+- (IBAction) synchronize:(id)sender;
+
 - (void) setRecorderTitle:(NSString*) rec andStoreFront:(SensingStore*) storeFront;
 
 @end

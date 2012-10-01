@@ -63,6 +63,11 @@
     return buffer;
 }
 
+- (BOOL) hasMoreReadings
+{
+    return ([dataStore count] > 0);
+}
+
 - (void) removeReadings:(NSMutableArray *)objectsToRemove
 {
     NSLog(@"Removing readings of size %i from datastore", [objectsToRemove count]);
@@ -75,6 +80,7 @@
 {
     NSLog(@"Received heading update %@", newHeading);
     CompassModel* aReading = [[CompassModel alloc] initFromCompassReading:newHeading andTag:label];
+    [aReading JSON];
     [dataStore addObject:aReading];
     NSLog(@"Size of datastore readings is %i", [dataStore count]);
 }
