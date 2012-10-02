@@ -63,9 +63,9 @@
     return buffer;
 }
 
-- (BOOL) hasMoreReadings
+- (NSUInteger) hasMoreReadings
 {
-    return ([dataStore count] > 0);
+    return [dataStore count];
 }
 
 - (void) removeReadings:(NSMutableArray *)objectsToRemove
