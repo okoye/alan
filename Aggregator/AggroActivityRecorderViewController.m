@@ -7,6 +7,7 @@
 //
 
 #import "AggroActivityRecorderViewController.h"
+#import "CompassModel.h"
 
 
 @implementation AggroActivityRecorderViewController
@@ -63,11 +64,17 @@
 - (IBAction) synchronize:(id)sender
 {
     NSLog(@"Synchronizing with api");
-    
+    NSPredicate *predicate = [NSPredicate
+                              predicateWithFormat:@"activityTag like %@",recordingTag];
+    CompassModel *temp = nil;
+    for(temp in [storeFront fetchReadingsOfType:predicate]){
+        NSLog(@"Synchronizing %@",[temp JSON]);
+    }
    // while ([storeFront hasMoreReadings]){
         //fetch in batches of 10, then convert to json.
         //TODO: should eventually be asynchronous
    // }
+    
 }
 
 - (void) setRecorderTitle:(NSString *)rec andStoreFront:(SensingStore *)storeF

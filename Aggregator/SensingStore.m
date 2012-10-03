@@ -63,6 +63,12 @@
     return buffer;
 }
 
+- (NSArray*) fetchReadingsOfType:(NSPredicate *)pred
+{
+    NSLog(@"Fetching readings with predicate %@",pred);
+    return [dataStore filteredArrayUsingPredicate:pred];
+}
+
 - (NSUInteger) hasMoreReadings
 {
     return [dataStore count];

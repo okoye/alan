@@ -26,6 +26,8 @@
 
 - (NSMutableArray*) fetchReadingsOfSize:(NSUInteger)size;
 
+- (NSArray*) fetchReadingsOfType:(NSPredicate*)pred;
+
 - (void) removeReadings:(NSMutableArray*)objectsToRemove;
 
 - (NSUInteger) hasMoreReadings;
