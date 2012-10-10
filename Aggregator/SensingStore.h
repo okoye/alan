@@ -26,10 +26,10 @@
 
 - (NSMutableArray*) fetchReadingsOfSize:(NSUInteger)size;
 
-- (NSArray*) fetchReadingsOfType:(NSPredicate*)pred;
+- (NSArray*) fetchReadingsOfType:(NSPredicate*)pred andSize:(NSUInteger)size;
 
-- (void) removeReadings:(NSMutableArray*)objectsToRemove;
+- (void) removeReadings:(NSArray*)objectsToRemove;
 
-- (NSUInteger) hasMoreReadings;
+- (NSUInteger) hasMoreReadings:(NSString*)tag;
 
 @end

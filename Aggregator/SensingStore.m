@@ -63,18 +63,27 @@
     return buffer;
 }
 
-- (NSArray*) fetchReadingsOfType:(NSPredicate *)pred
+- (NSArray*) fetchReadingsOfType:(NSPredicate *)pred andSize:(NSUInteger)size
 {
     NSLog(@"Fetching readings with predicate %@",pred);
-    return [dataStore filteredArrayUsingPredicate:pred];
+    NSArray *temp = [dataStore filteredArrayUsingPredicate:pred];
+    NSRange aRange;
+    
+    aRange.location = 0;
+    aRange.length = size;
+    if ([temp count] < size){
+        aRange.length = [temp count];
+    }
+    return [temp subarrayWithRange:aRange];
 }
 
-- (NSUInteger) hasMoreReadings
+- (NSUInteger) hasMoreReadings:(NSString *)tag
 {
-    return [dataStore count];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"activityTag like %@", tag];
+    return [[dataStore filteredArrayUsingPredicate:predicate] count];
 }
 
-- (void) removeReadings:(NSMutableArray *)objectsToRemove
+- (void) removeReadings:(NSArray *)objectsToRemove
 {
     NSLog(@"Removing readings of size %i from datastore", [objectsToRemove count]);
     for (CompassModel *mod in objectsToRemove){
