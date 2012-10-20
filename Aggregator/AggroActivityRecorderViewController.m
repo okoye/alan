@@ -40,10 +40,10 @@ NSArray *synchronizedObjects;
 {
     NSLog(@"Setting up view data");
     if (![storeFront hasMoreReadings:recordingTag]){
-        [sync setEnabled: NO];
+        [self toggleButtons:YES :NO :NO];
     }
-    if ([start isEnabled]){
-        [stop setEnabled:NO];
+    else{
+        [self toggleButtons:YES :NO :YES];
     }
     status.text = [self readingsTaken];
     [super viewWillAppear:animated];
@@ -58,18 +58,14 @@ NSArray *synchronizedObjects;
 - (IBAction) startRecording:(id)sender
 {
     NSLog(@"Started recording data");
-    [start setEnabled:NO];
-    [stop setEnabled:YES];
-    [sync setEnabled:YES];
+    [self toggleButtons:NO :YES :YES];
     [storeFront startCollectionWithLabel: [self recordingTag]];
 }
 
 - (IBAction) stopRecording:(id)sender
 {
     NSLog(@"Stopped recording data");
-    [start setEnabled:YES];
-    [stop setEnabled:NO];
-    [sync setEnabled:YES];
+    [self toggleButtons:YES :NO :YES];
     [storeFront stopCollection];
     status.text = [self readingsTaken];
 }
@@ -93,7 +89,6 @@ NSArray *synchronizedObjects;
     conn = [[NSURLConnection alloc] initWithRequest:req
                                             delegate: self
                                             startImmediately:YES];
-    
 }
 
 - (void) connection: (NSURLConnection *)conn didReceiveData:(NSData *)data
@@ -115,7 +110,7 @@ NSArray *synchronizedObjects;
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    
+    NSLog(@"Connection finished loading");
 }
 
 - (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -141,4 +136,25 @@ NSArray *synchronizedObjects;
     return [[NSNumber numberWithInt:[storeFront hasMoreReadings:recordingTag]] stringValue];
 }
 
+-(void) toggleButtons:(BOOL)startButton:(BOOL)stopButton:(BOOL)syncButton
+{
+    [start setEnabled:startButton];
+    [stop setEnabled:stopButton];
+    [sync setEnabled:syncButton];
+    
+    if (startButton)
+        [start setAlpha:1];
+    else
+        [start setAlpha:0.3];
+    
+    if (stopButton)
+        [stop setAlpha:1];
+    else
+        [stop setAlpha:0.3];
+    
+    if (syncButton)
+        [sync setAlpha:1];
+    else
+        [sync setAlpha:0.3];
+}
 @end

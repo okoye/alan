@@ -11,7 +11,7 @@
 
 @implementation AggroSynchroViewController
 
-@synthesize store;
+@synthesize store, status;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,7 +28,8 @@
 
 - (void) viewWillAppear: (BOOL)animated
 {
-    [super viewWillAppear: animated];    
+    [super viewWillAppear: animated];
+    status.text = @"";
 }
 
 - (IBAction) stationary:(id)sender

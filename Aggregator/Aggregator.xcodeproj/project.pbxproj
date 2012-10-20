@@ -82,7 +82,6 @@
 		B7DDBF67160FA995005D3A2F = {
 			isa = PBXGroup;
 			children = (
-				B76D06F716236D7000495D0A /* YAJLiOS.framework */,
 				B7DDBF92160FAA7D005D3A2F /* Stores */,
 				B7DDBF91160FAA6E005D3A2F /* Views */,
 				B7DDBF8F160FAA5D005D3A2F /* Controllers */,
@@ -104,6 +103,7 @@
 		B7DDBF75160FA995005D3A2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B76D06F716236D7000495D0A /* YAJLiOS.framework */,
 				B7E58D5D1613D16000D2A1F1 /* CoreLocation.framework */,
 				B7DDBF76160FA995005D3A2F /* UIKit.framework */,
 				B7DDBF78160FA995005D3A2F /* Foundation.framework */,
@@ -309,6 +309,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
