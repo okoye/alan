@@ -25,7 +25,16 @@
     dataStore = [NSMutableArray arrayWithCapacity:size];
     collect = NO;
     locationManager = [[CLLocationManager alloc] init];
-    [locationManager setHeadingFilter:1];
+    
+    //Start location services to get true heading
+    locationManager.distanceFilter = 1000;
+    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    [locationManager startUpdatingLocation];
+    
+    //Start heading updates
+    if ([CLLocationManager headingAvailable]){
+        [locationManager setHeadingFilter:1];
+    }
     [locationManager setPurpose:@"To differentiate various modes of movement"];
     [locationManager setDelegate:self];
 }
