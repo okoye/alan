@@ -17,7 +17,6 @@
     CLLocationManager* locationManager;
     BOOL collect;
 }
-//TODO: singleton
 + (SensingStore*) fetchStoreOrInitializeWithSize:(NSUInteger)size;
 
 - (BOOL) startCollectionWithLabel:(NSString*)currentLabel;

@@ -19,6 +19,6 @@
 - (IBAction) running:(id) sender;
 - (IBAction) transportation:(id) sender;
 
-- (void) sense:(id)sender withActivityType: (NSString*) activity;
+- (void) sense:(id)sender withActivityType:(NSString*) activity;
 
 @end

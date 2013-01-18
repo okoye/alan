@@ -83,8 +83,10 @@ NSArray *synchronizedObjects;
     synchronizedObjects = [storeFront fetchReadingsOfType:predicate andSize:100];
     NSString *jsonReadings = [synchronizedObjects yajl_JSONString];
     NSData *data = [NSData dataWithBytes:[jsonReadings UTF8String] length:[jsonReadings length]];
+    
     [req setHTTPMethod:@"POST"];
     [req setHTTPBody: data];
+    [req addValue:@"yes" forHTTPHeaderField:@"X-Testing"];
     
     conn = [[NSURLConnection alloc] initWithRequest:req
                                             delegate: self
