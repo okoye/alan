@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  ViewController.h
 //  Alan Scavenger
 //
 //  Created by Chuka Okoye on 1/18/13.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class ViewController;
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface BaseController : UIViewController
 
 @end

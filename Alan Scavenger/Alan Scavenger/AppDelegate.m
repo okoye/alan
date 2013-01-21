@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "BaseController.h"
 
 @implementation AppDelegate
 
@@ -16,10 +16,23 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    
+    UIViewController *baseController =  [[BaseController alloc] initWithNibName:@"BaseView" bundle:nil];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:baseController];
+    
+    //Customize the window appearance (primarily navigation bar)
+    [self applyStyling];
+    
+    
+    self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)applyStyling
+{
+    UINavigationBar* navigationBar = [UINavigationBar appearance];
+    [navigationBar setBackgroundImage: UIImage imageNamed:<#(NSString *)#>]
 }
 
 @end
