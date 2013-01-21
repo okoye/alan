@@ -24,10 +24,13 @@
 		B7B693F416AB68C4008A97EA /* SSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B693F316AB68C4008A97EA /* SSettingsView.m */; };
 		B7B693F616ADDA69008A97EA /* center_view_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B693F516ADDA69008A97EA /* center_view_bg.png */; };
 		B7B693F816ADDA72008A97EA /* center_view_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B693F716ADDA72008A97EA /* center_view_bg@2x.png */; };
-		B7B693FA16ADDA83008A97EA /* top_nav_btn_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B693F916ADDA83008A97EA /* top_nav_btn_settings.png */; };
-		B7B693FC16ADDA8A008A97EA /* top_nav_btn_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B693FB16ADDA8A008A97EA /* top_nav_btn_settings@2x.png */; };
+		B7B693FA16ADDA83008A97EA /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B693F916ADDA83008A97EA /* settings.png */; };
+		B7B693FC16ADDA8A008A97EA /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B693FB16ADDA8A008A97EA /* settings@2x.png */; };
 		B7B693FE16ADDA91008A97EA /* top_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B693FD16ADDA91008A97EA /* top_nav.png */; };
 		B7B6940016ADDA9A008A97EA /* top_nav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B693FF16ADDA9A008A97EA /* top_nav@2x.png */; };
+		B7B6940316ADF0A6008A97EA /* SSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B6940216ADF0A6008A97EA /* SSettingsViewController.m */; };
+		B7B6940616AE02A3008A97EA /* blue_center.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B6940416AE02A3008A97EA /* blue_center.png */; };
+		B7B6940716AE02A3008A97EA /* blue_center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B6940516AE02A3008A97EA /* blue_center@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,10 +59,14 @@
 		B7B693F316AB68C4008A97EA /* SSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSettingsView.m; sourceTree = "<group>"; };
 		B7B693F516ADDA69008A97EA /* center_view_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = center_view_bg.png; sourceTree = "<group>"; };
 		B7B693F716ADDA72008A97EA /* center_view_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "center_view_bg@2x.png"; sourceTree = "<group>"; };
-		B7B693F916ADDA83008A97EA /* top_nav_btn_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_nav_btn_settings.png; sourceTree = "<group>"; };
-		B7B693FB16ADDA8A008A97EA /* top_nav_btn_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_nav_btn_settings@2x.png"; sourceTree = "<group>"; };
+		B7B693F916ADDA83008A97EA /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		B7B693FB16ADDA8A008A97EA /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		B7B693FD16ADDA91008A97EA /* top_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_nav.png; sourceTree = "<group>"; };
 		B7B693FF16ADDA9A008A97EA /* top_nav@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_nav@2x.png"; sourceTree = "<group>"; };
+		B7B6940116ADF0A6008A97EA /* SSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSettingsViewController.h; sourceTree = "<group>"; };
+		B7B6940216ADF0A6008A97EA /* SSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSettingsViewController.m; sourceTree = "<group>"; };
+		B7B6940416AE02A3008A97EA /* blue_center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_center.png; sourceTree = "<group>"; };
+		B7B6940516AE02A3008A97EA /* blue_center@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue_center@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,10 +139,12 @@
 		B7B693E416A9F154008A97EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B7B6940416AE02A3008A97EA /* blue_center.png */,
+				B7B6940516AE02A3008A97EA /* blue_center@2x.png */,
 				B7B693FF16ADDA9A008A97EA /* top_nav@2x.png */,
 				B7B693FD16ADDA91008A97EA /* top_nav.png */,
-				B7B693FB16ADDA8A008A97EA /* top_nav_btn_settings@2x.png */,
-				B7B693F916ADDA83008A97EA /* top_nav_btn_settings.png */,
+				B7B693FB16ADDA8A008A97EA /* settings@2x.png */,
+				B7B693F916ADDA83008A97EA /* settings.png */,
 				B7B693F716ADDA72008A97EA /* center_view_bg@2x.png */,
 				B7B693F516ADDA69008A97EA /* center_view_bg.png */,
 				B7B693DC16A9F079008A97EA /* appicon@2x.png */,
@@ -150,6 +159,8 @@
 			children = (
 				B7B693D116A9EF5C008A97EA /* BaseController.h */,
 				B7B693D216A9EF5C008A97EA /* BaseController.m */,
+				B7B6940116ADF0A6008A97EA /* SSettingsViewController.h */,
+				B7B6940216ADF0A6008A97EA /* SSettingsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -226,10 +237,12 @@
 				B7B693E116A9F0FE008A97EA /* Default@2x.png in Resources */,
 				B7B693F616ADDA69008A97EA /* center_view_bg.png in Resources */,
 				B7B693F816ADDA72008A97EA /* center_view_bg@2x.png in Resources */,
-				B7B693FA16ADDA83008A97EA /* top_nav_btn_settings.png in Resources */,
-				B7B693FC16ADDA8A008A97EA /* top_nav_btn_settings@2x.png in Resources */,
+				B7B693FA16ADDA83008A97EA /* settings.png in Resources */,
+				B7B693FC16ADDA8A008A97EA /* settings@2x.png in Resources */,
 				B7B693FE16ADDA91008A97EA /* top_nav.png in Resources */,
 				B7B6940016ADDA9A008A97EA /* top_nav@2x.png in Resources */,
+				B7B6940616AE02A3008A97EA /* blue_center.png in Resources */,
+				B7B6940716AE02A3008A97EA /* blue_center@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +259,7 @@
 				B7B693ED16AB5B6C008A97EA /* SStatusView.m in Sources */,
 				B7B693F116AB5BFE008A97EA /* SSensingStateView.m in Sources */,
 				B7B693F416AB68C4008A97EA /* SSettingsView.m in Sources */,
+				B7B6940316ADF0A6008A97EA /* SSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,32 +7,34 @@
 //
 
 #import "BaseController.h"
+#import "SSettingsViewController.h"
 
-@implementation BaseController
+@interface BaseController ()
+@property (nonatomic, strong) SSettingsViewController *settings;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self){
-        //Initialize and customize controller object
-        //Apply some styling
-        [self apply_styling];
-        
-        //Add right settings nav button
-    }
-    return self;
+- (void) _loadSettings:(id)sender;
+@end
+
+@implementation BaseController{
+    //Global vars
 }
+
+@synthesize settings = _settings;
+
+#pragma mark - UIViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [self setTitle:@"Record"];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Recordings" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(_loadSettings:)];
+    //self.navigationItem.rightBarButtonItem.width = 4000.0f;
 }
 
-#pragma mark - Styling
-
-- (void) apply_styling
+#pragma mark - Private
+- (void) _loadSettings:(id)sender
 {
-    //Customize navigation bar styling and background
+    [self.navigationController pushViewController:_settings animated:YES];
 }
 @end
