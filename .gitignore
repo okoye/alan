@@ -12,3 +12,5 @@
 .svn
 profile
 *.xcuserstate
+bin/
+

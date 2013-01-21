@@ -29,8 +29,6 @@
 		B7B693FE16ADDA91008A97EA /* top_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B693FD16ADDA91008A97EA /* top_nav.png */; };
 		B7B6940016ADDA9A008A97EA /* top_nav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B693FF16ADDA9A008A97EA /* top_nav@2x.png */; };
 		B7B6940316ADF0A6008A97EA /* SSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B6940216ADF0A6008A97EA /* SSettingsViewController.m */; };
-		B7B6940616AE02A3008A97EA /* blue_center.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B6940416AE02A3008A97EA /* blue_center.png */; };
-		B7B6940716AE02A3008A97EA /* blue_center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B6940516AE02A3008A97EA /* blue_center@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,8 +63,6 @@
 		B7B693FF16ADDA9A008A97EA /* top_nav@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_nav@2x.png"; sourceTree = "<group>"; };
 		B7B6940116ADF0A6008A97EA /* SSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSettingsViewController.h; sourceTree = "<group>"; };
 		B7B6940216ADF0A6008A97EA /* SSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSettingsViewController.m; sourceTree = "<group>"; };
-		B7B6940416AE02A3008A97EA /* blue_center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_center.png; sourceTree = "<group>"; };
-		B7B6940516AE02A3008A97EA /* blue_center@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue_center@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,8 +135,6 @@
 		B7B693E416A9F154008A97EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B7B6940416AE02A3008A97EA /* blue_center.png */,
-				B7B6940516AE02A3008A97EA /* blue_center@2x.png */,
 				B7B693FF16ADDA9A008A97EA /* top_nav@2x.png */,
 				B7B693FD16ADDA91008A97EA /* top_nav.png */,
 				B7B693FB16ADDA8A008A97EA /* settings@2x.png */,
@@ -241,8 +235,6 @@
 				B7B693FC16ADDA8A008A97EA /* settings@2x.png in Resources */,
 				B7B693FE16ADDA91008A97EA /* top_nav.png in Resources */,
 				B7B6940016ADDA9A008A97EA /* top_nav@2x.png in Resources */,
-				B7B6940616AE02A3008A97EA /* blue_center.png in Resources */,
-				B7B6940716AE02A3008A97EA /* blue_center@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
