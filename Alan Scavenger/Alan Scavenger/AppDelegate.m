@@ -16,6 +16,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    [self.window setBackgroundColor:[UIColor whiteColor]];
     
     UIViewController *baseController =  [[BaseController alloc] initWithNibName:@"BaseView" bundle:nil];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:baseController];

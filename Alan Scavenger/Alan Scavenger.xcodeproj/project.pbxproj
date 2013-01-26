@@ -20,7 +20,7 @@
 		B7B693E116A9F0FE008A97EA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B693E016A9F0FE008A97EA /* Default@2x.png */; };
 		B7B693E316A9F10B008A97EA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B693E216A9F10B008A97EA /* CoreLocation.framework */; };
 		B7B693ED16AB5B6C008A97EA /* SStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B693EC16AB5B6C008A97EA /* SStatusView.m */; };
-		B7B693F116AB5BFE008A97EA /* SSensingStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B693F016AB5BFE008A97EA /* SSensingStateView.m */; };
+		B7B693F116AB5BFE008A97EA /* SStateControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B693F016AB5BFE008A97EA /* SStateControl.m */; };
 		B7B693F416AB68C4008A97EA /* SSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B693F316AB68C4008A97EA /* SSettingsView.m */; };
 		B7B693F616ADDA69008A97EA /* center_view_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B693F516ADDA69008A97EA /* center_view_bg.png */; };
 		B7B693F816ADDA72008A97EA /* center_view_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7B693F716ADDA72008A97EA /* center_view_bg@2x.png */; };
@@ -51,8 +51,8 @@
 		B7B693E216A9F10B008A97EA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B7B693EB16AB5B6C008A97EA /* SStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SStatusView.h; sourceTree = "<group>"; };
 		B7B693EC16AB5B6C008A97EA /* SStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SStatusView.m; sourceTree = "<group>"; };
-		B7B693EF16AB5BFE008A97EA /* SSensingStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSensingStateView.h; sourceTree = "<group>"; };
-		B7B693F016AB5BFE008A97EA /* SSensingStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSensingStateView.m; sourceTree = "<group>"; };
+		B7B693EF16AB5BFE008A97EA /* SStateControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SStateControl.h; sourceTree = "<group>"; };
+		B7B693F016AB5BFE008A97EA /* SStateControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SStateControl.m; sourceTree = "<group>"; };
 		B7B693F216AB68C4008A97EA /* SSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSettingsView.h; sourceTree = "<group>"; };
 		B7B693F316AB68C4008A97EA /* SSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSettingsView.m; sourceTree = "<group>"; };
 		B7B693F516ADDA69008A97EA /* center_view_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = center_view_bg.png; sourceTree = "<group>"; };
@@ -165,8 +165,8 @@
 				B7B693D416A9EF5C008A97EA /* BaseView.xib */,
 				B7B693EB16AB5B6C008A97EA /* SStatusView.h */,
 				B7B693EC16AB5B6C008A97EA /* SStatusView.m */,
-				B7B693EF16AB5BFE008A97EA /* SSensingStateView.h */,
-				B7B693F016AB5BFE008A97EA /* SSensingStateView.m */,
+				B7B693EF16AB5BFE008A97EA /* SStateControl.h */,
+				B7B693F016AB5BFE008A97EA /* SStateControl.m */,
 				B7B693F216AB68C4008A97EA /* SSettingsView.h */,
 				B7B693F316AB68C4008A97EA /* SSettingsView.m */,
 			);
@@ -249,7 +249,7 @@
 				B7B693CA16A9EF5C008A97EA /* AppDelegate.m in Sources */,
 				B7B693D316A9EF5C008A97EA /* BaseController.m in Sources */,
 				B7B693ED16AB5B6C008A97EA /* SStatusView.m in Sources */,
-				B7B693F116AB5BFE008A97EA /* SSensingStateView.m in Sources */,
+				B7B693F116AB5BFE008A97EA /* SStateControl.m in Sources */,
 				B7B693F416AB68C4008A97EA /* SSettingsView.m in Sources */,
 				B7B6940316ADF0A6008A97EA /* SSettingsViewController.m in Sources */,
 			);
