@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="CompassRecord" syncable="YES">
+        <attribute name="headingAccuracy" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="magneticHeading" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="teslaX" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="teslaY" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="teslaZ" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="trueHeading" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="sessionInfo" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="RecordMetadata" inverseName="items" inverseEntity="RecordMetadata" syncable="YES"/>
+    </entity>
+    <entity name="RecordMetadata" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sessionId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CompassRecord" inverseName="sessionInfo" inverseEntity="CompassRecord" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CompassRecord" positionX="160" positionY="192" width="128" height="180"/>
+        <element name="RecordMetadata" positionX="160" positionY="192" width="128" height="90"/>
+    </elements>
+</model>

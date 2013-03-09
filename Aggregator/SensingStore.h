@@ -27,7 +27,7 @@
 
 - (NSArray*) fetchReadingsOfType:(NSPredicate*)pred andSize:(NSUInteger)size;
 
-- (void) removeReadings:(NSArray*)objectsToRemove;
+- (void) removeReadings:(NSArray*)objectsToRemove; 
 
 - (NSUInteger) hasMoreReadings:(NSString*)tag;
 

@@ -1,0 +1,358 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B737FBD516E851510092A998 /* active_button.png in Resources */ = {isa = PBXBuildFile; fileRef = B737FBC916E851510092A998 /* active_button.png */; };
+		B737FBD616E851510092A998 /* active_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B737FBCA16E851510092A998 /* active_button@2x.png */; };
+		B737FBD716E851510092A998 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = B737FBCB16E851510092A998 /* appicon.png */; };
+		B737FBD816E851510092A998 /* appicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B737FBCC16E851510092A998 /* appicon@2x.png */; };
+		B737FBD916E851510092A998 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B737FBCD16E851510092A998 /* bg.png */; };
+		B737FBDA16E851510092A998 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B737FBCE16E851510092A998 /* bg@2x.png */; };
+		B737FBDB16E851510092A998 /* bg-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = B737FBCF16E851510092A998 /* bg-568h.png */; };
+		B737FBDF16E851510092A998 /* inactive_button.png in Resources */ = {isa = PBXBuildFile; fileRef = B737FBD316E851510092A998 /* inactive_button.png */; };
+		B737FBE016E851510092A998 /* inactive_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B737FBD416E851510092A998 /* inactive_button@2x.png */; };
+		B78F362C16E2F8FE00743142 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B78F362B16E2F8FE00743142 /* UIKit.framework */; };
+		B78F362E16E2F8FE00743142 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B78F362D16E2F8FE00743142 /* Foundation.framework */; };
+		B78F363016E2F8FE00743142 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B78F362F16E2F8FE00743142 /* CoreGraphics.framework */; };
+		B78F363616E2F8FE00743142 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B78F363416E2F8FE00743142 /* InfoPlist.strings */; };
+		B78F363816E2F8FE00743142 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B78F363716E2F8FE00743142 /* main.m */; };
+		B78F363C16E2F8FE00743142 /* FLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B78F363B16E2F8FE00743142 /* FLAppDelegate.m */; };
+		B78F363E16E2F8FE00743142 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B78F363D16E2F8FE00743142 /* Default.png */; };
+		B78F364016E2F8FE00743142 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B78F363F16E2F8FE00743142 /* Default@2x.png */; };
+		B78F364216E2F8FE00743142 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B78F364116E2F8FE00743142 /* Default-568h@2x.png */; };
+		B78F364516E2F8FE00743142 /* FLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B78F364416E2F8FE00743142 /* FLViewController.m */; };
+		B78F364816E2F8FE00743142 /* FLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78F364616E2F8FE00743142 /* FLViewController.xib */; };
+		B78F365016E2FA9D00743142 /* FLCore.m in Sources */ = {isa = PBXBuildFile; fileRef = B78F364F16E2FA9D00743142 /* FLCore.m */; };
+		B78F365216E3E10B00743142 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B78F365116E3E10B00743142 /* AVFoundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B737FBC916E851510092A998 /* active_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = active_button.png; sourceTree = "<group>"; };
+		B737FBCA16E851510092A998 /* active_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active_button@2x.png"; sourceTree = "<group>"; };
+		B737FBCB16E851510092A998 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
+		B737FBCC16E851510092A998 /* appicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon@2x.png"; sourceTree = "<group>"; };
+		B737FBCD16E851510092A998 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		B737FBCE16E851510092A998 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
+		B737FBCF16E851510092A998 /* bg-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-568h.png"; sourceTree = "<group>"; };
+		B737FBD316E851510092A998 /* inactive_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inactive_button.png; sourceTree = "<group>"; };
+		B737FBD416E851510092A998 /* inactive_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inactive_button@2x.png"; sourceTree = "<group>"; };
+		B78F362716E2F8FE00743142 /* Fastlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fastlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B78F362B16E2F8FE00743142 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B78F362D16E2F8FE00743142 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B78F362F16E2F8FE00743142 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B78F363316E2F8FE00743142 /* FastLight-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FastLight-Info.plist"; sourceTree = "<group>"; };
+		B78F363516E2F8FE00743142 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B78F363716E2F8FE00743142 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B78F363916E2F8FE00743142 /* FastLight-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FastLight-Prefix.pch"; sourceTree = "<group>"; };
+		B78F363A16E2F8FE00743142 /* FLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLAppDelegate.h; sourceTree = "<group>"; };
+		B78F363B16E2F8FE00743142 /* FLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLAppDelegate.m; sourceTree = "<group>"; };
+		B78F363D16E2F8FE00743142 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		B78F363F16E2F8FE00743142 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		B78F364116E2F8FE00743142 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B78F364316E2F8FE00743142 /* FLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLViewController.h; sourceTree = "<group>"; };
+		B78F364416E2F8FE00743142 /* FLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLViewController.m; sourceTree = "<group>"; };
+		B78F364716E2F8FE00743142 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FLViewController.xib; sourceTree = "<group>"; };
+		B78F364E16E2FA9D00743142 /* FLCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLCore.h; sourceTree = "<group>"; };
+		B78F364F16E2FA9D00743142 /* FLCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLCore.m; sourceTree = "<group>"; };
+		B78F365116E3E10B00743142 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B78F362416E2F8FE00743142 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B78F365216E3E10B00743142 /* AVFoundation.framework in Frameworks */,
+				B78F362C16E2F8FE00743142 /* UIKit.framework in Frameworks */,
+				B78F362E16E2F8FE00743142 /* Foundation.framework in Frameworks */,
+				B78F363016E2F8FE00743142 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B78F361C16E2F8FE00743142 = {
+			isa = PBXGroup;
+			children = (
+				B78F366116E3FCC400743142 /* images */,
+				B78F363116E2F8FE00743142 /* FastLight */,
+				B78F362A16E2F8FE00743142 /* Frameworks */,
+				B78F362816E2F8FE00743142 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B78F362816E2F8FE00743142 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B78F362716E2F8FE00743142 /* Fastlight.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B78F362A16E2F8FE00743142 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B78F365116E3E10B00743142 /* AVFoundation.framework */,
+				B78F362B16E2F8FE00743142 /* UIKit.framework */,
+				B78F362D16E2F8FE00743142 /* Foundation.framework */,
+				B78F362F16E2F8FE00743142 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B78F363116E2F8FE00743142 /* FastLight */ = {
+			isa = PBXGroup;
+			children = (
+				B78F363A16E2F8FE00743142 /* FLAppDelegate.h */,
+				B78F363B16E2F8FE00743142 /* FLAppDelegate.m */,
+				B78F364316E2F8FE00743142 /* FLViewController.h */,
+				B78F364416E2F8FE00743142 /* FLViewController.m */,
+				B78F364616E2F8FE00743142 /* FLViewController.xib */,
+				B78F363216E2F8FE00743142 /* Supporting Files */,
+				B78F364E16E2FA9D00743142 /* FLCore.h */,
+				B78F364F16E2FA9D00743142 /* FLCore.m */,
+			);
+			path = FastLight;
+			sourceTree = "<group>";
+		};
+		B78F363216E2F8FE00743142 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B78F363316E2F8FE00743142 /* FastLight-Info.plist */,
+				B78F363416E2F8FE00743142 /* InfoPlist.strings */,
+				B78F363716E2F8FE00743142 /* main.m */,
+				B78F363916E2F8FE00743142 /* FastLight-Prefix.pch */,
+				B78F363D16E2F8FE00743142 /* Default.png */,
+				B78F363F16E2F8FE00743142 /* Default@2x.png */,
+				B78F364116E2F8FE00743142 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B78F366116E3FCC400743142 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				B737FBC916E851510092A998 /* active_button.png */,
+				B737FBCA16E851510092A998 /* active_button@2x.png */,
+				B737FBCB16E851510092A998 /* appicon.png */,
+				B737FBCC16E851510092A998 /* appicon@2x.png */,
+				B737FBCD16E851510092A998 /* bg.png */,
+				B737FBCE16E851510092A998 /* bg@2x.png */,
+				B737FBCF16E851510092A998 /* bg-568h.png */,
+				B737FBD316E851510092A998 /* inactive_button.png */,
+				B737FBD416E851510092A998 /* inactive_button@2x.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B78F362616E2F8FE00743142 /* FastLight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B78F364B16E2F8FE00743142 /* Build configuration list for PBXNativeTarget "FastLight" */;
+			buildPhases = (
+				B78F362316E2F8FE00743142 /* Sources */,
+				B78F362416E2F8FE00743142 /* Frameworks */,
+				B78F362516E2F8FE00743142 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FastLight;
+			productName = FastLight;
+			productReference = B78F362716E2F8FE00743142 /* Fastlight.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B78F361E16E2F8FE00743142 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FL;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Lightcurves Labs";
+			};
+			buildConfigurationList = B78F362116E2F8FE00743142 /* Build configuration list for PBXProject "FastLight" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B78F361C16E2F8FE00743142;
+			productRefGroup = B78F362816E2F8FE00743142 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B78F362616E2F8FE00743142 /* FastLight */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B78F362516E2F8FE00743142 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B78F363616E2F8FE00743142 /* InfoPlist.strings in Resources */,
+				B78F363E16E2F8FE00743142 /* Default.png in Resources */,
+				B78F364016E2F8FE00743142 /* Default@2x.png in Resources */,
+				B78F364216E2F8FE00743142 /* Default-568h@2x.png in Resources */,
+				B78F364816E2F8FE00743142 /* FLViewController.xib in Resources */,
+				B737FBD516E851510092A998 /* active_button.png in Resources */,
+				B737FBD616E851510092A998 /* active_button@2x.png in Resources */,
+				B737FBD716E851510092A998 /* appicon.png in Resources */,
+				B737FBD816E851510092A998 /* appicon@2x.png in Resources */,
+				B737FBD916E851510092A998 /* bg.png in Resources */,
+				B737FBDA16E851510092A998 /* bg@2x.png in Resources */,
+				B737FBDB16E851510092A998 /* bg-568h.png in Resources */,
+				B737FBDF16E851510092A998 /* inactive_button.png in Resources */,
+				B737FBE016E851510092A998 /* inactive_button@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B78F362316E2F8FE00743142 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B78F363816E2F8FE00743142 /* main.m in Sources */,
+				B78F363C16E2F8FE00743142 /* FLAppDelegate.m in Sources */,
+				B78F364516E2F8FE00743142 /* FLViewController.m in Sources */,
+				B78F365016E2FA9D00743142 /* FLCore.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B78F363416E2F8FE00743142 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B78F363516E2F8FE00743142 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B78F364616E2F8FE00743142 /* FLViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B78F364716E2F8FE00743142 /* en */,
+			);
+			name = FLViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B78F364916E2F8FE00743142 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B78F364A16E2F8FE00743142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B78F364C16E2F8FE00743142 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FastLight/FastLight-Prefix.pch";
+				INFOPLIST_FILE = "FastLight/FastLight-Info.plist";
+				PRODUCT_NAME = Fastlight;
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B78F364D16E2F8FE00743142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FastLight/FastLight-Prefix.pch";
+				INFOPLIST_FILE = "FastLight/FastLight-Info.plist";
+				PRODUCT_NAME = Fastlight;
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B78F362116E2F8FE00743142 /* Build configuration list for PBXProject "FastLight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B78F364916E2F8FE00743142 /* Debug */,
+				B78F364A16E2F8FE00743142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B78F364B16E2F8FE00743142 /* Build configuration list for PBXNativeTarget "FastLight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B78F364C16E2F8FE00743142 /* Debug */,
+				B78F364D16E2F8FE00743142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B78F361E16E2F8FE00743142 /* Project object */;
+}

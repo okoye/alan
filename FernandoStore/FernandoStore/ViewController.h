@@ -1,14 +1,13 @@
 //
 //  ViewController.h
-//  Alan Scavenger
+//  FernandoStore
 //
-//  Created by Chuka Okoye on 1/18/13.
+//  Created by Chuka Okoye on 2/16/13.
 //  Copyright (c) 2013 Lightcurves Labs. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface BaseController : UIViewController{
-}
+@interface ViewController : UIViewController
 
 @end
