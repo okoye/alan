@@ -8,7 +8,6 @@
 
 #import "EverSensorStore.h"
 #import "GPS.h"
-#import "SBJson.h"
 
 @interface EverSensorStore ()
 {
@@ -21,8 +20,9 @@
 {
     NSManagedObjectContext *context;
     NSManagedObjectModel *model;
-    uint32_t totalSaved;
+    uint32_t total_saved;
     dispatch_queue_t async_queue;
+    NSArray *incomplete_requests;
 }
 
 #pragma mark - EverSensorStore Public Methods
@@ -80,7 +80,7 @@
         NSLog(@"Failed to save new GPS object: %@",[err localizedDescription]);
     }
     if (success)
-        totalSaved++;
+        total_saved++;
     NSLog(@"Successfully saved a new record: %c",success);
     return success;
 }
@@ -93,7 +93,7 @@
 
 - (int32_t) totalSavedObjects
 {
-    return totalSaved;
+    return total_saved;
 }
 
 
@@ -116,8 +116,20 @@
     //http://tewha.net/2012/06/networking-using-nsurlconnection/
     //http://developer.apple.com/library/mac/#featuredarticles/BlocksGCD/_index.html
     
-    void (^gps_processor)(NSManagedObjectContext *cxt, NSArray *values) = ^(NSManagedObjectContext *cxt, NSArray *values){
-        //Convert records to JSON
+    NSString *everAPI = @"everapi.lightcurvelabs.org/location";
+    //Convert records to JSON
+#if EVER_DEBUG_MODE
+    everAPI = @"everapi.thepuppetprojects.com";
+    jsonWriter.humanReadable = YES;
+    NSString *jsonRepresentation = [jsonWriter stringWithObject:values];
+    NSLog(@"This is what will be sent to the API, %@",jsonRepresentation);
+#endif
+    
+    //Send over wire using async connection
+    NSURL *url = [NSURL URLWithString:everAPI];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    
+    void (^callback)(NSManagedObjectContext *cxt, NSArray *values) = ^(NSManagedObjectContext *cxt, NSArray *values){
     };
     
     

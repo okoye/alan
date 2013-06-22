@@ -7,6 +7,7 @@
 //
 
 #import "EverBase.h"
+#define EVER_DEBUG_MODE True
 
 @interface EverBase ()
 
