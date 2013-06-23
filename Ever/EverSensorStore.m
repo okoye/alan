@@ -12,6 +12,7 @@
 
 @interface EverSensorStore()
 -(void) sync;
+-(void) storeUpdate;
 @end
 
 @implementation EverSensorStore
@@ -50,54 +51,84 @@ static NSUInteger BATCH_SIZE = 100; //Size of records to send
     if (success)
         total_saved++;
     NSLog(@"Successfully saved a new record: %c",success);
+    [self storeUpdate];
     return success;
 }
 
 - (BOOL) putCompass:(CLHeading *)heading
 {
     //TODO
+    [self storeUpdate];
     return YES;
 }
 
-- (int32_t) totalSavedObjects
+- (NSUInteger) countTotalInfo
 {
+    //TODO update notification center
     return total_saved;
+}
+
+- (NSUInteger) countUnsyncInfo
+{
+    //TODO update notification center
+    NSFetchRequest *storeCount = [[NSFetchRequest alloc] initWithEntityName:@"GPS"];
+    NSError *error = nil;
+    return [managedObjectContext countForFetchRequest:storeCount error:&error];
 }
 
 
 #pragma mark - EverSensorStore Private Methods
+
+-(void) storeUpdate
+{
+    //Callback hooks for when an update occurs in the store
+    const NSUInteger MAGIC_NUMBER = 4;
+    
+    if (arc4random()%10 == MAGIC_NUMBER){
+        NSLog(@"magic number called, syncing to service");
+        [self sync];
+    }
+    
+    //DEBUGGING
+    [self sync];
+    
+}
+
 -(void) sync
 {
 
     NSString *everAPI = @"api.lightcurvelabs.org/location";
-    NSFetchRequest *fetch_request = nil;
+    NSFetchRequest *fetchRequest = nil;
     NSInteger count = 0;
     NSError *err = nil;
-    NSArray *sensor_readings = nil;
+    NSArray *sensorReadings = nil;
     EverAPIConnector *connector = nil;
 #if EVER_DEBUG_MODE
     everAPI = @"api.thepuppetprojects.com";
 #endif
     NSURL *url = [NSURL URLWithString:everAPI];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
-    
-    //void (^success_callback)(NSManagedObjectContext *cxt, NSArray *values) = ^(NSManagedObjectContext *cxt, NSArray *values){
-    //};
-    
-    //void (^error_callback)void;
-    
+        
     //Send all the data in batches
-    fetch_request = [[NSFetchRequest alloc] initWithEntityName:@"GPS"];
-    count = [managedObjectContext countForFetchRequest:fetch_request error:&err];
+    fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"GPS"];
+    count = [managedObjectContext countForFetchRequest:fetchRequest error:&err];
     for (int i=1; i<=count; i+=BATCH_SIZE){
-        [fetch_request setFetchBatchSize:BATCH_SIZE];
-        sensor_readings = [managedObjectContext executeFetchRequest:fetch_request error:&err];
-        if (!sensor_readings){
+        [fetchRequest setFetchBatchSize:BATCH_SIZE];
+        sensorReadings = [managedObjectContext executeFetchRequest:fetchRequest error:&err];
+        if (!sensorReadings){
             NSLog(@"failed to retrieve data from persistent store: %@",err);
         }
         else{
             NSLog(@"successfully retrieved data from persistent store");
             connector = [[EverAPIConnector alloc] initWithRequest:req];
+            [connector setSuccess_block:^{
+                //code here
+                NSLog(@"success logic is being executed");
+            }];
+            [connector setFailure_block:^{
+                //code
+                NSLog(@"failure logic is being executed");
+            }];
             [connector start];
         }
     }

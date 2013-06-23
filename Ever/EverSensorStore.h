@@ -16,6 +16,7 @@
 + (EverSensorStore *) getStore;
 -(BOOL) putGPS:(CLLocation *)location;
 -(BOOL) putCompass:(CLHeading *)heading;
--(int32_t) totalSavedObjects;
+-(NSUInteger) countTotalInfo;
+-(NSUInteger) countUnsyncInfo;
 
 @end

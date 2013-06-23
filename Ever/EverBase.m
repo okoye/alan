@@ -26,10 +26,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [[self navigationItem] setTitle:@"Ever"];
-        
-        //EverLocationDriver *driver = [EverLocationDriver getLocationDriver];
-        //[driver setStore:store];
-        //[driver start];
     }
     return self;
 }

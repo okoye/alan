@@ -71,7 +71,12 @@
 #pragma mark - LocationManager Delegate Methods
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"new gps record available for insertion to store");
+    NSLog(@"new gps records available for insertion to store");
+    NSEnumerator *enumerator = [locations objectEnumerator];
+    CLLocation *aLocation;
+    while(aLocation = [enumerator nextObject]){
+        [store putGPS:aLocation];
+    }
 }
 
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
