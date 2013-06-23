@@ -26,7 +26,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [[self navigationItem] setTitle:@"Ever"];
-        EverSensorStore *store = [EverSensorStore getStore];
+        
         //EverLocationDriver *driver = [EverLocationDriver getLocationDriver];
         //[driver setStore:store];
         //[driver start];

@@ -23,7 +23,7 @@
 		B7D3F83E176C277200597973 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D3F83D176C277200597973 /* CoreLocation.framework */; };
 		B7D3F841176EA22700597973 /* EverSensorStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D3F840176EA22700597973 /* EverSensorStore.m */; };
 		B7D3F86B1776564D00597973 /* EverAPIConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D3F86A1776564D00597973 /* EverAPIConnector.m */; };
-		B7D3F86F1776BF2500597973 /* SensorModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7D3F86D1776BF2500597973 /* SensorModels.xcdatamodeld */; };
+		B7D3F86F1776BF2500597973 /* Ever.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7D3F86D1776BF2500597973 /* Ever.xcdatamodeld */; };
 		B7D3F8781776C47200597973 /* GPS.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D3F8771776C47200597973 /* GPS.m */; };
 		C43ABAE4900E454B98BE4A26 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B18D58FF5D4A09AF9627F4 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -54,7 +54,7 @@
 		B7D3F840176EA22700597973 /* EverSensorStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverSensorStore.m; sourceTree = "<group>"; };
 		B7D3F8691776564D00597973 /* EverAPIConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverAPIConnector.h; sourceTree = "<group>"; };
 		B7D3F86A1776564D00597973 /* EverAPIConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverAPIConnector.m; sourceTree = "<group>"; };
-		B7D3F86E1776BF2500597973 /* SensorModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SensorModels.xcdatamodel; sourceTree = "<group>"; };
+		B7D3F86E1776BF2500597973 /* Ever.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ever.xcdatamodel; sourceTree = "<group>"; };
 		B7D3F8761776C47200597973 /* GPS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPS.h; sourceTree = "<group>"; };
 		B7D3F8771776C47200597973 /* GPS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPS.m; sourceTree = "<group>"; };
 		E7B18D58FF5D4A09AF9627F4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,7 +187,7 @@
 			children = (
 				B7D3F8761776C47200597973 /* GPS.h */,
 				B7D3F8771776C47200597973 /* GPS.m */,
-				B7D3F86D1776BF2500597973 /* SensorModels.xcdatamodeld */,
+				B7D3F86D1776BF2500597973 /* Ever.xcdatamodeld */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 				B7D3F83C176C202900597973 /* EverLocationDriver.m in Sources */,
 				B7D3F841176EA22700597973 /* EverSensorStore.m in Sources */,
 				B7D3F86B1776564D00597973 /* EverAPIConnector.m in Sources */,
-				B7D3F86F1776BF2500597973 /* SensorModels.xcdatamodeld in Sources */,
+				B7D3F86F1776BF2500597973 /* Ever.xcdatamodeld in Sources */,
 				B7D3F8781776C47200597973 /* GPS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,13 +421,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B7D3F86D1776BF2500597973 /* SensorModels.xcdatamodeld */ = {
+		B7D3F86D1776BF2500597973 /* Ever.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B7D3F86E1776BF2500597973 /* SensorModels.xcdatamodel */,
+				B7D3F86E1776BF2500597973 /* Ever.xcdatamodel */,
 			);
-			currentVersion = B7D3F86E1776BF2500597973 /* SensorModels.xcdatamodel */;
-			path = SensorModels.xcdatamodeld;
+			currentVersion = B7D3F86E1776BF2500597973 /* Ever.xcdatamodel */;
+			path = Ever.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

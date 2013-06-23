@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface EverAppDelegate : UIResponder <UIApplicationDelegate>
-{
-    @private
-    NSManagedObjectContext *managedObjectContext;
-    NSManagedObjectModel *managedObjectModel
-}
+
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic, readonly) NSManagedObjectModel *managedObjectModel;
+@property (strong, nonatomic, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
+- (NSURL *) applicationDocumentsDirectory;
+- (void) saveContext;
 
 @end

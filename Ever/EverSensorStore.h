@@ -11,6 +11,8 @@
 
 @interface EverSensorStore : NSObject
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 + (EverSensorStore *) getStore;
 -(BOOL) putGPS:(CLLocation *)location;
 -(BOOL) putCompass:(CLHeading *)heading;
