@@ -24,7 +24,7 @@
     CLLocationManager *lmanager;
 }
 
-@synthesize totalEventsRecorded;
+@synthesize totalEventsRecorded, store;
 
 #pragma mark - EverLocationDriver Public Methods
 + (EverLocationDriver*) getLocationDriver
@@ -48,18 +48,22 @@
         lmanager.desiredAccuracy = kCLLocationAccuracyBest; //Modify to Kilometer to shutoff GPS use.
         [lmanager setActivityType:CLActivityTypeFitness];
         [lmanager setDelegate: self];
+        //[lmanager startMonitoringSignificantLocationChanges];
+        [lmanager startUpdatingLocation];
     }
     return self;
 }
 
-- (BOOL) run
+- (BOOL) start
 {
+    NSLog(@"Started driving location manager");
     [lmanager startUpdatingLocation];
     return YES;
 }
 
 - (BOOL) stop
 {
+    NSLog(@"Stopped driving location manager");
     [lmanager stopUpdatingLocation];
     return YES;
 }
@@ -67,7 +71,7 @@
 #pragma mark - LocationManager Delegate Methods
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    //Insert data into store
+    NSLog(@"new gps record available for insertion to store");
 }
 
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error

@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EverSensorStore.h"
 
 @interface EverLocationDriver : NSObject <CLLocationManagerDelegate>
 
 @property(nonatomic, readonly) NSInteger totalEventsRecorded; //How many events have we saved?
+@property(nonatomic, strong) EverSensorStore *store;
 + (EverLocationDriver *) getLocationDriver;
-- (id) init; //Creates necessary objects and initializes them
-- (BOOL) run; //Hook into necessary frameworks and start timers
+- (BOOL) start; //Hook into necessary frameworks and start timers
 - (BOOL) stop; //Stop all resources including location callbacks
 @end

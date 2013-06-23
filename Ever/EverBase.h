@@ -10,4 +10,6 @@
 
 @interface EverBase : UIViewController
 
+//@property (nonatomic, readonly) __weak IBOutlet UILabel *status;
+
 @end

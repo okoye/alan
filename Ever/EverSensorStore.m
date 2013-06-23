@@ -8,10 +8,9 @@
 
 #import "EverSensorStore.h"
 #import "GPS.h"
+#import "EverAPIConnector.h"
 
-@interface EverSensorStore ()
-{
-}
+@interface EverSensorStore()
 -(void) sync;
 -(NSString *) getDatabasePath;
 @end
@@ -21,9 +20,9 @@
     NSManagedObjectContext *context;
     NSManagedObjectModel *model;
     uint32_t total_saved;
-    dispatch_queue_t async_queue;
-    NSArray *incomplete_requests;
 }
+
+static NSUInteger BATCH_SIZE = 100; //Size of records to send
 
 #pragma mark - EverSensorStore Public Methods
 + (EverSensorStore *) getStore
@@ -62,9 +61,6 @@
         
         //We have no plans to undo operations
         [context setUndoManager:nil];
-        
-        //Create asynchronous processing queue
-        async_queue = dispatch_queue_create("org.lightcurvelabs.ever", 0);
     }
     NSLog(@"Initialized EverSensorStore");
     return self;
@@ -106,36 +102,46 @@
     //Get one and only directory from that list
     NSString *dDirectory = [dDirectories objectAtIndex: 0];
     
+    NSLog(@"Directory where db will be created %@",dDirectory);
+        
     //Return new path
     return [dDirectory stringByAppendingPathComponent:@"eversensorstore.data"];
 }
 
 -(void) sync
 {
-    //next, using a bunch of data retrieved from store, execute asynchronously:
-    //http://tewha.net/2012/06/networking-using-nsurlconnection/
-    //http://developer.apple.com/library/mac/#featuredarticles/BlocksGCD/_index.html
-    
-    NSString *everAPI = @"everapi.lightcurvelabs.org/location";
-    //Convert records to JSON
+
+    NSString *everAPI = @"api.lightcurvelabs.org/location";
+    NSFetchRequest *fetch_request = nil;
+    NSInteger count = 0;
+    NSError *err = nil;
+    NSArray *sensor_readings = nil;
+    EverAPIConnector *connector = nil;
 #if EVER_DEBUG_MODE
-    everAPI = @"everapi.thepuppetprojects.com";
-    jsonWriter.humanReadable = YES;
-    NSString *jsonRepresentation = [jsonWriter stringWithObject:values];
-    NSLog(@"This is what will be sent to the API, %@",jsonRepresentation);
+    everAPI = @"api.thepuppetprojects.com";
 #endif
-    
-    //Send over wire using async connection
     NSURL *url = [NSURL URLWithString:everAPI];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     
-    void (^callback)(NSManagedObjectContext *cxt, NSArray *values) = ^(NSManagedObjectContext *cxt, NSArray *values){
-    };
+    //void (^success_callback)(NSManagedObjectContext *cxt, NSArray *values) = ^(NSManagedObjectContext *cxt, NSArray *values){
+    //};
     
+    //void (^error_callback)void;
     
-    // dispatch_async(async_queue, ^(void){
-    //    printf("Now executing async queue operations");
-    //});
-    
+    //Send all the data in batches
+    fetch_request = [[NSFetchRequest alloc] initWithEntityName:@"GPS"];
+    count = [context countForFetchRequest:fetch_request error:&err];
+    for (int i=1; i<=count; i+=BATCH_SIZE){
+        [fetch_request setFetchBatchSize:BATCH_SIZE];
+        sensor_readings = [context executeFetchRequest:fetch_request error:&err];
+        if (!sensor_readings){
+            NSLog(@"failed to retrieve data from persistent store: %@",err);
+        }
+        else{
+            NSLog(@"successfully retrieved data from persistent store");
+            connector = [[EverAPIConnector alloc] initWithRequest:req];
+            [connector start];
+        }
+    }
 }
 @end

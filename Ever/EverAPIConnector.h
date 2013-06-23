@@ -8,17 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface EverAPIConnector : NSObject <NSURLConnectionDelegate>
+@interface EverAPIConnector : NSObject
 {
     NSURLConnection *internalConnection;
     NSMutableData *container;
-    dispatch_queue_t queue;
 }
 - (id)initWithRequest:(NSURLRequest *)req;
 
-@property (nonatomic, copy) NSURLRequest *request; //Request to be sent to API
+@property (nonatomic, copy) NSMutableURLRequest *request; //Request to be sent to API
 @property (nonatomic, copy) NSArray *payload; //Data to be sent to API
-@property (nonatomic, copy) void (^completion_block) (NSManagedObjectContext *ctx); //Callback handler after ops
+@property (nonatomic, weak) NSManagedObjectContext *ctx; //Object manager
+@property (nonatomic, copy) void (^success_block) (NSManagedObjectContext *ctx); //Callback handler after ops
+@property (nonatomic, copy) void (^failure_block) (NSManagedObjectContext *ctx); //Callback handler after ops
 
 - (void) start;
 

@@ -7,6 +7,9 @@
 //
 
 #import "EverBase.h"
+#import "EverLocationDriver.h"
+#import "EverSensorStore.h"
+
 #define EVER_DEBUG_MODE True
 
 @interface EverBase ()
@@ -15,8 +18,6 @@
 
 @implementation EverBase
 {
-    //LocationDriver
-    //ActivityDriver
     
 }
 
@@ -24,15 +25,24 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+        [[self navigationItem] setTitle:@"Ever"];
+        EverSensorStore *store = [EverSensorStore getStore];
+        //EverLocationDriver *driver = [EverLocationDriver getLocationDriver];
+        //[driver setStore:store];
+        //[driver start];
     }
     return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.view setBackgroundColor:[UIColor grayColor]];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

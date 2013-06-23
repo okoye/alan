@@ -2,7 +2,7 @@
 //  GPS.m
 //  Ever
 //
-//  Created by Chuka Okoye on 6/17/13.
+//  Created by Chuka Okoye on 6/22/13.
 //  Copyright (c) 2013 Lightcurve Labs. All rights reserved.
 //
 
@@ -11,14 +11,14 @@
 
 @implementation GPS
 
-@dynamic longitude;
-@dynamic latitude;
 @dynamic altitude;
-@dynamic horizontalAccuracy;
-@dynamic verticalAccuracy;
-@dynamic timestamp;
-@dynamic speed;
 @dynamic course;
+@dynamic horizontalAccuracy;
+@dynamic latitude;
+@dynamic longitude;
+@dynamic speed;
+@dynamic timestamp;
+@dynamic verticalAccuracy;
 
 - (void) createGPS:(CLLocation *)location
 {
