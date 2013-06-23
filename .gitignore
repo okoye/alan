@@ -14,3 +14,9 @@ profile
 *.xcuserstate
 bin/
 
+Ever/Ever.xcodeproj/project.xcworkspace/
+Ever/Ever.xcodeproj/xcuserdata/
+Ever/Podfile.lock
+Ever/Pods/
+FernandoStore/FernandoStore.xcodeproj/project.xcworkspace/
+FernandoStore/FernandoStore.xcodeproj/xcuserdata/
