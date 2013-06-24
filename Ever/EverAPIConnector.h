@@ -15,9 +15,9 @@
 }
 - (id)initWithRequest:(NSURLRequest *)req;
 
-@property (nonatomic, copy) NSMutableURLRequest *request; //Request to be sent to API
+@property (nonatomic, readonly) NSMutableURLRequest *request; //Request to be sent to API
 @property (nonatomic, copy) NSArray *payload; //Data to be sent to API
-@property (nonatomic, weak) NSManagedObjectContext *ctx; //Object manager
+@property (nonatomic, weak) NSManagedObjectContext *context; //Object manager
 @property (nonatomic, copy) void (^success_block) (void); //Callback handler after ops
 @property (nonatomic, copy) void (^failure_block) (void); //Callback handler after ops
 

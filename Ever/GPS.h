@@ -18,7 +18,7 @@
 @property (nonatomic) float latitude;
 @property (nonatomic) float longitude;
 @property (nonatomic) float speed;
-@property (nonatomic) NSTimeInterval timestamp;
+@property (nonatomic) NSString *timestamp;
 @property (nonatomic) float verticalAccuracy;
 
 - (void) createGPS:(CLLocation *) location;

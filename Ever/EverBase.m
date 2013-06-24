@@ -10,8 +10,6 @@
 #import "EverLocationDriver.h"
 #import "EverSensorStore.h"
 
-#define EVER_DEBUG_MODE True
-
 @interface EverBase ()
 
 @end

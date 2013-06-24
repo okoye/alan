@@ -8,6 +8,9 @@
 
 #import "GPS.h"
 
+@interface GPS ()
+- (NSString *) stringFromDate:(NSDate *) value;
+@end
 
 @implementation GPS
 
@@ -27,9 +30,17 @@
     self.altitude = location.altitude;
     self.horizontalAccuracy = location.horizontalAccuracy;
     self.verticalAccuracy = location.verticalAccuracy;
-    self.timestamp = [location.timestamp timeIntervalSinceReferenceDate];
+    self.timestamp = [self stringFromDate: location.timestamp];
     self.speed = location.speed;
     self.course = location.course;
+}
+
+#pragma mark - GPS Private Methods
+- (NSString *) stringFromDate:(NSDate *) value
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    return [formatter stringFromDate:value];
 }
 
 @end

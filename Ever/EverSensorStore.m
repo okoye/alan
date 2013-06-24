@@ -89,8 +89,10 @@ static NSUInteger BATCH_SIZE = 100; //Size of records to send
         [self sync];
     }
     
-    //DEBUGGING
+    //FOR DEBUGGING, force out of band sync
+#if EVER_DEBUG_MODE
     [self sync];
+#endif
     
 }
 
@@ -120,7 +122,10 @@ static NSUInteger BATCH_SIZE = 100; //Size of records to send
         }
         else{
             NSLog(@"successfully retrieved data from persistent store");
+            //Setup rup request information including payload and context.
             connector = [[EverAPIConnector alloc] initWithRequest:req];
+            [connector setPayload:sensorReadings];
+            [connector setContext:managedObjectContext];
             [connector setSuccess_block:^{
                 //code here
                 NSLog(@"success logic is being executed");

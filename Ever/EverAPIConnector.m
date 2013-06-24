@@ -8,6 +8,7 @@
 
 #import "EverAPIConnector.h"
 #import "AFJSONRequestOperation.h"
+#import "SBJsonWriter.h"
 
 @implementation EverAPIConnector
 
@@ -17,13 +18,13 @@ static dispatch_queue_t failure_q = nil;
 static NSMutableArray *shared_connection_list = nil;
 
 //Instance variables
-@synthesize request, payload, success_block, failure_block, ctx;
+@synthesize request, payload, success_block, failure_block, context;
 
 - (id) initWithRequest:(NSMutableURLRequest *)req
 {
     self = [super init];
     if (self){
-        self.request = req;
+        request = req;
         //If you are the first connection, create dispatch queues
         if (!success_q){
             success_q = dispatch_queue_create("org.lightcurvelabs.ever.success", 0);
@@ -41,18 +42,18 @@ static NSMutableArray *shared_connection_list = nil;
 - (void) start
 {
     NSData *data = nil;
+    SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
     if (payload){
-        NSLog(@"Now serializing JSON object");
-        NSError *error = nil;
-        data = [NSJSONSerialization dataWithJSONObject:payload options:0 error:&error];
+        NSLog(@"now serializing JSON object");
+        data = [jsonWriter dataWithObject:payload];
         [request setHTTPBody:data];
     }
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:self.request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        //SUCCESS callback here
-        NSLog(@"Success! I tell you");
+        success_block();
+        NSLog(@"success! I tell you");
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        //FAILURE callback here
-        NSLog(@"Failure in sending request");
+        failure_block();
+        NSLog(@"failure in sending request");
     }];
     op.failureCallbackQueue = failure_q; //if nil, op will use main thread :(
     op.successCallbackQueue = success_q; //if nil, op will use main thread :(
