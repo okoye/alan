@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface EverBase : UIViewController
+{
 
-//@property (nonatomic, readonly) __weak IBOutlet UILabel *status;
+}
+- (void) toLogin; //Present the login view controller
+- (void) toStatus; //Present the status view controller
 
 @end

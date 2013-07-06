@@ -30,7 +30,7 @@
     //Setup window elements
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     UIViewController *baseController = [[EverBase alloc] initWithNibName:@"Home" bundle:nil];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:baseController];
+    self.window.rootViewController = baseController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
