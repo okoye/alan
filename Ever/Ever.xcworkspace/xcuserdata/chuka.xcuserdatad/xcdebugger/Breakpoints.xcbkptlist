@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Ever/EverAppDelegate.m"
-         timestampString = "393670658.530259"
+         timestampString = "394832979.43539"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "17"
-         endingLineNumber = "17"
+         startingLineNumber = "18"
+         endingLineNumber = "18"
          landmarkName = "managedObjectModel"
          landmarkType = "19">
       </FileBreakpoint>

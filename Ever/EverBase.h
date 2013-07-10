@@ -7,12 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EverContainedInterfaceViewController.h"
 
-@interface EverBase : UIViewController
-{
-
-}
-- (void) toLogin; //Present the login view controller
-- (void) toStatus; //Present the status view controller
+@interface EverBase : UIViewController <EverContainedDelegate>
 
 @end
+

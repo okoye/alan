@@ -11,7 +11,7 @@
 #ifndef Ever_Common_h
 #define Ever_Common_h
 
-#define EVER_DEBUG_MODE True
+#define EVER_DEBUG_MODE 1
 
 #define IS_WIDESCREEN ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 #define IS_IPHONE ( [ [ [ UIDevice currentDevice ] model ] isEqualToString: @"iPhone" ] )

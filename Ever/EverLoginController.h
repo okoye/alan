@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EverContainedInterfaceViewController.h"
 
-@interface EverLoginController : UIViewController
+@interface EverLoginController : EverContainedInterfaceViewController <UITextFieldDelegate>
+
+- (BOOL) isLoggedIn;
+- (NSString *) fetchUsername;
+- (NSString *) fetchPassword;
 
 @end

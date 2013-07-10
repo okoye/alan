@@ -7,10 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7060668178CE01A001E66CF /* EverContainedInterfaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7060667178CE01A001E66CF /* EverContainedInterfaceViewController.m */; };
 		B708BD7F1787A5FD00203350 /* EverLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = B708BD7E1787A5FD00203350 /* EverLoginController.m */; };
 		B708BD821787A61600203350 /* EverStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = B708BD811787A61600203350 /* EverStatusController.m */; };
 		B708BD841788A22700203350 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B708BD831788A22700203350 /* bg.png */; };
 		B708BD861788A22F00203350 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B708BD851788A22F00203350 /* bg@2x.png */; };
+		B708BD891788A6A000203350 /* 5bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B708BD881788A6A000203350 /* 5bg.png */; };
+		B708BD8B1788B5F800203350 /* ever-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B708BD8A1788B5F800203350 /* ever-logo.png */; };
+		B708BD8D1788B5FE00203350 /* ever-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B708BD8C1788B5FE00203350 /* ever-logo@2x.png */; };
+		B708BD94178A146D00203350 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B708BD93178A146D00203350 /* KeychainItemWrapper.m */; };
+		B708BD96178A15F400203350 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B708BD95178A15F400203350 /* Security.framework */; };
+		B708BD98178A263F00203350 /* login-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = B708BD97178A263F00203350 /* login-btn.png */; };
+		B708BD9A178A264C00203350 /* login-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B708BD99178A264C00203350 /* login-btn@2x.png */; };
+		B708BD9D178A2A5900203350 /* EverTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B708BD9C178A2A5900203350 /* EverTextField.m */; };
 		B7D3F80E176C0E2900597973 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D3F80D176C0E2900597973 /* UIKit.framework */; };
 		B7D3F810176C0E2900597973 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D3F80F176C0E2900597973 /* Foundation.framework */; };
 		B7D3F812176C0E2900597973 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D3F811176C0E2900597973 /* CoreGraphics.framework */; };
@@ -34,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		8A250A4987E549E5911D1B80 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		B7060666178CE01A001E66CF /* EverContainedInterfaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverContainedInterfaceViewController.h; sourceTree = "<group>"; };
+		B7060667178CE01A001E66CF /* EverContainedInterfaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverContainedInterfaceViewController.m; sourceTree = "<group>"; };
 		B708BD7D1787A5FD00203350 /* EverLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverLoginController.h; sourceTree = "<group>"; };
 		B708BD7E1787A5FD00203350 /* EverLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverLoginController.m; sourceTree = "<group>"; };
 		B708BD801787A61600203350 /* EverStatusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverStatusController.h; sourceTree = "<group>"; };
@@ -41,6 +52,16 @@
 		B708BD831788A22700203350 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		B708BD851788A22F00203350 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		B708BD871788A49300203350 /* EverCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EverCommon.h; sourceTree = "<group>"; };
+		B708BD881788A6A000203350 /* 5bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5bg.png; sourceTree = "<group>"; };
+		B708BD8A1788B5F800203350 /* ever-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ever-logo.png"; sourceTree = "<group>"; };
+		B708BD8C1788B5FE00203350 /* ever-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ever-logo@2x.png"; sourceTree = "<group>"; };
+		B708BD92178A146400203350 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		B708BD93178A146D00203350 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		B708BD95178A15F400203350 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B708BD97178A263F00203350 /* login-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn.png"; sourceTree = "<group>"; };
+		B708BD99178A264C00203350 /* login-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn@2x.png"; sourceTree = "<group>"; };
+		B708BD9B178A2A5900203350 /* EverTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverTextField.h; sourceTree = "<group>"; };
+		B708BD9C178A2A5900203350 /* EverTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverTextField.m; sourceTree = "<group>"; };
 		B7D3F80A176C0E2900597973 /* Ever.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ever.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D3F80D176C0E2900597973 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B7D3F80F176C0E2900597973 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -76,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B708BD96178A15F400203350 /* Security.framework in Frameworks */,
 				B7D3F80E176C0E2900597973 /* UIKit.framework in Frameworks */,
 				B7D3F810176C0E2900597973 /* Foundation.framework in Frameworks */,
 				B7D3F812176C0E2900597973 /* CoreGraphics.framework in Frameworks */,
@@ -91,12 +113,12 @@
 		B7D3F801176C0E2900597973 = {
 			isa = PBXGroup;
 			children = (
-				B7D3F86C1776BEEE00597973 /* Models */,
+				B7D3F82F176C0E6200597973 /* Controllers */,
+				B7D3F831176C0E8C00597973 /* Views */,
 				B7D3F834176C0ED000597973 /* Drivers */,
 				B7D3F832176C0E9200597973 /* Stores */,
-				B7D3F831176C0E8C00597973 /* Views */,
+				B7D3F86C1776BEEE00597973 /* Models */,
 				B7D3F830176C0E8700597973 /* Images */,
-				B7D3F82F176C0E6200597973 /* Controllers */,
 				B7D3F815176C0E2900597973 /* Ever */,
 				B7D3F80C176C0E2900597973 /* Frameworks */,
 				B7D3F80B176C0E2900597973 /* Products */,
@@ -115,6 +137,7 @@
 		B7D3F80C176C0E2900597973 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B708BD95178A15F400203350 /* Security.framework */,
 				B7D3F83D176C277200597973 /* CoreLocation.framework */,
 				B7D3F80D176C0E2900597973 /* UIKit.framework */,
 				B7D3F80F176C0E2900597973 /* Foundation.framework */,
@@ -138,6 +161,8 @@
 		B7D3F816176C0E2900597973 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B708BD93178A146D00203350 /* KeychainItemWrapper.m */,
+				B708BD92178A146400203350 /* KeychainItemWrapper.h */,
 				B7D3F817176C0E2900597973 /* Ever-Info.plist */,
 				B7D3F818176C0E2900597973 /* InfoPlist.strings */,
 				B7D3F81B176C0E2900597973 /* main.m */,
@@ -159,6 +184,8 @@
 				B708BD7E1787A5FD00203350 /* EverLoginController.m */,
 				B708BD801787A61600203350 /* EverStatusController.h */,
 				B708BD811787A61600203350 /* EverStatusController.m */,
+				B7060666178CE01A001E66CF /* EverContainedInterfaceViewController.h */,
+				B7060667178CE01A001E66CF /* EverContainedInterfaceViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -166,6 +193,11 @@
 		B7D3F830176C0E8700597973 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B708BD99178A264C00203350 /* login-btn@2x.png */,
+				B708BD97178A263F00203350 /* login-btn.png */,
+				B708BD8C1788B5FE00203350 /* ever-logo@2x.png */,
+				B708BD8A1788B5F800203350 /* ever-logo.png */,
+				B708BD881788A6A000203350 /* 5bg.png */,
 				B708BD851788A22F00203350 /* bg@2x.png */,
 				B708BD831788A22700203350 /* bg.png */,
 			);
@@ -176,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				B7D3F838176C121300597973 /* Home.xib */,
+				B708BD9B178A2A5900203350 /* EverTextField.h */,
+				B708BD9C178A2A5900203350 /* EverTextField.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -271,6 +305,11 @@
 				B7D3F839176C121300597973 /* Home.xib in Resources */,
 				B708BD841788A22700203350 /* bg.png in Resources */,
 				B708BD861788A22F00203350 /* bg@2x.png in Resources */,
+				B708BD891788A6A000203350 /* 5bg.png in Resources */,
+				B708BD8B1788B5F800203350 /* ever-logo.png in Resources */,
+				B708BD8D1788B5FE00203350 /* ever-logo@2x.png in Resources */,
+				B708BD98178A263F00203350 /* login-btn.png in Resources */,
+				B708BD9A178A264C00203350 /* login-btn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +361,9 @@
 				B7D3F8781776C47200597973 /* GPS.m in Sources */,
 				B708BD7F1787A5FD00203350 /* EverLoginController.m in Sources */,
 				B708BD821787A61600203350 /* EverStatusController.m in Sources */,
+				B708BD94178A146D00203350 /* KeychainItemWrapper.m in Sources */,
+				B708BD9D178A2A5900203350 /* EverTextField.m in Sources */,
+				B7060668178CE01A001E66CF /* EverContainedInterfaceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

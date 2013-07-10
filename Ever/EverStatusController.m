@@ -14,15 +14,29 @@
 
 @implementation EverStatusController
 
+#pragma mark - EverStatusController Public Methods
+- (BOOL) allGood
+{
+    if ([store countUnsyncInfo] <= 10)
+        return YES;
+    else
+        return NO;
+}
+
+#pragma mark - UIViewController Methods
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        store = [EverSensorStore getStore];
     }
     return self;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    self.view.alpha = 1.0;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

@@ -10,6 +10,7 @@
 #import "EverBase.h"
 #import "EverSensorStore.h"
 #import "EverLocationDriver.h"
+#import "EverCommon.h"
 
 @implementation EverAppDelegate
 
@@ -92,7 +93,7 @@
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:@{NSMigratePersistentStoresAutomaticallyOption: @YES, NSInferMappingModelAutomaticallyOption:@YES} error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
          
@@ -117,7 +118,13 @@
          
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+        if (EVER_DEBUG_MODE)
+            abort();
+        else{
+            NSLog(@"Destroying all local data in CoreData");
+            //TODO: delete data and recreate.
+            abort();
+        }
     }
     
     return _persistentStoreCoordinator;

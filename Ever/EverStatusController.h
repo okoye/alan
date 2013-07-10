@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EverContainedInterfaceViewController.h"
+#import "EverSensorStore.h"
 
-@interface EverStatusController : UIViewController
+@interface EverStatusController : EverContainedInterfaceViewController
+{
+    EverSensorStore *store;
+}
+
+-(BOOL) allGood; //Status reporting
 
 @end
