@@ -97,7 +97,7 @@
     [self transitionFromViewController:fromCont
         toViewController:toCont
         duration:0.3
-        options:UIViewAnimationOptionTransitionFlipFromRight
+        options:UIViewAnimationOptionTransitionCrossDissolve
         animations:^{
             
         } completion:^(BOOL finished) {
