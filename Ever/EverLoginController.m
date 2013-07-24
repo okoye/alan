@@ -58,8 +58,6 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
     return [basicAuthChain objectForKey:CFBridgingRelease(kSecAttrAccount)];
 }
 
-#pragma mark - EverLoginController Private Methods
-
 - (void) screenPaintingInitialization
 {
     scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
@@ -70,7 +68,7 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
     //Handle setup of logo
     logoContainer = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ever-logo"]];
     logoContainer.alpha = 1.0;
-    CGRect logoFrame = CGRectMake(74.0, 81.0, 172.0, 172.0);
+    CGRect logoFrame = CGRectMake(74.0, 81.0, 175.0, 175.0);
     logoContainer.frame = logoFrame;
     
     //Handle setup of text input boxes

@@ -7,13 +7,21 @@
 //
 
 #import "EverStatusController.h"
+#import "EverLabel.h"
 
 @interface EverStatusController ()
-
+-(void) toGood;
+-(void) toBad; 
+-(void) screenPaintingInitialization;
+-(void) registerForLocationNotifications;
 @end
 
 @implementation EverStatusController
-
+{
+    UIImageView *stateContainer;
+    UILabel *stateInfo;
+    
+}
 #pragma mark - EverStatusController Public Methods
 - (BOOL) allGood
 {
@@ -21,6 +29,37 @@
         return YES;
     else
         return NO;
+}
+
+#pragma mark - EverStatusController Private Methods
+-(void) toGood
+{
+    //implement logic for good
+    NSLog(@"toGood routine here");
+}
+
+-(void) toBad
+{
+    //implement logic for bad
+    NSLog(@"toBad routine here");
+}
+
+-(void) registerForLocationNotifications
+{
+    
+}
+
+-(void) screenPaintingInitialization
+{
+    CGRect stateFrame = CGRectMake(74.0, 81.0, 175.0, 175.0);
+    stateContainer = [[UIImageView alloc] initWithFrame:stateFrame];
+    [stateContainer setBackgroundColor:[UIColor redColor]]; //Remove
+    [self.view addSubview:stateContainer];
+    
+    //Setup text label to view
+    CGRect infoFrame = CGRectMake(28, 301, 267, 35);
+    stateInfo = [[EverLabel alloc] initWithFrame:infoFrame];
+    [self.view addSubview:stateInfo];
 }
 
 #pragma mark - UIViewController Methods
@@ -36,6 +75,8 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     self.view.alpha = 1.0;
+    [self screenPaintingInitialization];
+    [self registerForLocationNotifications];
 }
 - (void)viewDidLoad
 {

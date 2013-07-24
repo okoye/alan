@@ -30,7 +30,9 @@
     self.altitude = location.altitude;
     self.horizontalAccuracy = location.horizontalAccuracy;
     self.verticalAccuracy = location.verticalAccuracy;
+    //NSLog(@"Preconverted timestamp %@",location.timestamp);
     self.timestamp = [self stringFromDate: location.timestamp];
+    NSLog(@"Postconverted timestamp %@",self.timestamp);
     self.speed = location.speed;
     self.course = location.course;
 }

@@ -9,6 +9,7 @@
 #import "EverSensorStore.h"
 #import "GPS.h"
 #import "EverAPIConnector.h"
+#import "EverCommon.h"
 
 @interface EverSensorStore()
 -(void) sync;

@@ -20,6 +20,7 @@
 		B708BD98178A263F00203350 /* login-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = B708BD97178A263F00203350 /* login-btn.png */; };
 		B708BD9A178A264C00203350 /* login-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B708BD99178A264C00203350 /* login-btn@2x.png */; };
 		B708BD9D178A2A5900203350 /* EverTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B708BD9C178A2A5900203350 /* EverTextField.m */; };
+		B791C977179F87DB00D6E7B6 /* EverLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B791C976179F87DB00D6E7B6 /* EverLabel.m */; };
 		B7D3F80E176C0E2900597973 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D3F80D176C0E2900597973 /* UIKit.framework */; };
 		B7D3F810176C0E2900597973 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D3F80F176C0E2900597973 /* Foundation.framework */; };
 		B7D3F812176C0E2900597973 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D3F811176C0E2900597973 /* CoreGraphics.framework */; };
@@ -62,6 +63,8 @@
 		B708BD99178A264C00203350 /* login-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn@2x.png"; sourceTree = "<group>"; };
 		B708BD9B178A2A5900203350 /* EverTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverTextField.h; sourceTree = "<group>"; };
 		B708BD9C178A2A5900203350 /* EverTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverTextField.m; sourceTree = "<group>"; };
+		B791C975179F87DB00D6E7B6 /* EverLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverLabel.h; sourceTree = "<group>"; };
+		B791C976179F87DB00D6E7B6 /* EverLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverLabel.m; sourceTree = "<group>"; };
 		B7D3F80A176C0E2900597973 /* Ever.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ever.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D3F80D176C0E2900597973 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B7D3F80F176C0E2900597973 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -210,6 +213,8 @@
 				B7D3F838176C121300597973 /* Home.xib */,
 				B708BD9B178A2A5900203350 /* EverTextField.h */,
 				B708BD9C178A2A5900203350 /* EverTextField.m */,
+				B791C975179F87DB00D6E7B6 /* EverLabel.h */,
+				B791C976179F87DB00D6E7B6 /* EverLabel.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 				B708BD94178A146D00203350 /* KeychainItemWrapper.m in Sources */,
 				B708BD9D178A2A5900203350 /* EverTextField.m in Sources */,
 				B7060668178CE01A001E66CF /* EverContainedInterfaceViewController.m in Sources */,
+				B791C977179F87DB00D6E7B6 /* EverLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

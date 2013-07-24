@@ -75,7 +75,12 @@
     [self.view addSubview:backgroundImage];
     
     //Now load LoginController
-    [self.view addSubview: loginController.view];
+    if ([loginController isLoggedIn]){
+        [self.view addSubview: statusController.view];
+    }
+    else{
+        [self.view addSubview: loginController.view];
+    }
 }
 
 - (void)viewDidLoad
