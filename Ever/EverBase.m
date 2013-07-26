@@ -13,7 +13,6 @@
 
 @interface EverBase ()
 - (void) animateFromController:(UIViewController *)from toController:(UIViewController *)toCont animation:(UIViewAnimationOptions) opts;
--(void) removeChild: (UIViewController *)controller;
 @end
 
 @implementation EverBase
@@ -21,21 +20,20 @@
     UIImageView *backgroundImage;
     EverLoginController *loginController;
     EverStatusController *statusController;
-    //BOOL loggedIn;
 }
 #pragma mark - EverContainedDelegate Methods
 
 -(void) finished:(EverContainedInterfaceViewController *) aController
 {
     if (aController == loginController){ //post login event
-        //loggedIn = YES;
         [self addChildViewController:statusController];
-        [self animateFromController:loginController toController:statusController animation:UIViewAnimationOptionTransitionFlipFromRight];
+        [self animateFromController:loginController
+                       toController:statusController animation:UIViewAnimationOptionTransitionNone];
     }
     else if(aController == statusController){ //logout event
-        //loggedIn = NO;
         [self addChildViewController:loginController];
-        [self animateFromController:statusController toController:loginController animation:UIViewAnimationOptionTransitionFlipFromLeft];
+        [self animateFromController:statusController
+                       toController:loginController animation:UIViewAnimationOptionTransitionNone];
     }
     else{
         NSLog(@"non identified Controller fired");
@@ -58,9 +56,7 @@
         }
         
         loginController = [[EverLoginController alloc] init];
-        loginController.view.frame = self.view.frame;
         statusController = [[EverStatusController alloc] init];
-        statusController.view.frame = self.view.frame;
         loginController.delegate = self;
         statusController.delegate = self;
     }
@@ -101,13 +97,13 @@
 
 - (void) animateFromController:(UIViewController *)fromCont toController:(UIViewController *)toCont animation:(UIViewAnimationOptions) opts
 {
-    NSLog(@"now performing smooth transition animation");
     [self transitionFromViewController:fromCont
         toViewController:toCont
         duration:0.3
         options:opts
         animations:^{}
         completion:^(BOOL finished) {
+            NSLog(@"Executing transition completion routines");
             [toCont didMoveToParentViewController:self];
             [fromCont.view removeFromSuperview];
             [fromCont removeFromParentViewController];

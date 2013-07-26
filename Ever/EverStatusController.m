@@ -96,12 +96,14 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         store = [EverSensorStore getStore];
+        self.wantsFullScreenLayout = YES;
     }
     return self;
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self screenPaintingInitialization];
     [self registerForLocationNotifications];
     [self setState];

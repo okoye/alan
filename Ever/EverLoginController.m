@@ -138,6 +138,7 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
 }
 - (void) registerForKeyboardNotifications
 {
+    NSLog(@"Registering for keyboard notifications");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:)
                                                  name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasHidden:) name:UIKeyboardDidHideNotification object:nil];
@@ -155,7 +156,6 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
                             otherButtonTitles:nil, nil] show];
         return ;
     }
-    NSLog(@"onLogin Fired!");
     //TODO contact API and exchange keys or at least verify auth valid.
     [self saveCredentials:username.text withPassword:password.text];
     
@@ -174,6 +174,7 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
 
 - (BOOL) textFieldShouldBeginEditing:(UITextField *)textField
 {
+    NSLog(@"Textfield should begin editing fired");
     currentlyEditedTextField = textField;
     return YES;
 }
@@ -188,7 +189,7 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
         basicAuthChain = [[KeychainItemWrapper alloc]
                         initWithIdentifier:keychainBasicAuthIdentifier
                         accessGroup:nil];
-        
+        self.wantsFullScreenLayout = YES;
     }
     return self;
 }
@@ -198,7 +199,6 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
     [super viewWillAppear:animated];
     [self screenPaintingInitialization];
     [self registerForKeyboardNotifications];
-    NSLog(@"LoginController viewWillAppear fired");
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -206,17 +206,4 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 }
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 @end
