@@ -22,7 +22,7 @@ const float TRANSPARENCY = 0.4;
         // Initialization code
         self.backgroundColor = [UIColor whiteColor];
         self.alpha = TRANSPARENCY;
-        self.font = [UIFont fontWithName:@"Verdana-Bold" size:10.0];
+        self.font = [UIFont fontWithName:@"Verdana" size:10.0];
         insets = UIEdgeInsetsMake(11.0, 11.0, 11.0, 11.0);
     }
     return self;

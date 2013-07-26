@@ -21,6 +21,12 @@
 		B708BD9A178A264C00203350 /* login-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B708BD99178A264C00203350 /* login-btn@2x.png */; };
 		B708BD9D178A2A5900203350 /* EverTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B708BD9C178A2A5900203350 /* EverTextField.m */; };
 		B791C977179F87DB00D6E7B6 /* EverLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B791C976179F87DB00D6E7B6 /* EverLabel.m */; };
+		B791C979179FA43C00D6E7B6 /* not-connected.png in Resources */ = {isa = PBXBuildFile; fileRef = B791C978179FA43C00D6E7B6 /* not-connected.png */; };
+		B791C97B179FA44700D6E7B6 /* not-connected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B791C97A179FA44700D6E7B6 /* not-connected@2x.png */; };
+		B791C97D179FA5D400D6E7B6 /* connected.png in Resources */ = {isa = PBXBuildFile; fileRef = B791C97C179FA5D400D6E7B6 /* connected.png */; };
+		B791C97F179FA5DC00D6E7B6 /* connected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B791C97E179FA5DC00D6E7B6 /* connected@2x.png */; };
+		B791C985179FB9D100D6E7B6 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = B791C984179FB9D100D6E7B6 /* logout.png */; };
+		B791C987179FB9DC00D6E7B6 /* logout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B791C986179FB9DC00D6E7B6 /* logout@2x.png */; };
 		B7D3F80E176C0E2900597973 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D3F80D176C0E2900597973 /* UIKit.framework */; };
 		B7D3F810176C0E2900597973 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D3F80F176C0E2900597973 /* Foundation.framework */; };
 		B7D3F812176C0E2900597973 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D3F811176C0E2900597973 /* CoreGraphics.framework */; };
@@ -65,6 +71,12 @@
 		B708BD9C178A2A5900203350 /* EverTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverTextField.m; sourceTree = "<group>"; };
 		B791C975179F87DB00D6E7B6 /* EverLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverLabel.h; sourceTree = "<group>"; };
 		B791C976179F87DB00D6E7B6 /* EverLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverLabel.m; sourceTree = "<group>"; };
+		B791C978179FA43C00D6E7B6 /* not-connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "not-connected.png"; sourceTree = "<group>"; };
+		B791C97A179FA44700D6E7B6 /* not-connected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "not-connected@2x.png"; sourceTree = "<group>"; };
+		B791C97C179FA5D400D6E7B6 /* connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connected.png; sourceTree = "<group>"; };
+		B791C97E179FA5DC00D6E7B6 /* connected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connected@2x.png"; sourceTree = "<group>"; };
+		B791C984179FB9D100D6E7B6 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
+		B791C986179FB9DC00D6E7B6 /* logout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout@2x.png"; sourceTree = "<group>"; };
 		B7D3F80A176C0E2900597973 /* Ever.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ever.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D3F80D176C0E2900597973 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B7D3F80F176C0E2900597973 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -196,6 +208,12 @@
 		B7D3F830176C0E8700597973 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B791C986179FB9DC00D6E7B6 /* logout@2x.png */,
+				B791C984179FB9D100D6E7B6 /* logout.png */,
+				B791C97E179FA5DC00D6E7B6 /* connected@2x.png */,
+				B791C97C179FA5D400D6E7B6 /* connected.png */,
+				B791C97A179FA44700D6E7B6 /* not-connected@2x.png */,
+				B791C978179FA43C00D6E7B6 /* not-connected.png */,
 				B708BD99178A264C00203350 /* login-btn@2x.png */,
 				B708BD97178A263F00203350 /* login-btn.png */,
 				B708BD8C1788B5FE00203350 /* ever-logo@2x.png */,
@@ -315,6 +333,12 @@
 				B708BD8D1788B5FE00203350 /* ever-logo@2x.png in Resources */,
 				B708BD98178A263F00203350 /* login-btn.png in Resources */,
 				B708BD9A178A264C00203350 /* login-btn@2x.png in Resources */,
+				B791C979179FA43C00D6E7B6 /* not-connected.png in Resources */,
+				B791C97B179FA44700D6E7B6 /* not-connected@2x.png in Resources */,
+				B791C97D179FA5D400D6E7B6 /* connected.png in Resources */,
+				B791C97F179FA5DC00D6E7B6 /* connected@2x.png in Resources */,
+				B791C985179FB9D100D6E7B6 /* logout.png in Resources */,
+				B791C987179FB9DC00D6E7B6 /* logout@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

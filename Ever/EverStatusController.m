@@ -14,12 +14,15 @@
 -(void) toBad; 
 -(void) screenPaintingInitialization;
 -(void) registerForLocationNotifications;
+-(void) setState;
+-(void) onLogout:(id) logoutSubmit;
 @end
 
 @implementation EverStatusController
 {
     UIImageView *stateContainer;
     UILabel *stateInfo;
+    UIButton *logout;
     
 }
 #pragma mark - EverStatusController Public Methods
@@ -34,14 +37,24 @@
 #pragma mark - EverStatusController Private Methods
 -(void) toGood
 {
-    //implement logic for good
-    NSLog(@"toGood routine here");
+    stateContainer.image = [UIImage imageNamed:@"connected"];
+    stateInfo.text = @"Ever is analyzing your lifestyle";
 }
 
 -(void) toBad
 {
-    //implement logic for bad
-    NSLog(@"toBad routine here");
+    stateContainer.image = [UIImage imageNamed:@"not-connected"];
+    stateInfo.text = @"Ever is not connected";
+}
+
+-(void) setState
+{
+    if ([self allGood]){
+        [self toGood];
+    }
+    else{
+        [self toBad];
+    }
 }
 
 -(void) registerForLocationNotifications
@@ -49,17 +62,32 @@
     
 }
 
+-(void) onLogout:(id)logoutSubmit
+{
+    NSLog(@"onLogout fired");
+    [self.delegate finished:self];
+}
+
 -(void) screenPaintingInitialization
 {
-    CGRect stateFrame = CGRectMake(74.0, 81.0, 175.0, 175.0);
+    [self.view setBackgroundColor: [UIColor clearColor]];
+    CGRect stateFrame = CGRectMake(74.0, 61.0, 175.0, 175.0);
     stateContainer = [[UIImageView alloc] initWithFrame:stateFrame];
-    [stateContainer setBackgroundColor:[UIColor redColor]]; //Remove
+    //[stateContainer setBackgroundColor:[UIColor purpleColor]];
     [self.view addSubview:stateContainer];
     
     //Setup text label to view
-    CGRect infoFrame = CGRectMake(28, 301, 267, 35);
+    CGRect infoFrame = CGRectMake(28, stateFrame.origin.y+stateFrame.size.height+45, 267, 35);
     stateInfo = [[EverLabel alloc] initWithFrame:infoFrame];
     [self.view addSubview:stateInfo];
+    
+    //Setup logout button
+    CGRect logoutFrame = CGRectMake(249.0, 0.0, 73.0, 31.0);
+    logout = [[UIButton alloc] initWithFrame:logoutFrame];
+    [logout setBackgroundColor:[UIColor clearColor]];
+    [logout setBackgroundImage:[UIImage imageNamed:@"logout"] forState:UIControlStateNormal];
+    [logout addTarget:self action:@selector(onLogout:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:logout];
 }
 
 #pragma mark - UIViewController Methods
@@ -74,20 +102,18 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    self.view.alpha = 1.0;
     [self screenPaintingInitialization];
     [self registerForLocationNotifications];
+    [self setState];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

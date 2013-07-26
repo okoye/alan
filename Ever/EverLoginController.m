@@ -68,7 +68,7 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
     //Handle setup of logo
     logoContainer = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ever-logo"]];
     logoContainer.alpha = 1.0;
-    CGRect logoFrame = CGRectMake(74.0, 81.0, 175.0, 175.0);
+    CGRect logoFrame = CGRectMake(74.0, 30.0, 175.0, 175.0);
     logoContainer.frame = logoFrame;
     
     //Handle setup of text input boxes
@@ -198,6 +198,7 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
     [super viewWillAppear:animated];
     [self screenPaintingInitialization];
     [self registerForKeyboardNotifications];
+    NSLog(@"LoginController viewWillAppear fired");
 }
 
 - (void) viewWillDisappear:(BOOL)animated
