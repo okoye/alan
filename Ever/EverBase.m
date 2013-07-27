@@ -28,12 +28,12 @@
     if (aController == loginController){ //post login event
         [self addChildViewController:statusController];
         [self animateFromController:loginController
-                       toController:statusController animation:UIViewAnimationOptionTransitionNone];
+                       toController:statusController animation:UIViewAnimationOptionTransitionFlipFromRight];
     }
     else if(aController == statusController){ //logout event
         [self addChildViewController:loginController];
         [self animateFromController:statusController
-                       toController:loginController animation:UIViewAnimationOptionTransitionNone];
+                       toController:loginController animation:UIViewAnimationOptionTransitionFlipFromLeft];
     }
     else{
         NSLog(@"non identified Controller fired");
@@ -46,30 +46,41 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        //First instantiate view controllers for this parent view
-        if (IS_IPHONE_5){
-            backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"5bg"]];
-            backgroundImage.frame = self.view.frame;
-        }
-        else{
-            backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg"]];
-        }
-        
         loginController = [[EverLoginController alloc] init];
         statusController = [[EverStatusController alloc] init];
         loginController.delegate = self;
         statusController.delegate = self;
+        if (IS_IPHONE_5){
+            NSLog(@"I am an iPhone 5");
+            backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"5bg"]];
+            backgroundImage.frame = self.view.frame;
+            NSLog(@"Finished background image initialization");
+        }
+        else{
+            backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg"]];
+        }
     }
     return self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    //Just update view data in here (load from local storage)
     [super viewWillAppear:animated];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    //Now, make those webservice calls to load even more data
+    [super viewDidAppear:animated];
+}
+
+- (void)viewDidLoad
+{
+    //Initialize view and all controls in here.
+    [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor grayColor]];
     [self.view addSubview:backgroundImage];
-
-    //Basically transitions from dummy base to something else
     if ([loginController isLoggedIn]){
         [self addChildViewController:statusController];
         [self.view addSubview:statusController.view];
@@ -80,11 +91,6 @@
         [self.view addSubview:loginController.view];
         [loginController didMoveToParentViewController:self];
     }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,11 +107,11 @@
         toViewController:toCont
         duration:0.3
         options:opts
-        animations:^{}
+        animations:^{
+        }
         completion:^(BOOL finished) {
-            NSLog(@"Executing transition completion routines");
             [toCont didMoveToParentViewController:self];
-            [fromCont.view removeFromSuperview];
+            [fromCont willMoveToParentViewController:self];
             [fromCont removeFromParentViewController];
         }];
 }

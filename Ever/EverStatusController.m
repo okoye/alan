@@ -104,15 +104,22 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self screenPaintingInitialization];
     [self registerForLocationNotifications];
     [self setState];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self screenPaintingInitialization];
 }
-
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+- (void) viewWillDisappear:(BOOL)animated
+{
+    //unregister for notifications.
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

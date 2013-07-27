@@ -197,13 +197,29 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self screenPaintingInitialization];
     [self registerForKeyboardNotifications];
+}
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    [self screenPaintingInitialization];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    //Contact webservice if necessary.
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+    username.text = @"";
+    password.text = @"";
 }
 @end
