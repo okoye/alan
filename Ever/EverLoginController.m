@@ -20,6 +20,7 @@
 - (void) keyboardWasHidden:(NSNotification *)notification;
 - (void) registerForKeyboardNotifications;
 - (void) onLogin:(id) loginSubmit;
+- (void) dismissKeyboardOnTouchOutside;
 @end
 
 @implementation EverLoginController
@@ -56,6 +57,17 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
 - (NSString *) fetchUsername
 {
     return [basicAuthChain objectForKey:CFBridgingRelease(kSecAttrAccount)];
+}
+
+
+#pragma mark - EverLoginController Private Methods
+
+- (void) dismissKeyboardOnTouchOutside
+{
+    NSLog(@"Keyboard should be dismissed from view here");
+    if (currentlyEditedTextField){
+        [currentlyEditedTextField resignFirstResponder];
+    }
 }
 
 - (void) screenPaintingInitialization
@@ -207,6 +219,8 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
 {
     [super viewDidLoad];
     [self screenPaintingInitialization];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboardOnTouchOutside)];
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void) viewDidAppear:(BOOL)animated
