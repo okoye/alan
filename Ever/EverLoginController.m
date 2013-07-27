@@ -113,6 +113,7 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
 
 - (void) keyboardWasShown:(NSNotification *)notification
 {
+    NSLog(@"Keyboard was shown on screen");
     NSDictionary *info  = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
@@ -125,13 +126,15 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
     
     //If current textfield is obscured by keyboard scroll the view up
     //detect if text field is in visible rectangle
-    if (CGRectContainsPoint(aRect, currentlyEditedTextField.frame.origin)){
+    if (!CGRectContainsPoint(aRect, currentlyEditedTextField.frame.origin)){
+        NSLog(@"Shifting keys"); 
         CGPoint scrollPoint = CGPointMake(0.0, (currentlyEditedTextField.frame.origin.y+20.0)-(kbSize.height));
         [scrollView setContentOffset:scrollPoint animated:YES];
     }
 }
 - (void) keyboardWasHidden:(NSNotification *)notification
 {
+    NSLog(@"Keyboard was hidden on screen");
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
     scrollView.contentInset = contentInsets;
     scrollView.scrollIndicatorInsets = contentInsets;
