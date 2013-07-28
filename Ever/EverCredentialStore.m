@@ -47,6 +47,7 @@ static const NSString *AUTHCHAIN_PREFIX = @"org.lightcurvelabs.ever";
     if (self){
         NSString *authIdentifier = [NSString stringWithFormat:@"%@:AuthKey",AUTHCHAIN_PREFIX];
         authChain = [[KeychainItemWrapper alloc] initWithIdentifier:authIdentifier accessGroup:nil];
+        [authChain setObject:@"EverCredentialsStore" forKey:(id)CFBridgingRelease(kSecAttrService)];
     }
     return self;
 }
@@ -76,8 +77,8 @@ static const NSString *AUTHCHAIN_PREFIX = @"org.lightcurvelabs.ever";
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *resp, id JSON){
                                                                                      NSLog(@"Successful authentication with API %@",JSON);
                                                                                      success(); //provide feedback to UI
-                                                                                     [authChain setObject:username forKey:CFBridgingRelease(kSecAttrAccount)];
-                                                                                     [authChain setObject:[self fetchAuthFromJSON:JSON] forKey:CFBridgingRelease(kSecValueData)];
+                                                                                     [authChain setObject:username forKey:(id)CFBridgingRelease(kSecAttrAccount)];
+                                                                                     [authChain setObject:[self fetchAuthFromJSON:JSON] forKey:(id)CFBridgingRelease(kSecValueData)];
                                                                                      
                                                                                  }
                                                                                  failure:^(NSURLRequest *req, NSHTTPURLResponse *rep, NSError *err, id JSON){
