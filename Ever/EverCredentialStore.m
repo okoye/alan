@@ -13,6 +13,7 @@
 #import "EverCommon.h"
 #import "EverUser.h"
 @interface EverCredentialStore ()
+-(NSString *) fetchAuthFromJSON:(NSDictionary *)dict;
 @end
 
 @implementation EverCredentialStore
@@ -22,6 +23,13 @@
 }
 
 static const NSString *AUTHCHAIN_PREFIX = @"org.lightcurvelabs.ever";
+
+#pragma mark - EverCredentialStore Private Methods
+-(NSString *) fetchAuthFromJSON:(NSDictionary *)dict
+{
+    NSString *value = [[dict valueForKey:@"object"] valueForKey:@"key"];
+    return value;
+}
 
 #pragma mark - EverCredentialStore Public Methods
 + (EverCredentialStore *) getStore
@@ -47,7 +55,6 @@ static const NSString *AUTHCHAIN_PREFIX = @"org.lightcurvelabs.ever";
 {
     NSString* username = [authChain objectForKey:CFBridgingRelease(kSecAttrAccount)];
     NSString* authKey = [authChain objectForKey:CFBridgingRelease(kSecValueData)];
-    NSLog(@"username currently is %@",username);
     if (![username isEqual: @""] && ![authKey isEqual: @""]){
         return [[EverUser alloc] initWithUsername: username
                                           andCode: authKey];
@@ -67,23 +74,21 @@ static const NSString *AUTHCHAIN_PREFIX = @"org.lightcurvelabs.ever";
     NSMutableURLRequest *authRequest = [httpClient requestWithMethod:@"GET" path:@"/v1/auth" parameters:nil];
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest: authRequest
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *resp, id JSON){
-                                                                                     NSLog(@"Successful authentication with API");
+                                                                                     NSLog(@"Successful authentication with API %@",JSON);
                                                                                      success(); //provide feedback to UI
                                                                                      [authChain setObject:username forKey:CFBridgingRelease(kSecAttrAccount)];
-                                                                                     [authChain setObject:password forKey:CFBridgingRelease(kSecValueData)];
+                                                                                     [authChain setObject:[self fetchAuthFromJSON:JSON] forKey:CFBridgingRelease(kSecValueData)];
+                                                                                     
                                                                                  }
                                                                                  failure:^(NSURLRequest *req, NSHTTPURLResponse *rep, NSError *err, id JSON){
                                                                                      NSLog(@"Unsuccessful authentication with API: %@ %@",err, rep);
                                                                                      error(); //provide feedback to UI
                                                                                  }];
-    [op start];
-    
+    [op start];    
 }
 
 - (void) logout
 {
-    NSLog(@"logging out current user by deleting login data");
     [authChain resetKeychainItem]; //actually deletes login info
-    NSLog(@"username is now: %@",[authChain objectForKey:CFBridgingRelease(kSecAttrAccount)]);
 }
 @end

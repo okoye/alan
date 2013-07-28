@@ -13,7 +13,7 @@
     UIEdgeInsets insets;
 }
 
-const float TRANSPARENCY = 0.4;
+const float TRANSPARENCY = 0.5;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -28,20 +28,15 @@ const float TRANSPARENCY = 0.4;
     return self;
 }
 
-- (CGRect) editingRectForBounds:(CGRect)bounds
-{
-    return UIEdgeInsetsInsetRect([super editingRectForBounds:bounds], insets);
-}
+//- (CGRect) editingRectForBounds:(CGRect)bounds
+//{
+//    return UIEdgeInsetsInsetRect([super editingRectForBounds:bounds], insets);
+//}
 
 - (CGRect) textRectForBounds:(CGRect)bounds
 {
     return UIEdgeInsetsInsetRect([super textRectForBounds:bounds], insets);
 }
-
-//- (CGRect)placeholderRectForBounds:(CGRect)bounds
-//{
-//    return UIEdgeInsetsInsetRect([super placeholderRectForBounds:bounds], insets);
-//}
 
 - (void) drawPlaceholderInRect:(CGRect)rect
 {
@@ -49,10 +44,10 @@ const float TRANSPARENCY = 0.4;
     [[self placeholder] drawInRect:rect withFont:self.font];
 }
 
-- (void) drawTextInRect:(CGRect)rect
-{
-    [[UIColor whiteColor] setFill];
-    [[self text] drawInRect:rect withFont:self.font];
-}
+//- (void) drawTextInRect:(CGRect)rect
+//{
+//    [[UIColor whiteColor] setFill];
+//    [[self text] drawInRect:rect withFont:self.font];
+//}
 
 @end

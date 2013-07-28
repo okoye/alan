@@ -130,7 +130,6 @@
 
 - (void) onLogin:(id) loginSubmit
 {
-    //TODO Save username and password fields after validating
     if (username.text == nil || password.text == nil){
         NSLog(@"username or password is nil");
         [[[UIAlertView alloc] initWithTitle:@"Invalid Credentials"
@@ -140,7 +139,6 @@
                             otherButtonTitles:nil, nil] show];
         return ;
     }
-    //TODO contact API and exchange keys or at least verify auth valid.
     [activityIndicator startAnimating];
     [credStore authenticateUsername:username.text andPassword:password.text withSuccess:^{
         [self.delegate finished:self];
