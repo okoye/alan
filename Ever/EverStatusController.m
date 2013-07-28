@@ -8,6 +8,7 @@
 
 #import "EverStatusController.h"
 #import "EverLabel.h"
+#import "EverCredentialStore.h"
 
 @interface EverStatusController ()
 -(void) toGood;
@@ -23,7 +24,7 @@
     UIImageView *stateContainer;
     UILabel *stateInfo;
     UIButton *logout;
-    
+    EverCredentialStore *credentialStore;
 }
 #pragma mark - EverStatusController Public Methods
 - (BOOL) allGood
@@ -65,6 +66,7 @@
 -(void) onLogout:(id)logoutSubmit
 {
     NSLog(@"onLogout fired");
+    [credentialStore logout];
     [self.delegate finished:self];
 }
 
@@ -97,6 +99,7 @@
     if (self) {
         store = [EverSensorStore getStore];
         self.wantsFullScreenLayout = YES;
+        credentialStore = [EverCredentialStore getStore];
     }
     return self;
 }

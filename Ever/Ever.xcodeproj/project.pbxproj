@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B7060668178CE01A001E66CF /* EverContainedInterfaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7060667178CE01A001E66CF /* EverContainedInterfaceViewController.m */; };
+		B706066B17A4776B001E66CF /* EverCredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B706066A17A4776B001E66CF /* EverCredentialStore.m */; };
+		B706066E17A5AD9C001E66CF /* EverUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B706066D17A5AD9C001E66CF /* EverUser.m */; };
+		B706067017A5BC2F001E66CF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B706066F17A5BC2F001E66CF /* SystemConfiguration.framework */; };
+		B706067217A5BC3B001E66CF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B706067117A5BC3B001E66CF /* MobileCoreServices.framework */; };
 		B708BD7F1787A5FD00203350 /* EverLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = B708BD7E1787A5FD00203350 /* EverLoginController.m */; };
 		B708BD821787A61600203350 /* EverStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = B708BD811787A61600203350 /* EverStatusController.m */; };
 		B708BD841788A22700203350 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B708BD831788A22700203350 /* bg.png */; };
@@ -52,6 +56,12 @@
 		8A250A4987E549E5911D1B80 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B7060666178CE01A001E66CF /* EverContainedInterfaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverContainedInterfaceViewController.h; sourceTree = "<group>"; };
 		B7060667178CE01A001E66CF /* EverContainedInterfaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverContainedInterfaceViewController.m; sourceTree = "<group>"; };
+		B706066917A4776B001E66CF /* EverCredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverCredentialStore.h; sourceTree = "<group>"; };
+		B706066A17A4776B001E66CF /* EverCredentialStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverCredentialStore.m; sourceTree = "<group>"; };
+		B706066C17A5AD9C001E66CF /* EverUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverUser.h; sourceTree = "<group>"; };
+		B706066D17A5AD9C001E66CF /* EverUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverUser.m; sourceTree = "<group>"; };
+		B706066F17A5BC2F001E66CF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B706067117A5BC3B001E66CF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B708BD7D1787A5FD00203350 /* EverLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverLoginController.h; sourceTree = "<group>"; };
 		B708BD7E1787A5FD00203350 /* EverLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EverLoginController.m; sourceTree = "<group>"; };
 		B708BD801787A61600203350 /* EverStatusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EverStatusController.h; sourceTree = "<group>"; };
@@ -112,6 +122,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B706067217A5BC3B001E66CF /* MobileCoreServices.framework in Frameworks */,
+				B706067017A5BC2F001E66CF /* SystemConfiguration.framework in Frameworks */,
 				B708BD96178A15F400203350 /* Security.framework in Frameworks */,
 				B7D3F80E176C0E2900597973 /* UIKit.framework in Frameworks */,
 				B7D3F810176C0E2900597973 /* Foundation.framework in Frameworks */,
@@ -152,6 +164,8 @@
 		B7D3F80C176C0E2900597973 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B706066F17A5BC2F001E66CF /* SystemConfiguration.framework */,
+				B706067117A5BC3B001E66CF /* MobileCoreServices.framework */,
 				B708BD95178A15F400203350 /* Security.framework */,
 				B7D3F83D176C277200597973 /* CoreLocation.framework */,
 				B7D3F80D176C0E2900597973 /* UIKit.framework */,
@@ -186,6 +200,8 @@
 				B7D3F823176C0E2900597973 /* Default@2x.png */,
 				B7D3F825176C0E2900597973 /* Default-568h@2x.png */,
 				B708BD871788A49300203350 /* EverCommon.h */,
+				B706066C17A5AD9C001E66CF /* EverUser.h */,
+				B706066D17A5AD9C001E66CF /* EverUser.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -242,6 +258,8 @@
 			children = (
 				B7D3F83F176EA22700597973 /* EverSensorStore.h */,
 				B7D3F840176EA22700597973 /* EverSensorStore.m */,
+				B706066917A4776B001E66CF /* EverCredentialStore.h */,
+				B706066A17A4776B001E66CF /* EverCredentialStore.m */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -394,6 +412,8 @@
 				B708BD9D178A2A5900203350 /* EverTextField.m in Sources */,
 				B7060668178CE01A001E66CF /* EverContainedInterfaceViewController.m in Sources */,
 				B791C977179F87DB00D6E7B6 /* EverLabel.m in Sources */,
+				B706066B17A4776B001E66CF /* EverCredentialStore.m in Sources */,
+				B706066E17A5AD9C001E66CF /* EverUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

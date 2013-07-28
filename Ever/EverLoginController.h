@@ -11,8 +11,4 @@
 
 @interface EverLoginController : EverContainedInterfaceViewController <UITextFieldDelegate>
 
-- (BOOL) isLoggedIn;
-- (NSString *) fetchUsername;
-- (NSString *) fetchPassword;
-
 @end

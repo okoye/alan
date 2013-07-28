@@ -8,14 +8,13 @@
 
 #import "EverLoginController.h"
 #import "KeychainItemWrapper.h"
+#import "EverCredentialStore.h"
 #import "EverTextField.h"
 
 //TODO Refactor out authentication into seperate object for StatusController
 
 @interface EverLoginController ()
 - (void) screenPaintingInitialization;
-- (void) deleteCredentials;
-- (void) saveCredentials:(NSString *) username withPassword:(NSString *) password;
 - (void) keyboardWasShown:(NSNotification *)notification;
 - (void) keyboardWasHidden:(NSNotification *)notification;
 - (void) registerForKeyboardNotifications;
@@ -33,32 +32,11 @@
     UIButton *login;
     UITextField *currentlyEditedTextField;
     KeychainItemWrapper *basicAuthChain;
+    EverCredentialStore *credStore;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @synthesize delegate;
-static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
-
-#pragma mark - EverLoginController Public Methods
- - (BOOL) isLoggedIn
-{
-    if ([self fetchUsername] && [self fetchPassword]){
-        return YES;
-    }
-    else{
-        return NO;
-    }
-}
-
-- (NSString *) fetchPassword
-{
-    return [basicAuthChain objectForKey:CFBridgingRelease(kSecValueData)];
-}
-
-- (NSString *) fetchUsername
-{
-    return [basicAuthChain objectForKey:CFBridgingRelease(kSecAttrAccount)];
-}
-
 
 #pragma mark - EverLoginController Private Methods
 
@@ -96,6 +74,7 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
                                       emailFrame.size.height);
     password = [[EverTextField alloc] initWithFrame:passwordFrame];
     password.placeholder = @"Password";
+    password.secureTextEntry = YES;
     password.delegate = self;
     
     //Handle login button
@@ -110,17 +89,7 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
     [scrollView addSubview:username];
     [scrollView addSubview:password];
     [scrollView addSubview:login];
-}
-
-- (void) deleteCredentials
-{
-    [basicAuthChain resetKeychainItem];
-}
-
-- (void) saveCredentials:(NSString *) myUsername withPassword:(NSString *) myPassword
-{
-    [basicAuthChain setObject:myPassword forKey:CFBridgingRelease(kSecValueData)];
-    [basicAuthChain setObject:myUsername forKey:CFBridgingRelease(kSecAttrAccount)];
+    [scrollView addSubview:activityIndicator];
 }
 
 - (void) keyboardWasShown:(NSNotification *)notification
@@ -172,11 +141,18 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
         return ;
     }
     //TODO contact API and exchange keys or at least verify auth valid.
-    [self saveCredentials:username.text withPassword:password.text];
-    
-    //Now, go signal parent
-    [self.delegate finished:self];
-    
+    [activityIndicator startAnimating];
+    [credStore authenticateUsername:username.text andPassword:password.text withSuccess:^{
+        [self.delegate finished:self];
+        [activityIndicator stopAnimating];
+    } andError:^{
+        [activityIndicator stopAnimating];
+        [[[UIAlertView alloc] initWithTitle:@"Invalid Credentials"
+                            message:@"Either username or password is invalid"
+                            delegate:nil
+                            cancelButtonTitle:@"Ok"
+                          otherButtonTitles:nil, nil] show];
+    }];
 }
 
 #pragma mark UITextFieldDelegate Methods
@@ -200,11 +176,9 @@ static const NSString *KEYCHAIN_IDENTIFIER_PREFIX = @"org.lightcurvelabs.ever";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         //Create objects related to storing password.
-        NSString *keychainBasicAuthIdentifier = [NSString stringWithFormat:@"%@:basic",KEYCHAIN_IDENTIFIER_PREFIX];
-        basicAuthChain = [[KeychainItemWrapper alloc]
-                        initWithIdentifier:keychainBasicAuthIdentifier
-                        accessGroup:nil];
         self.wantsFullScreenLayout = YES;
+        credStore = [EverCredentialStore getStore];
+        activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     }
     return self;
 }

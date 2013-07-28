@@ -107,7 +107,7 @@ static NSUInteger BATCH_SIZE = 100; //Size of records to send
     NSArray *sensorReadings = nil;
     EverAPIConnector *connector = nil;
 #if EVER_DEBUG_MODE
-    everAPI = @"api.thepuppetprojects.com";
+    everAPI = @"everapi.thepuppetprojects.com";
 #endif
     NSURL *url = [NSURL URLWithString:everAPI];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];

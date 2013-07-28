@@ -10,6 +10,7 @@
 #import "Ever/EverCommon.h"
 #import "EverLoginController.h"
 #import "EverStatusController.h"
+#import "EverCredentialStore.h"
 
 @interface EverBase ()
 - (void) animateFromController:(UIViewController *)from toController:(UIViewController *)toCont animation:(UIViewAnimationOptions) opts;
@@ -20,6 +21,7 @@
     UIImageView *backgroundImage;
     EverLoginController *loginController;
     EverStatusController *statusController;
+    EverCredentialStore *credentialStore;
 }
 #pragma mark - EverContainedDelegate Methods
 
@@ -48,6 +50,7 @@
     if (self) {
         loginController = [[EverLoginController alloc] init];
         statusController = [[EverStatusController alloc] init];
+        credentialStore = [EverCredentialStore getStore];
         loginController.delegate = self;
         statusController.delegate = self;
         if (IS_IPHONE_5){
@@ -78,10 +81,13 @@
 - (void)viewDidLoad
 {
     //Initialize view and all controls in here.
+    NSLog(@"container is now loading content window");
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor grayColor]];
     [self.view addSubview:backgroundImage];
-    if ([loginController isLoggedIn]){
+    EverUser *user = [credentialStore getAuthenticatedUser];
+    NSLog(@"%@",user);
+    if (user != nil){
         [self addChildViewController:statusController];
         [self.view addSubview:statusController.view];
         [statusController didMoveToParentViewController:self];
