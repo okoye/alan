@@ -39,7 +39,7 @@
 -(void) toGood
 {
     stateContainer.image = [UIImage imageNamed:@"connected"];
-    stateInfo.text = @"Ever is analyzing your lifestyle";
+    stateInfo.text = @"Ever is analyzing your activity levels";
 }
 
 -(void) toBad

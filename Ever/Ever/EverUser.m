@@ -25,7 +25,7 @@
 
 -(NSString *) fetchAuthenticationHeader
 {
-    return @"ApiKey %@:%S",username,authKey;
+    return @"ApiKey %@:%@",username,authKey;
 }
 
 @end

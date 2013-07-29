@@ -75,14 +75,12 @@ static const NSString *AUTHCHAIN_PREFIX = @"org.lightcurvelabs.ever";
     NSMutableURLRequest *authRequest = [httpClient requestWithMethod:@"GET" path:@"/v1/auth" parameters:nil];
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest: authRequest
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *resp, id JSON){
-                                                                                     NSLog(@"Successful authentication with API %@",JSON);
                                                                                      success(); //provide feedback to UI
                                                                                      [authChain setObject:username forKey:(id)CFBridgingRelease(kSecAttrAccount)];
                                                                                      [authChain setObject:[self fetchAuthFromJSON:JSON] forKey:(id)CFBridgingRelease(kSecValueData)];
                                                                                      
                                                                                  }
                                                                                  failure:^(NSURLRequest *req, NSHTTPURLResponse *rep, NSError *err, id JSON){
-                                                                                     NSLog(@"Unsuccessful authentication with API: %@ %@",err, rep);
                                                                                      error(); //provide feedback to UI
                                                                                  }];
     [op start];    

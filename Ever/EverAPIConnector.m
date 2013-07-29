@@ -44,16 +44,13 @@ static NSMutableArray *shared_connection_list = nil;
     NSData *data = nil;
     SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
     if (payload){
-        NSLog(@"now serializing JSON object");
         data = [jsonWriter dataWithObject:payload];
         [request setHTTPBody:data];
     }
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:self.request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         success_block();
-        NSLog(@"success! I tell you");
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         failure_block();
-        NSLog(@"failure in sending request");
     }];
     op.failureCallbackQueue = failure_q; //if nil, op will use main thread :(
     op.successCallbackQueue = success_q; //if nil, op will use main thread :(

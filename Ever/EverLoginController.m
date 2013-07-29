@@ -42,7 +42,6 @@
 
 - (void) dismissKeyboardOnTouchOutside
 {
-    NSLog(@"Keyboard should be dismissed from view here");
     if (currentlyEditedTextField){
         [currentlyEditedTextField resignFirstResponder];
     }
@@ -163,7 +162,6 @@
 
 - (BOOL) textFieldShouldBeginEditing:(UITextField *)textField
 {
-    NSLog(@"Textfield should begin editing fired");
     currentlyEditedTextField = textField;
     return YES;
 }

@@ -10,6 +10,10 @@
 #import "GPS.h"
 #import "EverAPIConnector.h"
 #import "EverCommon.h"
+#import "EverCredentialStore.h"
+#import "EverUser.h"
+#import "AFHTTPClient.h"
+#import "AFJSONRequestOperation.h"
 
 @interface EverSensorStore()
 -(void) sync;
@@ -19,6 +23,8 @@
 @implementation EverSensorStore
 {
     uint32_t total_saved;
+    EverCredentialStore *credentialStore;
+    EverUser *user;
 }
 
 @synthesize managedObjectContext;
@@ -37,6 +43,10 @@ static NSUInteger BATCH_SIZE = 100; //Size of records to send
 - (id) init
 {
     self = [super init];
+    if(self){
+        credentialStore = [EverCredentialStore getStore];
+        user = nil;
+    }
     return self;
 }
 
@@ -100,7 +110,7 @@ static NSUInteger BATCH_SIZE = 100; //Size of records to send
 -(void) sync
 {
 
-    NSString *everAPI = @"api.lightcurvelabs.org/location";
+    NSString *everAPI = @"api.lightcurvelabs.org";
     NSFetchRequest *fetchRequest = nil;
     NSInteger count = 0;
     NSError *err = nil;
@@ -109,8 +119,22 @@ static NSUInteger BATCH_SIZE = 100; //Size of records to send
 #if EVER_DEBUG_MODE
     everAPI = @"everapi.thepuppetprojects.com";
 #endif
+    EverUser *currentUser = [credentialStore getAuthenticatedUser];
+    if(user != currentUser && currentUser == nil){ //signed out
+        NSLog(@"user signed out, no updates being sent to API");
+        return;//dont send anything since we are signed out.
+    }
+    else if (user != currentUser && currentUser != nil){ //new sign in
+        NSLog(@"new user signed in, updating authentication headers");
+        user = currentUser;
+    }
+    else if (user == nil && currentUser == nil){
+        return; //new account with no sign in
+    }
     NSURL *url = [NSURL URLWithString:everAPI];
-    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
+    [httpClient setAuthorizationHeaderWithToken:[user fetchAuthenticationHeader]];
+    NSMutableURLRequest *req = [httpClient requestWithMethod:@"POST" path:@"/v1/location/sensor" parameters:nil];
         
     //Send all the data in batches
     fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"GPS"];

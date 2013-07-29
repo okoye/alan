@@ -54,10 +54,8 @@
         loginController.delegate = self;
         statusController.delegate = self;
         if (IS_IPHONE_5){
-            NSLog(@"I am an iPhone 5");
             backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"5bg"]];
             backgroundImage.frame = self.view.frame;
-            NSLog(@"Finished background image initialization");
         }
         else{
             backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg"]];
@@ -81,12 +79,10 @@
 - (void)viewDidLoad
 {
     //Initialize view and all controls in here.
-    NSLog(@"container is now loading content window");
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor grayColor]];
     [self.view addSubview:backgroundImage];
     EverUser *user = [credentialStore getAuthenticatedUser];
-    NSLog(@"%@",user);
     if (user != nil){
         [self addChildViewController:statusController];
         [self.view addSubview:statusController.view];
